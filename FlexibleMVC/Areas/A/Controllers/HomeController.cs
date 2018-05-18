@@ -6,7 +6,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace FlexibleMVC.Areas.A.Controllers
+namespace FlexibleMVC.Web.Areas.A.Controllers
 {
 	public class HomeController : Controller
 	{

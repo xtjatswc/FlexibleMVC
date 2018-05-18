@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 # SharpDevelop 5.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleMVC", "FlexibleMVC\FlexibleMVC.csproj", "{09F6185C-C93D-4B4A-B11B-3C29D3A24E55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleMVC.Web", "FlexibleMVC\FlexibleMVC.Web.csproj", "{09F6185C-C93D-4B4A-B11B-3C29D3A24E55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System;
 
-namespace FlexibleMVC.Areas.A
+namespace FlexibleMVC.Web.Areas.A
 {
 	public class AAreaRegistration : AreaRegistration
 	{
@@ -14,7 +14,7 @@ namespace FlexibleMVC.Areas.A
 				name : "A_default",
 				url : "A/{controller}/{action}/{id}",
 				defaults : new { controller = "Home", action = "Index", id = UrlParameter.Optional},
-				namespaces : new string[]{"FlexibleMVC.Areas.A.Controllers"}
+				namespaces : new string[]{"FlexibleMVC.Web.Areas.A.Controllers"}
 			);
 		}
 	}

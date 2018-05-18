@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace FlexibleMVC
+namespace FlexibleMVC.Web
 {
 	public class MvcApplication : HttpApplication
 	{
@@ -23,7 +23,7 @@ namespace FlexibleMVC
 					action = "Index",
 					id = UrlParameter.Optional
 				},
-				namespaces : new string[]{ "FlexibleMVC.Controllers" }
+				namespaces : new string[]{ "FlexibleMVC.Web.Controllers" }
 			);
 		}
 		
