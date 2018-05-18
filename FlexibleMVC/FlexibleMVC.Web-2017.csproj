@@ -73,7 +73,7 @@
     <Content Include="Areas\A\Views\Home\Index.cshtml" />
     <Content Include="Areas\A\web.config" />
     <Content Include="Areas\A\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\A\_ViewStart.cshtml" />
+    <Content Include="Areas\A\Views\_ViewStart.cshtml" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <None Include="packages.config" />

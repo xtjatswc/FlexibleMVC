@@ -3,12 +3,14 @@
  * 日期: 2018/5/18
  * 时间: 10:13
  */
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace FlexibleMVC.Web
 {
+
     public class MvcApplication : HttpApplication
     {
         public static void RegisterRoutes(RouteCollection routes)
@@ -24,8 +26,23 @@ namespace FlexibleMVC.Web
                     action = "Index",
                     id = UrlParameter.Optional
                 },
-                namespaces: new string[] { "FlexibleMVC.Web.Controllers" }
+                namespaces: new string[] { "FlexibleMVC.Web.Controllers" },
+                constraints: new { controller = "(?!^A$)(?!^Admin$).*" }
             );
+
+            routes.MapRoute(
+                name: "Pa_Default",
+                url: "Admin/{controller}/{action}/{id}",
+                defaults: new
+                {
+                    controller = "PaHome",
+                    action = "PaIndex",
+                    id = UrlParameter.Optional
+                },
+                namespaces: new string[] { "FlexibleMVC.Web.Admin.Controllers" },
+                constraints: new { controller = "(?!^AA$).*" }
+            );
+
         }
 
         protected void Application_Start()
@@ -44,16 +61,21 @@ namespace FlexibleMVC.Web
     {
         public MvcViewEngine()
         {
-            MasterLocationFormats = new[] 
+            MasterLocationFormats = new[]
             {
                 "~/Views/{1}/{0}.cshtml",
                 "~/Views/Shard/{0}.cshtml",
+
+                "~/FlexibleMVC.Web.Admin/Views/{1}/{0}.cshtml",
+                "~/FlexibleMVC.Web.Admin/Views/Shared/{0}.cshtml",
             };
             ViewLocationFormats = MasterLocationFormats;
             PartialViewLocationFormats = MasterLocationFormats;
 
             AreaMasterLocationFormats = new[] {
                 "~/Areas/{2}/Views/{1}/{0}.cshtml",
+                "~/Areas/{2}/Views/Shared/{0}.cshtml",
+
                 "~/FlexibleMVC.Web.Admin/Areas/{2}/Views/{1}/{0}.cshtml",
                 "~/FlexibleMVC.Web.Admin/Areas/{2}/Views/Shared/{0}.cshtml",
             };

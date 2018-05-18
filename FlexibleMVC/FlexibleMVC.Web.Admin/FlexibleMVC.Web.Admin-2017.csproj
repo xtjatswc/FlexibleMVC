@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Areas\AA\AAreaRegistration.cs" />
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaHomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +72,11 @@
     <Content Include="Areas\AA\Views\Home\Index.cshtml" />
     <Content Include="Areas\AA\web.config" />
     <None Include="Areas\AA\Views\Shared\_Layout.cshtml" />
-    <None Include="Areas\AA\_ViewStart.cshtml" />
+    <None Include="Areas\AA\Views\_ViewStart.cshtml" />
+    <Content Include="Views\PaHome\PaIndex.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\web.config" />
+    <None Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
