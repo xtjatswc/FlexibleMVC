@@ -40,7 +40,7 @@ namespace FlexibleMVC.Web
                     id = UrlParameter.Optional
                 },
                 namespaces: new string[] { "FlexibleMVC.Web.Admin.Controllers" },
-                constraints: new { controller = "(?!^AA$).*" }
+                constraints: new { controller = "(^Pa.*)" }
             );
 
         }
