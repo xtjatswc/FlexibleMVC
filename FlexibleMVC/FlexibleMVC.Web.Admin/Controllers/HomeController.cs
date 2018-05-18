@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
-	public class PaHomeController : Controller
+	public class HomeController : Controller
 	{
-		public ActionResult PaIndex()
+		public ActionResult Index()
 		{
 			return View();
 		}

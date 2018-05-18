@@ -3,7 +3,7 @@
  * 日期: 2018/5/18
  * 时间: 10:13
  */
-using System;
+using FlexibleMVC.Web.RouteConstraint;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -18,8 +18,21 @@ namespace FlexibleMVC.Web
             routes.Ignore("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Admin_Default",
+                url: "Admin_{controller}/{action}/{id}",
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                },
+                namespaces: new string[] { "FlexibleMVC.Web.Admin.Controllers" },
+                constraints: new { controller = new AdminRouteConstraint() }
+            );
+
+            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}/{*c}",
                 defaults: new
                 {
                     controller = "Home",
@@ -27,20 +40,7 @@ namespace FlexibleMVC.Web
                     id = UrlParameter.Optional
                 },
                 namespaces: new string[] { "FlexibleMVC.Web.Controllers" },
-                constraints: new { controller = "(?!^A$)(?!^Admin$).*" }
-            );
-
-            routes.MapRoute(
-                name: "Pa_Default",
-                url: "Admin/{controller}/{action}/{id}",
-                defaults: new
-                {
-                    controller = "PaHome",
-                    action = "PaIndex",
-                    id = UrlParameter.Optional
-                },
-                namespaces: new string[] { "FlexibleMVC.Web.Admin.Controllers" },
-                constraints: new { controller = "(^Pa.*)" }
+                constraints: new { controller = new DefaultRouteConstraint() }
             );
 
         }
@@ -82,6 +82,11 @@ namespace FlexibleMVC.Web
             AreaViewLocationFormats = AreaMasterLocationFormats;
             AreaPartialViewLocationFormats = AreaMasterLocationFormats;
 
+        }
+
+        public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
+        {
+            return base.FindView(controllerContext, viewName, masterName, useCache);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace FlexibleMVC.Web.Admin.Areas.AA
 		{
 			context.MapRoute(
 				name : "Admin_AA_default",
-				url : "Admin/AA/{controller}/{action}/{id}",
+				url : "Admin_AA_{controller}/{action}/{id}",
 				defaults : new { controller = "Home", action = "Index", id = UrlParameter.Optional},
 				namespaces : new string[]{"FlexibleMVC.Web.Admin.Areas.AA.Controllers"}
 			);

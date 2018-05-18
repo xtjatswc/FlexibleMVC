@@ -55,7 +55,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="Areas\AA\AAreaRegistration.cs" />
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PaHomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +73,7 @@
     <Content Include="Areas\AA\web.config" />
     <None Include="Areas\AA\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\AA\Views\_ViewStart.cshtml" />
-    <Content Include="Views\PaHome\PaIndex.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />

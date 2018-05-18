@@ -12,7 +12,7 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
+			return View("~/FlexibleMVC.Web.Admin/Areas/AA/Views/Home/Index.cshtml");
 		}
 		
 		public ActionResult Contact()
