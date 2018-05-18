@@ -68,8 +68,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Areas\A\Shared\_Layout.cshtml" />
     <None Include="Areas\A\Views\Home\Index.cshtml" />
     <None Include="Areas\A\web.config" />
+    <None Include="Areas\A\_ViewStart.cshtml" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <None Include="packages.config" />
@@ -88,6 +90,7 @@
     <Folder Include="Areas" />
     <Folder Include="Areas\A" />
     <Folder Include="Areas\A\Controllers" />
+    <Folder Include="Areas\A\Shared" />
     <Folder Include="Areas\A\Views" />
     <Folder Include="Areas\A\Views\Home" />
   </ItemGroup>
