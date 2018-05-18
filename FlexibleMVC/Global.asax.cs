@@ -16,17 +16,21 @@ namespace FlexibleMVC
 			routes.Ignore("{resource}.axd/{*pathInfo}");
 			
 			routes.MapRoute(
-				"Default",
-				"{controller}/{action}/{id}",
-				new {
+				name: "Default",
+				url: "{controller}/{action}/{id}",
+				defaults: new {
 					controller = "Home",
 					action = "Index",
 					id = UrlParameter.Optional
-				});
+				},
+				namespaces : new string[]{ "FlexibleMVC.Controllers" }
+			);
 		}
 		
 		protected void Application_Start()
 		{
+			AreaRegistration.RegisterAllAreas();
+
 			RegisterRoutes(RouteTable.Routes);
 		}
 	}

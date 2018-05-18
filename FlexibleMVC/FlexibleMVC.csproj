@@ -36,6 +36,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteDebugger">
+      <HintPath>..\packages\routedebugger.2.1.5\lib\net40\RouteDebugger.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
@@ -53,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\A\AAreaRegistration.cs" />
+    <Compile Include="Areas\A\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -60,6 +68,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Areas\A\Views\Home\Index.cshtml" />
+    <None Include="Areas\A\web.config" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <None Include="packages.config" />
@@ -73,6 +83,13 @@
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
     <None Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas" />
+    <Folder Include="Areas\A" />
+    <Folder Include="Areas\A\Controllers" />
+    <Folder Include="Areas\A\Views" />
+    <Folder Include="Areas\A\Views\Home" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
