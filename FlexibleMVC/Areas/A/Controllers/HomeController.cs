@@ -17,7 +17,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 		
 		public ActionResult Contact()
 		{
-			return View();
+			return View("~/Areas/A/Views/Home/Contact.cshtml");
 		}
-	}
+
+        public ActionResult GotoB()
+        {
+            return RedirectToRoute("B_default", new { controller = "Home", Action = "Index", para = 1 });
+        }
+
+    }
 }

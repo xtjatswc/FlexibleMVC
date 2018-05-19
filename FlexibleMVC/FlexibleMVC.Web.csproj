@@ -66,12 +66,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteConstraint\AdminRouteConstraint.cs" />
+    <Compile Include="RouteConstraint\DefaultRouteConstraint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Areas\A\Views\Home\Index.cshtml" />
     <None Include="Areas\A\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\A\Views\_ViewStart.cshtml" />
     <None Include="Areas\A\web.config" />
-    <None Include="Areas\A\_ViewStart.cshtml" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <None Include="packages.config" />
@@ -93,6 +95,7 @@
     <Folder Include="Areas\A\Views" />
     <Folder Include="Areas\A\Views\Home" />
     <Folder Include="Areas\A\Views\Shared" />
+    <Folder Include="RouteConstraint" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

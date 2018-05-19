@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="Areas\AA\AAreaRegistration.cs" />
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PaHomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +73,6 @@
     <None Include="Areas\AA\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\AA\Views\_ViewStart.cshtml" />
     <None Include="Areas\AA\web.config" />
-    <None Include="Areas\AA\_ViewStart.cshtml" />
     <None Include="Views\PaHome\PaIndex.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />

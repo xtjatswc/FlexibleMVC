@@ -10,14 +10,13 @@
 		<div id="page">
 			<header>
 				<div id="title">
-                    <h1>ASP.NET MVC Application 来自A模块</h1>
+                    <h1>ASP.NET MVC Application 来自B模块</h1>
 				</div>
 			</header>
 			<nav>
 				<ul id="menu">
 					<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.RouteLink("跳转到B模块", "B_default", new { controller = "Home", Action = "Contact" })</li>
+					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 				</ul>
 			</nav>
 			<section id="main">
