@@ -73,7 +73,7 @@
     <None Include="Areas\AA\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\AA\Views\_ViewStart.cshtml" />
     <None Include="Areas\AA\web.config" />
-    <None Include="Views\PaHome\PaIndex.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
@@ -87,7 +87,7 @@
     <Folder Include="Areas\AA\Views\Shared" />
     <Folder Include="Controllers" />
     <Folder Include="Views" />
-    <Folder Include="Views\PaHome" />
+    <Folder Include="Views\Home" />
     <Folder Include="Views\Shared" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

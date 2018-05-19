@@ -19,5 +19,7 @@ namespace FlexibleMVC.Web.Controllers
 		{
 			return View();
 		}
-	}
+
+
+    }
 }

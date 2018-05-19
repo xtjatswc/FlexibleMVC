@@ -25,5 +25,10 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return RedirectToRoute("B_default", new { controller = "Home", Action = "Index", para = 1 });
         }
 
+        public ActionResult Part2()
+        {
+            return View();
+        }
+
     }
 }

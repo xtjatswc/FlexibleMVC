@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Areas\A\AAreaRegistration.cs" />
     <Compile Include="Areas\A\Controllers\HomeController.cs" />
+    <Compile Include="Areas\B\BAreaRegistration.cs" />
+    <Compile Include="Areas\B\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -74,6 +76,11 @@
     <None Include="Areas\A\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\A\Views\_ViewStart.cshtml" />
     <None Include="Areas\A\web.config" />
+    <None Include="Areas\B\Views\Home\Contact.cshtml" />
+    <None Include="Areas\B\Views\Home\Index.cshtml" />
+    <None Include="Areas\B\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\B\Views\_ViewStart.cshtml" />
+    <None Include="Areas\B\web.config" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <None Include="packages.config" />
@@ -83,6 +90,8 @@
     <None Include="Scripts\modernizr-2.5.3.js" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Part2.cshtml" />
+    <None Include="Views\Shared\Index_part1.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
@@ -95,6 +104,11 @@
     <Folder Include="Areas\A\Views" />
     <Folder Include="Areas\A\Views\Home" />
     <Folder Include="Areas\A\Views\Shared" />
+    <Folder Include="Areas\B" />
+    <Folder Include="Areas\B\Controllers" />
+    <Folder Include="Areas\B\Views" />
+    <Folder Include="Areas\B\Views\Home" />
+    <Folder Include="Areas\B\Views\Shared" />
     <Folder Include="RouteConstraint" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
