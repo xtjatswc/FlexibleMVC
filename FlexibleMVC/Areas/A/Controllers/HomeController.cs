@@ -3,6 +3,7 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+using FlexibleMVC.Base;
 using FlexibleMVC.Web.Areas.A.Model;
 using Newtonsoft.Json;
 using System;
@@ -13,7 +14,7 @@ using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Areas.A.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -42,14 +43,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             obj.name = "Li Lei";
             obj.age = 20;
             obj.color = new { color1 = "red", color2 = "green" };
-            return Json(obj, JsonRequestBehavior.AllowGet);
+            return Json(obj);
         }
 
         public JsonResult TestMysql()
         {
-            var department = Class1.GetDBContext().Sql(@"select * from department ").QuerySingle<DataTable>();
-            var json = JsonConvert.SerializeObject(department);
-            return Json(json, JsonRequestBehavior.AllowGet);
+            var department = Class1.GetDBContext().Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<DataTable>();
+            return Json(department);
         }
     }
 }
