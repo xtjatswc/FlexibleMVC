@@ -3,7 +3,9 @@
  * 日期: 2018/5/18
  * 时间: 10:13
  */
+using FlexibleMVC.Base;
 using FlexibleMVC.Web.RouteConstraint;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -45,6 +47,16 @@ namespace FlexibleMVC.Web
 
         }
 
+        public static void RegisterViewMaps(SortedDictionary<string, string> ViewMaps)
+        {
+            ViewMaps.Add("FlexibleMVC.Web.Controllers", "~/Views");
+            ViewMaps.Add("FlexibleMVC.Web.Areas.A.Controllers", "~/Areas/A/Views");
+            ViewMaps.Add("FlexibleMVC.Web.Areas.B.Controllers", "~/Areas/B/Views");
+
+            ViewMaps.Add("FlexibleMVC.Web.Admin.Controllers", "~/FlexibleMVC.Web.Admin/Views");
+            ViewMaps.Add("FlexibleMVC.Web.Admin.Areas.AA.Controllers", "~/FlexibleMVC.Web.Admin/Areas/AA/Views");
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -54,6 +66,7 @@ namespace FlexibleMVC.Web
             ViewEngines.Engines.Add(new MvcViewEngine());
 
             RegisterRoutes(RouteTable.Routes);
+            RegisterViewMaps(BaseViewResult.ViewMaps);
         }
     }
 

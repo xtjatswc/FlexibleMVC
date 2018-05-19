@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace FlexibleMVC.Base
 {
-    public class CustomsJsonResult : JsonResult
+    public class BaseJsonResult : JsonResult
     {
         public override void ExecuteResult(ControllerContext context)
         {

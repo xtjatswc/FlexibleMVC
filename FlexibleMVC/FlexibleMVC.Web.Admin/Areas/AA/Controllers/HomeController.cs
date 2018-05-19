@@ -3,16 +3,17 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+using FlexibleMVC.Base;
 using System;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
-	public class HomeController : Controller
-	{
+	public class HomeController : BaseController
+    {
 		public ActionResult Index()
 		{
-			return View("~/FlexibleMVC.Web.Admin/Areas/AA/Views/Home/Index.cshtml");
+			return View();
 		}
 		
 		public ActionResult Contact()

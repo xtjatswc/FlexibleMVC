@@ -78,5 +78,11 @@
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
+      <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
+      <Name>FlexibleMVC.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

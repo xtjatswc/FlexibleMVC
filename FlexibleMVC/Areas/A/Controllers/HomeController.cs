@@ -23,7 +23,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public ActionResult Contact()
         {
-            return View("~/Areas/A/Views/Home/Contact.cshtml");
+            return View();
         }
 
         public ActionResult GotoB()
