@@ -55,7 +55,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -69,26 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Areas\AA\Views\Home\Index.cshtml" />
+    <Content Include="Areas\AA\Views\Home\Index.cshtml" />
+    <Content Include="Areas\AA\web.config" />
     <None Include="Areas\AA\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\AA\Views\_ViewStart.cshtml" />
-    <None Include="Areas\AA\web.config" />
-    <None Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas" />
-    <Folder Include="Areas\AA" />
-    <Folder Include="Areas\AA\Controllers" />
-    <Folder Include="Areas\AA\Views" />
-    <Folder Include="Areas\AA\Views\Home" />
-    <Folder Include="Areas\AA\Views\Shared" />
-    <Folder Include="Controllers" />
-    <Folder Include="Views" />
-    <Folder Include="Views\Home" />
-    <Folder Include="Views\Shared" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
