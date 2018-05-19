@@ -4,21 +4,22 @@
  * 时间: 10:45
  */
 using System;
+using System.Dynamic;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Areas.A.Controllers
 {
-	public class HomeController : Controller
-	{
-		public ActionResult Index()
-		{
-			return View();
-		}
-		
-		public ActionResult Contact()
-		{
-			return View("~/Areas/A/Views/Home/Contact.cshtml");
-		}
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View("~/Areas/A/Views/Home/Contact.cshtml");
+        }
 
         public ActionResult GotoB()
         {
@@ -30,5 +31,14 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return View();
         }
 
+        public JsonResult GetJson()
+        {
+            dynamic obj = new ExpandoObject();
+            //添加属性
+            obj.name = "Li Lei";
+            obj.age = 20;
+            obj.color = new { color1 = "red", color2 = "green" };
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
     }
 }
