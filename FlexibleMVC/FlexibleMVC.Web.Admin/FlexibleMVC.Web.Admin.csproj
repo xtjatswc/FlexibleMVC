@@ -42,6 +42,7 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -64,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Areas\AA\AAreaRegistration.cs" />
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
+    <Compile Include="Areas\AA\Model\Department.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

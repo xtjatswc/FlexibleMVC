@@ -4,10 +4,7 @@
  * 时间: 10:45
  */
 using FlexibleMVC.Base;
-using FlexibleMVC.Web.Areas.A.Model;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+using FluentData;
 using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
@@ -48,8 +45,11 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public JsonResult TestMysql()
         {
-            var department = Class1.GetDBContext().Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<DataTable>();
+            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
+            DataTable department = db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Json(department);
         }
+
+
     }
 }
