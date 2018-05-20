@@ -52,7 +52,9 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="BaseJsonResult.cs" />
     <Compile Include="BaseViewResult.cs" />
+    <Compile Include="ExecuteViewResult.cs" />
     <Compile Include="MvcViewEngine.cs" />
+    <Compile Include="BasePartialViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

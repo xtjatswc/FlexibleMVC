@@ -28,9 +28,9 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return RedirectToRoute("B_default", new { controller = "Home", Action = "Index", para = 1 });
         }
 
-        public ActionResult Part2()
+        public PartialViewResult Part2()
         {
-            return View();
+            return PartialView();
         }
 
         public JsonResult GetJson()

@@ -71,7 +71,7 @@ namespace FlexibleMVC.Web
             ViewEngines.Engines.Add(new MvcViewEngine());
 
             RegisterRoutes(RouteTable.Routes);
-            RegisterViewMaps(BaseViewResult.ViewMaps);
+            RegisterViewMaps(ExecuteViewResult.ViewMaps);
         }
     }
 

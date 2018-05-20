@@ -6,9 +6,8 @@ using System.Web.Mvc;
 
 namespace FlexibleMVC.Base
 {
-    public class BaseViewResult : ViewResult
+    public class BasePartialViewResult : PartialViewResult
     {
-
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)

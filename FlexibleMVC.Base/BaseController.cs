@@ -41,9 +41,32 @@ namespace FlexibleMVC.Base
 
         #endregion
 
+        #region 重写ViewResult
         protected new ViewResult View()
         {
             return View(null, null, null);
+        }
+
+        protected new ViewResult View(object model)
+        {
+            return View(null, null, model);
+        }
+
+        protected new ViewResult View(string viewName)
+        {
+            string masterName = null;
+            object model = null;
+            return View(viewName, masterName, model);
+        }
+
+        protected new ViewResult View(string viewName, string masterName)
+        {
+            return View(viewName, masterName, null);
+        }
+
+        protected new ViewResult View(string viewName, object model)
+        {
+            return View(viewName, null, model);
         }
 
         protected override ViewResult View(string viewName, string masterName, object model)
@@ -62,6 +85,40 @@ namespace FlexibleMVC.Base
             };
 
         }
+        #endregion
+
+        #region 重写PartialViewResult
+        protected new PartialViewResult PartialView()
+        {
+            return PartialView(null, null);
+        }
+
+        protected new PartialViewResult PartialView(object model)
+        {
+            return PartialView(null, model);
+        }
+
+        protected new PartialViewResult PartialView(string viewName)
+        {
+            return PartialView(viewName, null);
+        }
+
+        protected override PartialViewResult PartialView(string viewName, object model)
+        {
+            if (model != null)
+            {
+                base.ViewData.Model = model;
+            }
+            return new BasePartialViewResult
+            {
+                ViewName = viewName,
+                ViewData = base.ViewData,
+                TempData = base.TempData,
+                ViewEngineCollection = this.ViewEngineCollection
+            };
+
+        }
+        #endregion
 
     }
 }
