@@ -20,17 +20,25 @@ namespace FlexibleMVC.Base
             {
                 try
                 {
-                    string key = (context.RouteData.DataTokens["Namespaces"] as string[])[0];
-                    string ViewName = null;
+                    string namespaces = (context.RouteData.DataTokens["Namespaces"] as string[])[0];
 
-                    if (ViewMaps.TryGetValue(key, out ViewName))
+                    string ViewFolder = null;
+                    foreach (var item in ViewMaps.Reverse())
                     {
-                        this.ViewName = string.Format("{0}/{1}/{2}.cshtml",
-                            ViewName,
-                            context.RouteData.GetRequiredString("controller"),
-                            context.RouteData.GetRequiredString("action")
-                            );
+                        if(namespaces.IndexOf(item.Key) >= 0)
+                        {
+                            ViewFolder = namespaces.Replace(item.Key + ".", "");
+                            ViewFolder = ViewFolder.Replace(".", "/");
+                            ViewFolder = item.Value + ViewFolder.Replace("Controllers", "Views");
+                            break;
+                        }
                     }
+
+                    this.ViewName = string.Format("{0}/{1}/{2}.cshtml",
+                        ViewFolder,
+                        context.RouteData.GetRequiredString("controller"),
+                        context.RouteData.GetRequiredString("action")
+                        );
 
                 }
                 catch (Exception)
