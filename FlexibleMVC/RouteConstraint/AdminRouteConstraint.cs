@@ -15,6 +15,9 @@ namespace FlexibleMVC.Web.RouteConstraint
             if (controller.Contains('_'))
                 return false;
 
+            if(!httpContext.Request.Path.ToLower().StartsWith("/admin_"))
+                return false;
+
             return true;
         }
     }

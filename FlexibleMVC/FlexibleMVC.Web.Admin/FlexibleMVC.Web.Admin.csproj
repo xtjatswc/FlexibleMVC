@@ -76,6 +76,7 @@
     <None Include="Areas\AA\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\AA\Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
