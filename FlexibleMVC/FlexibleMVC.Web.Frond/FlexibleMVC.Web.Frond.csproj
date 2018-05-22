@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <ProjectGuid>{6746820D-DA76-494D-A582-D3FA9F0175B6}</ProjectGuid>
+    <ProjectGuid>{787994C7-4CB4-4958-95B0-2CE0742A465A}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>FlexibleMVC.Web</RootNamespace>
-    <AssemblyName>FlexibleMVC.Web</AssemblyName>
+    <RootNamespace>FlexibleMVC.Web.Frond</RootNamespace>
+    <AssemblyName>FlexibleMVC.Web.Frond</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <FileUpgradeFlags>
@@ -78,13 +78,7 @@
     <Compile Include="Areas\A\AAreaRegistration.cs" />
     <Compile Include="Areas\A\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RouteConstraint\FrondRouteConstraint.cs" />
-    <Compile Include="RouteConstraint\AdminRouteConstraint.cs" />
-    <Compile Include="RouteConstraint\DefaultRouteConstraint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\A\Views\Home\Index.cshtml" />
@@ -97,13 +91,6 @@
     <Content Include="Areas\B\Views\Home\Index.cshtml" />
     <Content Include="Areas\B\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\B\web.config" />
-    <None Include="Content\Site.css" />
-    <None Include="Global.asax" />
-    <None Include="packages.config" />
-    <None Include="Scripts\jquery-1.7.2-vsdoc.js" />
-    <None Include="Scripts\jquery-1.7.2.js" />
-    <None Include="Scripts\jquery-1.7.2.min.js" />
-    <None Include="Scripts\modernizr-2.5.3.js" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Index_part1.cshtml" />
@@ -115,7 +102,7 @@
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
+    <ProjectReference Include="..\..\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
       <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
       <Name>FlexibleMVC.Base</Name>
     </ProjectReference>
@@ -126,6 +113,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>..\bin\</OutputPath>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
