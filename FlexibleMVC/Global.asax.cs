@@ -21,6 +21,19 @@ namespace FlexibleMVC.Web
         {
             routes.Ignore("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //     name: "Frond_Default",
+            //     url: "Frond_{controller}/{action}/{id}",
+            //     defaults: new
+            //     {
+            //         controller = "Home",
+            //         action = "Index",
+            //         id = UrlParameter.Optional
+            //     },
+            //     namespaces: new string[] { "FlexibleMVC.Web.Frond.Controllers" },
+            //     constraints: new { controller = new AdminRouteConstraint() }
+            // );
+
             routes.MapRoute(
                 name: "Admin_Default",
                 url: "Admin_{controller}/{action}/{id}",
