@@ -3,10 +3,11 @@ using System;
 using System.Web.Routing;
 using System.Web;
 using FlexibleMVC.Base;
+using FlexibleMVC.Base.Const;
 
-namespace FlexibleMVC.Web.Areas.A
+namespace FlexibleMVC.Web
 {
-    public class AAreaRegistration : BaseAreaRegistration
+    public class RootAreaRegistration : BaseAreaRegistration
     {
         public override string Namespace
         {
@@ -18,7 +19,7 @@ namespace FlexibleMVC.Web.Areas.A
         }
         public override string AreaName
         {
-            get { return "A"; }
+            get { return MvcConst.ROOT_AREANAME; }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
@@ -26,7 +27,7 @@ namespace FlexibleMVC.Web.Areas.A
             base.RegisterArea(context);
             MapRoute(
                 name: "default",
-                url: "{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}/{*c}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

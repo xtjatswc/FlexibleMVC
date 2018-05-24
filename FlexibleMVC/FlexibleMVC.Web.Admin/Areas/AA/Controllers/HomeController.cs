@@ -51,5 +51,10 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
             List<Department> department = db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<Department>();
             return department;
         }
+
+        public ActionResult Part2()
+        {
+            return Content("这是来自admin aa模块的part2");
+        }
     }
 }

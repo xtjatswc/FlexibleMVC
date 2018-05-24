@@ -79,6 +79,7 @@
     <Compile Include="Areas\A\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RootAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\A\Views\Home\Index.cshtml" />

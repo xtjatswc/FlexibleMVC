@@ -49,13 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseAreaRegistration.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="BaseJsonResult.cs" />
+    <Compile Include="Constraint\BaseRouteConstraint.cs" />
+    <Compile Include="Constraint\BaseModuleRouteConstraint.cs" />
+    <Compile Include="Constraint\BaseAreaRouteConstraint.cs" />
+    <Compile Include="Constraint\BaseModuleAreaRouteConstraint.cs" />
     <Compile Include="BaseViewResult.cs" />
+    <Compile Include="Const\MvcConst.cs" />
     <Compile Include="ExecuteViewResult.cs" />
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="BasePartialViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

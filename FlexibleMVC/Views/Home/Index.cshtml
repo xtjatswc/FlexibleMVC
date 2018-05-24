@@ -5,7 +5,7 @@
 <h2>来自根目录的 Home</h2>
 @Html.Partial("~/Views/Shared/Index_part1.cshtml")
 @Html.Action("Part2", "Home")
-@Html.Action("Part2", "Home", new { area = "A" })
+@Html.Action("Part2", "Home", new {module="frond", area = "a" })
 
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut massa lectus, ac sodales justo.

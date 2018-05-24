@@ -2,44 +2,42 @@
 using System;
 using System.Web.Routing;
 using System.Web;
+using FlexibleMVC.Base;
 
 namespace FlexibleMVC.Web.Frond.Areas.A
 {
-    public class AAreaRegistration : AreaRegistration
+    public class AAreaRegistration : BaseAreaRegistration
     {
+        public override string Namespace
+        {
+            get { return "FlexibleMVC.Web.Frond"; }
+        }
+        public override string ModuleName
+        {
+            get { return "Frond"; }
+        }
         public override string AreaName
         {
             get { return "A"; }
         }
+
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-                name: "Frond_A_default",
-                url: "Frond_A_{controller}/{action}/{id}",
+            base.RegisterArea(context);
+            MapRoute(
+                name: "default",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "FlexibleMVC.Web.Frond.Areas.A.Controllers" },
-                constraints: new { area = new MyRouteConstraint() }
+                constraints: new { area = new MyRouteConstraint() { ModuleName = ModuleName, AreaName = AreaName } }
             );
         }
     }
 
-    public class MyRouteConstraint : IRouteConstraint
+    public class MyRouteConstraint : BaseModuleAreaRouteConstraint
     {
-        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        public new bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
-            //获取id的值
-            var id = values[parameterName];
-
-            if(route.DataTokens.Count > 0)
-            {
-                if (route.DataTokens.ContainsKey("area"))
-                {
-                    if (route.DataTokens["area"].ToString() == "A")
-                        return true;
-                }
-            }
-
-            return false;
+            return base.Match(httpContext, route, parameterName, values, routeDirection);
         }
     }
 }
