@@ -1,7 +1,0 @@
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\bin\FlexibleMVC.Web.Admin.dll.config
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\bin\FlexibleMVC.Web.Admin.dll
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\bin\FlexibleMVC.Web.Admin.pdb
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\FlexibleMVC.Web.Admin\obj\Debug\FlexibleMVC.Web.Admin.csprojResolveAssemblyReference.cache
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\FlexibleMVC.Web.Admin\obj\Debug\FlexibleMVC.Web.Admin.csproj.CoreCompileInputs.cache
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\FlexibleMVC.Web.Admin\obj\Debug\FlexibleMVC.Web.Admin.dll
-F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\FlexibleMVC.Web.Admin\obj\Debug\FlexibleMVC.Web.Admin.pdb
