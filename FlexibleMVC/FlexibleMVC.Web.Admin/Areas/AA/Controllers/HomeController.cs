@@ -38,6 +38,7 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
             return Content(sb.ToString());
         }
 
+        [OutputCache(Duration = 10)]
         public JsonResult TestMysql()
         {
             IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
