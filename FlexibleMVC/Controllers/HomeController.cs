@@ -33,5 +33,13 @@ namespace FlexibleMVC.Web.Controllers
             return Content("我是Lucy，这只能给我访问");
         }
 
+        [SystemError]//添加
+        public ActionResult MyError()
+        {
+            //人为制造一个错误
+            int a = 1;
+            int b = 0;
+            return Content((a / b).ToString());
+        }
     }
 }
