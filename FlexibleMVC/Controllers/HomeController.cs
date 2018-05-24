@@ -4,6 +4,7 @@
  * 时间: 10:13
  */
 using FlexibleMVC.Base;
+using FlexibleMVC.Web.Filters;
 using System;
 using System.Web.Mvc;
 
@@ -26,6 +27,11 @@ namespace FlexibleMVC.Web.Controllers
             return PartialView();
         }
 
+        [CheckUserRole]
+        public ActionResult SayHello()
+        {
+            return Content("我是Lucy，这只能给我访问");
+        }
 
     }
 }
