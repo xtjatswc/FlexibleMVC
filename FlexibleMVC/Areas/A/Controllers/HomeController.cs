@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Areas.A.Controllers
 {
+    [OutputCache(Duration = 10)]
     public class HomeController : BaseController
     {
         public ActionResult Index()

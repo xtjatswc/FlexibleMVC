@@ -25,6 +25,7 @@ namespace FlexibleMVC.Web
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new MvcViewEngine());
 
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ViewMapConfig.RegisterViewMaps(ExecuteViewResult.ViewMaps);
         }
