@@ -14,17 +14,17 @@ using System.Collections.Generic;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
-	public class HomeController : BaseController
+    public class HomeController : BaseController
     {
-		public ActionResult Index()
-		{
-			return View();
-		}
-		
-		public ActionResult Contact()
-		{
-			return View();
-		}
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
         public ActionResult GetModel()
         {
@@ -41,11 +41,15 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         [OutputCache(Duration = 10)]
         public JsonResult TestMysql()
         {
-            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
-            List<Department> department = db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<Department>();
-            return Json(department);
+            return Json(NonAction());
         }
 
-
+        [NonAction]
+        private List<Department> NonAction()
+        {
+            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
+            List<Department> department = db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<Department>();
+            return department;
+        }
     }
 }
