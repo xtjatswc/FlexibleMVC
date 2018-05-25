@@ -75,7 +75,6 @@
   <ItemGroup>
     <Compile Include="Areas\AA\AAreaRegistration.cs" />
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
-    <Compile Include="Areas\AA\Model\Department.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootAreaRegistration.cs" />
@@ -97,8 +96,18 @@
       <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
       <Name>FlexibleMVC.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FlexibleMVC.BLL\FlexibleMVC.BLL.csproj">
+      <Project>{4487665e-151c-490e-abc3-189a2bfce21d}</Project>
+      <Name>FlexibleMVC.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FlexibleMVC.Model\FlexibleMVC.Model.csproj">
+      <Project>{17481044-4d06-48aa-997f-fb0cccb8786a}</Project>
+      <Name>FlexibleMVC.Model</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\AA\Model\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

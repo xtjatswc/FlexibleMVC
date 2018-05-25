@@ -9,13 +9,23 @@ using System;
 using System.Data;
 using System.Web.Mvc;
 using System.Text;
-using FlexibleMVC.Web.Admin.Areas.AA.Model;
+using FlexibleMVC.Model;
 using System.Collections.Generic;
+using FlexibleMVC.BLL;
+using System.Web.Routing;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
     public class HomeController : BaseController
     {
+        PatientBll patientBll = new PatientBll();
+
+        protected override void Initialize(RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            patientBll.flexibleContext = flexibleContext;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -45,11 +55,9 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         }
 
         [NonAction]
-        private List<Department> NonAction()
+        private List<PatientBasicInfo> NonAction()
         {
-            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
-            List<Department> department = db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<Department>();
-            return department;
+            return patientBll.GetPatients();
         }
 
         public ActionResult Part2()

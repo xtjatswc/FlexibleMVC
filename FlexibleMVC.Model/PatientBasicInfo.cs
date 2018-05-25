@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FlexibleMVC.Web.Admin.Areas.AA.Model
+namespace FlexibleMVC.Model
 {
-    class Department
+    public class PatientBasicInfo
     {
         public Int64 PATIENT_DBKEY { get; set; }
         public String PatientNo { get; set; }
