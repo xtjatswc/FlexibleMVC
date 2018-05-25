@@ -15,7 +15,7 @@ namespace FlexibleMVC.Base.Context
             
         }
 
-        public sealed override void InitHelpers()
+        public override void InitHelpers()
         {
             base.InitHelpers();
             BaseController baseController = ((this.ViewContext.Controller) as BaseController);

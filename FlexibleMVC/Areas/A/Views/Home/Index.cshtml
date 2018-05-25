@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home";
 
-    string patientName = flexibleContext.db.Sql("select patientName from patientbasicinfo").QuerySingle<string>();   
+    string patientName = lessContext.db.Sql("select patientName from patientbasicinfo").QuerySingle<string>();   
 }
 
 @patientName

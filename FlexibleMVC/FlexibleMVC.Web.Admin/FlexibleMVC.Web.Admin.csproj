@@ -100,6 +100,10 @@
       <Project>{4487665e-151c-490e-abc3-189a2bfce21d}</Project>
       <Name>FlexibleMVC.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FlexibleMVC.DAL\FlexibleMVC.DAL.csproj">
+      <Project>{89FF48FC-FC2B-4E66-B8BA-5581F2838E88}</Project>
+      <Name>FlexibleMVC.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj">
       <Project>{44cdb313-984b-4824-ba2d-18481e39865f}</Project>
       <Name>FlexibleMVC.LessBase</Name>

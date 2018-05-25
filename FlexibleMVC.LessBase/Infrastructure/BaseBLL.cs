@@ -1,13 +1,9 @@
-﻿using FlexibleMVC.Base.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.LessBase.Infrastructure
 {
     public class BaseBLL
     {
-        public virtual LessFlexibleContext flexibleContext { get; set; }
+        public virtual LessFlexibleContext lessContext { get; set; }
     }
 }
