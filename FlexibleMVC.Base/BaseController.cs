@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using FlexibleMVC.Base.AcResult;
+using System.Data;
 using System.Text;
 using System.Web.Mvc;
 
@@ -120,5 +119,14 @@ namespace FlexibleMVC.Base
         }
         #endregion
 
+        protected FileResult Excel(string fileName, DataTable tbl)
+        {
+            return new BaseExcelResult
+            {
+                FileName = fileName,
+                Tbl = tbl,
+            };
+
+        }
     }
 }

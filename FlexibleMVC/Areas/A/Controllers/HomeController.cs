@@ -51,6 +51,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return Json(department);
         }
 
+        public FileResult TestExcel()
+        {
+            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
+            DataTable department = db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            return Excel("科室信息导出", department);
+        }
+
 
     }
 }

@@ -4,6 +4,7 @@
  * 时间: 10:13
  */
 using FlexibleMVC.Base;
+using FlexibleMVC.Base.AcResult;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
