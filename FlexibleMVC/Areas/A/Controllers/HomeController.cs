@@ -57,6 +57,11 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return Excel("科室信息导出", department);
         }
 
-
+        public ActionResult GetOther()
+        {
+            var otherController = DependencyResolver.Current.GetService<FlexibleMVC.Web.Areas.B.Controllers.HomeController>();
+            var result = otherController.Contact2("嘿嘿");
+            return result;
+        }
     }
 }

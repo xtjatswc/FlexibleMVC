@@ -65,5 +65,13 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         {
             return Content("这是来自admin aa模块的part2");
         }
+
+        public ActionResult GetOther()
+        {
+            var otherController = DependencyResolver.Current.GetService<FlexibleMVC.Web.Areas.B.Controllers.HomeController>();
+            var result = otherController.Contact2("嘿嘿嘿");
+            return result;
+        }
+
     }
 }

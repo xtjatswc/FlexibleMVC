@@ -44,6 +44,10 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlexibleMVC.Web, Version=1.0.6719.40708, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\FlexibleMVC.Web.dll</HintPath>
+    </Reference>
     <Reference Include="FluentData">
       <HintPath>..\packages\FluentData.3.0.1.0\lib\FluentData.dll</HintPath>
     </Reference>

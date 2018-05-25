@@ -20,5 +20,11 @@ namespace FlexibleMVC.Web.Areas.B.Controllers
 		{
 			return View();
 		}
-	}
+
+        public ActionResult Contact2(string hehe)
+        {
+            return Content("来自B模块" + hehe);
+        }
+
+    }
 }
