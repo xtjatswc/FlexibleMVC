@@ -1,12 +1,22 @@
 ﻿using FlexibleMVC.Base.AcResult;
+using FlexibleMVC.Base.Context;
 using System.Data;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace FlexibleMVC.Base
 {
     public class BaseController : Controller
     {
+        public FlexibleContext flexibleContext = new FlexibleContext();
+
+        protected override void Initialize(RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            
+        }
+
         #region 重写JsonResult
         protected new JsonResult Json(object data)
         {

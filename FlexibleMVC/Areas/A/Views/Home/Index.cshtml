@@ -1,7 +1,10 @@
 ﻿@{
     ViewBag.Title = "Home";
+
+    string patientName = flexibleContext.db.Sql("select patientName from patientbasicinfo").QuerySingle<string>();   
 }
 
+@patientName
 <h2>来自模块A的Home</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut massa lectus, ac sodales justo. 
 In hac habitasse platea dictumst. Vestibulum eget purus justo. Aliquam ultrices, ante faucibus imperdiet 

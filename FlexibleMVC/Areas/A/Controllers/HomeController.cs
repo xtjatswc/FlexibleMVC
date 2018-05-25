@@ -46,15 +46,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public JsonResult TestMysql()
         {
-            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
-            DataTable department = db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            DataTable department = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Json(department);
         }
 
         public FileResult TestExcel()
         {
-            IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
-            DataTable department = db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            DataTable department = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Excel("科室信息导出", department);
         }
 
