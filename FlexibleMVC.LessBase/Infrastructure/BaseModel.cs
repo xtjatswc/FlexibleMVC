@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FlexibleMVC.Base.Infrastructure
+namespace FlexibleMVC.LessBase.Infrastructure
 {
-    class BaseModel
+    public class BaseModel
     {
     }
 }

@@ -1,11 +1,8 @@
-﻿using FlexibleMVC.Base.Context;
-using FlexibleMVC.Base.Infrastructure;
-using FlexibleMVC.DAL;
+﻿using FlexibleMVC.DAL;
+using FlexibleMVC.LessBase;
+using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FlexibleMVC.BLL
 {
@@ -13,7 +10,7 @@ namespace FlexibleMVC.BLL
     {
         PatientDal patientDal = new PatientDal();
 
-        public override FlexibleContext flexibleContext
+        public override LessFlexibleContext flexibleContext
         {
             get
             {

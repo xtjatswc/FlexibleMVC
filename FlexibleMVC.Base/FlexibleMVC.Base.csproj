@@ -78,9 +78,6 @@
     <Compile Include="AcResult\ExecuteViewResult.cs" />
     <Compile Include="Context\FlexibleContext.cs" />
     <Compile Include="Context\FlexibleContextWebViewPage.cs" />
-    <Compile Include="Infrastructure\BaseBLL.cs" />
-    <Compile Include="Infrastructure\BaseDAL.cs" />
-    <Compile Include="Infrastructure\BaseModel.cs" />
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="AcResult\BasePartialViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

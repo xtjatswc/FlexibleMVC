@@ -4,6 +4,7 @@
  * 时间: 10:45
  */
 using FlexibleMVC.Base;
+using FlexibleMVC.LessBase;
 using FluentData;
 using System.Data;
 using System.Dynamic;
@@ -12,7 +13,7 @@ using System.Web.Mvc;
 namespace FlexibleMVC.Web.Areas.A.Controllers
 {
     [OutputCache(Duration = 10)]
-    public class HomeController : BaseController
+    public class HomeController : LessBaseController
     {
         public ActionResult Index()
         {
@@ -46,13 +47,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public JsonResult TestMysql()
         {
-            DataTable department = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            DataTable department = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Json(department);
         }
 
         public FileResult TestExcel()
         {
-            DataTable department = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            DataTable department = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Excel("科室信息导出", department);
         }
 

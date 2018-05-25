@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FlexibleMVC.Base.Infrastructure
+namespace FlexibleMVC.LessBase.Infrastructure
 {
     public class BaseDAL
     {
-        public virtual FlexibleContext flexibleContext { get; set; }
+        public virtual LessFlexibleContext flexibleContext { get; set; }
 
     }
 }

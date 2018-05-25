@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleMVC.DAL", "Flexible
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleMVC.Model", "FlexibleMVC.Model\FlexibleMVC.Model.csproj", "{17481044-4D06-48AA-997F-FB0CCCB8786A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleMVC.LessBase", "FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj", "{44CDB313-984B-4824-BA2D-18481E39865F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{17481044-4D06-48AA-997F-FB0CCCB8786A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17481044-4D06-48AA-997F-FB0CCCB8786A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17481044-4D06-48AA-997F-FB0CCCB8786A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44CDB313-984B-4824-BA2D-18481E39865F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44CDB313-984B-4824-BA2D-18481E39865F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44CDB313-984B-4824-BA2D-18481E39865F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44CDB313-984B-4824-BA2D-18481E39865F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{4487665E-151C-490E-ABC3-189A2BFCE21D} = {9B0B1D30-F723-4657-A00B-D23A7FEBDA71}
 		{89FF48FC-FC2B-4E66-B8BA-5581F2838E88} = {9B0B1D30-F723-4657-A00B-D23A7FEBDA71}
 		{17481044-4D06-48AA-997F-FB0CCCB8786A} = {9B0B1D30-F723-4657-A00B-D23A7FEBDA71}
+		{44CDB313-984B-4824-BA2D-18481E39865F} = {9B0B1D30-F723-4657-A00B-D23A7FEBDA71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {330A16C3-54D4-4DBC-A3F5-442CB128F663}

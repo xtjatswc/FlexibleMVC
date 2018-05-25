@@ -13,8 +13,7 @@ namespace FlexibleMVC.Base
 
         protected override void Initialize(RequestContext requestContext)
         {
-            base.Initialize(requestContext);
-            
+            base.Initialize(requestContext);            
         }
 
         #region 重写JsonResult

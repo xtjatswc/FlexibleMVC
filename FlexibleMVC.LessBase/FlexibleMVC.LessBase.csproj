@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{89FF48FC-FC2B-4E66-B8BA-5581F2838E88}</ProjectGuid>
+    <ProjectGuid>{44CDB313-984B-4824-BA2D-18481E39865F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FlexibleMVC.DAL</RootNamespace>
-    <AssemblyName>FlexibleMVC.DAL</AssemblyName>
+    <RootNamespace>FlexibleMVC.LessBase</RootNamespace>
+    <AssemblyName>FlexibleMVC.LessBase</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FlexibleMVC.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FlexibleMVC\bin\FlexibleMVC.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentData">
       <HintPath>..\packages\FluentData.3.0.1.0\lib\FluentData.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,21 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PatientDal.cs" />
+    <Compile Include="Infrastructure\BaseBLL.cs" />
+    <Compile Include="Infrastructure\BaseDAL.cs" />
+    <Compile Include="Infrastructure\BaseModel.cs" />
+    <Compile Include="LessBaseController.cs" />
+    <Compile Include="LessFlexibleContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
       <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
       <Name>FlexibleMVC.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj">
-      <Project>{44cdb313-984b-4824-ba2d-18481e39865f}</Project>
-      <Name>FlexibleMVC.LessBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexibleMVC.Model\FlexibleMVC.Model.csproj">
-      <Project>{17481044-4d06-48aa-997f-fb0cccb8786a}</Project>
-      <Name>FlexibleMVC.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,6 +8,6 @@ namespace FlexibleMVC.Base.Context
 {
     public class FlexibleContext
     {
-        public IDbContext db = new DbContext().ConnectionStringName("testDBContext", new MySqlProvider());
+
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FlexibleMVC.LessBase.Infrastructure;
+using System;
 
 namespace FlexibleMVC.Model
 {
-    public class PatientBasicInfo
+    public class PatientBasicInfo : BaseModel
     {
         public Int64 PATIENT_DBKEY { get; set; }
         public String PatientNo { get; set; }

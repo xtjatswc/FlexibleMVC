@@ -51,6 +51,10 @@
       <Project>{89ff48fc-fc2b-4e66-b8ba-5581f2838e88}</Project>
       <Name>FlexibleMVC.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj">
+      <Project>{44cdb313-984b-4824-ba2d-18481e39865f}</Project>
+      <Name>FlexibleMVC.LessBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FlexibleMVC.Model\FlexibleMVC.Model.csproj">
       <Project>{17481044-4d06-48aa-997f-fb0cccb8786a}</Project>
       <Name>FlexibleMVC.Model</Name>

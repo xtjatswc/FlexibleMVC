@@ -3,27 +3,23 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
-using FlexibleMVC.Base;
-using FluentData;
-using System;
-using System.Data;
-using System.Web.Mvc;
-using System.Text;
+using FlexibleMVC.LessBase;
 using FlexibleMVC.Model;
+using FluentData;
 using System.Collections.Generic;
-using FlexibleMVC.BLL;
+using System.Data;
+using System.Text;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : LessBaseController
     {
-        PatientBll patientBll = new PatientBll();
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            patientBll.flexibleContext = flexibleContext;
         }
 
         public ActionResult Index()
@@ -57,7 +53,9 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         [NonAction]
         private List<PatientBasicInfo> NonAction()
         {
-            return patientBll.GetPatients();
+            var list = lessContext.PatientBll.GetPatients();
+            list = lessContext.PatientBll.GetPatients();
+            return list;
         }
 
         public ActionResult Part2()
