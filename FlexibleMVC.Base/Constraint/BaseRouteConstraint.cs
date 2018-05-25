@@ -15,6 +15,10 @@ namespace FlexibleMVC.Base
 
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
+            //如果包含module且不为空，则不匹配路由
+            if (values.ContainsKey(MvcConst.MODULE_KEY) && !string.IsNullOrEmpty(values[MvcConst.MODULE_KEY].ToString()))
+                return false;
+
             //controller不能含下划线
             if (values["controller"].ToString().IndexOf("_") >= 0)
                 return false;

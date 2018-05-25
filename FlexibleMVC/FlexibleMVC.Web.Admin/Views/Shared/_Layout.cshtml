@@ -14,12 +14,14 @@
 				</div>
 			</header>
 			<nav>
-				<ul id="menu">
-					<li>@Html.ActionLink("Home", "Index", "Home")</li>
-					<li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.RouteLink("Home", "Admin_Default", new { controller = "Home", action = "Index" })</li>
+                    <li>@Html.RouteLink("Contact", "Admin_Default", new { controller = "Home", action = "Contact" })</li>
                     <li><a href="/admin_home/Index">Home</a></li>
                     <li><a href="/admin_home/Contact">Contact</a></li>
-				</ul>
+                </ul>
 			</nav>
 			<section id="main">
 				@RenderBody()
