@@ -4,21 +4,23 @@
  * 时间: 10:13
  */
 using FlexibleMVC.Base;
+using FlexibleMVC.LessBase;
 using FlexibleMVC.Web.Filters;
 using System;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Controllers
 {
-	public class HomeController : BaseController
+	public class HomeController : LessBaseController
     {
-		public ActionResult Index(string id = null, string c = null)
+        public ActionResult Index(string id = null, string c = null)
 		{
 			return View();
 		}
 
         public ActionResult Contact()
         {
+            lessContext.log.Debug("访问了根目录的 Home Contact");
             return View();
         }
 

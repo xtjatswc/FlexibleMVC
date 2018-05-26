@@ -25,6 +25,8 @@ namespace FlexibleMVC.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ViewMapConfig.RegisterViewMaps(ExecuteViewResult.ViewMaps);
+
+            log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo(Server.MapPath("Log4net.config")));
         }
     }
 
