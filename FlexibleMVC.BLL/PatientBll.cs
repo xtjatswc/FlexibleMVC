@@ -17,7 +17,7 @@ namespace FlexibleMVC.BLL
             set
             {
                 base.lessContext = value;
-                dal.flexibleContext = value;
+                dal.lessContext = value;
             }
         }
     }

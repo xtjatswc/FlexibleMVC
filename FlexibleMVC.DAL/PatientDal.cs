@@ -8,7 +8,7 @@ namespace FlexibleMVC.DAL
     {
         public List<PatientBasicInfo> GetPatients()
         {
-            List<PatientBasicInfo> list = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<PatientBasicInfo>();
+            List<PatientBasicInfo> list = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<PatientBasicInfo>();
             return list;
         }
 

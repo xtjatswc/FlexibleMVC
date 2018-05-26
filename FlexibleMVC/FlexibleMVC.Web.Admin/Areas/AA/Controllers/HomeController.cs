@@ -4,6 +4,7 @@
  * 时间: 10:45
  */
 using FlexibleMVC.BLL;
+using FlexibleMVC.DAL;
 using FlexibleMVC.LessBase;
 using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.Model;
@@ -18,12 +19,9 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
     public class HomeController : LessBaseController
     {
-        PatientBll patientBll;
-
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            patientBll = new PatientBll { lessContext = lessContext };
         }
 
         public ActionResult Index()
@@ -57,7 +55,15 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         [NonAction]
         private List<PatientBasicInfo> NonAction()
         {
+            var patientBll = lessContext.Get<PatientBll>();
+            var result = patientBll.dal.GetPatients();
+
+            patientBll = lessContext.Get<PatientBll>();
             var list = patientBll.dal.GetPatients();
+
+            var dal = lessContext.Get<PatientDal>();
+            list = dal.GetPatients();
+
             return list;
         }
 

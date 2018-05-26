@@ -4,7 +4,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
 {
     public class BaseDAL
     {
-        public virtual LessFlexibleContext flexibleContext { get; set; }
+        public virtual LessFlexibleContext lessContext { get; set; }
 
     }
 }
