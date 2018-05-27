@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "AjaxTest";
+}
+
+<h2>AjaxTest</h2>
+
+<script>
+
+    var postParam = {
+        'url': "http:baidu.com",
+        'patient': [{ name: "张三", age: 123, sex: "男" }, { name: "李四", age: 55, sex: "女" }]
+    };
+
+    //获取微信分享接口
+    $.ajax({
+        type: "post",
+        url: '/a_home/testajax',
+        data: postParam,
+        dataType: 'json',
+        success: function (data) {
+            alert(data.url);
+        }
+    });
+</script>

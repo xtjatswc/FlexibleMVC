@@ -100,6 +100,7 @@
     <Content Include="Views\Shared\Index_part1.cshtml" />
     <Content Include="Areas\A\Views\Home\Part2.cshtml" />
     <Content Include="Views\Home\Part2.cshtml" />
+    <Content Include="Areas\A\Views\Index\Index.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />

@@ -103,6 +103,7 @@
     <Content Include="Areas\B\Views\Home\Index.cshtml" />
     <Content Include="Areas\B\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\B\web.config" />
+    <Content Include="Areas\A\Views\Test\AjaxTest.cshtml" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <Content Include="Log4net.config" />

@@ -61,5 +61,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             var result = otherController.Contact2("嘿嘿");
             return result;
         }
+
+        public JsonResult TestAjax(FormCollection form)
+        {
+            dynamic obj = new ExpandoObject();
+            obj.success = true;
+            obj.url = "";
+            return Json(obj);
+        }
     }
 }
