@@ -3,8 +3,9 @@
 }
 
 <h2>来自动态Controller的 Home</h2>
+@Html.Action("Part2", "Home", new { module = "frond", area = "root" })
+
 @Html.Partial("~/Views/Shared/Index_part1.cshtml")
-@Html.Action("Part2", "Home", new { module = "", area = "root" })
 @Html.Action("Part2", "Home", new { module = "frond", area = "a" })
 
 

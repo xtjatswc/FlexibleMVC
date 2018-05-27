@@ -104,9 +104,6 @@
     <Content Include="Areas\B\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\B\web.config" />
     <None Include="Content\Site.css" />
-    <Content Include="DynamicViews\Index.cshtml" />
-    <Content Include="DynamicViews\web.config" />
-    <Content Include="DynamicViews\_ViewStart.cshtml" />
     <None Include="Global.asax" />
     <Content Include="Log4net.config" />
     <None Include="packages.config" />
@@ -136,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\A\Model\" />
-    <Folder Include="DynamicViews\home\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
