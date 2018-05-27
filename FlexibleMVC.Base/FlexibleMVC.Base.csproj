@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="AcResult\BaseExcelResult.cs" />
     <Compile Include="BaseAreaRegistration.cs" />
-    <Compile Include="BaseController.cs" />
+    <Compile Include="Ctrller\BaseController.cs" />
     <Compile Include="AcResult\BaseJsonResult.cs" />
     <Compile Include="Constraint\BaseRouteConstraint.cs" />
     <Compile Include="Constraint\BaseModuleRouteConstraint.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="AcResult\ExecuteViewResult.cs" />
     <Compile Include="Context\FlexibleContext.cs" />
     <Compile Include="Context\FlexibleContextWebViewPage.cs" />
+    <Compile Include="Ctrller\FolderControllerFactory.cs" />
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="AcResult\BasePartialViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

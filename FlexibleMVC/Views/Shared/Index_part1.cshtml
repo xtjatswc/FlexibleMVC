@@ -1,7 +1,9 @@
 ﻿@{
     //ViewBag.Title = "Index_part1";
+    var patientDal = lessContext.Get<PatientDal>();
+    var list = patientDal.GetPatients();
 }
 
 <h2>Index_part1</h2>
-分部视图11111
+分部视图11111 @list[0].PatientName
 @ViewBag.Title

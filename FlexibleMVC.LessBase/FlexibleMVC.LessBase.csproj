@@ -49,10 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
     <Compile Include="Infrastructure\BaseDAL.cs" />
     <Compile Include="Infrastructure\BaseModel.cs" />
-    <Compile Include="LessBaseController.cs" />
+    <Compile Include="Ctrller\LessBaseController.cs" />
     <Compile Include="Context\LessContextWebViewPage.cs" />
     <Compile Include="Context\LessFlexibleContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

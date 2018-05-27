@@ -3,15 +3,13 @@
  * 日期: 2018/5/18
  * 时间: 10:13
  */
-using FlexibleMVC.Base;
-using FlexibleMVC.LessBase;
+using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.Web.Filters;
-using System;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Controllers
 {
-	public class HomeController : LessBaseController
+    public class HomeController : LessBaseController
     {
         public ActionResult Index(string id = null, string c = null)
 		{

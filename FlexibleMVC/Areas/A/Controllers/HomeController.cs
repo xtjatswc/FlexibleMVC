@@ -3,9 +3,7 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
-using FlexibleMVC.Base;
-using FlexibleMVC.LessBase;
-using FluentData;
+using FlexibleMVC.LessBase.Ctrller;
 using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;

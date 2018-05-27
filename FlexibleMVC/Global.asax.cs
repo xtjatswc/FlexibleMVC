@@ -5,6 +5,7 @@
  */
 using FlexibleMVC.Base;
 using FlexibleMVC.Base.AcResult;
+using FlexibleMVC.Base.Ctrller;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -16,6 +17,7 @@ namespace FlexibleMVC.Web
     {
         protected void Application_Start()
         {
+            ControllerBuilder.Current.SetControllerFactory(new FolderControllerFactory());
             AreaRegistration.RegisterAllAreas();
 
             //自定义视图引擎，如改名默认视图路径

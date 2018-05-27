@@ -5,8 +5,7 @@
  */
 using FlexibleMVC.BLL;
 using FlexibleMVC.DAL;
-using FlexibleMVC.LessBase;
-using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.Model;
 using FluentData;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
-﻿using FlexibleMVC.Base;
+﻿using FlexibleMVC.Base.Ctrller;
 using FlexibleMVC.LessBase.Context;
 
-namespace FlexibleMVC.LessBase
+namespace FlexibleMVC.LessBase.Ctrller
 {
     public class LessBaseController : BaseController
     {

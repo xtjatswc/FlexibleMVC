@@ -27,7 +27,7 @@ namespace FlexibleMVC.Web.Admin
             base.RegisterArea(context);
             MapRoute(
                 name: "default",
-                url: "{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}/{*catchall}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

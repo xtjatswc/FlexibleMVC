@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace FlexibleMVC.Base
+namespace FlexibleMVC.Base.Ctrller
 {
     public class BaseController : Controller
     {
