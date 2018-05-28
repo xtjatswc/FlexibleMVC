@@ -90,7 +90,7 @@ namespace FlexibleMVC.Base.AcResult
         }
         public override Font GetFont(string fontname, string encoding, bool embedded, float size, int style, BaseColor color, bool cached)
         {
-            return FontFactory.GetFont("arial unicode ms", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            return FontFactory.GetFont("微软雅黑", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         }
     }
 }
