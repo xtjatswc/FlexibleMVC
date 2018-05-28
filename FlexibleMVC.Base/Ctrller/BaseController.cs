@@ -137,5 +137,15 @@ namespace FlexibleMVC.Base.Ctrller
             };
 
         }
+
+        protected BaseXmlResult Xml(object Data)
+        {
+            return new BaseXmlResult
+            {
+                Data = Data
+            };
+
+        }
+
     }
 }

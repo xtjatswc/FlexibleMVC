@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcResult\BaseExcelResult.cs" />
+    <Compile Include="AcResult\BaseXmlResult.cs" />
     <Compile Include="BaseAreaRegistration.cs" />
     <Compile Include="Ctrller\BaseController.cs" />
     <Compile Include="AcResult\BaseJsonResult.cs" />

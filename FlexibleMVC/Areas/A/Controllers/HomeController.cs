@@ -55,6 +55,17 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return Excel("科室信息导出", department);
         }
 
+        public ActionResult TestXml()
+        {
+            dynamic obj = new ExpandoObject();
+            obj.success = true;
+            obj.url = "";
+
+            //DataTable obj = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            return Xml(obj);
+        }
+
+
         public ActionResult GetOther()
         {
             var otherController = DependencyResolver.Current.GetService<FlexibleMVC.Web.Areas.B.Controllers.HomeController>();
@@ -67,6 +78,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             dynamic obj = new ExpandoObject();
             obj.success = true;
             obj.url = "";
+
             return Json(obj);
         }
     }
