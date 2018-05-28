@@ -127,9 +127,21 @@
       <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
       <Name>FlexibleMVC.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FlexibleMVC.BLL\FlexibleMVC.BLL.csproj">
+      <Project>{4487665e-151c-490e-abc3-189a2bfce21d}</Project>
+      <Name>FlexibleMVC.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlexibleMVC.DAL\FlexibleMVC.DAL.csproj">
+      <Project>{89ff48fc-fc2b-4e66-b8ba-5581f2838e88}</Project>
+      <Name>FlexibleMVC.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj">
       <Project>{44cdb313-984b-4824-ba2d-18481e39865f}</Project>
       <Name>FlexibleMVC.LessBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlexibleMVC.Model\FlexibleMVC.Model.csproj">
+      <Project>{17481044-4d06-48aa-997f-fb0cccb8786a}</Project>
+      <Name>FlexibleMVC.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

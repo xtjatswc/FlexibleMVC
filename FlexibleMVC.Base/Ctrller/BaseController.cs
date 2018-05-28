@@ -138,11 +138,12 @@ namespace FlexibleMVC.Base.Ctrller
 
         }
 
-        protected BaseXmlResult Xml(object Data)
+        protected BaseXmlResult Xml(object data, string rootName = "xml")
         {
             return new BaseXmlResult
             {
-                Data = Data
+                RootName = rootName,
+                Data = data
             };
 
         }

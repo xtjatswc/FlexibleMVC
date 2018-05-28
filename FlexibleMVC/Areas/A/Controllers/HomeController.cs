@@ -3,6 +3,8 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+using FlexibleMVC.Base.Tools;
+using FlexibleMVC.BLL;
 using FlexibleMVC.LessBase.Ctrller;
 using System.Data;
 using System.Dynamic;
@@ -57,12 +59,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public ActionResult TestXml()
         {
-            dynamic obj = new ExpandoObject();
-            obj.success = true;
-            obj.url = "";
+            var patientBll = lessContext.Get<PatientBll>();
+            var list = patientBll.dal.GetPatients();
 
-            //DataTable obj = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
-            return Xml(obj);
+            var obj = new {department = "肿瘤内科", code="0123" , list = list};
+            var list2 = new { name = "abc", abe = 1243, department = obj };
+
+            return Xml(new { a = 12, patient = list });
         }
 
 
