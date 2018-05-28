@@ -148,5 +148,20 @@ namespace FlexibleMVC.Base.Ctrller
 
         }
 
+        protected BasePdfResult Pdf(object model)
+        {
+            return new BasePdfResult(model);
+        }
+
+        protected BasePdfResult Pdf(object model, string fileName)
+        {
+            return new BasePdfResult(model, fileName);
+        }
+
+        protected BasePdfResult Pdf(string fileName)
+        {
+            return new BasePdfResult(fileName);
+        }
+
     }
 }
