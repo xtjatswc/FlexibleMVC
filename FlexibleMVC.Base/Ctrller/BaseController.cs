@@ -148,20 +148,27 @@ namespace FlexibleMVC.Base.Ctrller
 
         }
 
-        protected BasePdfResult Pdf(object model)
+        #region BasePdfResult
+        protected BasePdfResult Pdf()
         {
-            return new BasePdfResult(model);
-        }
-
-        protected BasePdfResult Pdf(object model, string fileName)
-        {
-            return new BasePdfResult(model, fileName);
+            return new BasePdfResult(null, null);
         }
 
         protected BasePdfResult Pdf(string fileName)
         {
             return new BasePdfResult(fileName);
         }
+
+        protected BasePdfResult Pdf(object model)
+        {
+            return new BasePdfResult(model);
+        }
+
+        protected BasePdfResult Pdf(string fileName, object model = null)
+        {
+            return new BasePdfResult(model, fileName);
+        }
+        #endregion
 
     }
 }

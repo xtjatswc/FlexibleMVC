@@ -22,7 +22,12 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public ActionResult Contact()
         {
-            return Pdf(null);
+            return View();
+        }
+
+        public ActionResult Report()
+        {
+            return Pdf();
         }
 
         public ActionResult GotoB()

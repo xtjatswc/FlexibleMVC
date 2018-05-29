@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Report";
+    Layout = null;
+}
+<html>
+<head>
+    <style id="style1">
+        body {
+            font-family: 微软雅黑;
+        }
+
+        table {
+            width: 100%
+        }
+
+        td, th {
+            font-size: 10.5pt;
+            padding: 3px;
+        }
+
+        h3, h4 {
+            margin: 0px;
+            text-align: center;
+        }
+
+        table.gridtable {
+            width: auto;
+        }
+
+            table.gridtable td {
+                padding: 5px;
+            }
+
+        input[type='text'] {
+            width: 50px;
+            text-align: center;
+        }
+
+        table.adviceList {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            table.adviceList td {
+                text-align: left;
+                border: 1px solid black;
+            }
+
+            table.adviceList th {
+                border-width: 1px;
+                padding: 2px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #dedede;
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <div id="divRecipe" style="text-align:left;padding:5px">
+        <div>
+            <div style="text-align:center;font-size:15pt">
+                重庆医科大学附属第三医院
+            </div>
+            <h3 style="text-align:center"> 肠内营养(EN)医嘱单首页 </h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>住院号：759464</td>
+                        <td>科室：淋巴肿瘤病房</td>
+                        <td>床号：26</td>
+                    </tr>
+                    <tr>
+                        <td>姓名：王艳红</td>
+                        <td>性别：女</td>
+                        <td>年龄：52岁</td>
+                    </tr>
+                    <tr>
+                        <td>开始日期：2018-05-29</td>
+                        <td>结束日期：2018-05-29</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <!-- 疾病及诊断：    <hr/> -->
+            <table class="adviceList">
+                <tbody>
+                    <tr>
+                        <th>序号</th>
+                        <th>收费项目</th>
+                        <th>规格</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>单位</th>
+                        <th>频次</th>
+                        <th>制剂方式</th>
+                        <th>途径</th>
+                        <th>金额</th>
+                    </tr>
+                    <tr>
+                        <td>1、</td>
+                        <td>倍康素</td>
+                        <td>250ml</td>
+                        <td>78.00 元</td>
+                        <td>1</td>
+                        <td>听</td>
+                        <td>qd 每日一次</td>
+                        <td>粉剂</td>
+                        <td>口服</td>
+                        <td>78.00 元</td>
+                    </tr>
+                    <tr>
+                        <td>2、</td>
+                        <td>康平素</td>
+                        <td>250ml</td>
+                        <td>58.00 元</td>
+                        <td>1</td>
+                        <td>听</td>
+                        <td>qd 每日一次</td>
+                        <td>粉剂</td>
+                        <td>口服</td>
+                        <td>58.00 元</td>
+                    </tr>
+                    <tr>
+                        <td>3、</td>
+                        <td>常规型肠内营养液</td>
+                        <td>250ml</td>
+                        <td>25.00 元</td>
+                        <td>1</td>
+                        <td>袋</td>
+                        <td>qd 每日一次</td>
+                        <td>粉剂</td>
+                        <td>口服</td>
+                        <td>25.00 元</td>
+                    </tr>
+                    <tr>
+                        <td>4、</td>
+                        <td>深海鱼胶原蛋白粉</td>
+                        <td>180g</td>
+                        <td>296.00 元</td>
+                        <td>1</td>
+                        <td>桶</td>
+                        <td>qd 每日一次</td>
+                        <td>粉剂</td>
+                        <td>口服</td>
+                        <td>296.00 元</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>医师：管理员</td>
+                        <td style="width:40%">签章：</td>
+                        <td>日期：2018-05-29</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <table>
+                <tbody>
+                    <tr>
+                        <td>药费：457 元（共1天）</td>
+                        <td>审核/收费：</td>
+                        <td>核对/发药：</td>
+                    </tr>
+                </tbody>
+            </table>
+            <font style="font-size:10pt"> 根据《中国食药局》相关要求：为保障患者食品安全，除食品质量原因外，食品一经发出，不得退换。 </font>
+            <h4> 注：价格以收费时为准 当天交费，过期无效 </h4>
+        </div>
+    </div>
+</body>
+</html>
