@@ -25,5 +25,10 @@ namespace FlexibleMVC.Web.Areas.B.Controllers
             return Content("来自B模块" + hehe);
         }
 
+        public ActionResult GotoFrondA()
+        {
+            //return RedirectToAction("contact", "home", new { module = "frond", area = "a" });
+            return RedirectToRoute("frond_a_default", new {module="frond", area="a", controller = "home", action = "contact" });
+        }
     }
 }
