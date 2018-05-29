@@ -70,7 +70,6 @@ namespace FlexibleMVC.Base.AcResult
                 using (PdfWriter pdfWriter = PdfWriter.GetInstance(document, httpResponse.OutputStream))
                 {
                     document.Open();
-                    document.NewPage();
                     FontFactory.RegisterDirectories();//注册系统中所支持的字体
                     XMLWorkerHelper worker = XMLWorkerHelper.GetInstance();
                     //UnicodeFontFactory 自定义实现解决itextsharp.xmlworker 不支持中文的问题
@@ -90,7 +89,7 @@ namespace FlexibleMVC.Base.AcResult
         }
         public override Font GetFont(string fontname, string encoding, bool embedded, float size, int style, BaseColor color, bool cached)
         {
-            return FontFactory.GetFont("微软雅黑", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            return FontFactory.GetFont(fontname: "微软雅黑", encoding: BaseFont.IDENTITY_H, embedded: BaseFont.EMBEDDED, size: size, style: style, color: color, cached: cached);
         }
     }
 }
