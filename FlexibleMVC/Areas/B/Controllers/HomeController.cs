@@ -3,6 +3,7 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+using FlexibleMVC.BLL;
 using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
 
@@ -27,8 +28,12 @@ namespace FlexibleMVC.Web.Areas.B.Controllers
 
         public ActionResult GotoFrondA()
         {
+            var patientBll = lessContext.Get<PatientBll>();
+            ViewBag.name = "123";
+            TempData["list"] = patientBll.dal.GetPatients();
+
             //return RedirectToAction("contact", "home", new { module = "frond", area = "a" });
-            return RedirectToRoute("frond_a_default", new {module="frond", area="a", controller = "home", action = "contact" });
+            return RedirectToRoute("frond_a_default", new {module="frond", area="a", controller = "home", action = "contact"});
         }
     }
 }
