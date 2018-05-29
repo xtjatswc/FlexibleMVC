@@ -17,6 +17,11 @@ namespace FlexibleMVC.Web
     {
         protected void Application_Start()
         {
+            RouteTable.Routes.Ignore("{resource}.axd/{*pathInfo}");
+            RouteTable.Routes.IgnoreRoute("{*favicon}",
+                new { favicon = @"(.*/)?favicon.ico(/.*)?" }
+            );
+
             ControllerBuilder.Current.SetControllerFactory(new FolderControllerFactory());
             AreaRegistration.RegisterAllAreas();
 

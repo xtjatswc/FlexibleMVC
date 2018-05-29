@@ -7,8 +7,6 @@ namespace FlexibleMVC.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.Ignore("{resource}.axd/{*pathInfo}");
-
             //routes.MapRoute(
             //     name: "Frond_Default",
             //     url: "Frond_{controller}/{action}/{id}",
