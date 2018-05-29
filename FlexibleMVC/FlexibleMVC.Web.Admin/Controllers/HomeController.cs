@@ -14,10 +14,15 @@ namespace FlexibleMVC.Web.Admin.Controllers
 		{
 			return View();
 		}
-		
-		public ActionResult Contact()
-		{
-			return View();
-		}
-	}
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public PartialViewResult Part2()
+        {
+            return PartialView();
+        }
+    }
 }

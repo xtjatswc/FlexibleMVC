@@ -95,6 +95,7 @@
     <Content Include="Areas\B\Views\Home\Index.cshtml" />
     <Content Include="Areas\B\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\B\web.config" />
+    <Content Include="Areas\B\Views\Home\Part2.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Index_part1.cshtml" />

@@ -93,6 +93,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Part2.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>

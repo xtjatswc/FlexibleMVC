@@ -19,5 +19,11 @@ namespace FlexibleMVC.Web.Frond.Areas.B.Controllers
 		{
 			return View();
 		}
-	}
+
+        public PartialViewResult Part2()
+        {
+            return PartialView();
+        }
+
+    }
 }
