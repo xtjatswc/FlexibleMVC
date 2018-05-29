@@ -16,8 +16,7 @@ namespace FlexibleMVC.Base.AcResult
             }
             if (string.IsNullOrEmpty(this.ViewName))
             {
-                ExecuteViewResult execResult = new ExecuteViewResult();
-                this.ViewName = execResult.GetViewName(context);
+                this.ViewName = ExecuteViewResult.GetViewName(context);
             }
 
 

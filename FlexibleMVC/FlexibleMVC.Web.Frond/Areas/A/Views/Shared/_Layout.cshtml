@@ -14,11 +14,13 @@
 				</div>
 			</header>
 			<nav>
-				<ul id="menu">
-					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.RouteLink("Home", "Frond_A_Default", new { controller = "Home", action = "Index" })</li>
+                    <li>@Html.RouteLink("Contact", "frond_a_Default", new { controller = "Home", action = "Contact" })</li>
                     <li>@Html.RouteLink("跳转到B模块", "Frond_B_default", new { controller = "Home", Action = "Contact" })</li>
-				</ul>
+                </ul>
 			</nav>
 			<section id="main">
 				@RenderBody()

@@ -30,7 +30,7 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 
         public ActionResult Contact()
         {
-            return View();
+            return View("Contact2");
         }
 
         public ActionResult GetModel()

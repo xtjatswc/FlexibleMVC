@@ -27,7 +27,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public ActionResult Report()
         {
-            return Pdf(isDownload:false, fileName:"肠内医嘱单");
+            return Pdf(viewName:"report2", isDownload:false, fileName:"肠内医嘱单");
         }
 
         public ActionResult GotoB()

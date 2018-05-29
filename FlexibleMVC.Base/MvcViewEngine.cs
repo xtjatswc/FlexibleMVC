@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using FlexibleMVC.Base.AcResult;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Base
 {
@@ -31,6 +32,18 @@ namespace FlexibleMVC.Base
 
         public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
+            if (!viewName.StartsWith("~"))
+            {
+                try
+                {
+                    string namespaces = (controllerContext.RouteData.DataTokens["Namespaces"] as string[])[0];
+                    string controller = controllerContext.RouteData.GetRequiredString("controller");
+                    viewName = ExecuteViewResult.GetViewPath(namespaces, controller, viewName);
+                }
+                catch
+                {
+                }
+            }
             return base.FindView(controllerContext, viewName, masterName, useCache);
         }
     }

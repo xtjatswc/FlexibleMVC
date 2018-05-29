@@ -9,7 +9,7 @@ namespace FlexibleMVC.Base.AcResult
     {
         public static SortedDictionary<string, string> ViewMaps = new SortedDictionary<string, string>();
 
-        public string GetViewName(ControllerContext context)
+        public static string GetViewName(ControllerContext context)
         {
             try
             {
@@ -18,9 +18,8 @@ namespace FlexibleMVC.Base.AcResult
                 string action = context.RouteData.GetRequiredString("action");
                 return GetViewPath(namespaces, controller, action);
             }
-            catch (Exception)
+            catch
             {
-                //throw;
             }
 
             return null;

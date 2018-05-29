@@ -24,8 +24,7 @@ namespace FlexibleMVC.Base.AcResult
             if (String.IsNullOrEmpty(ViewName))
             {
                 //ViewName = context.RouteData.GetRequiredString("action");
-                ExecuteViewResult execResult = new ExecuteViewResult();
-                this.ViewName = execResult.GetViewName(context);
+                this.ViewName = ExecuteViewResult.GetViewName(context);
             }
             if (ViewData == null)
             {
@@ -34,9 +33,13 @@ namespace FlexibleMVC.Base.AcResult
             }
             ViewEngineResult result = ViewEngines.Engines.FindView(context, ViewName, null);
             IView View = result.View;
+            if (View == null)
+            {
+                throw new Exception("未找到视图：" + ViewName);
+            }
 
             StringBuilder sbHtml = new StringBuilder();
-            TextWriter txtWriter = new StringWriter(sbHtml);
+            TextWriter txtWriter = new StringWriter(sbHtml);            
             ViewContext viewContext = new ViewContext(context, View, ViewData, context.Controller.TempData, txtWriter);
             result.View.Render(viewContext, txtWriter);
 
