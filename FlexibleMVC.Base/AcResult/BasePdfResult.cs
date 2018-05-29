@@ -13,23 +13,11 @@ namespace FlexibleMVC.Base.AcResult
 {
     public class BasePdfResult : ActionResult
     {
-        public BasePdfResult() : this(null, null) { }
-
-        public BasePdfResult(string viewName) : this(null, viewName) { }
-
-        public BasePdfResult(object model) : this(model, null) { }
-
-        public BasePdfResult(object model, string viewName)
-        {
-            this.ViewName = viewName;
-            ViewData = null != model ? new ViewDataDictionary(model) : null;
-        }
-
         public ViewDataDictionary ViewData { get; set; } = new ViewDataDictionary();
 
         public string ViewName { get; set; }
-
-        public IView View { get; set; }
+        public string FileName { get; set; }
+        public bool IsDownload { get; set; }
 
         public override void ExecuteResult(ControllerContext context)
         {
@@ -45,7 +33,7 @@ namespace FlexibleMVC.Base.AcResult
 
             }
             ViewEngineResult result = ViewEngines.Engines.FindView(context, ViewName, null);
-            View = result.View;
+            IView View = result.View;
 
             StringBuilder sbHtml = new StringBuilder();
             TextWriter txtWriter = new StringWriter(sbHtml);
@@ -55,8 +43,10 @@ namespace FlexibleMVC.Base.AcResult
             HttpResponseBase httpResponse = context.HttpContext.Response;
             httpResponse.ContentType = System.Net.Mime.MediaTypeNames.Application.Pdf;
 
-            //加入此头部文件会直接下载pdf文件，而不是在浏览器中预览呈现
-            //context.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("attachment;filename={0}.pdf", ViewName));
+            //是否直接下载pdf文件，或者在浏览器中预览呈现
+            string attachment = (IsDownload ? "attachment;": "");
+            FileName = string.IsNullOrEmpty(FileName) ? context.RouteData.GetRequiredString("action") : FileName;
+            context.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("{1}filename={0}.pdf", FileName, attachment));
 
             HtmlToPdf(sbHtml, httpResponse);
 

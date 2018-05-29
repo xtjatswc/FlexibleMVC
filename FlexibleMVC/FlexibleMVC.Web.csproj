@@ -105,6 +105,7 @@
     <Content Include="Areas\B\web.config" />
     <Content Include="Areas\A\Views\Test\AjaxTest.cshtml" />
     <Content Include="Areas\A\Views\Home\Report.cshtml" />
+    <Content Include="Areas\A\Views\Home\Report_css.cshtml" />
     <None Include="Content\Site.css" />
     <None Include="Global.asax" />
     <Content Include="Log4net.config" />
