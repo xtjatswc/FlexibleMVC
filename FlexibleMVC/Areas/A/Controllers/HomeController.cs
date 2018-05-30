@@ -62,6 +62,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             return Excel("科室信息导出", department);
         }
 
+        public JsonResult TestDyn()
+        {
+            var obj = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<dynamic>();
+
+            return Json(obj);
+        }
+
         public ActionResult TestXml()
         {
             var patientBll = lessContext.Get<PatientBll>();
