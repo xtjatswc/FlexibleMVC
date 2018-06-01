@@ -20,9 +20,8 @@ namespace FlexibleMVC.LessBase.Context
             base.OtherWise(obj);
 
             if (obj is BaseBLL baseBll) baseBll.lessContext = this;
-            else if (obj is BaseDAL baseDal) baseDal.lessContext = this;
+            else if (obj is IBaseDAL baseDal) baseDal.lessContext = this;
 
         }
-
     }
 }

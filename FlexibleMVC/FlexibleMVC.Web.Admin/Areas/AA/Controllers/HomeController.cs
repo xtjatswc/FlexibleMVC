@@ -55,7 +55,7 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         private List<PatientBasicInfo> NonAction()
         {
             var patientBll = lessContext.Get<PatientBll>();
-            var result = patientBll.dal.GetPatients();
+            var result = patientBll.dal.GetModels();
 
             patientBll = lessContext.Get<PatientBll>();
             var list = patientBll.dal.GetPatients();

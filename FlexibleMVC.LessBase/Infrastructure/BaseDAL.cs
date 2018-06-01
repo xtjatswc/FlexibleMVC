@@ -1,10 +1,19 @@
 ﻿using FlexibleMVC.LessBase.Context;
+using System.Collections.Generic;
 
 namespace FlexibleMVC.LessBase.Infrastructure
 {
-    public class BaseDAL
+    public abstract class BaseDAL<Model> : IBaseDAL
     {
-        public virtual LessFlexibleContext lessContext { get; set; }
+        public LessFlexibleContext lessContext { get; set; }
+        protected abstract string TableName{get;}
+
+        public List<Model> GetModels()
+        {
+            List<Model> list = lessContext.db.Sql(@"select * from " + TableName).QueryMany<Model>();
+            return list;
+        }
+
 
     }
 }
