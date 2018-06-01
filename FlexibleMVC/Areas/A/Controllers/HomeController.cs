@@ -72,12 +72,13 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
         public ActionResult TestXml()
         {
             var patientBll = lessContext.Get<PatientBll>();
-            var list = patientBll.dal.GetPatients();
+            var list = patientBll.dal.GetModels();
 
             var obj = new {department = "肿瘤内科", code="0123" , list = list};
             var list2 = new { name = "abc", abe = 1243, department = obj };
+            var list3 = patientBll.dal.GetModel(13845);
 
-            return Xml(new { a = 12, patient = list });
+            return Xml(new { a = 12, patient = list, list3 = list3 });
         }
 
 

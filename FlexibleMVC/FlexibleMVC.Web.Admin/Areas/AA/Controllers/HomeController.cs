@@ -58,10 +58,10 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
             var result = patientBll.dal.GetModels();
 
             patientBll = lessContext.Get<PatientBll>();
-            var list = patientBll.dal.GetPatients();
+            var list = patientBll.dal.GetModels();
 
             var dal = lessContext.Get<PatientDal>();
-            list = dal.GetPatients();
+            list = dal.GetModels();
 
             return list;
         }
