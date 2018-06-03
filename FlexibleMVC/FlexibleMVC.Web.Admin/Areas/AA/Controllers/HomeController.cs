@@ -63,6 +63,9 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
             var dal = lessContext.Get<PatientDal>();
             list = dal.GetModels();
 
+            var foodDal = lessContext.Get<FoodDal>();
+            var obj = foodDal.GetModels();
+
             return list;
         }
 

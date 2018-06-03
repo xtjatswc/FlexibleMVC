@@ -1,6 +1,7 @@
 ﻿using FlexibleMVC.LessBase.Context;
 using System.Collections.Generic;
 using System.Data;
+using System.Text;
 
 namespace FlexibleMVC.LessBase.Infrastructure
 {
@@ -87,7 +88,17 @@ namespace FlexibleMVC.LessBase.Infrastructure
             return builder.QuerySingle();
         }
 
+        public string GenerateEntity()
+        {
+            DataTable tbl = GetDataTable(where:"1=2");
+            StringBuilder sb = new StringBuilder();
+            foreach (DataColumn column in tbl.Columns)
+            {
+                sb.AppendLine("public " + column.DataType.Name + " " + column.ColumnName + "{ get; set; }");
+            }
+            return sb.ToString();
 
+        }
 
     }
 }
