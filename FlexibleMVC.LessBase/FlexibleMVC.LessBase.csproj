@@ -30,11 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FlexibleMVC.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\FlexibleMVC\bin\FlexibleMVC.BLL.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentData">
       <HintPath>..\packages\FluentData.3.0.1.0\lib\FluentData.dll</HintPath>
     </Reference>
     <Reference Include="System" />
