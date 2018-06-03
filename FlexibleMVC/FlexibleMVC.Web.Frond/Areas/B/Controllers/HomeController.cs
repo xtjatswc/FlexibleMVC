@@ -5,6 +5,7 @@
  */
 using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
+using FlexibleMVC.BLL;
 
 namespace FlexibleMVC.Web.Frond.Areas.B.Controllers
 {
@@ -25,5 +26,11 @@ namespace FlexibleMVC.Web.Frond.Areas.B.Controllers
             return PartialView();
         }
 
+        public JsonResult GetModels()
+        {
+            var bll = lessContext.Get<PatientBll>();
+            var models = bll.dal.GetModels(currentPage: 2, itemsPerPage: 2);
+            return Json(models);
+        }
     }
 }

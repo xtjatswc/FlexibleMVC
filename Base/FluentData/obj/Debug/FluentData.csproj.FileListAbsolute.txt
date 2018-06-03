@@ -1,0 +1,12 @@
+C:\Users\pc\Desktop\FluentData\sourceCode\sourceCode\Source\Main\FluentData\bin\Debug\FluentData.dll
+C:\Users\pc\Desktop\FluentData\sourceCode\sourceCode\Source\Main\FluentData\bin\Debug\FluentData.pdb
+C:\Users\pc\Desktop\FluentData\sourceCode\sourceCode\Source\Main\FluentData\obj\Debug\FluentData.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\FluentData\sourceCode\sourceCode\Source\Main\FluentData\obj\Debug\FluentData.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\FluentData\sourceCode\sourceCode\Source\Main\FluentData\obj\Debug\FluentData.dll
+C:\Users\pc\Desktop\FluentData\sourceCode\sourceCode\Source\Main\FluentData\obj\Debug\FluentData.pdb
+E:\GitHub\FlexibleMVC\FlexibleMVC\bin\FluentData.dll
+E:\GitHub\FlexibleMVC\FlexibleMVC\bin\FluentData.pdb
+E:\GitHub\FlexibleMVC\Base\FluentData\obj\Debug\FluentData.csprojResolveAssemblyReference.cache
+E:\GitHub\FlexibleMVC\Base\FluentData\obj\Debug\FluentData.csproj.CoreCompileInputs.cache
+E:\GitHub\FlexibleMVC\Base\FluentData\obj\Debug\FluentData.dll
+E:\GitHub\FlexibleMVC\Base\FluentData\obj\Debug\FluentData.pdb

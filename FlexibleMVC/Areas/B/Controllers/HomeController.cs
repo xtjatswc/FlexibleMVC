@@ -30,7 +30,7 @@ namespace FlexibleMVC.Web.Areas.B.Controllers
         {
             var patientBll = lessContext.Get<PatientBll>();
             ViewBag.name = "123";
-            TempData["list"] = patientBll.dal.GetModels();
+            TempData["list"] = patientBll.dal.GetModels(currentPage:2,itemsPerPage:2);
 
             //return RedirectToAction("contact", "home", new { module = "frond", area = "a" });
             return RedirectToRoute("frond_a_default", new {module="frond", area="a", controller = "home", action = "contact"});

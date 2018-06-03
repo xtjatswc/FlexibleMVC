@@ -15,10 +15,23 @@ namespace FlexibleMVC.LessBase.Infrastructure
             return model;
         }
 
-        public List<Model> GetModels()
+        public List<Model> GetModels(string where = "", string orderBy = "", int currentPage = 1, int itemsPerPage = 0)
         {
-            var list = lessContext.db.Sql(@"select * from " + TableName).QueryMany<Model>();
-            return list;
+            var builder = lessContext.db.Select<Model>("*").From(TableName);
+            if (!string.IsNullOrEmpty(where))
+                builder.Where(where);
+
+            if (!string.IsNullOrEmpty(orderBy))
+                builder.OrderBy(orderBy);
+
+            if(itemsPerPage != 0)
+            {
+                if (string.IsNullOrEmpty(orderBy))
+                    builder.OrderBy(PrimaryKey + " desc");
+                builder.Paging(currentPage, itemsPerPage);
+            }
+
+            return builder.QueryMany();
         }
 
 

@@ -47,10 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
-      <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
-      <Name>FlexibleMVC.Base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj">
       <Project>{44cdb313-984b-4824-ba2d-18481e39865f}</Project>
       <Name>FlexibleMVC.LessBase</Name>
