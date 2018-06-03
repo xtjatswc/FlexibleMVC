@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FlexibleMVC.LessBase.Infrastructure;
+using System;
 
 namespace FlexibleMVC.Model
 {
-    public class ChinaFoodComposition
+    public class ChinaFoodComposition : BaseModel
     {
         public Int32 ChinaFoodComposition_DBKey { get; set; }
         public Int32 FoodCategory_DBKey { get; set; }

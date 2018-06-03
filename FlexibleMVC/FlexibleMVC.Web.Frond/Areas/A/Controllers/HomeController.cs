@@ -3,7 +3,9 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+using FlexibleMVC.DAL;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.Model;
 using FluentData;
 using System.Data;
 using System.Dynamic;
@@ -50,6 +52,10 @@ namespace FlexibleMVC.Web.Frond.Areas.A.Controllers
             return Json(department);
         }
 
-
+        public ActionResult TestToJson()
+        {
+            var dal = lessContext.Get<FoodDal>();
+            return Content(dal.GetModel(10002).ToJson());
+        }
     }
 }
