@@ -3,6 +3,7 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+using FlexibleMVC.Base.Filter;
 using FlexibleMVC.Base.Tools;
 using FlexibleMVC.BLL;
 using FlexibleMVC.LessBase.Ctrller;
@@ -93,7 +94,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
         {
             dynamic obj = new ExpandoObject();
             obj.success = true;
-            obj.url = "";
+            obj.url = "abc";
 
             return Json(obj);
         }

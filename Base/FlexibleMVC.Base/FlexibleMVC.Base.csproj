@@ -64,6 +64,7 @@
       <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -92,6 +93,7 @@
     <Compile Include="Context\FlexibleContext.cs" />
     <Compile Include="Context\FlexibleContextWebViewPage.cs" />
     <Compile Include="Ctrller\FolderControllerFactory.cs" />
+    <Compile Include="Filter\AllowCrossSiteJsonAttribute.cs" />
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="AcResult\BasePartialViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
