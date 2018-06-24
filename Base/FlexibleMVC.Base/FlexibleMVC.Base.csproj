@@ -93,7 +93,7 @@
     <Compile Include="Context\FlexibleContext.cs" />
     <Compile Include="Context\FlexibleContextWebViewPage.cs" />
     <Compile Include="Ctrller\FolderControllerFactory.cs" />
-    <Compile Include="Filter\AllowCrossSiteJsonAttribute.cs" />
+    <Compile Include="Filter\AllowCrossSiteAttribute.cs" />
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="AcResult\BasePartialViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

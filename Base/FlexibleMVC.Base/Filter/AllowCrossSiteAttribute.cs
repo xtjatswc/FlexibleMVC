@@ -7,17 +7,17 @@ using System.Configuration;
 
 namespace FlexibleMVC.Base.Filter
 {
-    public class AllowCrossSiteJsonAttribute : ActionFilterAttribute
+    public class AllowCrossSiteAttribute : ActionFilterAttribute
     {
-        private readonly bool AllowOrigin = Convert.ToBoolean(ConfigurationManager.AppSettings["Access-Control-Allow-Origin"]);
+        private readonly bool AllowCrossSite = Convert.ToBoolean(ConfigurationManager.AppSettings["AllowCrossSite"]);
 
-        public AllowCrossSiteJsonAttribute()
+        public AllowCrossSiteAttribute()
         {
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if(AllowOrigin)
+            if(AllowCrossSite)
                 filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
             base.OnActionExecuting(filterContext);
         }

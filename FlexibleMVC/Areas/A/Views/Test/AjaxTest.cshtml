@@ -3,7 +3,7 @@
 }
 
 <h2>AjaxTest</h2>
-
+<div id="div1"></div>
 <script>
 
     var postParam = {
@@ -14,11 +14,13 @@
     //获取微信分享接口
     $.ajax({
         type: "post",
-        url: 'http://localhost:32778/A_Home/TestAjax',
+        url: 'http://127.0.0.1:32778/A_Home/TestAjax',
         data: postParam,
         dataType: 'json',
         success: function (data) {
             alert(data.url);
         }
     });
+
+    $("#div1").load("http://127.0.0.1:32778/A_Home/Index");
 </script>
