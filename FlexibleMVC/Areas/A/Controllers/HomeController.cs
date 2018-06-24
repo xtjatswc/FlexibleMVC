@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace FlexibleMVC.Web.Areas.A.Controllers
 {
@@ -27,10 +28,12 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
         {
             var dict = new Dictionary<string, object>();
             dict["limit"] = "10101010100111";
-            string jwt = JwtUtil.Encode(dict, 10*60);
+            dict["user"] = new { Name = "张三", Age = 25 };
+            string jwt = JwtUtil.Encode(dict, 10 * 60);
 
             JwtResult result = JwtUtil.Decode(jwt);
-
+            dynamic user = (dynamic)result.Result["user"];
+            string name = user.Name;
             return Json(jwt);
         }
 
@@ -41,7 +44,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public ActionResult Report()
         {
-            return Pdf(viewName:"report2", isDownload:false, fileName:"肠内医嘱单");
+            return Pdf(viewName: "report2", isDownload: false, fileName: "肠内医嘱单");
         }
 
         public ActionResult GotoB()
@@ -88,7 +91,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
             var patientBll = lessContext.Get<PatientBll>();
             var list = patientBll.dal.GetModels();
 
-            var obj = new {department = "肿瘤内科", code="0123" , list = list};
+            var obj = new { department = "肿瘤内科", code = "0123", list = list };
             var list2 = new { name = "abc", abe = 1243, department = obj };
             var list3 = patientBll.dal.GetModel(13845);
 

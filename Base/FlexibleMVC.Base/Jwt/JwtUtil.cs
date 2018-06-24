@@ -79,7 +79,7 @@ namespace FlexibleMVC.Base.Jwt
                 IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
                 IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder);
 
-                var json = decoder.Decode(token, secret, verify: true);
+                var json = decoder.DecodeToObject(token, secret, verify: true);
                 jwtResult.Result = json;
             }
             catch (TokenExpiredException)
@@ -100,7 +100,7 @@ namespace FlexibleMVC.Base.Jwt
     public class JwtResult
     {
         public bool Success { get; set; }
-        public string Result { get; set; }
+        public IDictionary<string, object> Result { get; set; }
         public string ErrInfo { get; set; }
     }
 
