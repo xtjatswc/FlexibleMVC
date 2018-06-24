@@ -4,9 +4,11 @@
  * 时间: 10:45
  */
 using FlexibleMVC.Base.Filter;
+using FlexibleMVC.Base.Jwt;
 using FlexibleMVC.Base.Tools;
 using FlexibleMVC.BLL;
 using FlexibleMVC.LessBase.Ctrller;
+using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
@@ -19,6 +21,17 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult Login()
+        {
+            var dict = new Dictionary<string, object>();
+            dict["limit"] = "10101010100111";
+            string jwt = JwtUtil.Encode(dict, 10*60);
+
+            JwtResult result = JwtUtil.Decode(jwt);
+
+            return Json(jwt);
         }
 
         public ActionResult Contact()
