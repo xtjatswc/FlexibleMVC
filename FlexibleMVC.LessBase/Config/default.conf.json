@@ -1,0 +1,6 @@
+﻿{
+    "LessBase": {
+        #是否格式化Json
+        "IsJsonFormat": false
+    }
+}

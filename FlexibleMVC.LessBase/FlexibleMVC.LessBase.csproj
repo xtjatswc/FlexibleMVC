@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Config\default.conf.json" />
     <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
     <Compile Include="Infrastructure\BaseDAL.cs" />

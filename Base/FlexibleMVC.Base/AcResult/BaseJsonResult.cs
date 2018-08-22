@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FlexibleMVC.Base.JsonConfig;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,13 @@ namespace FlexibleMVC.Base.AcResult
             jsonSerizlizerSetting.ContractResolver = new CamelCasePropertyNamesContractResolver();
             //设置日期的格式为：yyyy-MM-dd
             jsonSerizlizerSetting.DateFormatString = "yyy-MM-dd";
-            var json = JsonConvert.SerializeObject(Data, Formatting.None, jsonSerizlizerSetting);
+
+            //是否格式化json
+            Formatting formatting = Formatting.None;
+            if (FlexibleMVC.Base.JsonConfig.Config.Global.LessBase.IsJsonFormat)
+                formatting = Formatting.Indented;
+
+            var json = JsonConvert.SerializeObject(Data, formatting, jsonSerizlizerSetting);
             response.Write(json);
         }
     }
