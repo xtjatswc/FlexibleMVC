@@ -1,6 +1,14 @@
 ﻿{
-    "LessBase": {
-        #是否格式化Json
-        "IsJsonFormat": false
+  "LessBase": {
+    "JsonSettings": {
+	  #是否格式化Json
+      "IsJsonFormat": false,
+	  #是否忽略空值，注：只对get\set属性有效，动态类型转换时该设置无效
+      "IgnoreNullValue": false,
+	  #日期格式化
+	  "DateFormatString": "yyy-MM-dd HH:mm:ss",
+	  #是否驼峰小写
+	  "CamelLowercase": false
     }
+  }
 }

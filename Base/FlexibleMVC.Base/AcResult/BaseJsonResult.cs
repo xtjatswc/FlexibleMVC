@@ -26,14 +26,23 @@ namespace FlexibleMVC.Base.AcResult
             var jsonSerizlizerSetting = new JsonSerializerSettings();
             //设置取消循环引用
             jsonSerizlizerSetting.MissingMemberHandling = MissingMemberHandling.Ignore;
-            //设置首字母小写
-            jsonSerizlizerSetting.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            var jsonSettings = Config.Global.LessBase.JsonSettings;
+
+            //是否驼峰小写
+            if (jsonSettings.CamelLowercase)
+                jsonSerizlizerSetting.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
             //设置日期的格式为：yyyy-MM-dd
-            jsonSerizlizerSetting.DateFormatString = "yyy-MM-dd";
+            jsonSerizlizerSetting.DateFormatString = jsonSettings.DateFormatString;
+
+            //是否忽略空值
+            if(jsonSettings.IgnoreNullValue)
+                jsonSerizlizerSetting.NullValueHandling = NullValueHandling.Ignore;
 
             //是否格式化json
             Formatting formatting = Formatting.None;
-            if (FlexibleMVC.Base.JsonConfig.Config.Global.LessBase.IsJsonFormat)
+            if (jsonSettings.IsJsonFormat)
                 formatting = Formatting.Indented;
 
             var json = JsonConvert.SerializeObject(Data, formatting, jsonSerizlizerSetting);
