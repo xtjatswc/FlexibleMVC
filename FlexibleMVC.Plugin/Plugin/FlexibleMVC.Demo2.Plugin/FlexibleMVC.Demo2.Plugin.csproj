@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <ProjectGuid>{F0C755A1-E14A-4C9B-BC99-77393ECC519A}</ProjectGuid>
+    <ProjectGuid>{2A5D82A1-71E7-49BA-B3D4-DA2B2D4B487A}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>FlexibleMVC.Demo.Plugin</RootNamespace>
-    <AssemblyName>FlexibleMVC.Demo.Plugin</AssemblyName>
+    <RootNamespace>FlexibleMVC.Demo2.Plugin</RootNamespace>
+    <AssemblyName>FlexibleMVC.Demo2.Plugin</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
@@ -106,6 +106,7 @@
     </Reference>
     <Reference Include="System.Web.Mvc">
       <HintPath>..\..\..\FlexibleMVC\bin\System.Web.Mvc.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
@@ -113,8 +114,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add.cs" />
-    <Compile Include="Multiple.cs" />
+    <Compile Include="TestService2.cs" />
+    <Compile Include="TestService1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

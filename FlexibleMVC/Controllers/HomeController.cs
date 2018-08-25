@@ -23,6 +23,11 @@ namespace FlexibleMVC.Web.Controllers
             opt[0].Operate(2, 3);
             opt[1].Operate(2, 3);
 
+            var test = DependencyResolver.Current.GetServices<FlexibleMVC.IServer.ITestService>().ToList();
+            string ret = test[0].GetData();
+            ret = test[1].GetData();
+
+
             return View();
 		}
 
