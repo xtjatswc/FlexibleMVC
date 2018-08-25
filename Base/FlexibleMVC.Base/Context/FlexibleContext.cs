@@ -11,18 +11,9 @@ namespace FlexibleMVC.Base.Context
     {
         public log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected Dictionary<Type, object> objCache = new Dictionary<Type, object>();
         public virtual TService Get<TService>()
         {
-            Type cacheKey = typeof(TService);
-            if (objCache.ContainsKey(cacheKey))
-            {
-                return (TService)objCache[cacheKey];
-            }
-
             var T = DependencyResolver.Current.GetService<TService>();
-            objCache[cacheKey] = T;
-
             return T;
         }
     }
