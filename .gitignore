@@ -29,3 +29,7 @@
 /FlexibleMVC.LessBase/obj
 /Base/FlexibleMVC.Base/obj
 /Base/FluentData/obj
+/FlexibleMVC.IServer/obj
+/FlexibleMVC.Plugin/Plugin/FlexibleMVC.Demo.Plugin/obj
+/FlexibleMVC/bin/FlexibleMVC.IServer.pdb
+/FlexibleMVC/bin/FlexibleMVC.IServer.dll

@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -44,6 +45,21 @@ namespace FlexibleMVC.LessBase.Config
             builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces();
             builder.RegisterTypes(serviceAss.GetTypes()).PropertiesAutowired().InstancePerRequest();
 
+            //加载插件目录
+            var execution_path = AppDomain.CurrentDomain.BaseDirectory + "bin\\plugins\\";
+            var plugin_filename = "Plugin";
+
+            var d = new DirectoryInfo(execution_path);
+            var pluginDlls = (from FileInfo fi in d.GetFiles()
+                              where (
+                                  fi.FullName.EndsWith(plugin_filename + ".dll")
+                              )
+                              select fi).ToList();
+            foreach (var plugin in pluginDlls)
+            {
+                Assembly assPlugin = Assembly.LoadFile(plugin.FullName);
+                builder.RegisterTypes(assPlugin.GetTypes()).AsImplementedInterfaces();
+            }
 
             //创建一个Autofac的容器
             var container = builder.Build();

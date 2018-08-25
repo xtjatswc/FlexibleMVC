@@ -7,6 +7,7 @@ using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.Web.Filters;
 using System.Web.Mvc;
 using FlexibleMVC.LessBase.Context;
+using System.Linq;
 
 namespace FlexibleMVC.Web.Controllers
 {
@@ -18,7 +19,11 @@ namespace FlexibleMVC.Web.Controllers
 
         public ActionResult Index(string id = null, string c = null)
 		{
-			return View();
+            var opt = DependencyResolver.Current.GetServices<FlexibleMVC.IServer.IOperation>().ToList();
+            opt[0].Operate(2, 3);
+            opt[1].Operate(2, 3);
+
+            return View();
 		}
 
         public ActionResult Contact()
