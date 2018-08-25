@@ -58,7 +58,7 @@ namespace FlexibleMVC.LessBase.Config
             foreach (var plugin in pluginDlls)
             {
                 Assembly assPlugin = Assembly.LoadFile(plugin.FullName);
-                builder.RegisterTypes(assPlugin.GetTypes()).AsImplementedInterfaces();
+                builder.RegisterTypes(assPlugin.GetTypes()).AsImplementedInterfaces().PropertiesAutowired().InstancePerRequest();
             }
 
             //创建一个Autofac的容器

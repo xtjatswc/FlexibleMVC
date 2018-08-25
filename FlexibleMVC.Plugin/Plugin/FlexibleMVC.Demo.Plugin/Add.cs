@@ -5,6 +5,7 @@
  */
 using System;
 using FlexibleMVC.IServer;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Demo.Plugin
 {
@@ -13,6 +14,8 @@ namespace FlexibleMVC.Demo.Plugin
 	/// </summary>
 	public class Add : IOperation
 	{
+		public LessFlexibleContext flexibleContext { get; set; }
+
 		public int Operate(int left, int right)
 		{
 			return left + right;

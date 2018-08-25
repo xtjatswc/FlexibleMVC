@@ -45,8 +45,36 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlexibleMVC.Base">
+      <HintPath>..\..\..\FlexibleMVC\bin\FlexibleMVC.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FlexibleMVC.BLL">
+      <HintPath>..\..\..\FlexibleMVC\bin\FlexibleMVC.BLL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FlexibleMVC.DAL">
+      <HintPath>..\..\..\FlexibleMVC\bin\FlexibleMVC.DAL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="FlexibleMVC.IServer">
       <HintPath>..\..\..\FlexibleMVC\bin\FlexibleMVC.IServer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FlexibleMVC.LessBase">
+      <HintPath>..\..\..\FlexibleMVC\bin\FlexibleMVC.LessBase.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FlexibleMVC.Model">
+      <HintPath>..\..\..\FlexibleMVC\bin\FlexibleMVC.Model.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FluentData">
+      <HintPath>..\..\..\FlexibleMVC\bin\FluentData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\FlexibleMVC\bin\log4net.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp">
