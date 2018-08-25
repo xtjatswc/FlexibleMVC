@@ -10,11 +10,16 @@ using FluentData;
 using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Frond.Areas.A.Controllers
 {
     public class HomeController : LessBaseController
     {
+        public HomeController(LessFlexibleContext lessContext) : base(lessContext)
+        {
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -54,7 +59,7 @@ namespace FlexibleMVC.Web.Frond.Areas.A.Controllers
 
         public ActionResult TestToJson()
         {
-            var dal = lessContext.Get<FoodDal>();
+            var dal = flexibleContext.Get<FoodDal>();
             return Content(dal.GetModel(10002).ToJson());
         }
     }

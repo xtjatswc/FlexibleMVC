@@ -11,6 +11,11 @@ namespace FlexibleMVC.LessBase.Infrastructure
         protected abstract string PrimaryKey { get; }
         protected abstract string TableName { get; }
 
+        public BaseDAL(LessFlexibleContext lessContext)
+        {
+            this.lessContext = lessContext;
+        }
+
         public int Delete(object id)
         {
             int rowsAffected = lessContext.db.Delete(TableName)

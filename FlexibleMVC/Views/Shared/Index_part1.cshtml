@@ -1,6 +1,9 @@
 ﻿@{
     //ViewBag.Title = "Index_part1";
-    var patientDal = lessContext.Get<PatientDal>();
+
+    var T = DependencyResolver.Current.GetServices<FlexibleMVC.BLL.PatientBll>().ToList();
+
+    var patientDal = flexibleContext.Get<PatientDal>();
     var list = patientDal.GetModels();
 }
 

@@ -3,18 +3,18 @@ using FlexibleMVC.LessBase.Ctrller;
 
 namespace FlexibleMVC.LessBase.Context
 {
-    public class LessContextWebViewPage<TModel> : FlexibleContextWebViewPage<TModel>
+    public class LessContextWebViewPage<TModel> : FlexibleContextWebViewPage<TModel, LessFlexibleContext>
     {
-        public LessFlexibleContext lessContext;
+        //public LessFlexibleContext lessContext;
 
         public override void InitHelpers()
         {
             base.InitHelpers();
-            LessBaseController lessBaseController = ((this.ViewContext.Controller) as LessBaseController);
-            if (lessBaseController != null)
-            {
-                lessContext = lessBaseController.lessContext;               
-            }
+            //LessBaseController<LessFlexibleContext> lessBaseController = ((this.ViewContext.Controller) as LessBaseController<LessFlexibleContext>);
+            //if (lessBaseController != null)
+            //{
+            //    lessContext = lessBaseController.flexibleContext;               
+            //}
 
         }
     }

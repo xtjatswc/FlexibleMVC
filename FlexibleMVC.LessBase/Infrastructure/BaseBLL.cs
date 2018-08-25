@@ -4,6 +4,6 @@ namespace FlexibleMVC.LessBase.Infrastructure
 {
     public class BaseBLL
     {
-        public virtual LessFlexibleContext lessContext { get; set; }
+        public LessFlexibleContext lessContext { get; set; }
     }
 }

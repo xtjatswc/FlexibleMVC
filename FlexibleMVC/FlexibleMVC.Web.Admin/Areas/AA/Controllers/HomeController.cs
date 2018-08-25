@@ -13,11 +13,16 @@ using System.Data;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
     public class HomeController : LessBaseController
     {
+        public HomeController(LessFlexibleContext lessContext) : base(lessContext)
+        {
+        }
+
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
@@ -54,16 +59,16 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         [NonAction]
         private List<PatientBasicInfo> NonAction()
         {
-            var patientBll = lessContext.Get<PatientBll>();
-            var result = patientBll.dal.GetModels();
+            var patientBll = flexibleContext.Get<PatientBll>();
+            var result = patientBll.patientDal.GetModels();
 
-            patientBll = lessContext.Get<PatientBll>();
-            var list = patientBll.dal.GetModels();
+            patientBll = flexibleContext.Get<PatientBll>();
+            var list = patientBll.patientDal.GetModels();
 
-            var dal = lessContext.Get<PatientDal>();
+            var dal = flexibleContext.Get<PatientDal>();
             list = dal.GetModels();
 
-            var foodDal = lessContext.Get<FoodDal>();
+            var foodDal = flexibleContext.Get<FoodDal>();
             var obj = foodDal.GetModels();
 
             return list;

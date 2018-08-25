@@ -6,11 +6,16 @@
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.Web.Filters;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Controllers
 {
     public class HomeController : LessBaseController
     {
+        public HomeController(LessFlexibleContext lessContext) : base(lessContext)
+        {
+        }
+
         public ActionResult Index(string id = null, string c = null)
 		{
 			return View();
@@ -18,7 +23,7 @@ namespace FlexibleMVC.Web.Controllers
 
         public ActionResult Contact()
         {
-            lessContext.log.Debug("访问了根目录的 Home Contact");
+            flexibleContext.log.Debug("访问了根目录的 Home Contact");
             return View();
         }
 

@@ -5,12 +5,18 @@
  */
 using FlexibleMVC.Base.Ctrller;
 using System.Web.Mvc;
+using FlexibleMVC.Base.Context;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : BaseController<FlexibleContext>
     {
-		public ActionResult Index()
+        public HomeController(FlexibleContext flexibleContext) : base(flexibleContext)
+        {
+        }
+
+        public ActionResult Index()
 		{
 			return View();
 		}

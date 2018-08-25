@@ -1,4 +1,6 @@
 ﻿using FlexibleMVC.Base.AcResult;
+using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -24,6 +26,22 @@ namespace FlexibleMVC.Base.Ctrller
             IController controller = GetControllerInstance(requestContext, controllerType);
             return controller;
         }
+
+        //protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, System.Type controllerType)
+        //{
+        //    //获取构造函数对象
+        //    var constructor = controllerType.GetConstructors()[0];
+        //    //获取构造函数参数
+        //    var param = constructor.GetParameters();
+        //    //获取构造函数所需的参数
+        //    var paramNames = param.Select(a => {
+        //        var serviceType = (ServiceAttribute)(a.ParameterType.GetCustomAttributes(typeof(ServiceAttribute), true)[0]);
+        //        var t = Type.GetType(serviceType.ServiceName + ", " + serviceType.ServiceNameSpace, true);
+        //        return Activator.CreateInstance(t);
+        //    }).ToArray();
+        //    IController controller = Activator.CreateInstance(controllerType, paramNames) as Controller;
+        //    return controller;
+        //}
 
         private string GetViewPath(RequestContext requestContext)
         {

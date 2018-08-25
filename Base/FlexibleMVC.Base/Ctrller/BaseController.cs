@@ -7,9 +7,14 @@ using System.Web.Routing;
 
 namespace FlexibleMVC.Base.Ctrller
 {
-    public class BaseController : Controller
+    public class BaseController<T> : Controller
     {
-        public FlexibleContext flexibleContext = new FlexibleContext();
+        public T flexibleContext;
+
+        public BaseController(T flexibleContext)
+        {
+            this.flexibleContext = flexibleContext;
+        }
 
         protected override void Initialize(RequestContext requestContext)
         {

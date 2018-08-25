@@ -13,12 +13,17 @@ using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Areas.A.Controllers
 {
     [OutputCache(Duration = 10)]
     public class HomeController : LessBaseController
     {
+        public HomeController(LessFlexibleContext flexibleContext) : base(flexibleContext)
+        {
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -69,31 +74,31 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public JsonResult TestMysql()
         {
-            DataTable department = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            DataTable department = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Json(department);
         }
 
         public FileResult TestExcel()
         {
-            DataTable department = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+            DataTable department = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
             return Excel("科室信息导出", department);
         }
 
         public JsonResult TestDyn()
         {
-            var obj = lessContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<dynamic>();
+            var obj = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QueryMany<dynamic>();
 
             return Json(obj);
         }
 
         public ActionResult TestXml()
         {
-            var patientBll = lessContext.Get<PatientBll>();
-            var list = patientBll.dal.GetModels();
+            var patientBll = flexibleContext.Get<PatientBll>();
+            var list = patientBll.patientDal.GetModels();
 
             var obj = new { department = "肿瘤内科", code = "0123", list = list };
             var list2 = new { name = "abc", abe = 1243, department = obj };
-            var list3 = patientBll.dal.GetModel(13845);
+            var list3 = patientBll.patientDal.GetModel(13845);
 
             return Xml(new { a = 12, patient = list, list3 = list3 });
         }

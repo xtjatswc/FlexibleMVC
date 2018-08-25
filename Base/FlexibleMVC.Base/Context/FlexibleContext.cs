@@ -22,14 +22,8 @@ namespace FlexibleMVC.Base.Context
 
             var T = DependencyResolver.Current.GetService<TService>();
             objCache[cacheKey] = T;
-            OtherWise(T);
 
             return T;
-        }
-
-        protected virtual void OtherWise(object obj)
-        {
-
         }
     }
 }

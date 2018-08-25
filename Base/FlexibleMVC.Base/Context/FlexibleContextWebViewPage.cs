@@ -6,10 +6,10 @@ using System.Text;
 
 namespace FlexibleMVC.Base.Context
 {
-    public class FlexibleContextWebViewPage<TModel> : System.Web.Mvc.WebViewPage<TModel>
+    public class FlexibleContextWebViewPage<TModel, TContext> : System.Web.Mvc.WebViewPage<TModel>
     {
 
-        public FlexibleContext flexibleContext;
+        public TContext flexibleContext;
 
         public override void Execute()
         {
@@ -19,7 +19,7 @@ namespace FlexibleMVC.Base.Context
         public override void InitHelpers()
         {
             base.InitHelpers();
-            BaseController baseController = ((this.ViewContext.Controller) as BaseController);
+            BaseController<TContext> baseController = ((this.ViewContext.Controller) as BaseController<TContext>);
             if (baseController != null)
             {
                 flexibleContext = baseController.flexibleContext;

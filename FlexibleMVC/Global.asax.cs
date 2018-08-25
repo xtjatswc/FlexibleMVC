@@ -6,6 +6,7 @@
 using FlexibleMVC.Base;
 using FlexibleMVC.Base.AcResult;
 using FlexibleMVC.Base.Ctrller;
+using FlexibleMVC.LessBase.Config;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -34,6 +35,9 @@ namespace FlexibleMVC.Web
             ViewMapConfig.RegisterViewMaps(ExecuteViewResult.ViewMaps);
 
             log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo(Server.MapPath("Log4net.config")));
+
+            //注册组件
+            AutofacConfig.Register();
         }
     }
 

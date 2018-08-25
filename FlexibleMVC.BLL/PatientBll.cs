@@ -6,19 +6,8 @@ namespace FlexibleMVC.BLL
 {
     public class PatientBll : BaseBLL
     {
-        public PatientDal dal = new PatientDal();
+        public PatientDal patientDal { get; set; }
+        public FoodDal foodDal { get; set; }
 
-        public override LessFlexibleContext lessContext
-        {
-            get
-            {
-                return base.lessContext;
-            }
-            set
-            {
-                base.lessContext = value;
-                dal.lessContext = value;
-            }
-        }
     }
 }

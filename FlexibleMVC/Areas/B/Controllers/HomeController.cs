@@ -6,12 +6,17 @@
 using FlexibleMVC.BLL;
 using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Areas.B.Controllers
 {
     public class HomeController : LessBaseController
     {
-		public ActionResult Index()
+        public HomeController(LessFlexibleContext lessContext) : base(lessContext)
+        {
+        }
+
+        public ActionResult Index()
 		{
 			return View();
 		}
@@ -28,9 +33,9 @@ namespace FlexibleMVC.Web.Areas.B.Controllers
 
         public ActionResult GotoFrondA()
         {
-            var patientBll = lessContext.Get<PatientBll>();
+            var patientBll = flexibleContext.Get<PatientBll>();
             ViewBag.name = "123";
-            TempData["list"] = patientBll.dal.GetModels(currentPage:2,itemsPerPage:2);
+            TempData["list"] = patientBll.patientDal.GetModels(currentPage:2,itemsPerPage:2);
 
             //return RedirectToAction("contact", "home", new { module = "frond", area = "a" });
             return RedirectToRoute("frond_a_default", new {module="frond", area="a", controller = "home", action = "contact"});

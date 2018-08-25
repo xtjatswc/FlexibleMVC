@@ -7,12 +7,17 @@ using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
 using FlexibleMVC.BLL;
 using FlexibleMVC.Model;
+using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.Web.Frond.Areas.B.Controllers
 {
     public class HomeController : LessBaseController
     {
-		public ActionResult Index()
+        public HomeController(LessFlexibleContext lessContext) : base(lessContext)
+        {
+        }
+
+        public ActionResult Index()
 		{
 			return View();
 		}
@@ -29,14 +34,14 @@ namespace FlexibleMVC.Web.Frond.Areas.B.Controllers
 
         public JsonResult GetModels()
         {
-            var bll = lessContext.Get<PatientBll>();
-            var model = bll.dal.GetModel(13851);
-            var models = bll.dal.GetDataTable();
+            var bll = flexibleContext.Get<PatientBll>();
+            var model = bll.patientDal.GetModel(13851);
+            var models = bll.patientDal.GetDataTable();
 
             //lessContext.db.Insert<PatientBasicInfo>("PatientBasicInfo", model)
             //    .AutoMap(x => x.PATIENT_DBKEY)
             //    .ExecuteReturnLastId<int>();
-            bll.dal.Delete(13860);
+            bll.patientDal.Delete(13860);
 
             return Json(models);
         }

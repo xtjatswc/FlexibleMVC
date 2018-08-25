@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentData.3.0.1.0\lib\FluentData.dll</HintPath>
@@ -51,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\default.conf.json" />
+    <Compile Include="Config\AutofacConfig.cs" />
     <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
     <Compile Include="Infrastructure\BaseDAL.cs" />

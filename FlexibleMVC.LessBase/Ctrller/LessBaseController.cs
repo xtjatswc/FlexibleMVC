@@ -3,14 +3,15 @@ using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.LessBase.Ctrller
 {
-    public class LessBaseController : BaseController
+    public class LessBaseController : BaseController<LessFlexibleContext>
     {
-        public LessFlexibleContext lessContext = new LessFlexibleContext();
+        public LessBaseController(LessFlexibleContext flexibleContext) : base(flexibleContext)
+        {
+        }
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            lessContext.Base = flexibleContext;
         }
 
     }
