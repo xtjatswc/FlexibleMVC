@@ -23,29 +23,8 @@ namespace FlexibleMVC.Base.AcResult
             {
                 response.ContentEncoding = ContentEncoding;
             }
-            var jsonSerizlizerSetting = new JsonSerializerSettings();
-            //设置取消循环引用
-            jsonSerizlizerSetting.MissingMemberHandling = MissingMemberHandling.Ignore;
 
-            var jsonSettings = Config.Global.LessBase.JsonSettings;
-
-            //是否驼峰小写
-            if (jsonSettings.CamelLowercase)
-                jsonSerizlizerSetting.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
-            //设置日期的格式为：yyyy-MM-dd
-            jsonSerizlizerSetting.DateFormatString = jsonSettings.DateFormatString;
-
-            //是否忽略空值
-            if(jsonSettings.IgnoreNullValue)
-                jsonSerizlizerSetting.NullValueHandling = NullValueHandling.Ignore;
-
-            //是否格式化json
-            Formatting formatting = Formatting.None;
-            if (jsonSettings.IsJsonFormat)
-                formatting = Formatting.Indented;
-
-            var json = JsonConvert.SerializeObject(Data, formatting, jsonSerizlizerSetting);
+            var json = JsonUtil.ToJson(Data);
             response.Write(json);
         }
     }
