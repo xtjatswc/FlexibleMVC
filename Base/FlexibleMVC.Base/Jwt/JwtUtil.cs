@@ -35,7 +35,7 @@ namespace FlexibleMVC.Base.Jwt
         /// <param name="payload">载荷, 就是存放有效信息的地方</param>
         /// <param name="expire">过期时间, 单位：秒</param>
         /// <returns></returns>
-        public static string Encode(Dictionary<string, object> payload, double expire = 0)
+        public static string Encode(Dictionary<string, object> payload, double expire = 24 * 60 * 60)
         {
             //var payload = new Dictionary<string, object>
             //{

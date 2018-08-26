@@ -28,7 +28,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
             var dict = new Dictionary<string, object>();
             dict["limit"] = "10101010100111";
             dict["user"] = new { loginName = "张三", Age = 25 };
-            string jwt = JwtUtil.Encode(dict, 10 * 60);
+            string jwt = JwtUtil.Encode(dict, 24 * 60 * 60);
             var result = new { success = true, msg = "登录成功！", token = jwt };
             return Json(result);
         }
