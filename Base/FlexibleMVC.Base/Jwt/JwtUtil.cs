@@ -70,7 +70,16 @@ namespace FlexibleMVC.Base.Jwt
         public static JwtResult Decode(string token)
         {
             //var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFpbTEiOjAsImNsYWltMiI6ImNsYWltMi12YWx1ZSJ9.8pwBI_HtXqI3UgQHQ_rDRnSQRxFL1SR8fbQoS-5kM5s";
-            JwtResult jwtResult = new JwtResult() { Success = true};
+
+            JwtResult jwtResult = new JwtResult() { Success = true };
+
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                jwtResult.Success = false;
+                jwtResult.ErrInfo = "Token not provided";
+                return jwtResult;
+            }
+
             try
             {
                 IJsonSerializer serializer = new CustomJsonSerializer();
