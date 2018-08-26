@@ -9,7 +9,7 @@ namespace FlexibleMVC.Base.Filter
 {
     public class AllowCrossSiteAttribute : ActionFilterAttribute
     {
-        private readonly bool AllowCrossSite = Convert.ToBoolean(ConfigurationManager.AppSettings["AllowCrossSite"]);
+        public bool AllowCrossSite { get; set; } = Convert.ToBoolean(ConfigurationManager.AppSettings["AllowCrossSite"]);
 
         public AllowCrossSiteAttribute()
         {

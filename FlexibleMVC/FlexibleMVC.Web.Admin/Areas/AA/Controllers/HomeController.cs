@@ -86,5 +86,14 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
             return result;
         }
 
+        public ActionResult MyError()
+        {
+            //人为制造一个错误
+            int a = 1;
+            int b = 0;
+            return Content((a / b).ToString());
+        }
+
+
     }
 }

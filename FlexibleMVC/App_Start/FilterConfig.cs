@@ -13,7 +13,7 @@ namespace FlexibleMVC.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            //filters.Add(new HandleErrorAttribute());
             filters.Add(new AllowCrossSiteAttribute());
             filters.Add(new SystemErrorAttribute());
             filters.Add(new CheckUserRoleAttribute());
