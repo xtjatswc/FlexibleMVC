@@ -10,7 +10,7 @@ using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
-    [CheckUserRole(Passed = true)]
+    [CheckUserRole(Enabled = false)]
     public class LoginController : LessBaseController
     {
         public LoginController(LessFlexibleContext flexibleContext) : base(flexibleContext)

@@ -9,19 +9,25 @@ namespace FlexibleMVC.LessBase.Filters.Permission
 {
     public class CheckUserRoleAttribute : ActionFilterAttribute
     {
-        public bool Passed { get; set; }
+        private bool enabled = true;
+        public bool Enabled { get => enabled; set => enabled = value; }
+
         public string WhenNotPassedRedirectUrl { get; set; }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-
-            string token = filterContext.HttpContext.Request["token"];
-
-            JwtResult jwt = JwtUtil.Decode(token);
-
-            if (Passed || jwt.Success)
+            if (!Enabled)
             {
                 base.OnActionExecuting(filterContext);
+                return;
+            }
+
+            string token = filterContext.HttpContext.Request["token"];
+            JwtResult jwt = JwtUtil.Decode(token);
+            if (jwt.Success)
+            {
+                base.OnActionExecuting(filterContext);
+                return;
             }
             else
             {
