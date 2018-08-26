@@ -8,6 +8,7 @@ using FlexibleMVC.Web.Filters;
 using System.Web.Mvc;
 using FlexibleMVC.LessBase.Context;
 using System.Linq;
+using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.Web.Controllers
 {

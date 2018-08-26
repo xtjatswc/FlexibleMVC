@@ -62,6 +62,7 @@
     <Compile Include="Config\AutofacConfig.cs" />
     <Compile Include="Config\LessConfig.cs" />
     <Compile Include="Ctrller\FolderController.cs" />
+    <Compile Include="Filters\Permission\CheckUserRoleAttribute.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
     <Compile Include="Infrastructure\BaseDAL.cs" />
     <Compile Include="Infrastructure\BaseModel.cs" />
@@ -77,5 +78,6 @@
       <Name>FlexibleMVC.Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

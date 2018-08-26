@@ -7,6 +7,7 @@ using FlexibleMVC.Base.Ctrller;
 using System.Web.Mvc;
 using FlexibleMVC.Base.Context;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -16,6 +17,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
         {
         }
 
+        [CheckUserRole]
         public ActionResult Index()
 		{
 			return View();

@@ -92,6 +92,11 @@ namespace FlexibleMVC.Base.Jwt
                 jwtResult.Success = false;
                 jwtResult.ErrInfo = "Token has invalid signature";
             }
+            catch (Exception ex)
+            {
+                jwtResult.Success = false;
+                jwtResult.ErrInfo = ex.Message;
+            }
 
             return jwtResult;
         }
