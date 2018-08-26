@@ -1,6 +1,12 @@
 var login = {};
 
 $(function () {
+    //∑¿÷π“≥√Ê∫ÛÕÀ
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+
     $("#btnLogin").click(function () {
 
         var user = {

@@ -17,7 +17,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
         {
         }
 
-        [CheckUserRole]
+        [CheckUserRole(WhenNotPassedRedirectUrl = "/Admin_Login/Index")]
         public ActionResult Index()
 		{
             return View();

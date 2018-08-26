@@ -6,9 +6,11 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
 using FlexibleMVC.Base.Jwt;
+using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
+    [CheckUserRole(Passed = true)]
     public class LoginController : LessBaseController
     {
         public LoginController(LessFlexibleContext flexibleContext) : base(flexibleContext)
@@ -30,7 +32,10 @@ namespace FlexibleMVC.Web.Admin.Controllers
             dict["user"] = new { loginName = "张三", Age = 25 };
             string jwt = JwtUtil.Encode(dict, 24 * 60 * 60);
             var result = new { success = true, msg = "登录成功！", token = jwt };
+
+            //return Redirect("/frond_b_Home/index");
             return Json(result);
+
         }
 
     }
