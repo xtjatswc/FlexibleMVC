@@ -9,6 +9,9 @@
 	  "DateFormatString": "yyyy-MM-dd HH:mm:ss",
 	  #是否驼峰小写
 	  "CamelLowercase": false
-    }
+    },
+	"adminLTE":{
+	  "Path": "~/Content/AdminLTE/"
+	}
   }
 }

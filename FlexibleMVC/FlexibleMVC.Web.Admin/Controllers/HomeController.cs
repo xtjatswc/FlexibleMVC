@@ -21,6 +21,11 @@ namespace FlexibleMVC.Web.Admin.Controllers
 			return View();
 		}
 
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             return View();

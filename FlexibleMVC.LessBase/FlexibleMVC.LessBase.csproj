@@ -60,6 +60,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Config\default.conf.json" />
     <Compile Include="Config\AutofacConfig.cs" />
+    <Compile Include="Config\LessConfig.cs" />
     <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
     <Compile Include="Infrastructure\BaseDAL.cs" />

@@ -31,6 +31,7 @@ namespace FlexibleMVC.LessBase.Config
 
             //InstancePerRequest() 针对MVC的,或者说是ASP.NET的..每个请求单例
             builder.RegisterType<FlexibleMVC.LessBase.Context.LessFlexibleContext>().InstancePerRequest();
+            builder.RegisterType<FlexibleMVC.Base.Context.FlexibleContext>().InstancePerRequest();
 
             //如果有Dal层的话，注册Dal层的组件
             //告诉autofac框架注册数据仓储层所在程序集中的所有类的对象实例

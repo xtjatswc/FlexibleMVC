@@ -94,6 +94,7 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Part2.cshtml" />
+    <Content Include="Views\Home\welcome.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
