@@ -5,6 +5,7 @@ using System.Web;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
+using FlexibleMVC.Base.Jwt;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -21,10 +22,15 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
         public ActionResult CheckLogin()
         {
-            string userName = Request.Form["UserName"];
-            string password = Request.Form["Password"];
+            string loginName = Request.Form["loginName"];
+            string password = Request.Form["password"];
 
-            return RedirectToAction("Index", "Home", new {module = "admin", area = "root" });
+            var dict = new Dictionary<string, object>();
+            dict["limit"] = "10101010100111";
+            dict["user"] = new { loginName = "张三", Age = 25 };
+            string jwt = JwtUtil.Encode(dict, 10 * 60);
+            var result = new { success = true, msg = "登录成功！", token = jwt };
+            return Json(result);
         }
 
     }

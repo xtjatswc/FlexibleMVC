@@ -20,7 +20,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
         [CheckUserRole]
         public ActionResult Index()
 		{
-			return View();
+            return View();
 		}
 
         public ActionResult Welcome()
