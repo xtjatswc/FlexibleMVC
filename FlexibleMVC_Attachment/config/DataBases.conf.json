@@ -1,0 +1,5 @@
+﻿{
+  "DataBases": {
+	"db1": "Data Source=127.0.0.1;Password=cnis;User ID=cnis;DataBase=cnis;Port=3306;CharSet=utf8;allow zero datetime=true;Convert Zero Datetime=True"
+  }
+}
