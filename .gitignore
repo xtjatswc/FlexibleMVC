@@ -15,9 +15,6 @@
 /FlexibleMVC/bin/FlexibleMVC.Web.Admin.dll.config
 /FlexibleMVC/bin/FlexibleMVC.Web.Admin.pdb
 /FlexibleMVC/bin/FlexibleMVC.Web.dll
-/FlexibleMVC.BLL/obj
-/FlexibleMVC.DAL/obj
-/FlexibleMVC.Model/obj
 /FlexibleMVC/bin/FlexibleMVC.DAL.dll
 /FlexibleMVC/bin/FlexibleMVC.DAL.pdb
 /FlexibleMVC/bin/FlexibleMVC.Model.dll
@@ -26,11 +23,14 @@
 /FlexibleMVC/bin/FlexibleMVC.BLL.pdb
 /FlexibleMVC/bin/FlexibleMVC.LessBase.dll
 /FlexibleMVC/bin/FlexibleMVC.LessBase.pdb
-/FlexibleMVC.LessBase/obj
 /Base/FlexibleMVC.Base/obj
 /Base/FluentData/obj
-/FlexibleMVC.IServer/obj
 /FlexibleMVC.Plugin/Plugin/FlexibleMVC.Demo.Plugin/obj
 /FlexibleMVC/bin/FlexibleMVC.IServer.pdb
 /FlexibleMVC/bin/FlexibleMVC.IServer.dll
 /FlexibleMVC.Plugin/Plugin/FlexibleMVC.Demo2.Plugin/obj
+/Infrastructure/FlexibleMVC.BLL/obj
+/Infrastructure/FlexibleMVC.DAL/obj
+/Infrastructure/FlexibleMVC.IServer/obj
+/Infrastructure/FlexibleMVC.LessBase/obj
+/Infrastructure/FlexibleMVC.Model/obj

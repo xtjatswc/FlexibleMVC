@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C5CE947-792C-4E99-A401-7128F73FB99A}</ProjectGuid>
+    <ProjectGuid>{17481044-4D06-48AA-997F-FB0CCCB8786A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FlexibleMVC.IServer</RootNamespace>
-    <AssemblyName>FlexibleMVC.IServer</AssemblyName>
+    <RootNamespace>FlexibleMVC.Model</RootNamespace>
+    <AssemblyName>FlexibleMVC.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\FlexibleMVC\bin\</OutputPath>
+    <OutputPath>..\..\FlexibleMVC\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,9 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOperation.cs" />
-    <Compile Include="ITestService.cs" />
+    <Compile Include="ChinaFoodComposition.cs" />
+    <Compile Include="PatientBasicInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlexibleMVC.LessBase\FlexibleMVC.LessBase.csproj">
+      <Project>{44cdb313-984b-4824-ba2d-18481e39865f}</Project>
+      <Name>FlexibleMVC.LessBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
