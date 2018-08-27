@@ -33,6 +33,8 @@ namespace FlexibleMVC.Base.JsonConfig
 {
     public static class Config
     {
+        public static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static dynamic Default = new ConfigObject();
         public static dynamic User = new ConfigObject();
 
@@ -85,38 +87,47 @@ namespace FlexibleMVC.Base.JsonConfig
 
             // scan ALL linked assemblies and merge their default configs while
             // giving the entry assembly top priority in merge
-            var entryAssembly = Assembly.GetEntryAssembly();
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var assembly in assemblies.Where(assembly => !assembly.Equals(entryAssembly)))
+            try
             {
-                Default = Merger.Merge(GetDefaultConfig(assembly), Default);
+                var entryAssembly = Assembly.GetEntryAssembly();
+                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                foreach (var assembly in assemblies.Where(assembly => !assembly.Equals(entryAssembly) && assembly.GetName().Name.StartsWith("FlexibleMVC")))
+                {
+                    Default = Merger.Merge(GetDefaultConfig(assembly), Default);
+                }
+                if (entryAssembly != null)
+                    Default = Merger.Merge(GetDefaultConfig(entryAssembly), Default);
+
+                // User config (provided through a settings.conf file)
+                var execution_path = AppDomain.CurrentDomain.BaseDirectory;
+                var user_config_filename = "settings";
+
+                var d = new DirectoryInfo(execution_path);
+                var userConfig = (from FileInfo fi in d.GetFiles()
+                                  where (
+                                      fi.FullName.EndsWith(user_config_filename + ".conf") ||
+                                      fi.FullName.EndsWith(user_config_filename + ".json") ||
+                                      fi.FullName.EndsWith(user_config_filename + ".conf.json") ||
+                                      fi.FullName.EndsWith(user_config_filename + ".json.conf")
+                                  )
+                                  select fi).FirstOrDefault();
+
+                if (userConfig != null)
+                {
+                    User = Config.ParseJson(File.ReadAllText(userConfig.FullName));
+                    WatchUserConfig(userConfig);
+                }
+                else
+                {
+                    User = new NullExceptionPreventer();
+                }
+
             }
-            if (entryAssembly != null)
-                Default = Merger.Merge(GetDefaultConfig(entryAssembly), Default);
-
-            // User config (provided through a settings.conf file)
-            var execution_path = AppDomain.CurrentDomain.BaseDirectory;
-            var user_config_filename = "settings";
-
-            var d = new DirectoryInfo(execution_path);
-            var userConfig = (from FileInfo fi in d.GetFiles()
-                              where (
-                                  fi.FullName.EndsWith(user_config_filename + ".conf") ||
-                                  fi.FullName.EndsWith(user_config_filename + ".json") ||
-                                  fi.FullName.EndsWith(user_config_filename + ".conf.json") ||
-                                  fi.FullName.EndsWith(user_config_filename + ".json.conf")
-                              )
-                              select fi).FirstOrDefault();
-
-            if (userConfig != null)
+            catch (Exception ex)
             {
-                User = Config.ParseJson(File.ReadAllText(userConfig.FullName));
-                WatchUserConfig(userConfig);
+                log.Error(ex);
             }
-            else
-            {
-                User = new NullExceptionPreventer();
-            }
+
         }
         private static FileSystemWatcher userConfigWatcher;
         public static void WatchUserConfig(FileInfo info)
@@ -254,11 +265,18 @@ namespace FlexibleMVC.Base.JsonConfig
         private static dynamic GetDefaultConfig(Assembly assembly)
         {
             var dconf_json = ScanForDefaultConfig(assembly);
-            if (dconf_json == null)
+            if (dconf_json == null || dconf_json.Count == 0)
                 return null;
-            return ParseJson(dconf_json);
+
+            ConfigObject cfg = new ConfigObject();
+            foreach (var dconf in dconf_json)
+            {
+                cfg = Merger.Merge(ParseJson(dconf), cfg);
+            }
+
+            return cfg;
         }
-        private static string ScanForDefaultConfig(Assembly assembly)
+        private static List<string> ScanForDefaultConfig(Assembly assembly)
         {
             if (assembly == null)
                 assembly = System.Reflection.Assembly.GetEntryAssembly();
@@ -277,15 +295,22 @@ namespace FlexibleMVC.Base.JsonConfig
             var dconf_resource = res.Where(r =>
                    r.EndsWith("default.conf", StringComparison.OrdinalIgnoreCase) ||
                    r.EndsWith("default.json", StringComparison.OrdinalIgnoreCase) ||
-                   r.EndsWith("default.conf.json", StringComparison.OrdinalIgnoreCase))
-                .FirstOrDefault();
+                   r.EndsWith("default.conf.json", StringComparison.OrdinalIgnoreCase));
+            //去掉.FirstOrDefault()这里不限制配置文件的数量
 
-            if (string.IsNullOrEmpty(dconf_resource))
-                return null;
+            List<string> lstConf = new List<string>();
+            foreach (var dconf in dconf_resource)
+            {
+                if (string.IsNullOrEmpty(dconf))
+                    continue;
 
-            var stream = assembly.GetManifestResourceStream(dconf_resource);
-            string default_json = new StreamReader(stream).ReadToEnd();
-            return default_json;
+                var stream = assembly.GetManifestResourceStream(dconf);
+                string default_json = new StreamReader(stream).ReadToEnd();
+                lstConf.Add(default_json);
+
+            }
+
+            return lstConf;
         }
     }
 }
