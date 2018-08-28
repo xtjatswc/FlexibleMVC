@@ -31,9 +31,15 @@ namespace FlexibleMVC.LessBase.Config
             }
 
             //InstancePerRequest() 针对MVC的,或者说是ASP.NET的..每个请求单例
-            builder.RegisterType<JwtResult>().InstancePerRequest();
-            builder.RegisterType<FlexibleMVC.LessBase.Context.LessFlexibleContext>().PropertiesAutowired().InstancePerRequest();
-            builder.RegisterType<FlexibleMVC.Base.Context.FlexibleContext>().InstancePerRequest();
+            //builder.RegisterType<JwtResult>().InstancePerRequest();
+            //builder.RegisterType<FlexibleMVC.LessBase.Context.LessFlexibleContext>().InstancePerRequest();
+            //builder.RegisterType<FlexibleMVC.Base.Context.FlexibleContext>().InstancePerRequest();
+
+            Assembly serviceBase = Assembly.Load("FlexibleMVC.Base");
+            builder.RegisterTypes(serviceBase.GetTypes()).InstancePerRequest();
+
+            Assembly serviceLessBase = Assembly.Load("FlexibleMVC.LessBase");
+            builder.RegisterTypes(serviceLessBase.GetTypes()).InstancePerRequest();
 
             //如果有Dal层的话，注册Dal层的组件
             //告诉autofac框架注册数据仓储层所在程序集中的所有类的对象实例
@@ -45,7 +51,7 @@ namespace FlexibleMVC.LessBase.Config
             //告诉autofac框架注册业务逻辑层所在程序集中的所有类的对象实例
             Assembly serviceAss = Assembly.Load("FlexibleMVC.BLL");
             //创建serAss中的所有类的instance以此类的实现接口存储
-            builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces();
+            //builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces();
             builder.RegisterTypes(serviceAss.GetTypes()).PropertiesAutowired().InstancePerRequest();
 
             //加载插件目录

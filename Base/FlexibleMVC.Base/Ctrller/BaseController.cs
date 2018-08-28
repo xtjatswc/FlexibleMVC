@@ -8,20 +8,15 @@ using System.Web.Routing;
 
 namespace FlexibleMVC.Base.Ctrller
 {
-    public class BaseController<T> : Controller, IBaseController
+    public class BaseController<T> : Controller
     {
         public T flexibleContext;
-        private FlexibleContext _flexibleContext;
-        public JwtResult Jwt
-        {
-            get => _flexibleContext.Jwt;
-            set => _flexibleContext.Jwt = value;
-        }
+
+        public JwtResult Jwt { get => DependencyResolver.Current.GetService<JwtResult>(); }
 
         public BaseController(T flexibleContext)
         {
             this.flexibleContext = flexibleContext;
-            _flexibleContext = flexibleContext as FlexibleContext;
         }
 
         protected override void Initialize(RequestContext requestContext)

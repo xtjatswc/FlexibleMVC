@@ -43,7 +43,7 @@ namespace FlexibleMVC.BLL.Admin.Permissions
             }
 
             var dict = new Dictionary<string, object>();
-            dict["user"] = new { loginName = "张三"};
+            dict["user"] = new { loginName = loginName };
             string jwt = JwtUtil.Encode(dict, 24 * 60 * 60);
             loginResult.Success = true;
             loginResult.Msg = "登录成功！";

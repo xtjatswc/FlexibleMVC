@@ -28,11 +28,6 @@ namespace FlexibleMVC.LessBase.Filters.Permission
             JwtResult jwt = JwtUtil.Decode(token);
             if (jwt.Success)
             {
-                IBaseController baseController = filterContext.Controller as IBaseController;      
-                if (baseController != null)
-                {
-                    baseController.Jwt = jwt;
-                }
                 base.OnActionExecuting(filterContext);
                 return;
             }

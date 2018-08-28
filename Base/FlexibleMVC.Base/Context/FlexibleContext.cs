@@ -10,7 +10,7 @@ namespace FlexibleMVC.Base.Context
 {
     public class FlexibleContext
     {
-        public JwtResult Jwt { get; set; }
+        public JwtResult Jwt { get => DependencyResolver.Current.GetService<JwtResult>(); }
 
         public log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

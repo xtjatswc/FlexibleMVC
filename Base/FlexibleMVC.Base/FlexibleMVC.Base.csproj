@@ -96,7 +96,6 @@
     <Compile Include="Context\FlexibleContext.cs" />
     <Compile Include="Context\FlexibleContextWebViewPage.cs" />
     <Compile Include="Ctrller\FolderControllerFactory.cs" />
-    <Compile Include="Ctrller\IBaseController.cs" />
     <Compile Include="Filter\AllowCrossSiteAttribute.cs" />
     <Compile Include="JsonConfig\Config.cs" />
     <Compile Include="JsonConfig\ConfigObjects.cs" />
