@@ -2,6 +2,7 @@
 using FlexibleMVC.Model;
 using System.Collections.Generic;
 using FlexibleMVC.LessBase.Context;
+using FluentData;
 
 namespace FlexibleMVC.DAL
 {
@@ -14,5 +15,7 @@ namespace FlexibleMVC.DAL
         protected override string TableName { get => "PatientBasicInfo"; }
 
         protected override string PrimaryKey { get => "PATIENT_DBKEY"; }
+
+        protected override IDbContext Db => lessContext.db;
     }
 }

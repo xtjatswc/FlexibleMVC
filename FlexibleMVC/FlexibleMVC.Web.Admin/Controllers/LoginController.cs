@@ -7,6 +7,7 @@ using FlexibleMVC.LessBase.Ctrller;
 using System.Web.Mvc;
 using FlexibleMVC.Base.Jwt;
 using FlexibleMVC.LessBase.Filters.Permission;
+using FlexibleMVC.DAL.Admin.Permissions;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -24,6 +25,9 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
         public ActionResult CheckLogin()
         {
+            SysUserDal sysUserDal = flexibleContext.Get<SysUserDal>();
+            var aa = sysUserDal.GetModels();
+
             string loginName = Request.Form["loginName"];
             string password = Request.Form["password"];
 

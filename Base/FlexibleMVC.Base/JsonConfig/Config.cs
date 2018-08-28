@@ -101,9 +101,6 @@ namespace FlexibleMVC.Base.JsonConfig
                     User = new NullExceptionPreventer();
                 }
 
-                //从文件目录加载用户配置
-                var configPath = new DirectoryInfo(execution_path).Parent.FullName + @"\FlexibleMVC_Attachment\config\";
-                User = ApplyFromDirectory(configPath, User, true);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿{
   "DataBases": {
-	"db1": "Data Source=127.0.0.1;Password=cnis;User ID=cnis;DataBase=cnis;Port=3306;CharSet=utf8;allow zero datetime=true;Convert Zero Datetime=True"
+	"db1": "Data Source=127.0.0.1;Password=cnis;User ID=cnis;DataBase=cnis;Port=3306;CharSet=utf8;allow zero datetime=true;Convert Zero Datetime=True",
+	"db2": "Data Source={0}admin.db;Pooling=true;FailIfMissing=true;Version=3;{1}"
   }
 }

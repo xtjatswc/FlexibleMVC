@@ -1,4 +1,5 @@
 ﻿using FlexibleMVC.LessBase.Context;
+using FluentData;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -10,6 +11,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
         public LessFlexibleContext lessContext { get; set; }
         protected abstract string PrimaryKey { get; }
         protected abstract string TableName { get; }
+        protected abstract IDbContext Db { get; }
 
         public BaseDAL(LessFlexibleContext lessContext)
         {
@@ -18,7 +20,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         public int Delete(object id)
         {
-            int rowsAffected = lessContext.db.Delete(TableName)
+            int rowsAffected = Db.Delete(TableName)
                 .Where(PrimaryKey, id)
                 .Execute();
             return rowsAffected;
@@ -26,19 +28,19 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         public Model GetModel(object id)
         {
-            var model = lessContext.db.Sql(@"select * from " + TableName + " where " + PrimaryKey + " = @0", id).QuerySingle<Model>();
+            var model = Db.Sql(@"select * from " + TableName + " where " + PrimaryKey + " = @0", id).QuerySingle<Model>();
             return model;
         }
 
         public dynamic GetDynamicModel(object id)
         {
-            var model = lessContext.db.Sql(@"select * from " + TableName + " where " + PrimaryKey + " = @0", id).QuerySingle<dynamic>();
+            var model = Db.Sql(@"select * from " + TableName + " where " + PrimaryKey + " = @0", id).QuerySingle<dynamic>();
             return model;
         }
 
         public List<Model> GetModels(string where = "", string orderBy = "", int currentPage = 1, int itemsPerPage = 0)
         {
-            var builder = lessContext.db.Select<Model>("*").From(TableName);
+            var builder = Db.Select<Model>("*").From(TableName);
             if (!string.IsNullOrEmpty(where))
                 builder.Where(where);
 
@@ -57,7 +59,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         public List<dynamic> GetDynamicModels(string where = "", string orderBy = "", int currentPage = 1, int itemsPerPage = 0)
         {
-            var builder = lessContext.db.Select<dynamic>("*").From(TableName);
+            var builder = Db.Select<dynamic>("*").From(TableName);
             if (!string.IsNullOrEmpty(where))
                 builder.Where(where);
 
@@ -76,7 +78,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         public DataTable GetDataTable(string where = "", string orderBy = "", int currentPage = 1, int itemsPerPage = 0)
         {
-            var builder = lessContext.db.Select<DataTable>("*").From(TableName);
+            var builder = Db.Select<DataTable>("*").From(TableName);
             if (!string.IsNullOrEmpty(where))
                 builder.Where(where);
 
