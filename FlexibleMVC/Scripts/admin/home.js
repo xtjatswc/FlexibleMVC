@@ -1,7 +1,7 @@
 var home = {};
 
 $(function () {
-    //·ÀÖ¹Ò³ÃæºóÍË
+    //é˜²æ­¢é¡µé¢åé€€
     history.pushState(null, null, document.URL);
     window.addEventListener('popstate', function () {
         history.pushState(null, null, document.URL);

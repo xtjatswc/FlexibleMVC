@@ -1,11 +1,13 @@
 var login = {};
 
 $(function () {
-    //∑¿÷π“≥√Ê∫ÛÕÀ
+    //Èò≤Ê≠¢È°µÈù¢ÂêéÈÄÄ
     history.pushState(null, null, document.URL);
     window.addEventListener('popstate', function () {
         history.pushState(null, null, document.URL);
     });
+
+    $("#txtLoginName").val($.cookie('latestLoginName'));
 
     $("#btnLogin").click(function () {
 
@@ -23,6 +25,7 @@ $(function () {
 
 login.doLoginResult = function (data) {
     if (data.success) {
+        $.cookie('latestLoginName', $("#txtLoginName").val(), { expires: 7 });
         location.href = "/Admin_Home/Index?token=" + data.token;
     } else {
         alert(data.msg);
