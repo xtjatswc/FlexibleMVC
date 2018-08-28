@@ -18,7 +18,9 @@ namespace FlexibleMVC.Base.AcResult
         public override void ExecuteResult(ControllerContext context)
         {
             StringBuilder xmlJson = new StringBuilder();
-            string json = JsonConvert.SerializeObject(_data);
+            var jsonSerizlizerSetting = new JsonSerializerSettings();
+            jsonSerizlizerSetting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            string json = JsonConvert.SerializeObject(_data, jsonSerizlizerSetting);
 
             xmlJson.AppendLine(@"{
   '?" + RootName + @"': {

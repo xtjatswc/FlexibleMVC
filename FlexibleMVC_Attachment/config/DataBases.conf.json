@@ -1,6 +1,7 @@
 ﻿{
   "DataBases": {
-	"db1": "Data Source=127.0.0.1;Password=cnis;User ID=cnis;DataBase=cnis;Port=3306;CharSet=utf8;allow zero datetime=true;Convert Zero Datetime=True",
+	#mysql不用加allow zero datetime=true,不然从datatable、dynamic转换出来的json日期都是空的
+	"db1": "Data Source=127.0.0.1;Password=cnis;User ID=cnis;DataBase=cnis;Port=3306;CharSet=utf8;Convert Zero Datetime=True",
 	"db2": "Data Source={0}admin.db;Pooling=true;FailIfMissing=true;Version=3;{1}"
   }
 }
