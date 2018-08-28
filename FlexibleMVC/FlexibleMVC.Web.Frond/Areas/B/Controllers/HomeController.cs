@@ -34,7 +34,7 @@ namespace FlexibleMVC.Web.Frond.Areas.B.Controllers
 
         public JsonResult GetModels()
         {
-            var bll = flexibleContext.Get<PatientBll>();
+            var bll = flexibleContext.GetService<PatientBll>();
             var model = bll.patientDal.GetModel(13851);
             var models = bll.patientDal.GetDataTable();
 

@@ -93,7 +93,7 @@ namespace FlexibleMVC.Web.Areas.A.Controllers
 
         public ActionResult TestXml()
         {
-            var patientBll = flexibleContext.Get<PatientBll>();
+            var patientBll = flexibleContext.GetService<PatientBll>();
             var list = patientBll.patientDal.GetModels();
 
             var obj = new { department = "肿瘤内科", code = "0123", list = list };

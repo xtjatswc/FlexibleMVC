@@ -20,5 +20,11 @@ namespace FlexibleMVC.DAL.Admin.Permissions
         protected override string TableName => "SysUser";
 
         protected override IDbContext Db => lessContext.db1;
+
+        public SysUser GetUserByLoginName(string loginName)
+        {
+            var model = Db.Sql(@"select * from " + TableName + " where loginName = @0", loginName).QuerySingle<SysUser>();
+            return model;
+        }
     }
 }

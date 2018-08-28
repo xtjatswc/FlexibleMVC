@@ -11,10 +11,15 @@ namespace FlexibleMVC.Base.Context
     {
         public log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public virtual TService Get<TService>()
+        public virtual TService GetService<TService>()
         {
-            var T = DependencyResolver.Current.GetService<TService>();
-            return T;
+            return DependencyResolver.Current.GetService<TService>();
         }
+
+        public virtual IEnumerable<TService> GetServices<TService>()
+        {
+            return DependencyResolver.Current.GetServices<TService>();
+        }
+
     }
 }

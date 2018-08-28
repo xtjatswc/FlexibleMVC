@@ -59,16 +59,16 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
         [NonAction]
         private List<PatientBasicInfo> NonAction()
         {
-            var patientBll = flexibleContext.Get<PatientBll>();
+            var patientBll = flexibleContext.GetService<PatientBll>();
             var result = patientBll.patientDal.GetModels();
 
-            patientBll = flexibleContext.Get<PatientBll>();
+            patientBll = flexibleContext.GetService<PatientBll>();
             var list = patientBll.patientDal.GetModels();
 
-            var dal = flexibleContext.Get<PatientDal>();
+            var dal = flexibleContext.GetService<PatientDal>();
             list = dal.GetModels();
 
-            var foodDal = flexibleContext.Get<FoodDal>();
+            var foodDal = flexibleContext.GetService<FoodDal>();
             var obj = foodDal.GetModels();
 
             return list;

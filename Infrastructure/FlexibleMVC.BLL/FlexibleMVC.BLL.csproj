@@ -39,10 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Permissions\SysUserBll.cs" />
     <Compile Include="PatientBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
+      <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
+      <Name>FlexibleMVC.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FlexibleMVC.DAL\FlexibleMVC.DAL.csproj">
       <Project>{89ff48fc-fc2b-4e66-b8ba-5581f2838e88}</Project>
       <Name>FlexibleMVC.DAL</Name>

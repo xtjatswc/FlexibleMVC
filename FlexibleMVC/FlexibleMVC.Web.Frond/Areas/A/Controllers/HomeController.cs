@@ -59,7 +59,7 @@ namespace FlexibleMVC.Web.Frond.Areas.A.Controllers
 
         public ActionResult TestToJson()
         {
-            var dal = flexibleContext.Get<FoodDal>();
+            var dal = flexibleContext.GetService<FoodDal>();
             return Content(dal.GetModel(10002).ToJson());
         }
     }

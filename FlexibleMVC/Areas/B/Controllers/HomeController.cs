@@ -33,7 +33,7 @@ namespace FlexibleMVC.Web.Areas.B.Controllers
 
         public ActionResult GotoFrondA()
         {
-            var patientBll = flexibleContext.Get<PatientBll>();
+            var patientBll = flexibleContext.GetService<PatientBll>();
             ViewBag.name = "123";
             TempData["list"] = patientBll.patientDal.GetModels(currentPage:2,itemsPerPage:2);
 
