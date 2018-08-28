@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Base.Jwt
 {
@@ -71,7 +72,9 @@ namespace FlexibleMVC.Base.Jwt
         {
             //var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFpbTEiOjAsImNsYWltMiI6ImNsYWltMi12YWx1ZSJ9.8pwBI_HtXqI3UgQHQ_rDRnSQRxFL1SR8fbQoS-5kM5s";
 
-            JwtResult jwtResult = new JwtResult() { Success = true };
+            //JwtResult jwtResult = new JwtResult() { Success = true };
+            JwtResult jwtResult = DependencyResolver.Current.GetService<JwtResult>();
+            jwtResult.Success = true;
 
             if (string.IsNullOrWhiteSpace(token))
             {
@@ -88,7 +91,7 @@ namespace FlexibleMVC.Base.Jwt
                 IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
                 IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder);
 
-                var json = decoder.DecodeToObject(token, secret, verify: true);
+                var json = decoder.DecodeToObject<IDictionary<string, dynamic>>(token, secret, verify: true);
                 jwtResult.Result = json;
             }
             catch (TokenExpiredException)
@@ -114,7 +117,7 @@ namespace FlexibleMVC.Base.Jwt
     public class JwtResult
     {
         public bool Success { get; set; }
-        public IDictionary<string, object> Result { get; set; }
+        public IDictionary<string, dynamic> Result { get; set; }
         public string ErrInfo { get; set; }
     }
 

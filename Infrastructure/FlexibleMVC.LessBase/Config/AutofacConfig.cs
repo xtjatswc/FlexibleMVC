@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using FlexibleMVC.Base.Jwt;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +31,8 @@ namespace FlexibleMVC.LessBase.Config
             }
 
             //InstancePerRequest() 针对MVC的,或者说是ASP.NET的..每个请求单例
-            builder.RegisterType<FlexibleMVC.LessBase.Context.LessFlexibleContext>().InstancePerRequest();
+            builder.RegisterType<JwtResult>().InstancePerRequest();
+            builder.RegisterType<FlexibleMVC.LessBase.Context.LessFlexibleContext>().PropertiesAutowired().InstancePerRequest();
             builder.RegisterType<FlexibleMVC.Base.Context.FlexibleContext>().InstancePerRequest();
 
             //如果有Dal层的话，注册Dal层的组件
