@@ -1,5 +1,6 @@
 ﻿using FlexibleMVC.Base.AcResult;
 using FlexibleMVC.Base.Context;
+using FlexibleMVC.Base.Jwt;
 using System.Data;
 using System.Text;
 using System.Web.Mvc;
@@ -7,18 +8,25 @@ using System.Web.Routing;
 
 namespace FlexibleMVC.Base.Ctrller
 {
-    public class BaseController<T> : Controller
+    public class BaseController<T> : Controller, IBaseController
     {
         public T flexibleContext;
+        private FlexibleContext _flexibleContext;
+        public JwtResult Jwt
+        {
+            get => _flexibleContext.Jwt;
+            set => _flexibleContext.Jwt = value;
+        }
 
         public BaseController(T flexibleContext)
         {
             this.flexibleContext = flexibleContext;
+            _flexibleContext = flexibleContext as FlexibleContext;
         }
 
         protected override void Initialize(RequestContext requestContext)
         {
-            base.Initialize(requestContext);            
+            base.Initialize(requestContext);
         }
 
         #region 重写JsonResult

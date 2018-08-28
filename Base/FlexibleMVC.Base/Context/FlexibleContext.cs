@@ -1,4 +1,5 @@
-﻿using FluentData;
+﻿using FlexibleMVC.Base.Jwt;
+using FluentData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace FlexibleMVC.Base.Context
 {
     public class FlexibleContext
     {
+        public JwtResult Jwt { get; set; }
+
         public log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public virtual TService GetService<TService>()

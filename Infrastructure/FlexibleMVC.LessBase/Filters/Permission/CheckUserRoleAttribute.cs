@@ -1,4 +1,6 @@
-﻿using FlexibleMVC.Base.Jwt;
+﻿using FlexibleMVC.Base.Context;
+using FlexibleMVC.Base.Ctrller;
+using FlexibleMVC.Base.Jwt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,11 @@ namespace FlexibleMVC.LessBase.Filters.Permission
             JwtResult jwt = JwtUtil.Decode(token);
             if (jwt.Success)
             {
+                IBaseController baseController = filterContext.Controller as IBaseController;      
+                if (baseController != null)
+                {
+                    baseController.Jwt = jwt;
+                }
                 base.OnActionExecuting(filterContext);
                 return;
             }
