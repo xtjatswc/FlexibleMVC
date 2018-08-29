@@ -87,6 +87,7 @@
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SysUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootAreaRegistration.cs" />
   </ItemGroup>
@@ -103,6 +104,7 @@
     <Content Include="Views\Home\Part2.cshtml" />
     <Content Include="Views\Home\welcome.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
