@@ -42,5 +42,8 @@ namespace FlexibleMVC.LessBase.Config
             }
         }
 
+        public static string Copyright { get { return Global.LessBase.SystemInfo.Copyright; } }
+        public static string Version { get { return Global.LessBase.SystemInfo.Version; } }
+
     }
 }

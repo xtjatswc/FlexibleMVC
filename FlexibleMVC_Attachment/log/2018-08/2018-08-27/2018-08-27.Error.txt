@@ -1,0 +1,57 @@
+2018-08-27 11:37:45,634 [5] ERROR FlexibleMVC.Web.Filters.SystemErrorAttribute.OnException(F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\Filters\SystemErrorAttribute.cs:32) : System.TypeInitializationException: “FlexibleMVC.Base.JsonConfig.Config”的类型初始值设定项引发异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FlexibleMVC.Base.JsonConfig.Config.GetDefaultConfig(Assembly assembly) 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:行号 257
+   在 FlexibleMVC.Base.JsonConfig.Config..cctor() 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:行号 92
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FlexibleMVC.Base.JsonConfig.Config.get_Global()
+   在 FlexibleMVC.LessBase.Config.LessConfig.get_AdminLTE_Path() 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Infrastructure\FlexibleMVC.LessBase\Config\LessConfig.cs:行号 11
+   在 ASP._Page_FlexibleMVC_Web_Admin_Views_Home_Index_cshtml.Execute() 位置 f:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\FlexibleMVC.Web.Admin\Views\Home\Index.cshtml:行号 4
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.RunPage()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 FlexibleMVC.Base.AcResult.BaseViewResult.ExecuteResult(ControllerContext context) 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\AcResult\BaseViewResult.cs:行号 24
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2018-08-27 12:13:35,326 [63] ERROR FlexibleMVC.Web.Filters.SystemErrorAttribute.OnException(F:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\Filters\SystemErrorAttribute.cs:32) : System.TypeInitializationException: “FlexibleMVC.Base.JsonConfig.Config”的类型初始值设定项引发异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FlexibleMVC.Base.JsonConfig.Config.GetDefaultConfig(Assembly assembly) 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:行号 257
+   在 FlexibleMVC.Base.JsonConfig.Config..cctor() 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:行号 92
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FlexibleMVC.Base.JsonConfig.Config.get_Global()
+   在 FlexibleMVC.LessBase.Config.LessConfig.get_AdminLTE_Path() 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Infrastructure\FlexibleMVC.LessBase\Config\LessConfig.cs:行号 11
+   在 ASP._Page_FlexibleMVC_Web_Admin_Views_Home_Index_cshtml.Execute() 位置 f:\work\GitHub\mvc框架\FlexibleMVC\FlexibleMVC\FlexibleMVC.Web.Admin\Views\Home\Index.cshtml:行号 4
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.RunPage()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 FlexibleMVC.Base.AcResult.BaseViewResult.ExecuteResult(ControllerContext context) 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\AcResult\BaseViewResult.cs:行号 24
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2018-08-27 13:25:59,982 [10] ERROR FlexibleMVC.Base.JsonConfig.Config..cctor(F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:128) : System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 FlexibleMVC.Base.JsonConfig.Config.GetDefaultConfig(Assembly assembly) 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:行号 268
+   在 FlexibleMVC.Base.JsonConfig.Config..cctor() 位置 F:\work\GitHub\mvc框架\FlexibleMVC\Base\FlexibleMVC.Base\JsonConfig\Config.cs:行号 96

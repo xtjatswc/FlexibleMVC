@@ -25,7 +25,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
             SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
             SysUser sysUser = sysUserDal.GetUserByLoginName(Jwt.Result["user"].loginName.ToString());
 
-            return View();
+            return View(sysUser);
 		}
 
         public ActionResult Welcome()

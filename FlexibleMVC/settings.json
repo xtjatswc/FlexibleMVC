@@ -1,5 +1,9 @@
 ﻿{
   "LessBase": {
+	"SystemInfo": {
+	  "Copyright": "<a href='#'>FlexibleMVC</a>",
+	  "Version": "1.0.0"
+	},
     "JsonSettings": {
 	  #是否格式化Json
       "IsJsonFormat": true,
@@ -9,7 +13,6 @@
 	  "DateFormatString": "yyyy-MM-dd",
   	  #是否驼峰小写
 	  "CamelLowercase": true
-
     }
   }
 }
