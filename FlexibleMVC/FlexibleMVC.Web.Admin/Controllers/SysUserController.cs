@@ -24,7 +24,16 @@ namespace FlexibleMVC.Web.Admin.Controllers
         {
             SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
             var list = sysUserDal.GetModels();
-            return Json(list);
+
+            var obj = new
+            {
+                draw = 1,
+                recordsTotal = 57,
+                recordsFiltered = 57,
+                data = list
+            };
+
+            return Json(obj);
         }
 
     }

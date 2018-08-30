@@ -12,7 +12,7 @@
 	  #日期格式化
 	  "DateFormatString": "yyyy-MM-dd",
   	  #是否驼峰小写
-	  "CamelLowercase": true
+	  "CamelLowercase": false
     }
   }
 }

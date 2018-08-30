@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "用户管理";
+    <!-- DataTables -->
+    ViewBag.Scripts = new string[] { "plugins/datatables/jquery.dataTables.min.js", "plugins/datatables/dataTables.bootstrap.min.js" };
+
+    ViewBag.PageScript = "admin/user/userList.js";
+    string adminLTE = LessConfig.AdminLTE_Path;
+
+}
+<!-- DataTables -->
+<link href="@Url.Content(adminLTE + "plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css">
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Hover Data Table</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>登录名</th>
+                    <th>是否锁定</th>
+                    <th>手机</th>
+                    <th>邮箱</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Trident</td>
+                    <td>
+                        Internet
+                        Explorer 4.0
+                    </td>
+                    <td>Win 95+</td>
+                    <td> 4</td>
+                    <td>X</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>用户名</th>
+                    <th>登录名</th>
+                    <th>是否锁定</th>
+                    <th>手机</th>
+                    <th>邮箱</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
