@@ -60,7 +60,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
                 return _tableName;
             }
         }
-        protected IDbContext Db { get; set; }
+        public IDbContext Db { get; set; }
 
         public BaseDAL(LessFlexibleContext lessContext)
         {

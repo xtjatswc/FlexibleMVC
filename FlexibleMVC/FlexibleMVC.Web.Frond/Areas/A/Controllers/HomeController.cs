@@ -11,6 +11,7 @@ using System.Data;
 using System.Dynamic;
 using System.Web.Mvc;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Infrastructure;
 
 namespace FlexibleMVC.Web.Frond.Areas.A.Controllers
 {
@@ -59,7 +60,7 @@ namespace FlexibleMVC.Web.Frond.Areas.A.Controllers
 
         public ActionResult TestToJson()
         {
-            var dal = flexibleContext.GetService<FoodDal>();
+            var dal = new BaseDAL<ChinaFoodComposition>(flexibleContext) { Db = flexibleContext.db};
             return Content(dal.GetModel(10002).ToJson());
         }
     }

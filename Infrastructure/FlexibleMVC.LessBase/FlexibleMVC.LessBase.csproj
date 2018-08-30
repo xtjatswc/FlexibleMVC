@@ -70,7 +70,7 @@
     <Compile Include="Context\LessContextWebViewPage.cs" />
     <Compile Include="Context\LessFlexibleContext.cs" />
     <Compile Include="Infrastructure\IBaseDAL.cs" />
-    <Compile Include="Infrastructure\JsonResult.cs" />
+    <Compile Include="Infrastructure\JsonResultInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

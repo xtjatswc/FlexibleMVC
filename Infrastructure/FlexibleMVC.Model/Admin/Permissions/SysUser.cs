@@ -7,7 +7,7 @@ using System.Text;
 
 namespace FlexibleMVC.Model.Admin.Permissions
 {
-    public class LoginResult : JsonResult
+    public class LoginResult : JsonResultInfo
     {
         public string Token { get; set; }
     }

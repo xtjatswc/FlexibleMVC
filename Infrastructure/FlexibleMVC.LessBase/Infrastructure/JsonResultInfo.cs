@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FlexibleMVC.LessBase.Infrastructure
 {
-    public class JsonResult
+    public class JsonResultInfo
     {
         public bool Success { get; set; }
         public string Msg { get; set; }

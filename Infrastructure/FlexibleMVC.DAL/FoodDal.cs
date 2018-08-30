@@ -5,11 +5,11 @@ using FluentData;
 
 namespace FlexibleMVC.DAL
 {
-    public class FoodDal : BaseDAL<ChinaFoodComposition>
-    {
-        public FoodDal(LessFlexibleContext lessContext) : base(lessContext)
-        {
-            Db = lessContext.db;
-        }
-    }
+    //public class FoodDal : BaseDAL<ChinaFoodComposition>
+    //{
+    //    public FoodDal(LessFlexibleContext lessContext) : base(lessContext)
+    //    {
+    //        Db = lessContext.db;
+    //    }
+    //}
 }

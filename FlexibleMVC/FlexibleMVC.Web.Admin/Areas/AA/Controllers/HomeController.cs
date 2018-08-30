@@ -14,6 +14,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Infrastructure;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
 {
@@ -68,8 +69,8 @@ namespace FlexibleMVC.Web.Admin.Areas.AA.Controllers
             var dal = flexibleContext.GetService<PatientDal>();
             list = dal.GetModels();
 
-            var foodDal = flexibleContext.GetService<FoodDal>();
-            var obj = foodDal.GetModels();
+            var iBaseDal = new BaseDAL<ChinaFoodComposition>(flexibleContext) { Db = flexibleContext.db };
+            var obj = iBaseDal.GetModels();
 
             return list;
         }
