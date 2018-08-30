@@ -104,7 +104,7 @@
     <Content Include="Views\Home\Part2.cshtml" />
     <Content Include="Views\Home\welcome.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\SysUser\List.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Permissions\LoginResult.cs" />
     <Compile Include="Admin\Permissions\SysUser.cs" />
     <Compile Include="ChinaFoodComposition.cs" />
     <Compile Include="PatientBasicInfo.cs" />

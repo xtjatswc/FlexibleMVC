@@ -107,5 +107,14 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         }
 
+        public int Update(Model model)
+        {
+            int rowsAffected = Db.Update<Model>(TableName, model)
+            .AutoMap(x => (x as BaseModel).ID)
+            .Where(x => (x as BaseModel).ID)
+            .Execute();
+            return rowsAffected;
+        }
+
     }
 }

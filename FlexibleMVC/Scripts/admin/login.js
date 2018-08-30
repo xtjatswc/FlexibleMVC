@@ -24,10 +24,10 @@ $(function () {
 });
 
 login.doLoginResult = function (data) {
-    if (data.success) {
+    if (data.Success) {
         $.cookie('latestLoginName', $("#txtLoginName").val(), { expires: 7 });
-        location.href = "/Admin_Home/Index?token=" + data.token;
+        location.href = "/Admin_Home/Index?token=" + data.Token;
     } else {
-        alert(data.msg);
+        alert(data.Msg);
     }
 }

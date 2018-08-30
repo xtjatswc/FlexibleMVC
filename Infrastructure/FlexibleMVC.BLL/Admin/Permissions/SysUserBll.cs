@@ -36,6 +36,12 @@ namespace FlexibleMVC.BLL.Admin.Permissions
                 return loginResult;
             }
 
+            if (sysUser.IsLocked == 1)
+            {
+                loginResult.Msg = $"登录名{loginName}状态为锁定！";
+                return loginResult;
+            }
+
             if (sysUser.Password != password)
             {
                 loginResult.Msg = "密码错误！";
@@ -48,6 +54,11 @@ namespace FlexibleMVC.BLL.Admin.Permissions
             loginResult.Success = true;
             loginResult.Msg = "登录成功！";
             loginResult.Token = jwt;
+
+            //更新最近登录时间和登录次数
+            sysUser.LoginCount += 1;
+            sysUser.LastLoginTime = DateTime.Now;
+            sysUserDal.Update(sysUser);
 
             return loginResult;
         }

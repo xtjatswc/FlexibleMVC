@@ -8,6 +8,8 @@ namespace FlexibleMVC.LessBase.Infrastructure
 {
     public class BaseModel
     {
+        public String ID { get; set; }
+
         public string ToJson()
         {
             if (this == null)
