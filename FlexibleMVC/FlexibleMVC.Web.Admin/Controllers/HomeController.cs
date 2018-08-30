@@ -10,6 +10,7 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Model.Admin.Permissions;
 using FlexibleMVC.DAL.Admin.Permissions;
+using FlexibleMVC.LessBase.Const;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -21,12 +22,14 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
         [CheckUserRole(WhenNotPassedRedirectUrl = "/Admin_Login/Index")]
         public ActionResult Index()
-		{
+        {
             SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
-            SysUser sysUser = sysUserDal.GetUserByLoginName(Jwt.Result["user"].loginName.ToString());
+            SysUser sysUser = sysUserDal.GetUserByLoginName(Jwt.Result[BasicConst.JWT_USER].loginName.ToString());
+            if (sysUser == null)                
+                return RedirectPermanent("/Admin_Login/Index");
 
             return View(sysUser);
-		}
+        }
 
         public ActionResult Welcome()
         {

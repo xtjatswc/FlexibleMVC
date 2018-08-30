@@ -18,7 +18,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
 
         public SysUser GetUserByLoginName(string loginName)
         {
-            var model = Db.Sql(@"select * from " + TableName + " where IsDeleted = 0 and loginName = @0", loginName).QuerySingle<SysUser>();
+            var model = GetModel(new SysUser { LoginName = loginName, IsDeleted = 0 }, o => o.LoginName, o => o.IsDeleted);
             return model;
         }
 

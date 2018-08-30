@@ -1,5 +1,6 @@
 ﻿using FlexibleMVC.Base.Jwt;
 using FlexibleMVC.DAL.Admin.Permissions;
+using FlexibleMVC.LessBase.Const;
 using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.Model.Admin.Permissions;
 using System;
@@ -49,7 +50,7 @@ namespace FlexibleMVC.BLL.Admin.Permissions
             }
 
             var dict = new Dictionary<string, object>();
-            dict["user"] = new { loginName = loginName };
+            dict[BasicConst.JWT_USER] = new { loginName = loginName };
             string jwt = JwtUtil.Encode(dict, 24 * 60 * 60);
             loginResult.Success = true;
             loginResult.Msg = "登录成功！";

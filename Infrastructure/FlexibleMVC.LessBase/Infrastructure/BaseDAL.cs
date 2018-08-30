@@ -5,6 +5,7 @@ using FluentData;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
@@ -73,8 +74,21 @@ namespace FlexibleMVC.LessBase.Infrastructure
                 .Execute();
             return rowsAffected;
         }
-		
-        public Model GetModel(object id, params Expression<Func<Model, object>>[] ignorePropertyExpressions)
+
+        /// <summary>
+        /// 假删，更新表中的IsDeleted字段为1
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int DeleteExt(object id)
+        {
+            int rowsAffected = Db.Sql($"update {TableName} set IsDeleted = 1 where {PrimaryKey} = @0")
+            .Parameters(id)
+            .Execute();
+            return rowsAffected;
+        }
+
+        public Model GetModel(object id)
         {
             var model = Db.Sql(@"select * from " + TableName + " where " + PrimaryKey + " = @0", id).QuerySingle<Model>();
             return model;

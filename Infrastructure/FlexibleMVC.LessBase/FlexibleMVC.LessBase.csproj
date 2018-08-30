@@ -58,6 +58,7 @@
     <EmbeddedResource Include="Config\default.conf.json" />
     <Compile Include="Config\AutofacConfig.cs" />
     <Compile Include="Config\LessConfig.cs" />
+    <Compile Include="Const\Basic.cs" />
     <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Filters\Permission\CheckUserRoleAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\PrimaryKeyAttribute.cs" />
@@ -82,5 +83,6 @@
       <Name>FluentData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
