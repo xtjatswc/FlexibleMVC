@@ -36,10 +36,6 @@
     <Reference Include="Autofac.Integration.Mvc">
       <HintPath>..\..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FluentData.3.0.1.0\lib\FluentData.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -64,6 +60,8 @@
     <Compile Include="Config\LessConfig.cs" />
     <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Filters\Permission\CheckUserRoleAttribute.cs" />
+    <Compile Include="Infrastructure\Attribute\PrimaryKeyAttribute.cs" />
+    <Compile Include="Infrastructure\Attribute\TableNameAttribute.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
     <Compile Include="Infrastructure\BaseDAL.cs" />
     <Compile Include="Infrastructure\BaseModel.cs" />
@@ -78,6 +76,10 @@
     <ProjectReference Include="..\..\Base\FlexibleMVC.Base\FlexibleMVC.Base.csproj">
       <Project>{4dd4ac57-fbc1-4625-9f9a-5b212612ccbb}</Project>
       <Name>FlexibleMVC.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\FluentData\FluentData.csproj">
+      <Project>{b5ae821b-7728-49b3-9119-3bbc4c8e58e9}</Project>
+      <Name>FluentData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

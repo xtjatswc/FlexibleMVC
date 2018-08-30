@@ -10,12 +10,8 @@ namespace FlexibleMVC.DAL
     {
         public PatientDal(LessFlexibleContext lessContext) : base(lessContext)
         {
+            Db = lessContext.db;
         }
 
-        protected override string TableName { get => "PatientBasicInfo"; }
-
-        protected override string PrimaryKey { get => "PATIENT_DBKEY"; }
-
-        protected override IDbContext Db => lessContext.db;
     }
 }

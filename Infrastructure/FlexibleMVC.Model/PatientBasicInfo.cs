@@ -1,10 +1,12 @@
 ﻿using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Infrastructure.Attribute;
 using System;
 
 namespace FlexibleMVC.Model
 {
     public class PatientBasicInfo : BaseModel
     {
+        [PrimaryKey()]
         public Int64 PATIENT_DBKEY { get; set; }
         public String PatientNo { get; set; }
         public String PatientName { get; set; }

@@ -1,17 +1,65 @@
-﻿using FlexibleMVC.LessBase.Context;
+﻿using FlexibleMVC.Base.Tools;
+using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Infrastructure.Attribute;
 using FluentData;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace FlexibleMVC.LessBase.Infrastructure
 {
-    public abstract class BaseDAL<Model> : IBaseDAL
+    public class BaseDAL<Model> : IBaseDAL
     {
         public LessFlexibleContext lessContext { get; set; }
-        protected abstract string PrimaryKey { get; }
-        protected abstract string TableName { get; }
-        protected abstract IDbContext Db { get; }
+
+        private string _primaryKey;
+        protected string PrimaryKey
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_primaryKey))
+                    return _primaryKey;
+
+                PropertyInfo[] peroperties = typeof(Model).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+                foreach (PropertyInfo property in peroperties)
+                {
+                    object[] objs = property.GetCustomAttributes(typeof(PrimaryKeyAttribute), true);
+                    if (objs.Length > 0)
+                    {
+                        _primaryKey = property.Name;
+                        return _primaryKey;
+                    }
+                }
+
+                throw new Exception($"实体类{TableName}未设置主键");
+            }
+        }
+        private string _tableName;
+        protected string TableName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_tableName))
+                {
+                    object[] objs = typeof(Model).GetCustomAttributes(typeof(TableNameAttribute), true);
+                    if (objs.Length > 0)
+                    {
+                        _tableName = (objs[0] as TableNameAttribute).Description;
+                    }
+                    else
+                    {
+                        _tableName = typeof(Model).Name;
+                    }
+                }
+
+                return _tableName;
+            }
+        }
+        protected IDbContext Db { get; set; }
 
         public BaseDAL(LessFlexibleContext lessContext)
         {
@@ -25,10 +73,26 @@ namespace FlexibleMVC.LessBase.Infrastructure
                 .Execute();
             return rowsAffected;
         }
-
-        public Model GetModel(object id)
+		
+        public Model GetModel(object id, params Expression<Func<Model, object>>[] ignorePropertyExpressions)
         {
             var model = Db.Sql(@"select * from " + TableName + " where " + PrimaryKey + " = @0", id).QuerySingle<Model>();
+            return model;
+        }
+
+        public Model GetModel(Model condition, params Expression<Func<Model, object>>[] ignorePropertyExpressions)
+        {
+            string sWhere = " 1=1 ";
+            var parameters = new List<object>();
+            for (int i = 0; i < ignorePropertyExpressions.Length; i++)
+            {
+                var ignorePropertyExpression = ignorePropertyExpressions[i];
+                var item = new PropertyExpressionParser<Model>(condition, ignorePropertyExpression);
+                sWhere += $" and {item.Name} = @{i} ";
+                parameters.Add(item.Value);
+            }
+
+            var model = Db.Sql(@"select * from " + TableName + " where " + sWhere, parameters.ToArray()).QuerySingle<Model>();
             return model;
         }
 
@@ -97,7 +161,7 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         public string GenerateEntity()
         {
-            DataTable tbl = GetDataTable(where:"1=2");
+            DataTable tbl = GetDataTable(where: "1=2");
             StringBuilder sb = new StringBuilder();
             foreach (DataColumn column in tbl.Columns)
             {
@@ -107,13 +171,26 @@ namespace FlexibleMVC.LessBase.Infrastructure
 
         }
 
-        public int Update(Model model)
+        public int Update(Model model, Expression<Func<Model, object>> expression)
         {
             int rowsAffected = Db.Update<Model>(TableName, model)
-            .AutoMap(x => (x as BaseModel).ID)
-            .Where(x => (x as BaseModel).ID)
+            .AutoMap(expression)
+            .Where(expression)
             .Execute();
             return rowsAffected;
+        }
+
+        public int Insert(Model model)
+        {
+            int rowsAffected = Db.Insert<Model>(TableName, model).Execute();
+            return rowsAffected;
+        }
+
+        public object InsertReturnLastId(Model model, Expression<Func<Model, object>> expression)
+        {
+            return Db.Insert<Model>(TableName, model)
+            .AutoMap(expression)
+            .ExecuteReturnLastId<object>();
         }
 
     }

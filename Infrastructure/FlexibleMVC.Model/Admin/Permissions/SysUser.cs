@@ -1,4 +1,5 @@
 ﻿using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Infrastructure.Attribute;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace FlexibleMVC.Model.Admin.Permissions
         public string Token { get; set; }
     }
 
+    [TableName("SysUser")]
     public class SysUser : BaseModel
     {
         public String UserName { get; set; }
@@ -21,7 +23,6 @@ namespace FlexibleMVC.Model.Admin.Permissions
         public String Email { get; set; }
         public DateTime LastLoginTime { get; set; }
         public Int64 LoginCount { get; set; }
-        public Int64 IsDeleted { get; set; }
         public String Photo { get; set; }
         public Int64 IsAdmin { get; set; }
     }

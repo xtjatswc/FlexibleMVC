@@ -9,12 +9,7 @@ namespace FlexibleMVC.DAL
     {
         public FoodDal(LessFlexibleContext lessContext) : base(lessContext)
         {
+            Db = lessContext.db;
         }
-
-        protected override string TableName { get => "chinafoodcomposition"; }
-
-        protected override string PrimaryKey { get => "ChinaFoodComposition_DBKey"; }
-
-        protected override IDbContext Db => lessContext.db;
     }
 }

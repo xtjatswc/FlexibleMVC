@@ -58,7 +58,7 @@ namespace FlexibleMVC.BLL.Admin.Permissions
             //更新最近登录时间和登录次数
             sysUser.LoginCount += 1;
             sysUser.LastLoginTime = DateTime.Now;
-            sysUserDal.Update(sysUser);
+            sysUserDal.Update(sysUser, o => sysUser.ID);
 
             return loginResult;
         }

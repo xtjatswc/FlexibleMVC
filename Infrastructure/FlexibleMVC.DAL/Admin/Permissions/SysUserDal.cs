@@ -13,13 +13,8 @@ namespace FlexibleMVC.DAL.Admin.Permissions
     {
         public SysUserDal(LessFlexibleContext lessContext) : base(lessContext)
         {
+            Db = lessContext.db1;
         }
-
-        protected override string PrimaryKey => "ID";
-
-        protected override string TableName => "SysUser";
-
-        protected override IDbContext Db => lessContext.db1;
 
         public SysUser GetUserByLoginName(string loginName)
         {

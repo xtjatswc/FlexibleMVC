@@ -1,10 +1,13 @@
 ﻿using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Infrastructure.Attribute;
 using System;
+using System.ComponentModel;
 
 namespace FlexibleMVC.Model
 {
     public class ChinaFoodComposition : BaseModel
     {
+        [PrimaryKey()]
         public Int32 ChinaFoodComposition_DBKey { get; set; }
         public Int32 FoodCategory_DBKey { get; set; }
         public String FoodCode { get; set; }
