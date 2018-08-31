@@ -72,16 +72,21 @@ namespace FlexibleMVC.Model.Component
         {
             get
             {
-                return _columns != null && _columns.Any() && _order != null && _order.Any()
+                var orderBy = _columns != null && _columns.Any() && _order != null && _order.Any()
                     ? _columns[_order[0].Column].Data
                     : string.Empty;
+
+                if (string.IsNullOrEmpty(orderBy))
+                    return "";
+
+                return orderBy + " " + OrderDir;
             }
         }
 
         /// <summary>
         ///     排序模式
         /// </summary>
-        public DataTablesOrderDir OrderDir
+        private DataTablesOrderDir OrderDir
         {
             get
             {

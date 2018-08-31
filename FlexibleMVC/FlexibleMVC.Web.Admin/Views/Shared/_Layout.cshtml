@@ -78,7 +78,6 @@
     @*<script src="@Url.Content(adminLTE + "dist/js/pages/dashboard2.js")" type="text/javascript"></script>*@
     <!-- AdminLTE for demo purposes -->
     <script src="@Url.Content(adminLTE + "dist/js/demo.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/admin/util.js")" type="text/javascript"></script>
 
     @{
         foreach (var js in ViewBag.Scripts)
@@ -86,6 +85,8 @@
             <script src="@Url.Content(adminLTE + js)" type="text/javascript"></script>
         }
     }
+
+    <script src="@Url.Content("~/Scripts/admin/util.js")" type="text/javascript"></script>
 
     <!-- page js -->
     <script src="@Url.Content("~/Scripts/" + ViewBag.PageScript)" type="text/javascript"></script>
