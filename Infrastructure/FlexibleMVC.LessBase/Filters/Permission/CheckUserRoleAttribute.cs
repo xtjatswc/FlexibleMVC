@@ -1,6 +1,8 @@
-﻿using FlexibleMVC.Base.Context;
+﻿using FlexibleMVC.Base.AcResult;
+using FlexibleMVC.Base.Context;
 using FlexibleMVC.Base.Ctrller;
 using FlexibleMVC.Base.Jwt;
+using FlexibleMVC.LessBase.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +37,8 @@ namespace FlexibleMVC.LessBase.Filters.Permission
             {
                 if (string.IsNullOrEmpty(WhenNotPassedRedirectUrl))
                 {
-                    filterContext.Result = new ContentResult() { Content = jwt.ErrInfo };
+                    JsonResultInfo result = new JsonResultInfo { Success = false, Msg = jwt.ErrInfo };
+                    filterContext.Result = new BaseJsonResult() { Data = result };
                 }
                 else
                 {
