@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlexibleMVC.Base.JsonConfig;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,12 +29,36 @@ namespace FlexibleMVC.Model.Component
         /// <summary>
         ///     数据列
         /// </summary>
-        public List<DataTablesColumns> Columns { get; set; }
+        private List<DataTablesColumns> _columns;
+        public List<Dictionary<string, string>> Columns
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                string json = JsonUtil.ToJson(value);
+                _columns = JsonUtil.ToObj<List<DataTablesColumns>>(json);
+            }
+        }
 
         /// <summary>
         ///     排序
         /// </summary>
-        public List<DataTablesOrder> Order { get; set; }
+        private List<DataTablesOrder> _order;
+        public List<Dictionary<string, string>> Order
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                string json = JsonUtil.ToJson(value);
+                _order = JsonUtil.ToObj<List<DataTablesOrder>>(json);
+            }
+        }
 
         /// <summary>
         ///     搜索
@@ -47,8 +72,8 @@ namespace FlexibleMVC.Model.Component
         {
             get
             {
-                return Columns != null && Columns.Any() && Order != null && Order.Any()
-                    ? Columns[Order[0].Column].Data
+                return _columns != null && _columns.Any() && _order != null && _order.Any()
+                    ? _columns[_order[0].Column].Data
                     : string.Empty;
             }
         }
@@ -60,8 +85,8 @@ namespace FlexibleMVC.Model.Component
         {
             get
             {
-                return Order != null && Order.Any()
-                    ? Order[0].Dir
+                return _order != null && _order.Any()
+                    ? _order[0].Dir
                     : DataTablesOrderDir.Desc;
             }
         }

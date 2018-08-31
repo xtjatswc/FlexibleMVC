@@ -25,7 +25,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
         public ActionResult GetListJson(DataTablesParameters query)
         {
             SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
-            var list = sysUserDal.GetModels();
+            var list = sysUserDal.GetModels(orderBy:query.OrderBy + " " + query.OrderDir);
 
             var resultJson = new DataTablesResult<SysUser>(query.Draw, 4, 4, list);
             return Json(resultJson);

@@ -38,6 +38,11 @@ namespace FlexibleMVC.Base.JsonConfig
             return json;
         }
 
+        public static T ToObj<T>(string json)
+        {
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+
         public static string FormatJsonString(string str)
         {
             //格式化json字符串
