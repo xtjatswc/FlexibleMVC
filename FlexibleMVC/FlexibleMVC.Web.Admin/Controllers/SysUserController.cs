@@ -1,6 +1,8 @@
 ﻿using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.Model.Admin.Permissions;
+using FlexibleMVC.Model.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +22,13 @@ namespace FlexibleMVC.Web.Admin.Controllers
             return View();
         }
 
-        public ActionResult GetListJson()
+        public ActionResult GetListJson(DataTablesParameters query)
         {
             SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
             var list = sysUserDal.GetModels();
 
-            var obj = new
-            {
-                draw = 1,
-                recordsTotal = 57,
-                recordsFiltered = 57,
-                data = list
-            };
-
-            return Json(obj);
+            var resultJson = new DataTablesResult<SysUser>(query.Draw, 4, 4, list);
+            return Json(resultJson);
         }
 
     }

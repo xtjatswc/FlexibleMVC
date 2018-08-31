@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Admin\Permissions\SysUser.cs" />
     <Compile Include="ChinaFoodComposition.cs" />
+    <Compile Include="Component\DataTables.cs" />
     <Compile Include="PatientBasicInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
