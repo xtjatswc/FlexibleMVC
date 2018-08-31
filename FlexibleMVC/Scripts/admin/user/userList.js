@@ -41,10 +41,20 @@ $.extend($.fn.dataTable.defaults, {
 });
 
 $(function () {
-    $('#example2').DataTable({
+    // Setup - add a text input to each footer cell
+    $('#example2 tfoot th').each(function () {
+        var title = $('#example2 thead th').eq($(this).index()).text();
+        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    });
+
+    var table = $('#example2').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": "/Admin_SysUser/GetListJson?token=" + util.urlParams.token,
+        "ajax": {
+            "url": "/Admin_SysUser/GetListJson?token=" + util.urlParams.token,
+            "type": "POST",
+            "datatype": "json"
+        },
         columns: [
             { data: 'ID', "visible": false },
             { data: 'UserName' },
@@ -71,6 +81,16 @@ $(function () {
                 }
             }
         ]
+    });
+
+    // Apply the search
+    table.columns().eq(0).each(function (colIdx) {
+        $('input', table.column(colIdx).footer()).on('keyup change', function () {
+            table
+                .column(colIdx)
+                .search(this.value)
+                .draw();
+        });
     });
 
 });
