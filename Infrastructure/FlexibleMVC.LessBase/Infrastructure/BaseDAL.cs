@@ -116,6 +116,17 @@ namespace FlexibleMVC.LessBase.Infrastructure
             return model;
         }
 
+        public int GetCount(string where = "")
+        {
+            if (!string.IsNullOrEmpty(where))
+            {
+                where = " and " + where;
+            }
+            int number = Db.Sql($"select count(*) from {TableName} where 1=1 {where}").QuerySingle<int>();
+
+            return number;
+        }
+
         public List<Model> GetModels(string where = "", string orderBy = "", int currentPage = 1, int itemsPerPage = 0)
         {
             var builder = Db.Select<Model>("*").From(TableName);
