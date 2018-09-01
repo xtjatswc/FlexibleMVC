@@ -28,16 +28,19 @@ $.extend($.fn.dataTable.defaults, {
     "processing": true,//加载中
     "serverSide": true,//服务器模式（★★★★★重要，本文主要介绍服务器模式）
     "searching": false,//datatables自带的搜索
-    "scrollX": false,//X滑动条
+    //"scrollX": false,//X滑动条 开启此属性后，横向滚动条显示会让人感觉很别扭
     "pagingType": "full_numbers",//分页模式
     "stateSave": true,//保存界面状态，页面刷新后依然是上次的界面
-    "scrollY": "200px",
-    "scrollCollapse": true,//垂直滚动条
+    //"scrollY": "200px",
+    //"scrollCollapse": false,//垂直滚动条
     "paging": true,//显示分页
     "ajax": {
         "type": "POST",//（★★★★★重要）
         //"contentType": "application/json; charset=utf-8" //被这行代码坑惨了，post提交时，老用Rayload而不用Form，后来看了官网示例对比才发现的
     },
+    "autoWidth": false,
+    "lengthChange": true,//每页显示多少条数据
+    "info": true,//显示第 x 至 x 项结果，共 x 项
     "language": {
         "processing": "加载中...",
         "lengthMenu": "每页显示 _MENU_ 条数据",

@@ -33,7 +33,7 @@ $(function () {
             },
             {
                 "targets": -1,//-1表示最后一行
-                "width": "100px",
+                //"width": "100px",
                 render: function (data, type, full, meta) {
                     return '<a class="btn btn-sm btn-info" href="javascript:;">设置<i class="fa fa-cogs"></i></a>  ' +
                         '<a class="btn btn-sm btn-info" href="javascript:;">删除<i class="fa fa-trash"></i></a>';
@@ -43,13 +43,13 @@ $(function () {
     });
 
     // Apply the search
-    table.columns().eq(0).each(function (colIdx) {
-        $('input', table.column(colIdx).footer()).on('keyup change', function () {
-            table
-                .column(colIdx)
-                .search(this.value)
-                .draw();
-        });
-    });
+    //table.columns().eq(0).each(function (colIdx) {
+    //    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+    //        table
+    //            .column(colIdx)
+    //            .search(this.value)
+    //            .draw();
+    //    });
+    //});
 
 });

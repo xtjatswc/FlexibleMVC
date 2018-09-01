@@ -1,48 +1,102 @@
 ﻿@{
     ViewBag.Title = "用户管理";
-    <!-- DataTables -->
-    ViewBag.Scripts = new string[] { "plugins/datatables/jquery.dataTables.min.js", "plugins/datatables/dataTables.bootstrap.min.js" };
-
-    ViewBag.PageScript = "admin/user/userList.js";
+    Layout = null;
     string adminLTE = LessConfig.AdminLTE_Path;
 
 }
-<!-- DataTables -->
-<link href="@Url.Content(adminLTE + "plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ViewBag.Title</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link href="@Url.Content(adminLTE + "bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
+    <link href="@Url.Content(adminLTE + "dist/css/font-awesome.min.css")" rel="stylesheet" type="text/css">
+    <!-- Ionicons -->
+    <link href="@Url.Content(adminLTE + "dist/css/ionicons.min.css")" rel="stylesheet" type="text/css">
+    <!-- DataTables -->
+    <link href="@Url.Content(adminLTE + "plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css">
+    <!-- Theme style -->
+    <link href="@Url.Content(adminLTE + "dist/css/AdminLTE.min.css")" rel="stylesheet" type="text/css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="@Url.Content(adminLTE + "dist/css/skins/all-skins.min.css")" rel="stylesheet" type="text/css">
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Hover Data Table</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-        <table id="example2" class="display">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>用户名</th>
-                    <th>登录名</th>
-                    <th>是否锁定</th>
-                    <th>手机</th>
-                    <th>邮箱</th>
-                    <th  data-orderable="false">操作</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>用户名</th>
-                    <th>登录名</th>
-                    <th>是否锁定</th>
-                    <th>手机</th>
-                    <th>邮箱</th>
-                    <th>操作</th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <!-- /.box-body -->
-</div>
-<!-- /.box -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="@Url.Content(adminLTE + "html5shiv/html5shiv.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content(adminLTE + "html5shiv/respond.min.js")" type="text/javascript"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Hover Data Table</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-striped"  style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>用户名</th>
+                                    <th>登录名</th>
+                                    <th>是否锁定</th>
+                                    <th>手机</th>
+                                    <th>邮箱</th>
+                                    <th data-orderable="false">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>用户名</th>
+                                    <th>登录名</th>
+                                    <th>是否锁定</th>
+                                    <th>手机</th>
+                                    <th>邮箱</th>
+                                    <th data-orderable="false">操作</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+    <!-- jQuery 2.2.3 -->
+    <script src="@Url.Content(adminLTE + "plugins/jQuery/jquery-2.2.3.min.js")" type="text/javascript"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="@Url.Content(adminLTE + "bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+    <!-- DataTables -->
+    <script src="@Url.Content(adminLTE + "plugins/datatables/jquery.dataTables.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content(adminLTE + "plugins/datatables/dataTables.bootstrap.min.js")" type="text/javascript"></script>
+    <!-- SlimScroll -->
+    <script src="@Url.Content(adminLTE + "plugins/slimScroll/jquery.slimscroll.min.js")" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src="@Url.Content(adminLTE + "plugins/fastclick/fastclick.js")" type="text/javascript"></script>
+    <!-- AdminLTE App -->
+    <script src="@Url.Content(adminLTE + "dist/js/app.min.js")" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="@Url.Content(adminLTE + "dist/js/demo.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/admin/util.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/admin/user/userList.js")" type="text/javascript"></script>
+</body>
+</html>
