@@ -3,11 +3,15 @@ var userList = {};
 $(function () {
     // Setup - add a text input to each footer cell
     $('#example2 tfoot th').each(function () {
-        var title = $('#example2 thead th').eq($(this).index()).text();
-        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+        var index = $(this).index();
+        if(index == 1 || index == 2){
+            var title = $('#example2 thead th').eq(index).text();
+            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+        }
     });
 
     var table = $('#example2').DataTable({
+        "dom": 'lBrtip',//隐藏全局搜索框
         "processing": true,
         "serverSide": true,
         "ajax": {
@@ -17,12 +21,14 @@ $(function () {
         columns: [
             { data: 'ID', "visible": false },
             { data: 'UserName' },
-            { data: 'LoginName', "bSortable": false },
+            { data: 'LoginName' },
             { data: 'IsLocked' },
-            { data: 'Mobile' },
-            { data: 'Email' },
+            { data: 'Mobile', "bSortable": false},
+            { data: 'Email', "bSortable": false},
             { data: null }
         ],
+        // 默认排序字段
+        "order": [[2, "desc"]],
         "columnDefs": [
             {
                 "targets": [3],
@@ -43,13 +49,13 @@ $(function () {
     });
 
     // Apply the search
-    //table.columns().eq(0).each(function (colIdx) {
-    //    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-    //        table
-    //            .column(colIdx)
-    //            .search(this.value)
-    //            .draw();
-    //    });
-    //});
+    table.columns().eq(0).each(function (colIdx) {
+        $('input', table.column(colIdx).footer()).on('keyup change', function () {
+            table
+                .column(colIdx)
+                .search(this.value)
+                .draw();
+        });
+    });
 
 });

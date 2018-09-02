@@ -27,10 +27,10 @@ util.urlToObject = function (url) {
 $.extend($.fn.dataTable.defaults, {
     "processing": true,//加载中
     "serverSide": true,//服务器模式（★★★★★重要，本文主要介绍服务器模式）
-    "searching": false,//datatables自带的搜索
+    "searching": true,//datatables自带的搜索
     //"scrollX": false,//X滑动条 开启此属性后，横向滚动条显示会让人感觉很别扭
     "pagingType": "full_numbers",//分页模式
-    "stateSave": true,//保存界面状态，页面刷新后依然是上次的界面
+    //"stateSave": true,//保存界面状态，页面刷新后依然是上次的界面
     //"scrollY": "200px",
     //"scrollCollapse": false,//垂直滚动条
     "paging": true,//显示分页
