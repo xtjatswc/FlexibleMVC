@@ -798,6 +798,7 @@
     <script src="../dist/js/bootstrap-tab.js"></script>
     <script src="../dist/js/sidebarMenu.js"></script>-->
 
+    <script src="@Url.Content("~/Scripts/admin/util.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/admin/home.js")" type="text/javascript"></script>
 
     <script type="text/javascript">
@@ -871,20 +872,21 @@
         var menus = [
             {
                 id: "9000",
-                text: "header",
+                text: "系统菜单",
                 icon: "",
                 isHeader: true
             },
             {
                 id: "9001",
-                text: "UI Elements",
+                text: "系统权限",
                 icon: "fa fa-laptop",
+                isOpen: true,
                 children: [
                     {
                         id: "90011",
-                        text: "buttons",
-                        icon: "fa fa-circle-o",
-                        url: "UI/buttons_iframe.html",
+                        text: "用户管理",
+                        icon: "fa fa-users",
+                        url: "../Admin_sysuser/list?token=" + util.urlParams.token,
                         targetType: "iframe-tab"
                     },
                     {
