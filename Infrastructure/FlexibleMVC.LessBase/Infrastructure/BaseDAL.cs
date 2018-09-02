@@ -120,9 +120,9 @@ namespace FlexibleMVC.LessBase.Infrastructure
         {
             if (!string.IsNullOrEmpty(where))
             {
-                where = " and " + where;
+                where = " where " + where;
             }
-            int number = Db.Sql($"select count(*) from {TableName} where 1=1 {where}").QuerySingle<int>();
+            int number = Db.Sql($"select count(*) from {TableName} {where}").QuerySingle<int>();
 
             return number;
         }
