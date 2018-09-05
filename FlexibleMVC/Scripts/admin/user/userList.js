@@ -2,13 +2,13 @@ var userList = {};
 
 $(function () {
     // Setup - add a text input to each footer cell
-    $('#example2 tfoot th').each(function () {
-        var index = $(this).index();
-        if(index == 1 || index == 2){
-            var title = $('#example2 thead th').eq(index).text();
-            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-        }
-    });
+    //$('#example2 tfoot th').each(function () {
+    //    var index = $(this).index();
+    //    if(index == 1 || index == 2){
+    //        var title = $('#example2 thead th').eq(index).text();
+    //        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    //    }
+    //});
 
     var table = $('#example2').DataTable({
         "dom": 'lBrtip',//隐藏全局搜索框
@@ -17,10 +17,14 @@ $(function () {
         "ajax": {
             "url": "/Admin_SysUser/GetListJson?token=" + util.urlParams.token,
             "type": "POST",
+            "data": function (d) {
+                util.removeRedundantParams(d);
+                d.UserName = "乔'";
+            },
         },
         columns: [
             { data: 'ID', "visible": false },
-            { data: 'UserName' },
+            { data: 'UserName', name:'用户名' },
             { data: 'LoginName' },
             { data: 'IsLocked' },
             { data: 'Mobile', "bSortable": false},
@@ -49,13 +53,13 @@ $(function () {
     });
 
     // Apply the search
-    table.columns().eq(0).each(function (colIdx) {
-        $('input', table.column(colIdx).footer()).on('keyup change', function () {
-            table
-                .column(colIdx)
-                .search(this.value)
-                .draw();
-        });
-    });
+    //table.columns().eq(0).each(function (colIdx) {
+    //    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+    //        table
+    //            .column(colIdx)
+    //            .search(this.value)
+    //            .draw();
+    //    });
+    //});
 
 });

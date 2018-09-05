@@ -71,6 +71,7 @@
     <Compile Include="Context\LessFlexibleContext.cs" />
     <Compile Include="Infrastructure\IBaseDAL.cs" />
     <Compile Include="Infrastructure\JsonResultInfo.cs" />
+    <Compile Include="Extension\HttpRequestExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

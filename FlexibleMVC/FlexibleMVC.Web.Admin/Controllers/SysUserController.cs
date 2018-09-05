@@ -1,6 +1,7 @@
 ﻿using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.Model.Admin.Permissions;
 using FlexibleMVC.Model.Component;
 using System.Web.Mvc;
@@ -18,21 +19,17 @@ namespace FlexibleMVC.Web.Admin.Controllers
             return View();
         }
 
-        public ActionResult GetListJson()
+        public ActionResult GetListJson(DataTablesParameters query)
         {
-            DataTablesParameters query = DataTablesParameters.GetParameters(Request.Form);
+            string UserName = Request.GetSqlParamer("UserName");
+            string LoginName = Request.GetSqlParamer("LoginName"); 
 
             string sWhere = " 1=1 ";
-            foreach(var c in query.WhereEach())
-            {
-                switch (c.Data)
-                {
-                    case "UserName":
-                    case "LoginName":
-                        sWhere += $" and {c.Data} like '{c.Search.Value}%'";
-                        break;
-                }
-            }
+            if (!string.IsNullOrWhiteSpace(UserName))
+                sWhere += $" and UserName like '{UserName}%'";
+
+            if (!string.IsNullOrWhiteSpace(LoginName))
+                sWhere += $" and LoginName like '{LoginName}%'";
 
             SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
             var list = sysUserDal.GetModels(
