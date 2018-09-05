@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using System.Web.Mvc;
+using FlexibleMVC.Base.JsonConfig;
 
 namespace FlexibleMVC.Base.Jwt
 {
@@ -74,12 +75,10 @@ namespace FlexibleMVC.Base.Jwt
 
             //JwtResult jwtResult = new JwtResult() { Success = true };
             JwtResult jwtResult = DependencyResolver.Current.GetService<JwtResult>();
-            jwtResult.Success = true;
 
             if (string.IsNullOrWhiteSpace(token))
             {
-                jwtResult.Success = false;
-                jwtResult.ErrInfo = "Token not provided";
+                jwtResult.Msg = "Token not provided";
                 return jwtResult;
             }
 
@@ -93,32 +92,29 @@ namespace FlexibleMVC.Base.Jwt
 
                 var json = decoder.DecodeToObject<IDictionary<string, dynamic>>(token, secret, verify: true);
                 jwtResult.Result = json;
+                jwtResult.Success = true;
             }
             catch (TokenExpiredException)
             {
-                jwtResult.Success = false;
-                jwtResult.ErrInfo = "Token has expired";
+                jwtResult.Msg = "Token has expired";
+                jwtResult.Timeout = true;
             }
             catch (SignatureVerificationException)
             {
-                jwtResult.Success = false;
-                jwtResult.ErrInfo = "Token has invalid signature";
+                jwtResult.Msg = "Token has invalid signature";
             }
             catch (Exception ex)
             {
-                jwtResult.Success = false;
-                jwtResult.ErrInfo = ex.Message;
+                jwtResult.Msg = ex.Message;
             }
 
             return jwtResult;
         }
     }
 
-    public class JwtResult
+    public class JwtResult : JsonResultInfo
     {
-        public bool Success { get; set; }
         public IDictionary<string, dynamic> Result { get; set; }
-        public string ErrInfo { get; set; }
     }
 
     public class CustomJsonSerializer : IJsonSerializer

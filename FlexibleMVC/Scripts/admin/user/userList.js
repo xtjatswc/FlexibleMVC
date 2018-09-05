@@ -19,7 +19,8 @@ $(function () {
             "type": "POST",
             "data": function (d) {
                 util.removeRedundantParams(d);
-                d.UserName = "乔'";
+                d.userName = $("#txtUserName").val();
+                d.loginName = $("#txtLoginName").val();
             },
         },
         columns: [
@@ -63,3 +64,15 @@ $(function () {
     //});
 
 });
+
+userList.search = function () {
+    var $table = $('#example2').DataTable();
+    $table.ajax.reload();//跳到第一页
+
+    //$table.draw(false);//刷新表格，不改变页码
+
+    //跳页实现
+    //$('#example').DataTable().page(5).draw(false)
+    //或者
+    //$('#example').DataTable().page(5).draw('page')
+}

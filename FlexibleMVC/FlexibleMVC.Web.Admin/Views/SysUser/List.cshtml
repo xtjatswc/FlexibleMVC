@@ -40,11 +40,39 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Hover Data Table</h3>
+                        <h3 class="box-title">查询条件</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example2" class="table table-bordered table-striped"  style="width:100%">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">用户名</span>
+                                    <input id="txtUserName" type="text" class="form-control">
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                            <!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">登录名</span>
+                                    <input id="txtLoginName" type="text" class="form-control">
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                            <!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button id="btnSearch" type="button" class="btn btn-info btn-flat" onclick="userList.search()">查询</button>
+                                    </span>
+                                </div>
+                                <!-- /input-group -->
+
+                            </div>
+                        </div>
+                        <br/>
+                        <table id="example2" class="table table-bordered table-striped" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -56,8 +84,7 @@
                                     <th data-orderable="false">操作</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            </tbody>
+                            <tbody></tbody>
                             <tfoot>
                                 <tr>
                                     <th>ID</th>

@@ -99,6 +99,7 @@
     <Compile Include="Filter\AllowCrossSiteAttribute.cs" />
     <Compile Include="JsonConfig\Config.cs" />
     <Compile Include="JsonConfig\ConfigObjects.cs" />
+    <Compile Include="JsonConfig\JsonResultInfo.cs" />
     <Compile Include="JsonConfig\JsonUtil.cs" />
     <Compile Include="JsonConfig\Merger.cs" />
     <Compile Include="Jwt\JwtUtil.cs" />

@@ -1,4 +1,5 @@
-﻿using FlexibleMVC.LessBase.Infrastructure;
+﻿using FlexibleMVC.Base.JsonConfig;
+using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.LessBase.Infrastructure.Attribute;
 using System;
 using System.Collections.Generic;

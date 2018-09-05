@@ -60,6 +60,7 @@
     <Compile Include="Config\LessConfig.cs" />
     <Compile Include="Const\Basic.cs" />
     <Compile Include="Ctrller\FolderController.cs" />
+    <Compile Include="Extension\HttpRequestExtension.cs" />
     <Compile Include="Filters\Permission\CheckUserRoleAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\PrimaryKeyAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\TableNameAttribute.cs" />
@@ -70,8 +71,6 @@
     <Compile Include="Context\LessContextWebViewPage.cs" />
     <Compile Include="Context\LessFlexibleContext.cs" />
     <Compile Include="Infrastructure\IBaseDAL.cs" />
-    <Compile Include="Infrastructure\JsonResultInfo.cs" />
-    <Compile Include="Extension\HttpRequestExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
