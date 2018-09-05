@@ -44,6 +44,8 @@ if ($.fn.dataTable) {
         },
         "autoWidth": false,
         "lengthChange": true,//每页显示多少条数据
+        "aLengthMenu": [10, 20, 40, 60], //更改显示记录数选项  
+        "iDisplayLength": 10, //默认显示的记录数 
         "info": true,//显示第 x 至 x 项结果，共 x 项
         "language": {
             "processing": "加载中...",

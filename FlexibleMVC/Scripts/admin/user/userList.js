@@ -25,11 +25,11 @@ $(function () {
         },
         columns: [
             { data: 'ID', "visible": false },
-            { data: 'UserName', name:'用户名' },
+            { data: 'UserName', name: '用户名' },
             { data: 'LoginName' },
             { data: 'IsLocked' },
-            { data: 'Mobile', "bSortable": false},
-            { data: 'Email', "bSortable": false},
+            { data: 'Mobile', "bSortable": false },
+            { data: 'Email', "bSortable": false },
             { data: null }
         ],
         // 默认排序字段
@@ -39,7 +39,7 @@ $(function () {
                 "targets": [3],
                 "data": "ID",
                 "render": function (data, type, full) {
-                    return "<a href='/update?id=" + data + "'>" + (full.IsLocked == 0 ? "未锁定" : "已锁定") + "</a>";
+                    return (full.IsLocked == 0 ? "<span class='badge bg-green'>未锁定</span>" : "<span class='badge bg-red'>已锁定</span>");
                 }
             },
             {
@@ -62,7 +62,6 @@ $(function () {
     //            .draw();
     //    });
     //});
-
 });
 
 userList.search = function () {
