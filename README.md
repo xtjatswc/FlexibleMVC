@@ -110,3 +110,37 @@ public static void RegisterViewMaps(SortedDictionary<string, string> ViewMaps)
 }
 
 ```
+## 插件机制
+基于该框架做开发时，对于个性化的功能，没必要在框架主项目内实现，需要做的是：
+- 从个性化的功能中抽象出接口，定义接口放到主项目内
+- 打开FlexibleMVC\FlexibleMVC.Plugin\Plugin目录下的解决方案，新增类库项目
+- 在项目中实现上面定义的接口
+- 可在实现类中声明FlexibleContext属性，或业务层、数据库访问层的对象并且不用手动实例化就可使用，因为Autofac已经帮你做好了一切
+- 并将生成路径修改至FlexibleMVC\FlexibleMVC\bin\plugins目录
+- 生成dll
+
+这样就完成了个性化功能开发，并且不会影响到主项目。至于解析插件，交给Autofac组件，会在应用启动的时候，从plugins目录下搜索插件dll，并将类型注入到主项目的接口中，这样在主项目中就能调用插件实现的功能
+
+
+```
+public class Multiple : IOperation
+{			
+	//属性会被注入
+	public LessFlexibleContext flexibleContext { get; set; }
+	//不带属性访问器的字段不会被注入
+	public LessFlexibleContext flexibleContext2;
+	public FoodDal foodDal { get; set; }
+	
+	public int Operate(int left, int right)
+	{
+		flexibleContext.log.Error("abc");
+		DataTable patientbasicinfo = flexibleContext.db.Sql(@"select * from patientbasicinfo limit 30 ").QuerySingle<DataTable>();
+		
+		var foods = foodDal.GetModels();
+		
+        var jsonSettings = Config.Global.LessBase.JsonSettings;
+        var a = jsonSettings.DateFormatString;
+		return left * right;
+	}
+}
+```
