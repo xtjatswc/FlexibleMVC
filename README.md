@@ -46,9 +46,67 @@
 
 ## 路由规则
 
-项目结构 | 路由规则
----|---
-None | Controller/Action
-Area | Area_Controller/Action
-Module | Module_Controller/Action
-ModuleAndArea | Module_Area_Controller/Action
+在asp.net mvc Areas分离的最外层新增Module，这样模块划分维度更细，利于项目模块化开发
+
+项目结构 | 路由规则 | 备注
+---|---|---
+None | Controller/Action | 理解为一个mvc工程
+Area | Area_Controller/Action | 理解为Areas分离的mvc工程
+Module | Module_Controller/Action | 多个Module理解为多个mvc工程
+ModuleAndArea | Module_Area_Controller/Action | 多个mvc工程并且Areas分离
+
+结构示意图：
+
+├ ModuleA <br/>
+│  ├ AreaA<br/>
+│  │  ├ Controller <br/>
+│  │  ├ View <br/>
+│  ├ AreaB<br/>
+│  │  ├ Controller <br/>
+│  │  ├ View <br/>
+│  ├ Controller<br/>
+│  ├ View<br/>
+├ ModuleB <br/>
+│  ├ AreaC<br/>
+│  │  ├ Controller <br/>
+│  │  ├ View <br/>
+│  ├ AreaD<br/>
+│  │  ├ Controller <br/>
+│  │  ├ View <br/>
+│  ├ Controller<br/>
+│  ├ View<br/>
+├ AreaE<br/>
+│  ├ Controller <br/>
+│  ├ View <br/>
+├ AreaF<br/>
+│  ├ Controller <br/>
+│  ├ View <br/>
+Controller<br/>
+View<br/>
+
+示例：<br/>
+├ 系统前台项目<br/>
+│  ├ 前台登录<br/>
+│  │  ├ Controller <br/>
+│  │  │  ├ Login        
+│  │  ├ View <br/>
+│  │  │  ├ Login.cshtml       
+│  ├ ……<br/>
+├ 系统后台管理<br/>
+│  ├ 后台登录<br/>
+│  │  ├ Controller <br/>
+│  │  │  ├ SysLogin        
+│  │  ├ View <br/>
+│  │  │  ├ SysLogin.cshtml<br/>
+├ ……<br/>
+
+新增的Module放到主mvc工程的根目录下面，需要在代码中做如下映射，MVC的思想是“约定大于约束”，按照这个规则来，没错的
+```
+public static void RegisterViewMaps(SortedDictionary<string, string> ViewMaps)
+{
+    ViewMaps.Add("FlexibleMVC.Web", "~/");
+    ViewMaps.Add("FlexibleMVC.Web.Admin", "~/FlexibleMVC.Web.Admin/");
+    ViewMaps.Add("FlexibleMVC.Web.Frond", "~/FlexibleMVC.Web.Frond/");
+}
+
+```
