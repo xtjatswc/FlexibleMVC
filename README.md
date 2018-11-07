@@ -1,6 +1,7 @@
 # FlexibleMVC
 框架基于asp.net mvc4，重写大量基类并引入优秀第三方组件，旨在打造功能强大、扩展灵活、简单易用的Web快速开发框架
 
+## 底层框架介绍
 <html>
 ├ FlexibleMVC.Base <br/>
 │  ├ AcResult &emsp;//重写ActionResult，增强JsonResult，扩展FileResult：excel、pdf、xml<br/>
@@ -35,7 +36,7 @@
 │  │  ├ Merger.cs <br/>
 │  ├ Jwt &emsp;//跨域认证封装<br/>
 │  │  ├ JwtUtil.cs <br/>
-│  ├ MvcViewEngine.cs &emsp;//重写RazorViewEngine，修改View配置规则<br/>
+│  ├ MvcViewEngine.cs &emsp;//重写RazorViewEngine，修改View匹配规则<br/>
 │  ├ packages.config <br/>
 │  ├ Tools <br/>
 │  │  ├ ExcelUtil.cs <br/>
@@ -43,3 +44,11 @@
 │  │  ├ ReflectionHelper.cs <br/>
 </html>
 
+## 路由规则
+
+项目结构 | 路由规则
+---|---
+None | Controller/Action
+Area | Area_Controller/Action
+Module | Module_Controller/Action
+ModuleAndArea | Module_Area_Controller/Action
