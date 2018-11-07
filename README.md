@@ -1,6 +1,19 @@
 # FlexibleMVC
 框架基于asp.net mvc4，重写大量基类并引入优秀第三方组件，旨在打造功能强大、扩展灵活、简单易用的Web快速开发框架
 
+## 亮点
+1. 引入Autofac组件实现依赖注入、控制反转，实现模块解耦，实现插件机制
+2. 在asp.net mvc Areas分离的最外层新增Module，这样模块划分维度更细，利于项目模块化开发、维护
+3. 重写ActionResult，增强JsonResult，扩展FileResult：excel、pdf、xml
+4. 定义FlexibleContext，整个请求生命周期都可访问的上下文对象，包括业务层、数据访问层、Controller、View、插件层
+5. JWT跨域认证封装
+6. Json配置文件操作封装，实现dynamic类型轻松访问json配置
+7. 轻量级组件FluentData代替EntityFramework访问数据库
+8. log4net组件按年月、日期输出日志记录，灵活配置日志策略
+9. 框架将日志、数据库、配置文件、其它附件定义到主程序目录外，在升级时只需要替换主程序、执行数据库升级脚本即可
+10. 如果路由不存在，则跳过Controller，直接映射物理路径请求View
+
+
 ## 底层框架介绍
 <html>
 ├ FlexibleMVC.Base <br/>
