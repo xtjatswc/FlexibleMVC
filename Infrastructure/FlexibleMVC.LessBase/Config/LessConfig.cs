@@ -25,6 +25,7 @@ namespace FlexibleMVC.LessBase.Config
         }
 
         public static string AdminLTE_Path { get { return Global.LessBase.adminLTE.Path; } }
+        public static string MiniUI_Path { get { return Global.LessBase.miniui.Path; } }
 
         public static string db1 { get { return Global.DataBases.db1; } }
 

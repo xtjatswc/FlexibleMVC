@@ -38,3 +38,7 @@
 /FlexibleMVC/*.user
 /FlexibleMVC_Attachment/log
 /Base/FlexibleMVC.Base/*.user
+/FlexibleMVC/FlexibleMVC.Web.Bjdc/obj
+/FlexibleMVC/bin/FlexibleMVC.Web.Bjdc.dll.config
+/FlexibleMVC/bin/FlexibleMVC.Web.Bjdc.pdb
+/FlexibleMVC/bin/FlexibleMVC.Web.Bjdc.dll

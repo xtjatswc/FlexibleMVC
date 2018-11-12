@@ -22,7 +22,7 @@ namespace FlexibleMVC.LessBase.Config
             //实例化一个autofac的创建容器
             var builder = new ContainerBuilder();
 
-            string[] ctrls = new string[] { "FlexibleMVC.Web", "FlexibleMVC.Web.Admin", "FlexibleMVC.Web.Frond", "FlexibleMVC.LessBase" };
+            string[] ctrls = new string[] { "FlexibleMVC.Web", "FlexibleMVC.Web.Admin", "FlexibleMVC.Web.Frond", "FlexibleMVC.Web.Bjdc", "FlexibleMVC.LessBase" };
             foreach (var ctrl in ctrls)
             {
                 //告诉Autofac框架，将来要创建的控制器类存放在哪个程序集

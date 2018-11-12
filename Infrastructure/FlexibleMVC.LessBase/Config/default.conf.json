@@ -1,21 +1,25 @@
 ﻿{
   "LessBase": {
-  	"SystemInfo": {
-	  "Copyright": "<a href='#'>FlexibleMVC</a>",
-	  "Version": "1.0.0"
-	},
-    "JsonSettings": {
-	  #是否格式化Json
-      "IsJsonFormat": false,
-	  #是否忽略空值，注：只对get\set属性有效，动态类型转换时该设置无效
-      "IgnoreNullValue": false,
-	  #日期格式化
-	  "DateFormatString": "yyyy-MM-dd HH:mm:ss",
-	  #是否驼峰小写
-	  "CamelLowercase": false
+    "SystemInfo": {
+      "Copyright": "<a href='#'>FlexibleMVC</a>",
+      "Version": "1.0.0"
     },
-	"adminLTE":{
-	  "Path": "~/Content/AdminLTE/"
-	}
+    "JsonSettings": {
+      "#是否格式化Json": null,
+      "IsJsonFormat": false,
+      "#是否忽略空值，注：只对get\\set属性有效，动态类型转换时该设置无效": null,
+      "IgnoreNullValue": false,
+      "#日期格式化": null,
+      "DateFormatString": "yyyy-MM-dd HH:mm:ss",
+      "#是否驼峰小写": null,
+      "CamelLowercase": false
+    },
+    "adminLTE": {
+      "Path": "~/Content/AdminLTE/"
+    },
+    "miniui": {
+      "Path": "~/Scripts/miniui/"
+    }
+
   }
 }

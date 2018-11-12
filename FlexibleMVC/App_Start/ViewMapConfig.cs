@@ -12,6 +12,7 @@ namespace FlexibleMVC.Web
             ViewMaps.Add("FlexibleMVC.Web", "~/");
             ViewMaps.Add("FlexibleMVC.Web.Admin", "~/FlexibleMVC.Web.Admin/");
             ViewMaps.Add("FlexibleMVC.Web.Frond", "~/FlexibleMVC.Web.Frond/");
+            ViewMaps.Add("FlexibleMVC.Web.Bjdc", "~/FlexibleMVC.Web.Bjdc/");
 
             //ViewMaps.Add("FlexibleMVC.Web.Controllers", "~/Views");
             //ViewMaps.Add("FlexibleMVC.Web.Areas.A.Controllers", "~/Areas/A/Views");
