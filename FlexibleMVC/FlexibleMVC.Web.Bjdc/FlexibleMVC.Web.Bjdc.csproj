@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\System\Controllers\MealMenuController.cs" />
+    <Compile Include="Areas\System\DAL\MealDictDal.cs" />
+    <Compile Include="Areas\System\Model\MealDict.cs" />
     <Compile Include="Areas\System\SystemAreaRegistration.cs" />
     <Compile Include="Areas\System\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -92,9 +94,7 @@
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Index_part1.cshtml" />
-    <Content Include="Areas\System\Views\Home\Part2.cshtml" />
     <Content Include="Views\Home\Part2.cshtml" />
-    <Content Include="Areas\System\Views\Index\Index.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\web.config" />
     <None Include="Views\_ViewStart.cshtml" />
@@ -126,9 +126,7 @@
       <Name>FlexibleMVC.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\System\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

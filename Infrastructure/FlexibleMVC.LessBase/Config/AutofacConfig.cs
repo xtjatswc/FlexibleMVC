@@ -28,6 +28,10 @@ namespace FlexibleMVC.LessBase.Config
                 //告诉Autofac框架，将来要创建的控制器类存放在哪个程序集
                 Assembly controllerAss = Assembly.Load(ctrl);
                 builder.RegisterControllers(controllerAss);
+
+                //dal
+                builder.RegisterTypes(controllerAss.GetTypes()).AsImplementedInterfaces();
+                builder.RegisterTypes(controllerAss.GetTypes()).InstancePerRequest();
             }
 
             //InstancePerRequest() 针对MVC的,或者说是ASP.NET的..每个请求单例
