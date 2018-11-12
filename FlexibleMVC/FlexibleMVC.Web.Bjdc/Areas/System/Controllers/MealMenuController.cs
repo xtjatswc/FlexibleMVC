@@ -2,12 +2,10 @@
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Web.Bjdc.Areas.System.DAL;
+using FlexibleMVC.Web.Bjdc.Areas.System.Model;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using FlexibleMVC.Base.JsonConfig;
-using FlexibleMVC.Web.Bjdc.Areas.System.Model;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
@@ -57,22 +55,25 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                 String id = o["id"] != null ? o["id"].ToString() : "";
                 //根据记录状态，进行不同的增加、删除、修改操作
                 String state = o["_state"] != null ? o["_state"].ToString() : "";
+                String itemName = o["ItemName"].ToString();
+                String itemID = o["ItemID"] != null ? o["ItemID"].ToString() : "";
+                decimal sortNo = Convert.ToDecimal(o["SortNo"]);
 
-                if (state == "added" || id == "")           //新增：id为空，或_state为added
+                if (state == "added" || itemID == "")           //新增：id为空，或_state为added
                 {
                     //o["ItemName"] = DateTime.Now;
                     //employeeDal.Insert(o);
                     MealDict model = new MealDict();
                     model.IsAllowedEdit = 1;
-                    model.ItemName = o["ItemName"].ToString();
+                    model.ItemName = itemName;
                     model.ItemType = "菜品分类";
                     model.ItemValue = null;
-                    model.SortNo = Convert.ToDecimal(o["SortNo"]);
+                    model.SortNo = sortNo;
                     mealDictDal.InsertReturnLastId(model, x => x.ItemID);
                 }
                 else if (state == "removed" || state == "deleted")
                 {
-                    //employeeDal.Delete(id);
+                    mealDictDal.Delete(itemID);
                 }
                 else if (state == "modified" || state == "") //更新：_state为空或modified
                 {
