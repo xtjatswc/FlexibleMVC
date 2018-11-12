@@ -205,13 +205,13 @@ namespace FlexibleMVC.LessBase.Infrastructure
             return rowsAffected;
         }
 
-        public int Insert(Model model)
+        public int Insert(Model model, params Expression<Func<Model, object>>[] expression)
         {
-            int rowsAffected = Db.Insert<Model>(TableName, model).Execute();
+            int rowsAffected = Db.Insert<Model>(TableName, model).AutoMap(expression).Execute();
             return rowsAffected;
         }
 
-        public object InsertReturnLastId(Model model, Expression<Func<Model, object>> expression)
+        public object InsertReturnLastId(Model model, params Expression<Func<Model, object>>[] expression)
         {
             return Db.Insert<Model>(TableName, model)
             .AutoMap(expression)

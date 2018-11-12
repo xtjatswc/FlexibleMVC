@@ -8,7 +8,7 @@ using FlexibleMVC.LessBase.Infrastructure.Attribute;
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Model
 {
     [TableName("dc_mealdict")]
-    public class MealDict : BaseModel
+    public class MealDict
     {
         [PrimaryKey()]
         public Int64 ItemID { get; set; }

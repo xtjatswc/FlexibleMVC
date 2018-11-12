@@ -31,7 +31,7 @@
                         <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
                     </td>
                     <td style="white-space:nowrap;">
-                        <input id="key" class="mini-textbox" emptyText="请输入姓名" style="width:150px;" onenter="onKeyEnter" />
+                        <input id="key" class="mini-textbox" emptyText="请输入名称" style="width:150px;" onenter="onKeyEnter" />
                         <a class="mini-button" onclick="search()">查询</a>
                     </td>
                 </tr>
@@ -94,7 +94,7 @@
         function saveData() {
 
             saveGrid(grid, {
-                url: "../data/AjaxService.aspx?method=SaveEmployees"
+                url: "bjdc_system_mealmenu/SaveCategory"
             });
 
 //            saveGrid(grid, {
