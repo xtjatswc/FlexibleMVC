@@ -77,7 +77,10 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                 }
                 else if (state == "modified" || state == "") //更新：_state为空或modified
                 {
-                    //employeeDal.Update(o);
+                    var model = mealDictDal.GetModel(itemID);
+                    model.ItemName = itemName;
+                    model.SortNo = sortNo;
+                    mealDictDal.Update(model, x=>x.ItemID);
                 }
 
                 //if (i == 2) throw new Exception("aaa");
