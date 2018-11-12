@@ -36,3 +36,5 @@
 /Infrastructure/FlexibleMVC.Model/obj
 /Infrastructure/FlexibleMVC.LessBase/*.user
 /FlexibleMVC/*.user
+/FlexibleMVC_Attachment/log
+/Base/FlexibleMVC.Base/*.user
