@@ -6,6 +6,7 @@ using FlexibleMVC.Web.Bjdc.Areas.System.Model;
 using System;
 using System.Collections;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Extension;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
@@ -25,7 +26,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         public JsonResult GetCategoryList()
         {
             //查询条件
-            string key = GetString("key");
+            string key = Request.GetSqlParamer("key");
             //分页
             int pageIndex = GetInt("pageIndex") + 1;
             int pageSize = GetInt("pageSize");
