@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Areas\System\Controllers\MealCategoryController.cs" />
     <Compile Include="Areas\System\Controllers\MealMenuController.cs" />
+    <Compile Include="Areas\System\Controllers\MealScheduleController.cs" />
     <Compile Include="Areas\System\DAL\MealDictDal.cs" />
     <Compile Include="Areas\System\DAL\MealMenuDal.cs" />
     <Compile Include="Areas\System\Model\MealDict.cs" />
@@ -95,6 +96,7 @@
     <Content Include="Areas\System\Views\_ViewStart.cshtml" />
     <Content Include="Areas\System\Views\MealCategory\Index.cshtml" />
     <Content Include="Areas\System\Views\MealMenu\Index.cshtml" />
+    <Content Include="Areas\System\Views\MealSchedule\Index.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Index_part1.cshtml" />
