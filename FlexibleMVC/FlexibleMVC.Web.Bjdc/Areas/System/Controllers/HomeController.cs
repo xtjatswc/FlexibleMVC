@@ -34,7 +34,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         {
             var tree = new List<object>()
             {
-                new {id = "base", text = "Base", pid=""},
+                new {id = "base", text = "系统导航", pid=""},
                 new {id = "ajax", text = "菜品分类管理", pid = "base", url="bjdc_system_MealMenu"}
             };
             return Json(tree);

@@ -8,7 +8,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>系统界面 NavTree</title>
+    <title>北肿点餐后台管理系统</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link href="../demo.css" rel="stylesheet" type="text/css" />
 
@@ -35,7 +35,7 @@
     <!--Layout-->
     <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
         <div class="app-header" region="north" height="70" showSplit="false" showHeader="false">
-            <h1 style="margin:0;padding:15px;cursor:default;font-family:'Trebuchet MS',Arial,sans-serif;">导航树（左侧）</h1>
+            <h1 style="margin:0;padding:15px;cursor:default;font-family:'Trebuchet MS',Arial,sans-serif;">北肿点餐后台管理系统</h1>
             <div style="position:absolute;top:12px;right:10px;">
                 <a class="mini-button mini-button-iconTop" iconCls="icon-add" onclick="onQuickClick" plain="true">快捷</a>
                 <a class="mini-button mini-button-iconTop" iconCls="icon-edit" onclick="onClick" plain="true">首页</a>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div title="south" region="south" showSplit="false" showHeader="false" height="30">
-            <div style="line-height:28px;text-align:center;cursor:default">Copyright © 上海普加软件有限公司版权所有 </div>
+            <div style="line-height:28px;text-align:center;cursor:default">Copyright © 北京康爱营养科技股份有限公司 </div>
         </div>
         <div title="center" region="center" bodyStyle="overflow:hidden;" style="border:0;">
             <!--Splitter-->
@@ -55,7 +55,7 @@
                     <!--Tree-->
                     <ul id="leftTree" class="mini-tree" url="../bjdc_system_home/GetListTree" style="width:100%;height:100%;"
                         showTreeIcon="true" textField="text" idField="id" resultAsTree="false"
-                        onnodeselect="onNodeSelect"></ul>
+                        expandOnLoad="true" onnodeselect="onNodeSelect"></ul>
                 </div>
                 <div showCollapseButton="false" style="border:0px;">
                     <!--Tabs-->
