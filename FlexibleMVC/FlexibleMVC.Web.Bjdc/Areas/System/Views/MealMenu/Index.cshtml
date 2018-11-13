@@ -55,30 +55,25 @@
                 <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
                      borderStyle="border:0;"
                      url="bjdc_system_mealmenu/GetMenuList"
-                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true">
+                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true" pageSize="30">
                     <div property="columns">
-                        <div field="loginname" width="120" headerAlign="center" allowSort="true">
-                            员工帐号
-                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        <div type="indexcolumn"></div>
+                        <div type="checkcolumn"></div>
+                        <div field="SaleName" width="120" headerAlign="center" allowSort="true">
+                            菜品名称
+                            <input property="editor" class="mini-textbox" style="width: 100%;"/>
+                            <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;"/>
                         </div>
-                        <div field="name" width="120" headerAlign="center" allowSort="true">
-                            员工姓名
-                            <input property="editor" class="mini-textbox" style="width:100%;" />
-                            <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width:100%;" />
+                        <div field="SalePrice" width="120" headerAlign="center" allowSort="true">
+                            价格（元）
+                            <input property="editor" class="mini-textbox" style="width: 100%;"/>
                         </div>
-                        <div field="gender" width="100" allowSort="true" renderer="onGenderRenderer" align="center" headerAlign="center">
-                            性别
-                            <input property="editor" class="mini-combobox" style="width:100%;" data="Genders" />
+                        <div field="SortNo" width="100" allowSort="true" align="center" headerAlign="center">
+                            排序
+                            <input property="editor" class="mini-spinner" minValue="0" maxValue="200" value="25" style="width: 100%;"/>
                         </div>
-                        <div field="age" width="100" allowSort="true">
-                            年龄
-                            <input property="editor" class="mini-spinner" minValue="0" maxValue="200" value="25" style="width:100%;" />
-                        </div>
-                        <div field="birthday" width="100" allowSort="true" dateFormat="yyyy-MM-dd">
-                            出生日期
-                            <input property="editor" class="mini-datepicker" style="width:100%;" />
-                        </div>
-                        <div field="createtime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">创建日期</div>
+                        <div field="CreateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="true">创建时间</div>
+                        <div field="UpdateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="true">修改时间</div>
                     </div>
                 </div>
             </div>
@@ -101,28 +96,20 @@
             }
         });
         //////////////////////////////////////////////
-        var Genders = [{ id: 1, text: '男' }, { id: 2, text: '女' }];
-        function onGenderRenderer(e) {
-            for (var i = 0, l = Genders.length; i < l; i++) {
-                var g = Genders[i];
-                if (g.id == e.value) return g.text;
-            }
-            return "";
-        }
         function onNameFilterChanged(e) {
             var textbox = e.sender;
             var key = textbox.getValue();
 
             var node = tree.getSelectedNode();
             if (node) {
-                grid.load({ dept_id: node.id, key: key });
+                grid.load({ CategoryID: node.id, SaleName: key });
             }
         }
         function addRow() {
             var node = tree.getSelectedNode();
             if (node) {
                 var newRow = { name: "New Row" };
-                newRow.dept_id = node.id;
+                newRow.CategoryID = node.id;
                 grid.addRow(newRow, 0);
             }
         }
@@ -137,7 +124,7 @@
             var json = mini.encode(data);
             grid.loading("保存中，请稍后......");
             $.ajax({
-                url: "../data/AjaxService.aspx?method=SaveEmployees",
+                url: "bjdc_system_mealmenu/SaveMenu",
                 data: { data: json },
                 type: "post",
                 success: function (text) {

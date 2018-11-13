@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -44,6 +45,58 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             var count = mealMenuDal.GetCount(where: sWhere);
 
             var result = new { total = count, data = models };
+            return Json(result);
+        }
+
+        public JsonResult SaveMenu()
+        {
+            var data = GetArrayList("data");
+            var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
+
+            for (int i = 0, l = data.Count; i < l; i++)
+            {
+                Hashtable o = (Hashtable)data[i];
+
+                String id = o["id"] != null ? o["id"].ToString() : "";
+                //根据记录状态，进行不同的增加、删除、修改操作
+                String state = o["_state"] != null ? o["_state"].ToString() : "";
+                String saleName = o["SaleName"].ToString();
+                decimal salePrice = Convert.ToDecimal(o["SalePrice"]);
+                long categoryID = Convert.ToInt64(o["CategoryID"].ToString());
+                String mealMenuID = o["MealMenuID"] != null ? o["MealMenuID"].ToString() : "";
+                decimal sortNo = Convert.ToDecimal(o["SortNo"]);
+
+                if (state == "added" || mealMenuID == "")           //新增：id为空，或_state为added
+                {
+                    MealMenu model = new MealMenu();
+                    model.CategoryID = categoryID;
+                    model.CreateBy = "系统管理员";
+                    model.CreateTime = DateTime.Now;
+                    model.SaleName = saleName;
+                    model.SalePrice = salePrice;
+                    model.SortNo = sortNo;
+                    mealMenuDal.InsertReturnLastId(model, x => x.MealMenuID);
+                }
+                else if (state == "removed" || state == "deleted")
+                {
+                    mealMenuDal.Delete(mealMenuID);
+                }
+                else if (state == "modified" || state == "") //更新：_state为空或modified
+                {
+                    var model = mealMenuDal.GetModel(mealMenuID);
+                    model.SaleName = saleName;
+                    model.SalePrice = salePrice;
+                    model.SortNo = sortNo;
+                    model.UpdateBy = "";
+                    model.UpdateTime = DateTime.Now;                    
+                    mealMenuDal.Update(model, x => x.MealMenuID);
+                }
+
+                //if (i == 2) throw new Exception("aaa");
+
+            }
+
+            var result = new { };
             return Json(result);
         }
     }
