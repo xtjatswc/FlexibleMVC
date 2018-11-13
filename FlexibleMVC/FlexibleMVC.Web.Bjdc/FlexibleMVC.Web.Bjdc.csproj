@@ -76,9 +76,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\System\Controllers\MealCategoryController.cs" />
     <Compile Include="Areas\System\Controllers\MealMenuController.cs" />
     <Compile Include="Areas\System\DAL\MealDictDal.cs" />
+    <Compile Include="Areas\System\DAL\MealMenuDal.cs" />
     <Compile Include="Areas\System\Model\MealDict.cs" />
+    <Compile Include="Areas\System\Model\MealMenu.cs" />
     <Compile Include="Areas\System\SystemAreaRegistration.cs" />
     <Compile Include="Areas\System\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -90,6 +93,7 @@
     <Content Include="Areas\System\web.config" />
     <Content Include="Areas\System\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\System\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\System\Views\MealCategory\Index.cshtml" />
     <Content Include="Areas\System\Views\MealMenu\Index.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />

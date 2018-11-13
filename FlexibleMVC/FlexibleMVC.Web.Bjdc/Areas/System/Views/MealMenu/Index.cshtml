@@ -7,146 +7,148 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>菜品分类管理</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../demo.css" rel="stylesheet" type="text/css" />
+    <title>菜单管理</title>
+
+    <link href="@Url.Content(@miniui + "demo/demo.css")" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
 
     <script src="@Url.Content(@miniui + "scripts/boot.js")" type="text/javascript"></script>
-    <script src="@Url.Content(@miniui + "scripts//miniui/locale/zh_CN.js")" type="text/javascript"></script>
-    <script src="@Url.Content(@miniui + "demo/datagrid/js/ColumnsMenu.js")" type="text/javascript"></script>
+
+    <!--引入皮肤样式-->
+    <!--<link href="../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css" />-->
 
 </head>
 <body>
-    <h1>菜品分类管理</h1>
 
 
-    <div style="width:800px;">
-        <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
-            <table style="width:100%;">
-                <tr>
-                    <td style="width:100%;">
-                        <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
-                        <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
-                        <span class="separator"></span>
-                        <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
-                    </td>
-                    <td style="white-space:nowrap;">
-                        <input id="key" class="mini-textbox" emptyText="请输入名称" style="width:150px;" onenter="onKeyEnter" />
-                        <a class="mini-button" onclick="search()">查询</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div id="datagrid1" class="mini-datagrid" style="width:800px;height:480px;"
-         url="bjdc_system_mealmenu/GetCategoryList" idField="ItemID"
-         allowResize="true" pageSize="20"
-         allowCellEdit="true" allowCellSelect="true" multiSelect="false"
-         editNextOnEnterKey="true" editNextRowCell="true">
-        <div property="columns">
-            <div type="indexcolumn"></div>
-            <div type="checkcolumn"></div>
-            <div name="LoginName" field="ItemName" headerAlign="center" allowSort="false" width="150">
-                分类名称
-                <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
+    <div class="mini-splitter" style="width:100%;height:100%;">
+        <div size="240" showCollapseButton="true">
+            <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
+                <span style="padding-left:5px;">名称：</span>
+                <input class="mini-textbox" width="120" />
+                <a class="mini-button" iconCls="icon-search" plain="true">查找</a>
             </div>
-            <div field="SortNo" width="100" allowSort="false">
-                排序
-                <input property="editor" class="mini-spinner" minValue="0" maxValue="200" value="25" style="width:100%;" />
+            <div class="mini-fit">
+                <ul id="tree1" class="mini-tree" url="../bjdc_system_MealCategory/GetMealMenuTree" style="width:100%;"
+                    showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
+        <div showCollapseButton="true">
+            <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
+
+                <a class="mini-button" iconCls="icon-add" plain="true" onclick="addRow()">新增</a>
+                <a class="mini-button" iconCls="icon-remove" plain="true" onclick="removeRow()">删除</a>
+                <span class="separator"></span>
+                <a class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()">保存</a>
+            </div>
+            <div class="mini-fit">
+                <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
+                     borderStyle="border:0;"
+                     url="bjdc_system_mealmenu/GetMenuList"
+                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true">
+                    <div property="columns">
+                        <div field="loginname" width="120" headerAlign="center" allowSort="true">
+                            员工帐号
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                        </div>
+                        <div field="name" width="120" headerAlign="center" allowSort="true">
+                            员工姓名
+                            <input property="editor" class="mini-textbox" style="width:100%;" />
+                            <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width:100%;" />
+                        </div>
+                        <div field="gender" width="100" allowSort="true" renderer="onGenderRenderer" align="center" headerAlign="center">
+                            性别
+                            <input property="editor" class="mini-combobox" style="width:100%;" data="Genders" />
+                        </div>
+                        <div field="age" width="100" allowSort="true">
+                            年龄
+                            <input property="editor" class="mini-spinner" minValue="0" maxValue="200" value="25" style="width:100%;" />
+                        </div>
+                        <div field="birthday" width="100" allowSort="true" dateFormat="yyyy-MM-dd">
+                            出生日期
+                            <input property="editor" class="mini-datepicker" style="width:100%;" />
+                        </div>
+                        <div field="createtime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">创建日期</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script type="text/javascript">
-
         mini.parse();
 
-        var grid = mini.get("datagrid1");
-        grid.load();
+        var tree = mini.get("tree1");
+        var grid = mini.get("grid1");
 
+        tree.on("nodeclick", function (e) {
 
-        var menu = new ColumnsMenu(grid);
-
-        //////////////////////////////////////////////////////
-
-        function search() {
-            var key = mini.get("key").getValue();
-
-            grid.load({ key: key });
+            if (e.isLeaf) {
+                grid.load({ CategoryID: e.node.id });
+            } else {
+                grid.setData([]);
+                grid.setTotalCount(0);
+            }
+        });
+        //////////////////////////////////////////////
+        var Genders = [{ id: 1, text: '男' }, { id: 2, text: '女' }];
+        function onGenderRenderer(e) {
+            for (var i = 0, l = Genders.length; i < l; i++) {
+                var g = Genders[i];
+                if (g.id == e.value) return g.text;
+            }
+            return "";
         }
+        function onNameFilterChanged(e) {
+            var textbox = e.sender;
+            var key = textbox.getValue();
 
-        function onKeyEnter(e) {
-            search();
+            var node = tree.getSelectedNode();
+            if (node) {
+                grid.load({ dept_id: node.id, key: key });
+            }
         }
-
         function addRow() {
-            var newRow = { name: "New Row" };
-            grid.addRow(newRow, 0);
-
-            grid.beginEditCell(newRow, "LoginName");
+            var node = tree.getSelectedNode();
+            if (node) {
+                var newRow = { name: "New Row" };
+                newRow.dept_id = node.id;
+                grid.addRow(newRow, 0);
+            }
         }
         function removeRow() {
             var rows = grid.getSelecteds();
             if (rows.length > 0) {
-
                 grid.removeRows(rows, true);
             }
         }
         function saveData() {
-
-            saveGrid(grid, {
-                url: "bjdc_system_mealmenu/SaveCategory"
-            });
-
-//            saveGrid(grid, {
-//                url: "../data/AjaxService.aspx?method=SaveEmployees",
-//                callback: function (success, result) {
-//
-//                }
-//            });
-        }
-
-
-        grid.on("celleditenter", function (e) {
-            var index = grid.indexOf(e.record);
-            if (index == grid.getData().length - 1) {
-                var row = {};
-                grid.addRow(row);
-            }
-        });
-
-        grid.on("beforeload", function (e) {
-            if (grid.getChanges().length > 0) {
-                if (confirm("有增删改的数据未保存，是否取消本次操作？")) {
-                    e.cancel = true;
+            var data = grid.getChanges();
+            var json = mini.encode(data);
+            grid.loading("保存中，请稍后......");
+            $.ajax({
+                url: "../data/AjaxService.aspx?method=SaveEmployees",
+                data: { data: json },
+                type: "post",
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
                 }
-            }
-        });
-
-
-//        grid.on("cellcommitedit", function (e) {
-//            if (e.field == "loginname") {
-//                if (e.value == "111") {
-//                    alert("不允许为111");
-//                    e.cancel = true;
-//                }
-//            }
-//        });
-
-//        grid.on('beforeload', function (e) {
-//            if (grid.getChanges().length > 0) {
-//                e.cancel = true;
-//                alert('有未保存的数据');
-//            }
-//        });
-
+            });
+        }
     </script>
 
-    <div class="description">
-        <h3>Description</h3>
-        <ul>
-            <li>增加、删除、编辑操作后，需要点击保存按钮</li>
-            <li>分类维护后，实时生效</li>
-        </ul>
-    </div>
 </body>
 </html>

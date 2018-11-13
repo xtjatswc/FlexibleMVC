@@ -1,19 +1,21 @@
-﻿using FlexibleMVC.LessBase.Context;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Filters.Permission;
+using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.Web.Bjdc.Areas.System.DAL;
 using FlexibleMVC.Web.Bjdc.Areas.System.Model;
-using System;
-using System.Collections;
-using System.Web.Mvc;
-using FlexibleMVC.LessBase.Extension;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
     [CheckUserRole(Enabled = false)]
     public class MealMenuController : LessBaseController
     {
-
         public MealMenuController(LessFlexibleContext lessContext) : base(lessContext)
         {
         }
@@ -23,10 +25,11 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             return View();
         }
 
-        public JsonResult GetCategoryList()
+        public JsonResult GetMenuList()
         {
             //查询条件
-            string key = Request.GetSqlParamer("key");
+            string SaleName = Request.GetSqlParamer("SaleName");
+            string CategoryID = GetString("CategoryID");
             //分页
             int pageIndex = GetInt("pageIndex") + 1;
             int pageSize = GetInt("pageSize");
@@ -34,61 +37,13 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             String sortField = GetString("sortField");
             String sortOrder = GetString("sortOrder");
 
-            string sWhere = "ItemType='菜品分类' and ItemName like '%" + key + "%'";
+            string sWhere = "CategoryID='"+ CategoryID + "' and SaleName like '%" + SaleName + "%'";
 
-            var mealDictDal = flexibleContext.GetService<MealDictDal>();
-            var models = mealDictDal.GetModels(where: sWhere, orderBy:"SortNo asc", currentPage: pageIndex, itemsPerPage: pageSize);
-            var count = mealDictDal.GetCount(where: sWhere);
+            var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
+            var models = mealMenuDal.GetModels(where: sWhere, orderBy: "SortNo asc", currentPage: pageIndex, itemsPerPage: pageSize);
+            var count = mealMenuDal.GetCount(where: sWhere);
 
             var result = new { total = count, data = models };
-            return Json(result);
-        }
-
-        public JsonResult SaveCategory()
-        {
-            var data = GetArrayList("data");
-            var mealDictDal = flexibleContext.GetService<MealDictDal>();
-
-            for (int i = 0, l = data.Count; i < l; i++)
-            {
-                Hashtable o = (Hashtable)data[i];
-
-                String id = o["id"] != null ? o["id"].ToString() : "";
-                //根据记录状态，进行不同的增加、删除、修改操作
-                String state = o["_state"] != null ? o["_state"].ToString() : "";
-                String itemName = o["ItemName"].ToString();
-                String itemID = o["ItemID"] != null ? o["ItemID"].ToString() : "";
-                decimal sortNo = Convert.ToDecimal(o["SortNo"]);
-
-                if (state == "added" || itemID == "")           //新增：id为空，或_state为added
-                {
-                    //o["ItemName"] = DateTime.Now;
-                    //employeeDal.Insert(o);
-                    MealDict model = new MealDict();
-                    model.IsAllowedEdit = 1;
-                    model.ItemName = itemName;
-                    model.ItemType = "菜品分类";
-                    model.ItemValue = null;
-                    model.SortNo = sortNo;
-                    mealDictDal.InsertReturnLastId(model, x => x.ItemID);
-                }
-                else if (state == "removed" || state == "deleted")
-                {
-                    mealDictDal.Delete(itemID);
-                }
-                else if (state == "modified" || state == "") //更新：_state为空或modified
-                {
-                    var model = mealDictDal.GetModel(itemID);
-                    model.ItemName = itemName;
-                    model.SortNo = sortNo;
-                    mealDictDal.Update(model, x=>x.ItemID);
-                }
-
-                //if (i == 2) throw new Exception("aaa");
-
-            }
-
-            var result = new {};
             return Json(result);
         }
     }
