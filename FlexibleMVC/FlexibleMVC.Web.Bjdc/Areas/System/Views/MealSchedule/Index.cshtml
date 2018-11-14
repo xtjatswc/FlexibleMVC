@@ -76,7 +76,7 @@
         var btnSave = mini.get("btnSave");
 
         function refreshTree() {
-            tree.reload();
+            treegrid1.reload();
         }
 
         tree.on("nodeclick",
@@ -92,21 +92,18 @@
                 }
             });
 
-        //////////////////////////////////////////////
-        function onNameFilterChanged(e) {
-            var textbox = e.sender;
-            var key = textbox.getValue();
-
-            var node = tree.getSelectedNode();
-            if (node) {
-                treegrid1.load({ week: node.week, MealTimesCode: node.code, SaleName: key });
-            }
-        }
-
         function saveData() {
             var node = tree.getSelectedNode();
-            var data = treegrid1.getCheckedNodes();
-            var json = mini.encode(data);
+            var allChkNodes = treegrid1.getCheckedNodes();
+            var chkNodes = [];
+            //过滤掉父节点
+            for (var i = 0; i < allChkNodes.length; i++) {
+                if (allChkNodes[i].ParentItemID != -1) {
+                    chkNodes.push(allChkNodes[i]);
+                }
+            }
+
+            var json = mini.encode(chkNodes);
             treegrid1.loading("保存中，请稍后......");
             $.ajax({
                 url: "bjdc_system_MealSchedule/SaveSchedule",
