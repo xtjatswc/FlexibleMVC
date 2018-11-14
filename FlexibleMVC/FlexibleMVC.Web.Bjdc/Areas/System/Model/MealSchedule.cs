@@ -9,8 +9,6 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Model
     [TableName("dc_mealschedule")]
     public class MealSchedule
     {
-        [PrimaryKey()]
-        public Int64 ID { get; set; }
         public Int32 DayOfWeek { get; set; }
         public Int64 MealTimesCode { get; set; }
         public String MealTimesName { get; set; }

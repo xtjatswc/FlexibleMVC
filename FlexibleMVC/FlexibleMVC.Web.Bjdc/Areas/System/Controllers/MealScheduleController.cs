@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Web.Bjdc.Areas.System.DAL;
+using FlexibleMVC.Web.Bjdc.Areas.System.Model;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
@@ -43,6 +45,30 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             }
 
             return Json(tree);
+        }
+
+        public JsonResult SaveSchedule()
+        {
+            var data = GetArrayList("data");
+            int week = GetInt("week");
+            long MealTimesCode = GetInt("MealTimesCode");
+            string MealTimesName = GetString("MealTimesName");
+
+            var mealScheduleDal = flexibleContext.GetService<MealScheduleDal>();
+            mealScheduleDal.Db.Sql("delete from dc_mealschedule where DayOfWeek = @0 and MealTimesCode = @1", week,
+                MealTimesCode).Execute();
+            foreach (var o in data)
+            {
+                MealSchedule model = new MealSchedule();
+                model.MealTimesCode = MealTimesCode;
+                model.MealTimesName = MealTimesName;
+                model.DayOfWeek = week;
+                model.MealMenuID = Convert.ToInt32(o["ItemID"].ToString().Split('_')[1]);
+                mealScheduleDal.Insert(model);
+            }            
+
+            var result = new { };
+            return Json(result);
         }
     }
 }
