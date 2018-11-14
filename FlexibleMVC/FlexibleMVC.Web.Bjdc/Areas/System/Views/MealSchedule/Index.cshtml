@@ -83,7 +83,7 @@
             function(e) {
 
                 if (e.isLeaf) {
-                    treegrid1.load({ CategoryID: e.node.id });
+                    treegrid1.load({ week: e.node.week, MealTimesCode:e.node.code });
                     btnNew.setEnabled(true);
                 } else {
                     treegrid1.setData([]);
@@ -99,23 +99,7 @@
 
             var node = tree.getSelectedNode();
             if (node) {
-                treegrid1.load({ CategoryID: node.id, SaleName: key });
-            }
-        }
-
-        function addRow() {
-            var node = tree.getSelectedNode();
-            if (node) {
-                var newRow = { name: "New Row" };
-                newRow.CategoryID = node.id;
-                treegrid1.addRow(newRow, 0);
-            }
-        }
-
-        function removeRow() {
-            var rows = treegrid1.getSelecteds();
-            if (rows.length > 0) {
-                treegrid1.removeRows(rows, true);
+                treegrid1.load({ week: e.node.week, MealTimesCode: e.node.code, SaleName: key });
             }
         }
 
@@ -137,15 +121,18 @@
         }
 
         function ondrawnode(e) {
-            //debugger;
-            //var tree = e.sender,
-            //    record = e.record,
-            //    column = e.column,
-            //    field = e.field,
-            //    id = record[tree.getIdField()],
-            //    funs = record.functions;
+            debugger;
+            var tree = e.sender,
+                node = e.node,
+                record = e.record,
+                column = e.column,
+                field = e.field,
+                id = record[tree.getIdField()],
+                funs = record.functions;
 
-            //tree.checkNode(e.node);
+            if (node.ParentItemID != -1 && node.Checked) {
+                tree.checkNode(node);
+            }
         }
 
     </script>

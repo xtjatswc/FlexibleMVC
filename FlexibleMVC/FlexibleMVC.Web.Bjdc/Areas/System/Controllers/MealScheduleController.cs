@@ -35,10 +35,10 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
             foreach (var menu in lstMenu)
             {
-                tree.Add(new { id = menu.ItemID, text = menu.ItemName, pid = "0" });
+                tree.Add(new { id = menu.ItemID, text = menu.ItemName, pid = "0", code=menu.ItemValue });
                 foreach (var time in lstTimes)
                 {
-                    tree.Add(new { id = time.ItemID, text = time.ItemName, pid = menu.ItemID });
+                    tree.Add(new { id = time.ItemID, text = time.ItemName, pid = menu.ItemID, code=time.ItemValue,week = menu.ItemValue });
                 }
             }
 

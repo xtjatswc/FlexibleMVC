@@ -38,7 +38,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             String sortField = GetString("sortField");
             String sortOrder = GetString("sortOrder");
 
-            string sWhere = "CategoryID='"+ CategoryID + "' and SaleName like '%" + SaleName + "%'";
+            string sWhere = "CategoryID='" + CategoryID + "' and SaleName like '%" + SaleName + "%'";
 
             var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
             var models = mealMenuDal.GetModels(where: sWhere, orderBy: "SortNo asc", currentPage: pageIndex, itemsPerPage: pageSize);
@@ -54,21 +54,39 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         /// <returns></returns>
         public JsonResult GetMenuTreeList()
         {
+            string week = GetString("week");
+            string MealTimesCode = GetString("MealTimesCode");
+
             var mealDictDal = flexibleContext.GetService<MealDictDal>();
             var lstCategory = mealDictDal.GetModels(where: "ItemType='菜品分类'", orderBy: "SortNo asc");
 
             var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
             var lstMenu = mealMenuDal.GetModels(orderBy: "SortNo asc");
 
+            var mealScheduleDal = flexibleContext.GetService<MealScheduleDal>();
+            var dictSchedule = mealScheduleDal.GetSchedule(week, MealTimesCode);
+
+            //菜品分类
             var lstResult = new List<Object>();
             foreach (var category in lstCategory)
             {
-                lstResult.Add(new { ItemID = category.ItemID, ItemName = category.ItemName, ParentItemID = -1, SalePrice = ""});
+                lstResult.Add(new
+                    {ItemID = category.ItemID, ItemName = category.ItemName, ParentItemID = -1, SalePrice = ""});
             }
 
+            //菜单
             foreach (var menu in lstMenu)
             {
-                lstResult.Add(new { ItemID = menu.CategoryID + "_" + menu.MealMenuID, ItemName = menu.SaleName, ParentItemID = menu.CategoryID, SalePrice = menu.SalePrice});
+                var menuObj = new
+                {
+                    ItemID = menu.CategoryID + "_" + menu.MealMenuID,
+                    ItemName = menu.SaleName,
+                    ParentItemID = menu.CategoryID,
+                    SalePrice = menu.SalePrice,
+                    Checked = dictSchedule.ContainsKey(menu.MealMenuID)
+                };
+
+                lstResult.Add(menuObj);
             }
 
             return Json(lstResult);
@@ -114,7 +132,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                     model.SalePrice = salePrice;
                     model.SortNo = sortNo;
                     model.UpdateBy = "";
-                    model.UpdateTime = DateTime.Now;                    
+                    model.UpdateTime = DateTime.Now;
                     mealMenuDal.Update(model, x => x.MealMenuID);
                 }
 

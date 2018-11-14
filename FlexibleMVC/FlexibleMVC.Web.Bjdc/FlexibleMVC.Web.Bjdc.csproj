@@ -81,8 +81,10 @@
     <Compile Include="Areas\System\Controllers\MealScheduleController.cs" />
     <Compile Include="Areas\System\DAL\MealDictDal.cs" />
     <Compile Include="Areas\System\DAL\MealMenuDal.cs" />
+    <Compile Include="Areas\System\DAL\MealScheduleDal.cs" />
     <Compile Include="Areas\System\Model\MealDict.cs" />
     <Compile Include="Areas\System\Model\MealMenu.cs" />
+    <Compile Include="Areas\System\Model\MealSchedule.cs" />
     <Compile Include="Areas\System\SystemAreaRegistration.cs" />
     <Compile Include="Areas\System\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
