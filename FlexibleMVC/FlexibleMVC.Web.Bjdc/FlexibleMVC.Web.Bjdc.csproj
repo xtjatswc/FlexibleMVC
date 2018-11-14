@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Areas\System\Controllers\MealCategoryController.cs" />
     <Compile Include="Areas\System\Controllers\MealMenuController.cs" />
+    <Compile Include="Areas\System\Controllers\MealOrderDetailController.cs" />
     <Compile Include="Areas\System\Controllers\MealScheduleController.cs" />
     <Compile Include="Areas\System\Controllers\MealOrderController.cs" />
     <Compile Include="Areas\System\DAL\MealDictDal.cs" />
