@@ -29,24 +29,45 @@
 
 </head>
 <body>
+    <div class="mini-toolbar" style="padding:2px;border-bottom:0;">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:100%;">
+                    <a class="mini-button" iconCls="icon-save" plain="true">保存</a>
+                    <a class="mini-button" iconCls="icon-close" plain="true">关闭</a>
+                    <span class="separator"></span>
+                    <a class="mini-button" iconCls="icon-reload" plain="true">刷新</a>
+                </td>
+                <td style="white-space: nowrap;">
+                    <label style="font-family:Verdana;">联系人: </label>
+                    <input id="txtName" class="mini-textbox" />
+                    &nbsp;&nbsp;&nbsp;
+                    <label style="font-family: Verdana;">手机号: </label>
+                    <input id="txtMobile" class="mini-textbox" />
+                    <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--撑满页面-->
+    <div class="mini-fit">
+        <div id="order_grid" class="mini-datagrid" style="width:100%;height:100%;" allowResize="true"
+             url="bjdc_system_MealOrder/GetOrderList" idField="id"
+             onshowrowdetail="onShowRowDetail">
+            <div property="columns">
+                <div type="expandcolumn">#</div>
+                <div field="OrderID" headerAlign="left">订单编号</div>
+                <div field="OrderTime" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss">订单创建时间</div>
+                <div field="ContactName" headerAlign="left">联系人</div>
+                <div field="ContactMobile" headerAlign="left">手机</div>
+                <div field="DepartmentName" headerAlign="left">科室</div>
+                <div field="BedCode" headerAlign="left">床号</div>
+                <div field="IsAlreadyPaid" headerAlign="left" renderer="onGenderRenderer">支付状态</div>
+                <div field="PayTime" headerAlign="left" dateFormat="yyyy-MM-dd HH:mm:ss" renderer="onPayTimeRenderer">支付时间</div>
+                <div field="PayNo" headerAlign="left">交易单号</div>
+                <div field="OrderMoney" headerAlign="left">订单金额（元）</div>
 
-
-    <div id="order_grid" class="mini-datagrid" style="width:100%;height:100%;" allowResize="true"
-         url="bjdc_system_MealOrder/GetOrderList" idField="id"
-         onshowrowdetail="onShowRowDetail">
-        <div property="columns">
-            <div type="expandcolumn">#</div>
-            <div field="OrderID" headerAlign="left">订单编号</div>
-            <div field="OrderTime" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss">订单创建时间</div>
-            <div field="ContactName" headerAlign="left">联系人</div>
-            <div field="ContactMobile" headerAlign="left">手机</div>
-            <div field="DepartmentName" headerAlign="left">科室</div>
-            <div field="BedCode" headerAlign="left">床号</div>
-            <div field="IsAlreadyPaid" headerAlign="left" renderer="onGenderRenderer">支付状态</div>
-            <div field="PayTime" headerAlign="left" dateFormat="yyyy-MM-dd HH:mm:ss" renderer="onPayTimeRenderer">支付时间</div>
-            <div field="PayNo" headerAlign="left">交易单号</div>
-            <div field="OrderMoney" headerAlign="left">订单金额（元）</div>
-
+            </div>
         </div>
     </div>
 
@@ -102,6 +123,12 @@
             detailGrid_Form.style.display = "block";
 
             orderdetail_grid.load({ OrderID: row.OrderID });
+        }
+
+        function onSearch() {
+            var mobile = mini.get("txtMobile").getValue();
+            var name = mini.get("txtName").getValue();
+            order_grid.load({ ContactMobile: mobile, ContactName:name });
         }
     </script>
 
