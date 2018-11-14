@@ -48,6 +48,32 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             return Json(result);
         }
 
+        /// <summary>
+        /// 生成带目录的菜单，结构为TreeGrid
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GetMenuTreeList()
+        {
+            var mealDictDal = flexibleContext.GetService<MealDictDal>();
+            var lstCategory = mealDictDal.GetModels(where: "ItemType='菜品分类'", orderBy: "SortNo asc");
+
+            var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
+            var lstMenu = mealMenuDal.GetModels(orderBy: "SortNo asc");
+
+            var lstResult = new List<Object>();
+            foreach (var category in lstCategory)
+            {
+                lstResult.Add(new { ItemID = category.ItemID, ItemName = category.ItemName, ParentItemID = -1, SalePrice = ""});
+            }
+
+            foreach (var menu in lstMenu)
+            {
+                lstResult.Add(new { ItemID = menu.CategoryID + "_" + menu.MealMenuID, ItemName = menu.SaleName, ParentItemID = menu.CategoryID, SalePrice = menu.SalePrice});
+            }
+
+            return Json(lstResult);
+        }
+
         public JsonResult SaveMenu()
         {
             var data = GetArrayList("data");

@@ -52,28 +52,15 @@
                 <a class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()">保存</a>
             </div>
             <div class="mini-fit">
-                <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
-                     borderStyle="border:0;"
-                     url="bjdc_system_mealmenu/GetMenuList"
-                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true" pageSize="30" multiSelect="true">
+                <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"     
+                     url="../bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
+                     treeColumn="CategoryName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
+                     showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false"
+                >
                     <div property="columns">
                         <div type="indexcolumn"></div>
-                        <div type="checkcolumn"></div>
-                        <div field="SaleName" width="120" headerAlign="center" allowSort="false">
-                            菜品名称
-                            <input property="editor" class="mini-textbox" style="width: 100%;"/>
-                            <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入菜品名称敲回车键检索" />
-                        </div>
-                        <div field="SalePrice" width="120" headerAlign="center" allowSort="false">
-                            价格（元）
-                            <input property="editor" class="mini-spinner" style="width: 100%;"  minValue="0" maxValue="10000" />
-                        </div>
-                        <div field="SortNo" width="100" allowSort="false" align="center" headerAlign="center">
-                            排序
-                            <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width: 100%;"/>
-                        </div>
-                        <div field="CreateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">创建时间</div>
-                        <div field="UpdateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">修改时间</div>
+                        <div name="CategoryName" field="ItemName" width="200">菜品名称</div>
+                        <div field="SalePrice" width="100">价格（元）</div>
                     </div>
                 </div>
             </div>
@@ -84,7 +71,7 @@
         mini.parse();
 
         var tree = mini.get("tree1");
-        var grid = mini.get("grid1");
+        var treegrid1 = mini.get("treegrid1");
 
         var btnNew = mini.get("btnNew");
 
@@ -92,17 +79,19 @@
             tree.reload();
         }
 
-        tree.on("nodeclick", function (e) {
+        tree.on("nodeclick",
+            function(e) {
 
-            if (e.isLeaf) {
-                grid.load({ CategoryID: e.node.id });
-                btnNew.setEnabled(true);
-            } else {
-                grid.setData([]);
-                grid.setTotalCount(0);
-                btnNew.setEnabled(false);
-            }
-        });
+                if (e.isLeaf) {
+                    treegrid1.load({ CategoryID: e.node.id });
+                    btnNew.setEnabled(true);
+                } else {
+                    treegrid1.setData([]);
+                    treegrid1.setTotalCount(0);
+                    btnNew.setEnabled(false);
+                }
+            });
+
         //////////////////////////////////////////////
         function onNameFilterChanged(e) {
             var textbox = e.sender;
@@ -110,39 +99,55 @@
 
             var node = tree.getSelectedNode();
             if (node) {
-                grid.load({ CategoryID: node.id, SaleName: key });
+                treegrid1.load({ CategoryID: node.id, SaleName: key });
             }
         }
+
         function addRow() {
             var node = tree.getSelectedNode();
             if (node) {
                 var newRow = { name: "New Row" };
                 newRow.CategoryID = node.id;
-                grid.addRow(newRow, 0);
+                treegrid1.addRow(newRow, 0);
             }
         }
+
         function removeRow() {
-            var rows = grid.getSelecteds();
+            var rows = treegrid1.getSelecteds();
             if (rows.length > 0) {
-                grid.removeRows(rows, true);
+                treegrid1.removeRows(rows, true);
             }
         }
+
         function saveData() {
-            var data = grid.getChanges();
+            var data = treegrid1.getChanges();
             var json = mini.encode(data);
-            grid.loading("保存中，请稍后......");
+            treegrid1.loading("保存中，请稍后......");
             $.ajax({
                 url: "bjdc_system_mealmenu/SaveMenu",
                 data: { data: json },
                 type: "post",
-                success: function (text) {
-                    grid.reload();
+                success: function(text) {
+                    treegrid1.reload();
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function(jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.responseText);
                 }
             });
         }
+
+        function ondrawnode(e) {
+            //debugger;
+            //var tree = e.sender,
+            //    record = e.record,
+            //    column = e.column,
+            //    field = e.field,
+            //    id = record[tree.getIdField()],
+            //    funs = record.functions;
+
+            //tree.checkNode(e.node);
+        }
+
     </script>
 
 </body>
