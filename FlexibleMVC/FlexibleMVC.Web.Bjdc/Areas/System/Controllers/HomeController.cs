@@ -37,7 +37,8 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                 new {id = "1", text = "系统导航", pid=""},
                 new {id = "2", text = "菜品分类管理", pid = "1", url="bjdc_system_MealCategory"},
                 new {id = "3", text = "菜单管理", pid = "1", url="bjdc_system_MealMenu"},
-                new {id = "4", text = "一周计划食谱", pid = "1", url="bjdc_system_MealSchedule"}
+                new {id = "4", text = "一周食谱计划", pid = "1", url="bjdc_system_MealSchedule"},
+                new {id = "5", text = "订单查询", pid = "1", url="bjdc_system_MealOrder"}
             };
             return Json(tree);
         }

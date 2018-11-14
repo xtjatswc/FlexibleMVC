@@ -79,11 +79,16 @@
     <Compile Include="Areas\System\Controllers\MealCategoryController.cs" />
     <Compile Include="Areas\System\Controllers\MealMenuController.cs" />
     <Compile Include="Areas\System\Controllers\MealScheduleController.cs" />
+    <Compile Include="Areas\System\Controllers\MealOrderController.cs" />
     <Compile Include="Areas\System\DAL\MealDictDal.cs" />
     <Compile Include="Areas\System\DAL\MealMenuDal.cs" />
+    <Compile Include="Areas\System\DAL\MealOrderDal.cs" />
+    <Compile Include="Areas\System\DAL\MealOrderDetailDal.cs" />
     <Compile Include="Areas\System\DAL\MealScheduleDal.cs" />
     <Compile Include="Areas\System\Model\MealDict.cs" />
     <Compile Include="Areas\System\Model\MealMenu.cs" />
+    <Compile Include="Areas\System\Model\MealOrder.cs" />
+    <Compile Include="Areas\System\Model\MealOrderDetail.cs" />
     <Compile Include="Areas\System\Model\MealSchedule.cs" />
     <Compile Include="Areas\System\SystemAreaRegistration.cs" />
     <Compile Include="Areas\System\Controllers\HomeController.cs" />
@@ -99,6 +104,7 @@
     <Content Include="Areas\System\Views\MealCategory\Index.cshtml" />
     <Content Include="Areas\System\Views\MealMenu\Index.cshtml" />
     <Content Include="Areas\System\Views\MealSchedule\Index.cshtml" />
+    <Content Include="Areas\System\Views\MealOrder\Index.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Index_part1.cshtml" />
