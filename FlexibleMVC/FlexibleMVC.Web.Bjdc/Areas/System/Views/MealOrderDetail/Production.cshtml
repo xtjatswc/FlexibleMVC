@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+    string miniui = LessConfig.MiniUI_Path;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>生产计划</title>
+
+    <link href="@Url.Content(@miniui + "demo/demo.css")" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="@Url.Content(@miniui + "scripts/boot.js")" type="text/javascript"></script>
+
+    <!--引入皮肤样式-->
+    <!--<link href="../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css" />-->
+
+</head>
+<body>
+    <div class="mini-toolbar" style="padding:2px;border-bottom:0;">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:100%;">
+                    @*<a class="mini-button" iconCls="icon-save" plain="true">保存</a>
+                    <a class="mini-button" iconCls="icon-close" plain="true">关闭</a>
+                    <span class="separator"></span>
+                    <a class="mini-button" iconCls="icon-reload" plain="true">刷新</a>*@
+                </td>
+                <td style="white-space: nowrap;">
+                    <label style="font-family:Verdana;">配送日期: </label>
+                    <input id="txtMealDate" class="mini-datepicker" value="@DateTime.Now" />
+                    &nbsp;&nbsp;&nbsp;
+                    <label style="font-family: Verdana;">餐别: </label>
+                    <input id="cboMealTimes" class="mini-combobox" style="width:150px;" textField="ItemName" valueField="ItemName" 
+                           url="/bjdc_system_MealDict/GetMealIimes"
+                           showNullItem="true"
+                    /> 
+                    <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--撑满页面-->
+    <div class="mini-fit">
+        <div id="order_grid" class="mini-datagrid" style="width:100%;height:100%;" allowResize="true" autoLoad="false"
+             url="/bjdc_system_MealOrderDetail/GetProductionPlan" idField="id" pageSize="30"
+             >
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div field="MealDate" headerAlign="center" dateFormat="yyyy-MM-dd">配送日期</div>
+                <div field="MealTimesName" headerAlign="left">餐别</div>
+                <div field="SaleName" headerAlign="left">菜品名称</div>
+                <div field="SaleNum" headerAlign="left">数量</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        mini.parse();
+
+        var order_grid = mini.get("order_grid");
+
+        onSearch();
+
+        function onSearch() {
+            var mealDate = mini.get("txtMealDate").getFormValue();
+            var mealTimes = mini.get("cboMealTimes").getValue();
+            order_grid.load({ MealDate: mealDate, MealTimes: mealTimes });
+        }
+    </script>
+
+</body>
+</html>

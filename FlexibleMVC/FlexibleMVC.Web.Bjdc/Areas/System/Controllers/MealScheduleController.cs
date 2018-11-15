@@ -26,8 +26,8 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         public JsonResult GetWeekTree()
         {
             var mealDictDal = flexibleContext.GetService<MealDictDal>();
-            var lstMenu = mealDictDal.GetModels(where: "ItemType='菜单计划'", orderBy:"sortNo asc");
-            var lstTimes = mealDictDal.GetModels(where: "ItemType='餐别'", orderBy: "sortNo asc");
+            var lstMenu = mealDictDal.GetModels(DictItemType.菜单计划);
+            var lstTimes = mealDictDal.GetModels(DictItemType.餐别);
 
             var tree = new List<object>
             {

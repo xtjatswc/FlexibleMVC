@@ -14,5 +14,12 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.DAL
         {
             Db = lessContext.db;
         }
+
+        public List<MealDict> GetModels(DictItemType itemType)
+        {
+            var models = GetModels(where: "ItemType='"+ Enum.GetName(typeof(DictItemType), itemType) + "'", orderBy: "sortNo asc");
+            return models; 
+        }
+
     }
 }

@@ -18,4 +18,11 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Model
         public Decimal SortNo { get; set; }
         public Int32 IsAllowedEdit { get; set; }
     }
+
+    public enum DictItemType
+    {
+        餐别,
+        菜品分类,
+        菜单计划
+    }
 }

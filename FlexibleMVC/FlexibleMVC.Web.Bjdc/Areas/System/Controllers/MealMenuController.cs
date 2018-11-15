@@ -57,7 +57,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             string MealTimesCode = GetString("MealTimesCode");
 
             var mealDictDal = flexibleContext.GetService<MealDictDal>();
-            var lstCategory = mealDictDal.GetModels(where: "ItemType='菜品分类'", orderBy: "SortNo asc");
+            var lstCategory = mealDictDal.GetModels(DictItemType.菜品分类);
 
             var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
             var lstMenu = mealMenuDal.GetModels(orderBy: "SortNo asc");

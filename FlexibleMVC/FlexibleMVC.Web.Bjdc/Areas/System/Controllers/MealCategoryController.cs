@@ -95,7 +95,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         public JsonResult GetMealMenuTree()
         {
             var mealDictDal = flexibleContext.GetService<MealDictDal>();
-            var lstMenu = mealDictDal.GetModels(where: "ItemType='菜品分类'", orderBy:"SortNo asc");
+            var lstMenu = mealDictDal.GetModels(DictItemType.菜品分类);
 
             var tree = new List<object>
             {
