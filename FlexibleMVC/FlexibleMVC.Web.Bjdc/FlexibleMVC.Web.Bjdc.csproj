@@ -110,6 +110,7 @@
     <Content Include="Areas\System\Views\MealOrder\Index.cshtml" />
     <Content Include="Areas\System\Views\Login\Index.cshtml" />
     <Content Include="Areas\System\Views\MealOrderDetail\Production.cshtml" />
+    <Content Include="Areas\System\Views\MealOrderDetail\MealDelivery.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Index_part1.cshtml" />

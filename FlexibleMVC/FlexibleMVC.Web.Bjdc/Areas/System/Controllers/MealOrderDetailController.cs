@@ -53,6 +53,47 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             string mealTimes = GetString("MealTimes");
 
             //分页
+            //int pageIndex = GetInt("pageIndex");
+            //int pageSize = GetInt("pageSize");
+            //字段排序
+            //String sortField = GetString("sortField");
+            //String sortOrder = GetString("sortOrder");
+
+            string sWhere = "where MealDate='" + mealDate + "'";
+            if (mealTimes != "")
+            {
+                sWhere += " and MealTimesName = '" + mealTimes + "'";
+            }
+
+            var mealOrderDetailDal = flexibleContext.GetService<MealOrderDetailDal>();
+
+            var models = mealOrderDetailDal.Db.Sql(@"select MealDate,MealTimesName,SaleName, sum(SaleNum) SaleNum from dc_mealorderdetail " + sWhere + @"
+                group by MealDate,MealTimesName,SaleName
+                order by MealDate desc,MealTimesName ")
+                    //.Parameter("pageIndex", pageIndex * pageSize)
+                    //.Parameter("pageSize", pageSize)
+                    .QueryMany<dynamic>();
+
+//            var count = mealOrderDetailDal.Db.Sql(@"select count(*) from (
+//select MealDate,MealTimesName,SaleName from dc_mealorderdetail " + sWhere + @" group by MealDate,MealTimesName,SaleName) tb")
+//                .QuerySingle<int>();
+
+            var result = new { total = 0, data = models };
+            return Json(result);
+        }
+
+        public ActionResult MealDelivery()
+        {
+            return View();
+        }
+
+        public JsonResult GetMealDeliveryPlan()
+        {
+            //查询条件
+            string mealDate = Request.GetSqlParamer("MealDate");
+            string mealTimes = GetString("MealTimes");
+
+            //分页
             int pageIndex = GetInt("pageIndex");
             int pageSize = GetInt("pageSize");
             //字段排序
@@ -70,9 +111,9 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             var models = mealOrderDetailDal.Db.Sql(@"select MealDate,MealTimesName,SaleName, count(*) SaleNum from dc_mealorderdetail " + sWhere + @"
                 group by MealDate,MealTimesName,SaleName
                 order by MealDate desc,MealTimesName limit @pageIndex, @pageSize")
-                    .Parameter("pageIndex", pageIndex)
-                    .Parameter("pageSize", pageSize)
-                    .QueryMany<dynamic>();
+                .Parameter("pageIndex", pageIndex)
+                .Parameter("pageSize", pageSize)
+                .QueryMany<dynamic>();
 
             var count = mealOrderDetailDal.Db.Sql(@"select count(*) from (
 select MealDate,MealTimesName,SaleName, count(*) SaleNum from dc_mealorderdetail " + sWhere + @" group by MealDate,MealTimesName,SaleName) tb")
