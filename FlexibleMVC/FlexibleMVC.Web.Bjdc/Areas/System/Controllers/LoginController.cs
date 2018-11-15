@@ -7,7 +7,7 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Filters.Permission;
 
-namespace FlexibleMVC.Web.Frond.Controllers
+namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
     [CheckUserRole(Enabled = false)]
     public class LoginController : LessBaseController

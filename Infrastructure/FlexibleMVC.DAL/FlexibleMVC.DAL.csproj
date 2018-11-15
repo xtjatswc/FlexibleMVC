@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Permissions\SysUserDal.cs" />
+    <Compile Include="Admin\Permissions\SysWebSiteDal.cs" />
     <Compile Include="FoodDal.cs" />
     <Compile Include="PatientDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

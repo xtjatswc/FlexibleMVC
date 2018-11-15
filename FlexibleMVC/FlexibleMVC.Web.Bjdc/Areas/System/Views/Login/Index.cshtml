@@ -84,6 +84,7 @@
 
             //
             var user = {
+                "webSiteID": "98B24823-B483-4E23-A1A5-6A3A66BAD30F",
                 "loginName": mini.get("username").getValue(),
                 "password": mini.get("pwd").getValue()
             };
@@ -110,12 +111,12 @@
 
         function doLoginResult(data) {
             if (data.Success) {
-                $.cookie('token', data.Token, { expires: 7 });
+                $.cookie('token', data.token, { expires: 7 });
                 $.cookie('latestLoginName', mini.get("username").getValue(), { expires: 7 });
                 loginWindow.hide();
                 mini.loading("登录成功，马上转到系统...", "登录成功");
                 setTimeout(function () {
-                    window.location = "/bjdc_system_home";
+                    window.location = data.sysWebSite.MainUrl;
                 }, 1500);
             } else {
                 alert(data.Msg);

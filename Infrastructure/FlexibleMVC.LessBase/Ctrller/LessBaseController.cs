@@ -11,6 +11,7 @@ namespace FlexibleMVC.LessBase.Ctrller
     {
         public LessBaseController(LessFlexibleContext flexibleContext) : base(flexibleContext)
         {
+
         }
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)

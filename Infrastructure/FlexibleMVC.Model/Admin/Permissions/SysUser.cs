@@ -10,7 +10,8 @@ namespace FlexibleMVC.Model.Admin.Permissions
 {
     public class LoginResult : JsonResultInfo
     {
-        public string Token { get; set; }
+        public string token { get; set; }
+        public SysWebSite sysWebSite { get; set; }
     }
 
     [TableName("SysUser")]

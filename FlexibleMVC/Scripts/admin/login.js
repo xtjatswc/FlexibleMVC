@@ -26,7 +26,7 @@ $(function () {
 login.doLoginResult = function (data) {
     if (data.Success) {
         $.cookie('latestLoginName', $("#txtLoginName").val(), { expires: 7 });
-        location.href = "/Admin_Home/Index?token=" + data.Token;
+        location.href = "/Admin_Home/Index?token=" + data.token;
     } else {
         alert(data.Msg);
     }

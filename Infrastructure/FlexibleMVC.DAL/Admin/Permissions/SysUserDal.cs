@@ -16,9 +16,9 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             Db = lessContext.db1;
         }
 
-        public SysUser GetUserByLoginName(string loginName)
+        public SysUser GetUser(string loginName)
         {
-            var model = GetModel(new SysUser { LoginName = loginName, IsDeleted = 0 }, o => o.LoginName, o => o.IsDeleted);
+            var model = GetModel(new SysUser {LoginName = loginName});
             return model;
         }
 

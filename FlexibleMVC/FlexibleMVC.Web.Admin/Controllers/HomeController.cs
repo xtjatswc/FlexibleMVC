@@ -6,6 +6,7 @@
 using FlexibleMVC.Base.Ctrller;
 using System.Web.Mvc;
 using FlexibleMVC.Base.Context;
+using FlexibleMVC.BLL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Model.Admin.Permissions;
@@ -23,8 +24,8 @@ namespace FlexibleMVC.Web.Admin.Controllers
         [CheckUserRole(WhenNotPassedRedirectUrl = "/Admin_Login/Index")]
         public ActionResult Index()
         {
-            SysUserDal sysUserDal = flexibleContext.GetService<SysUserDal>();
-            SysUser sysUser = sysUserDal.GetUserByLoginName(Jwt.Result[BasicConst.JWT_USER].loginName.ToString());
+            SysUserBll sysUserBll = flexibleContext.GetService<SysUserBll>();
+            SysUser sysUser = sysUserBll.getCurrentUser();
             if (sysUser == null)                
                 return RedirectPermanent("/Admin_Login/Index");
 

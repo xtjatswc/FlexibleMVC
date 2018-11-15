@@ -14,7 +14,7 @@ namespace FlexibleMVC.BLL.Admin.Permissions
     {
         public SysUserDal sysUserDal { get; set; }
 
-        public LoginResult CheckLogin(string loginName, string password)
+        public LoginResult CheckLogin(string webSiteID,string loginName, string password)
         {
             LoginResult loginResult = new LoginResult { Success = false };
 
@@ -30,10 +30,16 @@ namespace FlexibleMVC.BLL.Admin.Permissions
                 return loginResult;
             }
 
-            SysUser sysUser = sysUserDal.GetUserByLoginName(loginName);
+            SysUser sysUser = sysUserDal.GetUser(loginName);
             if(sysUser == null)
             {
                 loginResult.Msg = $"登录名{loginName}不存在！";
+                return loginResult;
+            }
+
+            if (sysUser.IsDeleted == 1)
+            {
+                loginResult.Msg = $"登录名{loginName}已被删除！";
                 return loginResult;
             }
 
@@ -49,12 +55,28 @@ namespace FlexibleMVC.BLL.Admin.Permissions
                 return loginResult;
             }
 
+            //
+            SysWebSiteDal sysWebSiteDal = lessContext.GetService<SysWebSiteDal>();
+            SysWebSite sysWebSite = sysWebSiteDal.GetModel(new SysWebSite{ID = webSiteID});
+            if (sysWebSite == null)
+            {
+                loginResult.Msg = $"站点{webSiteID}不存在！";
+                return loginResult;
+            }
+
+            if (sysWebSite.IsDeleted == 1)
+            {
+                loginResult.Msg = $"站点{webSiteID}已被删除！";
+                return loginResult;
+            }
+
             var dict = new Dictionary<string, object>();
-            dict[BasicConst.JWT_USER] = new { loginName = loginName };
+            dict[BasicConst.JWT_USER] = new {loginName = loginName };
             string jwt = JwtUtil.Encode(dict, 24 * 60 * 60);
             loginResult.Success = true;
             loginResult.Msg = "登录成功！";
-            loginResult.Token = jwt;
+            loginResult.token = jwt;
+            loginResult.sysWebSite = sysWebSite;
 
             //更新最近登录时间和登录次数
             sysUser.LoginCount += 1;
@@ -62,6 +84,18 @@ namespace FlexibleMVC.BLL.Admin.Permissions
             sysUserDal.Update(sysUser, o => sysUser.ID);
 
             return loginResult;
+        }
+
+        /// <summary>
+        /// 得到当前登录用户信息
+        /// </summary>
+        /// <returns></returns>
+        public SysUser getCurrentUser()
+        {
+            SysUserDal sysUserDal = lessContext.GetService<SysUserDal>();
+            string loginName = lessContext.Jwt.Result[BasicConst.JWT_USER].loginName.ToString();
+            SysUser sysUser = sysUserDal.GetUser(loginName);
+            return sysUser;
         }
     }
 }

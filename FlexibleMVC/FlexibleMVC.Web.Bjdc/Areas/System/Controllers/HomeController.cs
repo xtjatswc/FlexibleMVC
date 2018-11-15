@@ -15,6 +15,8 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.LessBase.Infrastructure;
 using System.Collections.Generic;
+using FlexibleMVC.BLL.Admin.Permissions;
+using FlexibleMVC.Model.Admin.Permissions;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
@@ -24,8 +26,14 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         {
         }
 
+        [CheckUserRole(WhenNotPassedRedirectUrl = "/bjdc_system_login")]
         public ActionResult Index()
         {
+            SysUserBll sysUserBll = flexibleContext.GetService<SysUserBll>();
+            SysUser sysUser = sysUserBll.getCurrentUser();
+            if (sysUser == null)
+                return RedirectPermanent("/bjdc_system_login");
+
             return View();
         }
 

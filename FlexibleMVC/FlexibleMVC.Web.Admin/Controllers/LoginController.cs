@@ -26,10 +26,10 @@ namespace FlexibleMVC.Web.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult CheckLogin(string loginName, string password)
+        public ActionResult CheckLogin(string webSiteID, string loginName, string password)
         {
             SysUserBll sysUserBll = flexibleContext.GetService<SysUserBll>();
-            LoginResult loginResult = sysUserBll.CheckLogin(loginName, password);
+            LoginResult loginResult = sysUserBll.CheckLogin(webSiteID, loginName, password);
 
             //return Redirect("/frond_b_Home/index");
             return Json(loginResult);
