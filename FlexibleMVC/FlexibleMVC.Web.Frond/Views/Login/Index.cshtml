@@ -110,11 +110,12 @@
 
         function doLoginResult(data) {
             if (data.Success) {
+                $.cookie('token', data.Token, { expires: 7 });
                 $.cookie('latestLoginName', mini.get("username").getValue(), { expires: 7 });
                 loginWindow.hide();
                 mini.loading("登录成功，马上转到系统...", "登录成功");
                 setTimeout(function () {
-                    window.location = "/bjdc_system_home/Index?token=" + data.Token;
+                    window.location = "/bjdc_system_home";
                 }, 1500);
             } else {
                 alert(data.Msg);

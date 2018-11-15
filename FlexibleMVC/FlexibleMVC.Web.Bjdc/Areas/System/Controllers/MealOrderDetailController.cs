@@ -10,7 +10,6 @@ using FlexibleMVC.Web.Bjdc.Areas.System.DAL;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
-    [CheckUserRole(Enabled = false)]
     public class MealOrderDetailController : LessBaseController
     {
         public MealOrderDetailController(LessFlexibleContext lessContext) : base(lessContext)

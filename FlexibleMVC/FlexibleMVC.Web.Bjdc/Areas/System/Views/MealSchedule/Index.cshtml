@@ -53,7 +53,7 @@
             </div>
             <div class="mini-fit">
                 <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"     
-                     url="../bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
+                     url="/bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
                      treeColumn="CategoryName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
                      showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false"
                 >
@@ -109,7 +109,7 @@
             var json = mini.encode(chkNodes);
             treegrid1.loading("保存中，请稍后......");
             $.ajax({
-                url: "../bjdc_system_MealSchedule/SaveSchedule",
+                url: "/bjdc_system_MealSchedule/SaveSchedule",
                 data: { data: json, week: node.week, MealTimesCode: node.code, MealTimesName: node.text},
                 type: "post",
                 success: function(text) {

@@ -52,7 +52,7 @@
     <!--撑满页面-->
     <div class="mini-fit">
         <div id="order_grid" class="mini-datagrid" style="width:100%;height:100%;" allowResize="true"
-             url="../bjdc_system_MealOrder/GetOrderList" idField="id"
+             url="/bjdc_system_MealOrder/GetOrderList" idField="id"
              onshowrowdetail="onShowRowDetail">
             <div property="columns">
                 <div type="expandcolumn">#</div>
@@ -73,7 +73,7 @@
 
     <div id="detailGrid_Form" style="display:none;">
         <div id="orderdetail_grid" class="mini-datagrid" style="width:100%;height:350px;"
-             url="../bjdc_system_MealOrderdetail/GetOrderDetailList">
+             url="/bjdc_system_MealOrderdetail/GetOrderDetailList">
             <div property="columns">
                 <div field="MealDate" headerAlign="left" dateFormat="yyyy-MM-dd">配送日期</div>
                 <div field="MealTimesName" headerAlign="left">餐别</div>

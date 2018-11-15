@@ -39,7 +39,7 @@
         </div>
     </div>
     <div id="datagrid1" class="mini-datagrid" style="width:800px;height:480px;"
-         url="../bjdc_system_mealcategory/GetCategoryList" idField="ItemID"
+         url="/bjdc_system_mealcategory/GetCategoryList" idField="ItemID"
          allowResize="true" pageSize="20"
          allowCellEdit="true" allowCellSelect="true" multiSelect="false"
          editNextOnEnterKey="true" editNextRowCell="true">
@@ -94,7 +94,7 @@
         function saveData() {
 
             saveGrid(grid, {
-                url: "../bjdc_system_mealcategory/SaveCategory"
+                url: "/bjdc_system_mealcategory/SaveCategory"
             });
 
 //            saveGrid(grid, {

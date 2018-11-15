@@ -11,7 +11,6 @@ using FlexibleMVC.LessBase.Extension;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
-    [CheckUserRole(Enabled = false)]
     public class MealCategoryController : LessBaseController
     {
 

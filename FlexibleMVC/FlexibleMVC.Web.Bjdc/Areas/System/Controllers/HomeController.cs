@@ -18,7 +18,6 @@ using System.Collections.Generic;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 {
-    [CheckUserRole(Enabled = false)]
     public class HomeController : LessBaseController
     {
         public HomeController(LessFlexibleContext lessContext) : base(lessContext)
@@ -35,10 +34,10 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             var tree = new List<object>()
             {
                 new {id = "1", text = "系统导航", pid=""},
-                new {id = "2", text = "菜品分类管理", pid = "1", url="bjdc_system_MealCategory/index"},
-                new {id = "3", text = "菜单管理", pid = "1", url="bjdc_system_MealMenu/index"},
-                new {id = "4", text = "一周食谱计划", pid = "1", url="bjdc_system_MealSchedule/index"},
-                new {id = "5", text = "订单查询", pid = "1", url="bjdc_system_MealOrder/index"}
+                new {id = "2", text = "菜品分类管理", pid = "1", url="/bjdc_system_MealCategory/index"},
+                new {id = "3", text = "菜单管理", pid = "1", url="/bjdc_system_MealMenu/index"},
+                new {id = "4", text = "一周食谱计划", pid = "1", url="/bjdc_system_MealSchedule/index"},
+                new {id = "5", text = "订单查询", pid = "1", url="/bjdc_system_MealOrder/index"}
             };
             return Json(tree);
         }
