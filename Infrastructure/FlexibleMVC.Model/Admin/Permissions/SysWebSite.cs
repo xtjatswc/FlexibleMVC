@@ -11,6 +11,7 @@ namespace FlexibleMVC.Model.Admin.Permissions
     public class SysWebSite : BaseModel
     {
         public String SiteName { get; set; }
+        public String Copyright { get; set; }
         public String LoginUrl { get; set; }
         public String MainUrl { get; set; }
     }

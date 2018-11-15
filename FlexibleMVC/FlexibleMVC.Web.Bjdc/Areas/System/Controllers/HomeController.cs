@@ -34,7 +34,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             if (sysUser == null)
                 return RedirectPermanent("/bjdc_system_login");
 
-            return View();
+            return View(sysUser);
         }
 
         public JsonResult GetListTree()

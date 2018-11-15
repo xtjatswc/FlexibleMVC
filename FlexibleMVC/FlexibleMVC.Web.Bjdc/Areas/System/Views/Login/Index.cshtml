@@ -116,7 +116,7 @@
                 loginWindow.hide();
                 mini.loading("登录成功，马上转到系统...", "登录成功");
                 setTimeout(function () {
-                    window.location = data.sysWebSite.MainUrl;
+                    window.location = data.sysWebSite.MainUrl + "?SiteID=" + data.sysWebSite.ID;
                 }, 1500);
             } else {
                 alert(data.Msg);
