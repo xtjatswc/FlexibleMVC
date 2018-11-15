@@ -40,7 +40,7 @@
                 *@
             </div>
             <div class="mini-fit">
-                <ul id="tree1" class="mini-tree" url="bjdc_system_MealSchedule/GetWeekTree" style="width:100%;"
+                <ul id="tree1" class="mini-tree" url="../bjdc_system_MealSchedule/GetWeekTree" style="width:100%;"
                     showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
@@ -109,7 +109,7 @@
             var json = mini.encode(chkNodes);
             treegrid1.loading("保存中，请稍后......");
             $.ajax({
-                url: "bjdc_system_MealSchedule/SaveSchedule",
+                url: "../bjdc_system_MealSchedule/SaveSchedule",
                 data: { data: json, week: node.week, MealTimesCode: node.code, MealTimesName: node.text},
                 type: "post",
                 success: function(text) {

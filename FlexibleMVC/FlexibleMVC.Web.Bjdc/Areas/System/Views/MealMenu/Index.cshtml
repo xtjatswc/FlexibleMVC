@@ -39,7 +39,7 @@
                 <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
             </div>
             <div class="mini-fit">
-                <ul id="tree1" class="mini-tree" url="bjdc_system_MealCategory/GetMealMenuTree" style="width:100%;"
+                <ul id="tree1" class="mini-tree" url="../bjdc_system_MealCategory/GetMealMenuTree" style="width:100%;"
                     showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="mini-fit">
                 <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
                      borderStyle="border:0;"
-                     url="bjdc_system_mealmenu/GetMenuList"
+                     url="../bjdc_system_mealmenu/GetMenuList"
                      showFilterRow="true" allowCellSelect="true" allowCellEdit="true" pageSize="30" multiSelect="true">
                     <div property="columns">
                         <div type="indexcolumn"></div>
@@ -132,7 +132,7 @@
             var json = mini.encode(data);
             grid.loading("保存中，请稍后......");
             $.ajax({
-                url: "bjdc_system_mealmenu/SaveMenu",
+                url: "../bjdc_system_mealmenu/SaveMenu",
                 data: { data: json },
                 type: "post",
                 success: function (text) {

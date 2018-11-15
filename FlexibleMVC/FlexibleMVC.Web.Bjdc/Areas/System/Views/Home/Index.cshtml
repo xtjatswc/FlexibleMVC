@@ -53,7 +53,7 @@
             <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
                 <div size="180" maxSize="250" minSize="100" showCollapseButton="true" style="border-width:1px;">
                     <!--Tree-->
-                    <ul id="leftTree" class="mini-tree" url="bjdc_system_home/GetListTree" style="width:100%;height:100%;"
+                    <ul id="leftTree" class="mini-tree" url="../bjdc_system_home/GetListTree" style="width:100%;height:100%;"
                         showTreeIcon="true" textField="text" idField="id" resultAsTree="false"
                         expandOnLoad="true" onnodeclick="onNodeSelect"></ul>
                 </div>
@@ -87,7 +87,7 @@
                 tab.showCloseButton = true;
 
                 //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
-                tab.url = node.url;
+                tab.url = "../" + node.url;
 
                 tabs.addTab(tab);
             }
