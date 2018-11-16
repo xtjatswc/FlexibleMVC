@@ -87,6 +87,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 String loginName = o["LoginName"].ToString();
                 String password = o["Password"].ToString();
                 long isLocked = Convert.ToInt32(o["IsLocked"].ToString());
+                String mobile = o.GetString("Mobile");
                 decimal sortNo = Convert.ToDecimal(o["SortNo"]);
 
                 if (state == "added" || id == "")           //新增：id为空，或_state为added
@@ -98,6 +99,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     model.Password = password;
                     model.SortNo = sortNo;
                     model.IsLocked = isLocked;
+                    model.Mobile = mobile;
                     sysUserDal.Insert(model);
                 }
                 else if (state == "removed" || state == "deleted")
@@ -114,6 +116,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     model.Password = password;
                     model.SortNo = sortNo;
                     model.IsLocked = isLocked;
+                    model.Mobile = mobile;
                     sysUserDal.Update(model, x => x.ID);
                 }
             }
