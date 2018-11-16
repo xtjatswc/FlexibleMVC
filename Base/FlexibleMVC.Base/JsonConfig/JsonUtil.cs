@@ -40,6 +40,9 @@ namespace FlexibleMVC.Base.JsonConfig
 
         public static T ToObj<T>(string json)
         {
+            if (string.IsNullOrWhiteSpace(json))
+                return default(T);
+
             return JsonConvert.DeserializeObject<T>(json);
         }
 

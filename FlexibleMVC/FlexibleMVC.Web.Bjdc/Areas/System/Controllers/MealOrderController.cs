@@ -24,8 +24,8 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             string ContactMobile = Request.GetSqlParamer("ContactMobile");
             string ContactName = Request.GetSqlParamer("ContactName");
             //分页
-            int pageIndex = GetInt("pageIndex") + 1;
-            int pageSize = GetInt("pageSize");
+            int pageIndex = Request.GetInt("pageIndex") + 1;
+            int pageSize = Request.GetInt("pageSize");
             //字段排序
             //String sortField = GetString("sortField");
             //String sortOrder = GetString("sortOrder");

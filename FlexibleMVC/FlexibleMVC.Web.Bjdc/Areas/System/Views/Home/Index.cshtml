@@ -7,7 +7,7 @@
 
     SysUser sysUser = Model;
     var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
-    SysWebSite sysWebSite = sysWebSiteDal.GetModel(GetString("SiteID"));
+    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
     if (sysWebSite == null)
     {
         Response.Redirect("/bjdc_system_login");

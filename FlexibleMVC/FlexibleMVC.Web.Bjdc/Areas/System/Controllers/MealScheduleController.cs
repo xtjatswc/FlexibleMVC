@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Web.Bjdc.Areas.System.DAL;
 using FlexibleMVC.Web.Bjdc.Areas.System.Model;
@@ -48,10 +49,10 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
         public JsonResult SaveSchedule()
         {
-            var data = GetArrayList("data");
-            int week = GetInt("week");
-            long MealTimesCode = GetInt("MealTimesCode");
-            string MealTimesName = GetString("MealTimesName");
+            var data = Request.GetArrayList("data");
+            int week = Request.GetInt("week");
+            long MealTimesCode = Request.GetInt("MealTimesCode");
+            string MealTimesName = Request.GetString("MealTimesName");
 
             var mealScheduleDal = flexibleContext.GetService<MealScheduleDal>();
             mealScheduleDal.Db.Sql("delete from dc_mealschedule where DayOfWeek = @0 and MealTimesCode = @1", week,

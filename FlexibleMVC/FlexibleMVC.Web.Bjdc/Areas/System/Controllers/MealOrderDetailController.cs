@@ -21,11 +21,11 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         {
             //查询条件
             //string SaleName = Request.GetSqlParamer("SaleName");
-            string OrderID = GetString("OrderID");
+            string OrderID = Request.GetString("OrderID");
 
             //分页
-            int pageIndex = GetInt("pageIndex") + 1;
-            int pageSize = GetInt("pageSize");
+            int pageIndex = Request.GetInt("pageIndex") + 1;
+            int pageSize = Request.GetInt("pageSize");
             //字段排序
             //String sortField = GetString("sortField");
             //String sortOrder = GetString("sortOrder");
@@ -50,7 +50,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         {
             //查询条件
             string mealDate = Request.GetSqlParamer("MealDate");
-            string mealTimes = GetString("MealTimes");
+            string mealTimes = Request.GetString("MealTimes");
 
             //分页
             //int pageIndex = GetInt("pageIndex");
@@ -91,7 +91,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         {
             //查询条件
             string mealDate = Request.GetSqlParamer("MealDate");
-            string mealTimes = GetString("MealTimes");
+            string mealTimes = Request.GetString("MealTimes");
 
             string sWhere = "and a.MealDate='" + mealDate + "'";
             if (mealTimes != "")

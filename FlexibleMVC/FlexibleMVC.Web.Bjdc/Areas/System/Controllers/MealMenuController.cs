@@ -29,13 +29,13 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         {
             //查询条件
             string SaleName = Request.GetSqlParamer("SaleName");
-            string CategoryID = GetString("CategoryID");
+            string CategoryID = Request.GetString("CategoryID");
             //分页
-            int pageIndex = GetInt("pageIndex") + 1;
-            int pageSize = GetInt("pageSize");
+            int pageIndex = Request.GetInt("pageIndex") + 1;
+            int pageSize = Request.GetInt("pageSize");
             //字段排序
-            String sortField = GetString("sortField");
-            String sortOrder = GetString("sortOrder");
+            String sortField = Request.GetString("sortField");
+            String sortOrder = Request.GetString("sortOrder");
 
             string sWhere = "CategoryID='" + CategoryID + "' and SaleName like '%" + SaleName + "%'";
 
@@ -53,8 +53,8 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         /// <returns></returns>
         public JsonResult GetMenuTreeList()
         {
-            string week = GetString("week");
-            string MealTimesCode = GetString("MealTimesCode");
+            string week = Request.GetString("week");
+            string MealTimesCode = Request.GetString("MealTimesCode");
 
             var mealDictDal = flexibleContext.GetService<MealDictDal>();
             var lstCategory = mealDictDal.GetModels(DictItemType.菜品分类);
@@ -93,7 +93,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
         public JsonResult SaveMenu()
         {
-            var data = GetArrayList("data");
+            var data = Request.GetArrayList("data");
             var mealMenuDal = flexibleContext.GetService<MealMenuDal>();
 
             for (int i = 0, l = data.Count; i < l; i++)

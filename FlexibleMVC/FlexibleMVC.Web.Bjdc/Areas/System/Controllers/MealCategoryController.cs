@@ -28,11 +28,11 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             //查询条件
             string key = Request.GetSqlParamer("key");
             //分页
-            int pageIndex = GetInt("pageIndex") + 1;
-            int pageSize = GetInt("pageSize");
+            int pageIndex = Request.GetInt("pageIndex") + 1;
+            int pageSize = Request.GetInt("pageSize");
             //字段排序
-            String sortField = GetString("sortField");
-            String sortOrder = GetString("sortOrder");
+            String sortField = Request.GetString("sortField");
+            String sortOrder = Request.GetString("sortOrder");
 
             string sWhere = "ItemType='菜品分类' and ItemName like '%" + key + "%'";
 
@@ -46,7 +46,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
         public JsonResult SaveCategory()
         {
-            var data = GetArrayList("data");
+            var data = Request.GetArrayList("data");
             var mealDictDal = flexibleContext.GetService<MealDictDal>();
 
             for (int i = 0, l = data.Count; i < l; i++)

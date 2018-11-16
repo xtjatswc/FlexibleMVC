@@ -17,6 +17,7 @@ using FlexibleMVC.LessBase.Infrastructure;
 using System.Collections.Generic;
 using FlexibleMVC.BLL.Admin.Permissions;
 using FlexibleMVC.DAL.Admin.Permissions;
+using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.Model.Admin.Permissions;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
@@ -41,7 +42,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         public JsonResult GetListTree()
         {
             var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
-            var models = sysMenuDal.GetModels(GetString("SiteID"));
+            var models = sysMenuDal.GetModels(Request.GetString("SiteID"));
             return Json(models);
         }
 
