@@ -93,33 +93,24 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             string mealDate = Request.GetSqlParamer("MealDate");
             string mealTimes = GetString("MealTimes");
 
-            //分页
-            int pageIndex = GetInt("pageIndex");
-            int pageSize = GetInt("pageSize");
-            //字段排序
-            //String sortField = GetString("sortField");
-            //String sortOrder = GetString("sortOrder");
-
-            string sWhere = "where MealDate='" + mealDate + "'";
+            string sWhere = "and a.MealDate='" + mealDate + "'";
             if (mealTimes != "")
             {
-                sWhere += " and MealTimesName = '" + mealTimes + "'";
+                sWhere += " and a.MealTimesName = '" + mealTimes + "'";
             }
 
             var mealOrderDetailDal = flexibleContext.GetService<MealOrderDetailDal>();
 
-            var models = mealOrderDetailDal.Db.Sql(@"select MealDate,MealTimesName,SaleName, count(*) SaleNum from dc_mealorderdetail " + sWhere + @"
-                group by MealDate,MealTimesName,SaleName
-                order by MealDate desc,MealTimesName limit @pageIndex, @pageSize")
-                .Parameter("pageIndex", pageIndex)
-                .Parameter("pageSize", pageSize)
+            var models = mealOrderDetailDal.Db.Sql(@"select  a.MealDate,a.MealTimesName,b.DepartmentName, b.BedCode, b.ContactName, b.ContactMobile,
+GROUP_CONCAT(a.SaleName,'*',a.SaleNum,'份') MealDetail
+from dc_mealorderdetail a
+inner join dc_mealorder b on a.OrderID = b.OrderID
+where b.IsAlreadyPaid = 1 " + sWhere + @"
+GROUP BY a.MealDate,a.MealTimesName,b.DepartmentName,b.BedCode,b.ContactName, b.ContactMobile
+order by a.MealDate desc,a.MealTimesName,b.DepartmentName,b.BedCode")
                 .QueryMany<dynamic>();
 
-            var count = mealOrderDetailDal.Db.Sql(@"select count(*) from (
-select MealDate,MealTimesName,SaleName, count(*) SaleNum from dc_mealorderdetail " + sWhere + @" group by MealDate,MealTimesName,SaleName) tb")
-                .QuerySingle<int>();
-
-            var result = new { total = count, data = models };
+            var result = new { total = 0, data = models };
             return Json(result);
         }
     }
