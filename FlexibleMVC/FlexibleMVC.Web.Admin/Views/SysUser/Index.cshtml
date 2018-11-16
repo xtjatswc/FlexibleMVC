@@ -1,0 +1,166 @@
+﻿@using FlexibleMVC.DAL.Admin.Permissions
+@using FlexibleMVC.LessBase.Extension
+@{
+    Layout = null;
+    string miniui = LessConfig.MiniUI_Path;
+
+    var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
+    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>用户管理</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link href="@Url.Content(@miniui + "demo/demo.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content(@miniui + "scripts/boot.js")" type="text/javascript"></script>
+    <script src="@Url.Content(@miniui + "scripts/miniui/locale/zh_CN.js")" type="text/javascript"></script>
+    <script src="@Url.Content(@miniui + "demo/datagrid/js/ColumnsMenu.js")" type="text/javascript"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:100%;">
+                    <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
+                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
+                    <span class="separator"></span>
+                    <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
+                </td>
+                <td style="white-space:nowrap;">
+                    <input id="key" class="mini-textbox" emptyText="请输入名称" style="width:150px;" onenter="onKeyEnter" />
+                    <a class="mini-button" onclick="search()">查询</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="mini-fit">
+        <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"
+             url="/admin_SysUser/GetUserList?SiteID=@sysWebSite.ID" idField="ID"
+             allowResize="true" pageSize="20"
+             allowCellEdit="true" allowCellSelect="true" multiSelect="false"
+             editNextOnEnterKey="true" editNextRowCell="true">
+            <div property="columns">
+                <div type="indexcolumn"></div>
+                <div type="checkcolumn"></div>
+                <div name="SysUserName" field="UserName" headerAlign="center" allowSort="false">
+                    用户名
+                    <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
+                </div>
+                <div field="LoginName" headerAlign="center" allowSort="false" width="150">
+                    登录名
+                    <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
+                </div>
+                <div field="Password" headerAlign="center" allowSort="false" width="150">
+                    密码
+                    <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
+                </div>
+                <div type="checkboxcolumn" field="IsLocked" trueValue="1" falseValue="0" width="60" headerAlign="center">是否锁定</div>
+                <div field="SortNo" width="100" allowSort="false">
+                    排序
+                    <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width:100%;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        mini.parse();
+
+        var grid = mini.get("datagrid1");
+        grid.load();
+
+
+        var menu = new ColumnsMenu(grid);
+
+        //////////////////////////////////////////////////////
+
+        function search() {
+            var key = mini.get("key").getValue();
+
+            grid.load({ key: key });
+        }
+
+        function onKeyEnter(e) {
+            search();
+        }
+
+        function addRow() {
+            var newRow = { name: "New Row" };
+            grid.addRow(newRow, 0);
+
+            grid.beginEditCell(newRow, "LoginName");
+        }
+        function removeRow() {
+            var rows = grid.getSelecteds();
+            if (rows.length > 0) {
+
+                grid.removeRows(rows, true);
+            }
+        }
+        function saveData() {
+
+            saveGrid(grid, {
+                url: "/admin_SysUser/SaveUser?SiteID=@sysWebSite.ID"
+            });
+
+            //            saveGrid(grid, {
+            //                url: "../data/AjaxService.aspx?method=SaveEmployees",
+            //                callback: function (success, result) {
+            //
+            //                }
+            //            });
+        }
+
+
+        grid.on("celleditenter", function (e) {
+            var index = grid.indexOf(e.record);
+            if (index == grid.getData().length - 1) {
+                var row = {};
+                grid.addRow(row);
+            }
+        });
+
+        grid.on("beforeload", function (e) {
+            if (grid.getChanges().length > 0) {
+                if (confirm("有增删改的数据未保存，是否取消本次操作？")) {
+                    e.cancel = true;
+                }
+            }
+        });
+
+
+//        grid.on("cellcommitedit", function (e) {
+//            if (e.field == "loginname") {
+//                if (e.value == "111") {
+//                    alert("不允许为111");
+//                    e.cancel = true;
+//                }
+//            }
+//        });
+
+//        grid.on('beforeload', function (e) {
+//            if (grid.getChanges().length > 0) {
+//                e.cancel = true;
+//                alert('有未保存的数据');
+//            }
+//        });
+
+    </script>
+</body>
+</html>

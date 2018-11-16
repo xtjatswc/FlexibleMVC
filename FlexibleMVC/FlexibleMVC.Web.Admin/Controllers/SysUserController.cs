@@ -1,4 +1,6 @@
-﻿using FlexibleMVC.DAL.Admin.Permissions;
+﻿using System;
+using System.Collections;
+using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
@@ -12,6 +14,11 @@ namespace FlexibleMVC.Web.Admin.Controllers
     {
         public SysUserController(LessFlexibleContext flexibleContext) : base(flexibleContext)
         {
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
         public ActionResult List()
@@ -45,7 +52,75 @@ namespace FlexibleMVC.Web.Admin.Controllers
             return Json(resultJson);
         }
 
-        
+        public JsonResult GetUserList()
+        {
+            //查询条件
+            string key = Request.GetSqlParamer("key");
+            //分页
+            int pageIndex = Request.GetInt("pageIndex") + 1;
+            int pageSize = Request.GetInt("pageSize");
+
+            string sWhere = "IsDeleted = 0 and UserName like '%" + key + "%'";
+
+            var sysUserDal = flexibleContext.GetService<SysUserDal>();
+            var models = sysUserDal.GetModels(where: sWhere, orderBy: "SortNo asc", currentPage: pageIndex, itemsPerPage: pageSize);
+            var count = sysUserDal.GetCount(where: sWhere);
+
+            var result = new { total = count, data = models };
+            return Json(result);
+        }
+
+        public JsonResult SaveUser()
+        {
+            var data = Request.GetArrayList("data");
+            var sysUserDal = flexibleContext.GetService<SysUserDal>();
+            string siteID = Request.GetSqlParamer("SiteID");
+
+            for (int i = 0, l = data.Count; i < l; i++)
+            {
+                Hashtable o = (Hashtable)data[i];
+
+                String id = o["ID"] != null ? o["ID"].ToString() : "";
+                //根据记录状态，进行不同的增加、删除、修改操作
+                String state = o["_state"] != null ? o["_state"].ToString() : "";
+                String userName = o["UserName"].ToString();
+                String loginName = o["LoginName"].ToString();
+                String password = o["Password"].ToString();
+                long isLocked = Convert.ToInt32(o["IsLocked"].ToString());
+                decimal sortNo = Convert.ToDecimal(o["SortNo"]);
+
+                if (state == "added" || id == "")           //新增：id为空，或_state为added
+                {
+                    SysUser model = new SysUser();
+                    model.ID = "{" + Guid.NewGuid().ToString() + "}";
+                    model.UserName = userName;
+                    model.LoginName = loginName;
+                    model.Password = password;
+                    model.SortNo = sortNo;
+                    model.IsLocked = isLocked;
+                    sysUserDal.Insert(model);
+                }
+                else if (state == "removed" || state == "deleted")
+                {
+                    var model = sysUserDal.GetModel(id);
+                    model.IsDeleted = 1;
+                    sysUserDal.Update(model, x => x.ID);
+                }
+                else if (state == "modified" || state == "") //更新：_state为空或modified
+                {
+                    var model = sysUserDal.GetModel(id);
+                    model.UserName = userName;
+                    model.LoginName = loginName;
+                    model.Password = password;
+                    model.SortNo = sortNo;
+                    model.IsLocked = isLocked;
+                    sysUserDal.Update(model, x => x.ID);
+                }
+            }
+
+            var result = new { };
+            return Json(result);
+        }
 
     }
 }

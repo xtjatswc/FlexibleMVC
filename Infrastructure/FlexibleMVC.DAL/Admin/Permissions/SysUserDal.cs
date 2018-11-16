@@ -18,7 +18,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
 
         public SysUser GetUser(string loginName)
         {
-            var model = GetModel(new SysUser {LoginName = loginName});
+            var model = GetModel(new SysUser {LoginName = loginName}, x => x.LoginName);
             return model;
         }
 
