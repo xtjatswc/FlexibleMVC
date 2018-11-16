@@ -1,10 +1,14 @@
 ﻿using FlexibleMVC.Base.AcResult;
 using FlexibleMVC.Base.Context;
 using FlexibleMVC.Base.Jwt;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FlexibleMVC.Base.JsonConfig;
 
 namespace FlexibleMVC.Base.Ctrller
 {
@@ -166,6 +170,44 @@ namespace FlexibleMVC.Base.Ctrller
                 IsDownload = isDownload
             };
         }
+
+        #region 获取请求参数
+        public String GetString(String name)
+        {
+            return Request[name];
+        }
+
+        public int GetInt(String name)
+        {
+            return Convert.ToInt32(GetString(name));
+        }
+
+        public bool GetBoolean(String name)
+        {
+            return Convert.ToBoolean(GetString(name));
+        }
+
+        public DateTime GetDateTime(String name)
+        {
+            return Convert.ToDateTime(GetString(name));
+        }
+
+        public dynamic GetObject(String name)
+        {
+            return JsonUtil.ToObj<dynamic>(GetString(name));
+        }
+
+        public Hashtable GetHashtable(String name)
+        {
+            return JsonUtil.ToObj<Hashtable>(GetString(name));
+        }
+
+        public List<Hashtable> GetArrayList(String name)
+        {
+            return JsonUtil.ToObj<List<Hashtable>>(GetString(name));
+        }
+
+        #endregion
 
     }
 }

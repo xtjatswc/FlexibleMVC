@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Permissions\SysMenuDal.cs" />
     <Compile Include="Admin\Permissions\SysUserDal.cs" />
     <Compile Include="Admin\Permissions\SysWebSiteDal.cs" />
     <Compile Include="FoodDal.cs" />

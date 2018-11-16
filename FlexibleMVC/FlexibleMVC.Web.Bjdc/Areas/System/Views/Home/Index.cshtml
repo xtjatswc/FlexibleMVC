@@ -7,7 +7,7 @@
 
     SysUser sysUser = Model;
     var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
-    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request["SiteID"]);
+    SysWebSite sysWebSite = sysWebSiteDal.GetModel(GetString("SiteID"));
     if (sysWebSite == null)
     {
         Response.Redirect("/bjdc_system_login");
@@ -64,15 +64,15 @@
             <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
                 <div size="180" maxSize="250" minSize="100" showCollapseButton="true" style="border-width:1px;">
                     <!--Tree-->
-                    <ul id="leftTree" class="mini-tree" url="../bjdc_system_home/GetListTree" style="width:100%;height:100%;"
-                        showTreeIcon="true" textField="text" idField="id" resultAsTree="false"
+                    <ul id="leftTree" class="mini-tree" url="../bjdc_system_home/GetListTree?SiteID=@sysWebSite.ID" style="width:100%;height:100%;"
+                        showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false"
                         expandOnLoad="true" onnodeclick="onNodeSelect"></ul>
                 </div>
                 <div showCollapseButton="false" style="border:0px;">
                     <!--Tabs-->
                     <div id="mainTabs" class="mini-tabs" activeIndex="0" style="width:100%;height:100%;"
                          onactivechanged="onTabsActiveChanged" plain="false">
-                        <div title="首页" url="../../docs/api/overview.html">
+                        <div title="首页" url="">
                         </div>
                     </div>
                 </div>
@@ -96,17 +96,17 @@
         function showTab(node) {
             var tabs = mini.get("mainTabs");
 
-            var id = "tab$" + node.id;
+            var id = "tab$" + node.ID;
             var tab = tabs.getTab(id);
             if (!tab) {
                 tab = {};
-                tab._nodeid = node.id;
+                tab._nodeid = node.ID;
                 tab.name = id;
-                tab.title = node.text;
+                tab.title = node.MenuName;
                 tab.showCloseButton = true;
 
                 //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
-                tab.url = node.url;
+                tab.url = node.NavUrl;
 
                 tabs.addTab(tab);
             }

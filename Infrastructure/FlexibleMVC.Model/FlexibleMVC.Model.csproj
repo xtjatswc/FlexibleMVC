@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Permissions\SysMenu.cs" />
     <Compile Include="Admin\Permissions\SysUser.cs" />
     <Compile Include="Admin\Permissions\SysWebSite.cs" />
     <Compile Include="ChinaFoodComposition.cs" />

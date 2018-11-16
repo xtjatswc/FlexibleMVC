@@ -16,6 +16,7 @@ using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.LessBase.Infrastructure;
 using System.Collections.Generic;
 using FlexibleMVC.BLL.Admin.Permissions;
+using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.Model.Admin.Permissions;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
@@ -39,17 +40,9 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
         public JsonResult GetListTree()
         {
-            var tree = new List<object>()
-            {
-                new {id = "1", text = "系统导航", pid=""},
-                new {id = "2", text = "菜品分类管理", pid = "1", url="/bjdc_system_MealCategory/index"},
-                new {id = "3", text = "菜单管理", pid = "1", url="/bjdc_system_MealMenu/index"},
-                new {id = "4", text = "一周食谱计划", pid = "1", url="/bjdc_system_MealSchedule/index"},
-                new {id = "5", text = "订单查询", pid = "1", url="/bjdc_system_MealOrder/index"},
-                new {id = "6", text = "送餐计划", pid = "1", url="/bjdc_system_MealOrderDetail/MealDelivery"},
-                new {id = "7", text = "生产计划", pid = "1", url="/bjdc_system_MealOrderDetail/Production"}
-            };
-            return Json(tree);
+            var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
+            var models = sysMenuDal.GetModels(GetString("SiteID"));
+            return Json(models);
         }
 
         public ActionResult GotoB()
