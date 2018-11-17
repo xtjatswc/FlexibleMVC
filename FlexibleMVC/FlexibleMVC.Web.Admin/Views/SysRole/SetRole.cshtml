@@ -87,7 +87,7 @@
             search();
         }
         //
-        var users = {};
+        var para = {};
         function saveData() {
 
             var roles = grid.getSelecteds();
@@ -99,7 +99,7 @@
             $.ajax({
                 type: 'POST',
                 url: "/admin_SysRole/SaveRoleRelation",
-                data: { users: JSON.stringify(users), roles: JSON.stringify(roles)},
+                data: { SiteID: para.SiteID, users: JSON.stringify(para.users), roles: JSON.stringify(roles) },
                 dataType: 'json',
                 success: function (text) {
                     if (window.CloseOwnerWindow) return window.CloseOwnerWindow("save");
@@ -113,8 +113,7 @@
         //标准方法接口定义
         function SetData(data) {
             //跨页面传递的数据对象，克隆后才可以安全使用
-            data = mini.clone(data);
-            users = data.users;
+            para = mini.clone(data);
         }
 
     </script>

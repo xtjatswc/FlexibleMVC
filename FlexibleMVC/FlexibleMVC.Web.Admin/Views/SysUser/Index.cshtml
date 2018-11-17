@@ -64,6 +64,7 @@
                     用户名
                     <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
                 </div>
+                <div field="RoleNames" headerAlign="left">角色</div>
                 <div field="LoginName" headerAlign="center" allowSort="false" width="150">
                     登录名
                     <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
@@ -198,7 +199,7 @@
                 title: "设置角色", width: 600, height: 400,
                 onload: function () {
                     var iframe = this.getIFrameEl();
-                    var data = { users: users };
+                    var data = {SiteID:'@sysWebSite.ID', users: users };
                     iframe.contentWindow.SetData(data);
                 },
                 ondestroy: function (action) {

@@ -108,9 +108,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 }
                 else if (state == "removed" || state == "deleted")
                 {
-                    var model = sysUserDal.GetModel(id);
-                    model.IsDeleted = 1;
-                    sysUserDal.Update(model, x => x.ID);
+                    sysUserDal.DeleteExt(id);
                 }
                 else if (state == "modified" || state == "") //更新：_state为空或modified
                 {

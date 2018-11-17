@@ -28,5 +28,6 @@ namespace FlexibleMVC.Model.Admin.Permissions
         public String Photo { get; set; }
         public Int64 IsAdmin { get; set; }
         public decimal SortNo { get; set; }
+        public String RoleNames { get; set; }
     }
 }

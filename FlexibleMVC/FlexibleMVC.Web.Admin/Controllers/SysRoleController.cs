@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +31,35 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
         public JsonResult SaveRoleRelation()
         {
-            //var users = Request.Get<List<SysUser>>("users");
-            //var roles = Request.GetList<SysRole>("roles");
-            var test = Request.GetArrayList("users");
-            var ttt = test[0].GetArrayList("UserName");
-            return Json("{}");
+            var users = Request.GetList<SysUser>("users");
+            var roles = Request.GetList<SysRole>("roles");
+            string siteID = Request.GetString("SiteID");
+
+            var relationDal = flexibleContext.GetService<SysRoleRelationDal>();
+            var sysUserDal = flexibleContext.GetService<SysUserDal>();
+
+            foreach (var user in users)
+            {
+                relationDal.DeleteRelations(siteID, user.ID);
+                StringBuilder roleNames = new StringBuilder();
+                foreach (var role in roles)
+                {
+                    SysRoleRelation model = new SysRoleRelation();
+                    model.WebSiteID = siteID;
+                    model.SysUserID = user.ID;
+                    model.SysRoleID = role.ID;
+                    relationDal.Insert(model);
+
+                    roleNames.Append(role.RoleName);
+                    roleNames.Append(",");
+                }
+
+                SysUser u = sysUserDal.GetModel(user.ID);
+                u.RoleNames = roleNames.ToString().TrimEnd(',');
+                sysUserDal.Update(u, x=>x.ID);
+            }
+
+            return Json("");
         }
 
         public JsonResult GetRoleList()
@@ -46,7 +71,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
             int pageIndex = Request.GetInt("pageIndex") + 1;
             int pageSize = Request.GetInt("pageSize");
 
-            string sWhere = "WebSiteID = '"+ siteID +"' and IsDeleted = 0 and RoleName like '%" + key + "%'";
+            string sWhere = "WebSiteID = '" + siteID + "' and IsDeleted = 0 and RoleName like '%" + key + "%'";
 
             var sysRoleDal = flexibleContext.GetService<SysRoleDal>();
             var models = sysRoleDal.GetModels(where: sWhere, orderBy: "SortNo asc", currentPage: pageIndex, itemsPerPage: pageSize);
@@ -83,9 +108,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 }
                 else if (state == "removed" || state == "deleted")
                 {
-                    var model = sysRoleDal.GetModel(id);
-                    model.IsDeleted = 1;
-                    sysRoleDal.Update(model, x => x.ID);
+                    sysRoleDal.DeleteExt(id);
                 }
                 else if (state == "modified" || state == "") //更新：_state为空或modified
                 {
