@@ -80,15 +80,15 @@ namespace FlexibleMVC.Web.Admin.Controllers
             {
                 Hashtable o = (Hashtable)data[i];
 
-                String id = o["ID"] != null ? o["ID"].ToString() : "";
+                String id = o.GetString("ID");
                 //根据记录状态，进行不同的增加、删除、修改操作
-                String state = o["_state"] != null ? o["_state"].ToString() : "";
-                String userName = o["UserName"].ToString();
-                String loginName = o["LoginName"].ToString();
-                String password = o["Password"].ToString();
-                long isLocked = Convert.ToInt32(o["IsLocked"].ToString());
+                String state = o.GetString("_state");
+                String userName = o.GetString("UserName");
+                String loginName = o.GetString("LoginName");
+                String password = o.GetString("Password");
+                long isLocked = o.GetInt("IsLocked");
                 String mobile = o.GetString("Mobile");
-                decimal sortNo = Convert.ToDecimal(o["SortNo"]);
+                decimal sortNo = o.GetDecimal("SortNo");
 
                 if (state == "added" || id == "")           //新增：id为空，或_state为added
                 {

@@ -26,17 +26,22 @@ namespace FlexibleMVC.LessBase.Extension
 
         public static int GetInt(this HttpRequestBase request, String name)
         {
-            return Convert.ToInt32(GetString(request, name));
+            return Convert.ToInt32(request[name]);
         }
 
         public static bool GetBoolean(this HttpRequestBase request, String name)
         {
-            return Convert.ToBoolean(GetString(request, name));
+            return Convert.ToBoolean(request[name]);
         }
 
         public static DateTime GetDateTime(this HttpRequestBase request, String name)
         {
-            return Convert.ToDateTime(GetString(request, name));
+            return Convert.ToDateTime(request[name]);
+        }
+
+        public static Decimal GetDecimal(this HttpRequestBase request, String name)
+        {
+            return Convert.ToDecimal(request[name]);
         }
 
         public static dynamic GetObject(this HttpRequestBase request, String name)
