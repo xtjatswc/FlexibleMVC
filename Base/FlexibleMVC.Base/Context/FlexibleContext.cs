@@ -1,7 +1,9 @@
 ﻿using FlexibleMVC.Base.Jwt;
 using FluentData;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -24,5 +26,7 @@ namespace FlexibleMVC.Base.Context
             return DependencyResolver.Current.GetServices<TService>();
         }
 
+        public dynamic Model { get; set; } = new ExpandoObject();
+        public Hashtable Items { get; set; } = new Hashtable();
     }
 }
