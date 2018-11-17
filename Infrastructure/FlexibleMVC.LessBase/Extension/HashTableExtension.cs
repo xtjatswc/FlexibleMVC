@@ -50,6 +50,16 @@ namespace FlexibleMVC.LessBase.Extension
             return JsonUtil.ToObj<List<Hashtable>>(GetString(ht, name));
         }
 
+        public static T Get<T>(this Hashtable ht, String name)
+        {
+            return JsonUtil.ToObj<T>(GetString(ht, name));
+        }
+
+        public static List<T> GetList<T>(this Hashtable ht, String name)
+        {
+            return JsonUtil.ToObj<List<T>>(GetString(ht, name));
+        }
+
         #endregion
     }
 }

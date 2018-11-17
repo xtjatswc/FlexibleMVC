@@ -111,6 +111,7 @@
     <Content Include="Views\SysUser\List.cshtml" />
     <Content Include="Views\SysRole\Index.cshtml" />
     <Content Include="Views\SysUser\Index.cshtml" />
+    <Content Include="Views\SysRole\SetRole.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>

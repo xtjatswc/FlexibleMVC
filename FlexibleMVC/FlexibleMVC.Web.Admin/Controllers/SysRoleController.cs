@@ -23,6 +23,20 @@ namespace FlexibleMVC.Web.Admin.Controllers
             return View();
         }
 
+        public ActionResult SetRole()
+        {
+            return View();
+        }
+
+        public JsonResult SaveRoleRelation()
+        {
+            //var users = Request.Get<List<SysUser>>("users");
+            //var roles = Request.GetList<SysRole>("roles");
+            var test = Request.GetArrayList("users");
+            var ttt = test[0].GetArrayList("UserName");
+            return Json("{}");
+        }
+
         public JsonResult GetRoleList()
         {
             //查询条件

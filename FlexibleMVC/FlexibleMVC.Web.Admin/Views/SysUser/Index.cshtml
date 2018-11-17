@@ -40,9 +40,11 @@
                     <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
                     <span class="separator"></span>
                     <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
+                    <span class="separator"></span>
+                    <a class="mini-button" iconCls="icon-user" onclick="setRole()" plain="true">设置角色</a>
                 </td>
                 <td style="white-space:nowrap;">
-                    <input id="key" class="mini-textbox" emptyText="请输入名称" style="width:150px;" onenter="onKeyEnter" />
+                    <input id="key" class="mini-textbox" emptyText="请输入用户名或登录名" style="width:150px;" onenter="onKeyEnter" />
                     <a class="mini-button" onclick="search()">查询</a>
                 </td>
             </tr>
@@ -53,7 +55,7 @@
         <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"
              url="/admin_SysUser/GetUserList?SiteID=@sysWebSite.ID" idField="ID"
              allowResize="true" pageSize="20"
-             allowCellEdit="true" allowCellSelect="true" multiSelect="false"
+             allowCellEdit="true" allowCellSelect="true" multiSelect="true"
              editNextOnEnterKey="true" editNextRowCell="true">
             <div property="columns">
                 <div type="indexcolumn"></div>
@@ -75,10 +77,19 @@
                     手机号
                     <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
                 </div>
+                <div field="Email" headerAlign="center" allowSort="false" width="150">
+                    Email
+                    <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
+                </div>
                 <div field="SortNo" width="100" allowSort="false">
                     排序
                     <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width:100%;" />
                 </div>
+                <div type="checkboxcolumn" field="IsAdmin" trueValue="1" falseValue="0" width="60" headerAlign="center">超级管理员</div>
+
+                <div field="LastLoginTime" headerAlign="left" dateFormat="yyyy-MM-dd HH:mm:ss" renderer="onTimeRenderer">上次登录时间</div>
+                <div field="LoginCount" headerAlign="left">登录次数</div>
+
             </div>
         </div>
     </div>
@@ -164,6 +175,38 @@
 //                alert('有未保存的数据');
 //            }
 //        });
+
+        function onTimeRenderer(e) {
+            if (e.cellHtml == "1901-01-01 00:00:00")
+                return "";
+
+            return e.cellHtml;
+        }
+
+        function setRole() {
+            
+            var users = grid.getSelecteds();
+            if (users.length == 0) {
+                alert("请先点选用户！");
+                return;
+            }
+
+            mini.open({
+                targetWindow: window,
+
+                url: "/admin_SysRole/SetRole?SiteID=@sysWebSite.ID",
+                title: "设置角色", width: 600, height: 400,
+                onload: function () {
+                    var iframe = this.getIFrameEl();
+                    var data = { users: users };
+                    iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+
+                    search();
+                }
+            });
+        }
 
     </script>
 </body>

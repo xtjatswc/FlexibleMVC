@@ -60,7 +60,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
             int pageIndex = Request.GetInt("pageIndex") + 1;
             int pageSize = Request.GetInt("pageSize");
 
-            string sWhere = "IsDeleted = 0 and UserName like '%" + key + "%'";
+            string sWhere = "IsDeleted = 0 and (UserName like '%" + key + "%' or LoginName like '%" + key + "%')";
 
             var sysUserDal = flexibleContext.GetService<SysUserDal>();
             var models = sysUserDal.GetModels(where: sWhere, orderBy: "SortNo asc", currentPage: pageIndex, itemsPerPage: pageSize);
@@ -88,7 +88,9 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 String password = o.GetString("Password");
                 long isLocked = o.GetInt("IsLocked");
                 String mobile = o.GetString("Mobile");
+                String email = o.GetString("Email");
                 decimal sortNo = o.GetDecimal("SortNo");
+                long isAdmin = o.GetInt("IsAdmin");
 
                 if (state == "added" || id == "")           //新增：id为空，或_state为added
                 {
@@ -100,6 +102,8 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     model.SortNo = sortNo;
                     model.IsLocked = isLocked;
                     model.Mobile = mobile;
+                    model.Email = email;
+                    model.IsAdmin = isAdmin;
                     sysUserDal.Insert(model);
                 }
                 else if (state == "removed" || state == "deleted")
@@ -117,6 +121,8 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     model.SortNo = sortNo;
                     model.IsLocked = isLocked;
                     model.Mobile = mobile;
+                    model.Email = email;
+                    model.IsAdmin = isAdmin;
                     sysUserDal.Update(model, x => x.ID);
                 }
             }
