@@ -14,8 +14,7 @@ namespace FlexibleMVC.LessBase.Filters.Permission
 {
     public class CheckUserRoleAttribute : ActionFilterAttribute
     {
-        private bool enabled = true;
-        public bool Enabled { get => enabled; set => enabled = value; }
+        public bool Enabled { get; set; } = true;
 
         public string WhenNotPassedRedirectUrl { get; set; }
 
