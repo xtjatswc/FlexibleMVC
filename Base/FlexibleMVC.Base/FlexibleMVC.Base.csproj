@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\DLL\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -105,8 +109,12 @@
     <Compile Include="Jwt\JwtUtil.cs" />
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="AcResult\BasePartialViewResult.cs" />
+    <Compile Include="Mvc\TempDataProvider\MemcachedTempDataProvider.cs" />
+    <Compile Include="Mvc\TempDataProvider\TokenCacheTempDataProvider.cs" />
+    <Compile Include="Mvc\TempDataProvider\CacheTempDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\ExcelUtil.cs" />
+    <Compile Include="Tools\MemCaheHelper.cs" />
     <Compile Include="Tools\PropertyExpressionParser.cs" />
     <Compile Include="Tools\ReflectionHelper.cs" />
   </ItemGroup>
