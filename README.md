@@ -6,14 +6,15 @@
 2. 在asp.net mvc Areas分离的最外层新增Module，这样模块划分维度更细，利于项目模块化开发、维护
 3. 重写ActionResult，增强JsonResult，扩展FileResult：excel、pdf、xml
 4. 定义FlexibleContext，整个请求生命周期都可访问的上下文对象，包括业务层、数据访问层、Controller、View、插件层
-5. JWT跨域认证封装
-6. Json配置文件操作封装，实现dynamic类型轻松访问json配置
-7. 轻量级组件FluentData代替EntityFramework访问数据库
-8. log4net组件按年月、日期输出日志记录，灵活配置日志策略
-9. 框架将日志、数据库、配置文件、其它附件定义到主程序目录外，在升级时只需要替换主程序、执行数据库升级脚本即可
-10. 如果路由不存在，则跳过Controller，直接映射物理路径请求View
-11. 引用开源cassinidev（微型Web服务器，替代IIS），适合开发演示用，单机版布署
-12. 选择mvc4版本，依赖于.net framework 4.0，即便在XP系统上也能轻松布署运行
+5. 自定义TempDataProvider，用HttpContext Cache或Memcached替代SessionStateTempDataProvider
+6. JWT跨域认证封装
+7. Json配置文件操作封装，实现dynamic类型轻松访问json配置
+8. 轻量级组件FluentData代替EntityFramework访问数据库
+9. log4net组件按年月、日期输出日志记录，灵活配置日志策略
+10. 框架将日志、数据库、配置文件、其它附件定义到主程序目录外，在升级时只需要替换主程序、执行数据库升级脚本即可
+11. 如果请求路由Controller不存在，则根据Controller、Action名称直接映射物理路径请求View cshtml文件
+12 引用开源cassinidev（微型Web服务器，替代IIS），适合开发演示用，单机版布署
+13 选择mvc4版本，依赖于.net framework 4.0，即便在XP系统上也能轻松布署运行
 
 ## 底层框架介绍
 <html>
