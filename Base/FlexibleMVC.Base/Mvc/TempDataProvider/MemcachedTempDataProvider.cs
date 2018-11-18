@@ -9,7 +9,7 @@ using static FlexibleMVC.Base.JsonConfig.Config;
 
 namespace FlexibleMVC.Base.Mvc.TempDataProvider
 {
-    public class MemcachedTempDataProvider : ITempDataProvider
+    internal class MemcachedTempDataProvider : ITempDataProvider
     {
 
         private string StateKey = "";
@@ -21,7 +21,7 @@ namespace FlexibleMVC.Base.Mvc.TempDataProvider
         {
             get
             {
-                return Convert.ToInt32(Global.LessBase.MemcachedTempData.ExpiryTime);
+                return Convert.ToInt32(Global.LessBase.TempDataProvider.MemcachedExpiryTime);
             }
         }
 

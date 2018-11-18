@@ -12,7 +12,7 @@ namespace FlexibleMVC.Base.Mvc.TempDataProvider
     /// SessionStateTempDataProvider是用Session存储，如果碰到应用程序禁用Session，或者跨域的情况，就会出问题
     /// 重写之后，是用HttpContext.Cache存储，因为cache是全局的，需要做到区分Session，只能用jwt token的第三段数据做为StateKey
     /// </summary>
-    public class TokenCacheTempDataProvider : ITempDataProvider
+    internal class TokenCacheTempDataProvider : ITempDataProvider
     {
         private string StateKey = "";
 

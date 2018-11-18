@@ -110,6 +110,7 @@
     <Compile Include="MvcViewEngine.cs" />
     <Compile Include="AcResult\BasePartialViewResult.cs" />
     <Compile Include="Mvc\TempDataProvider\MemcachedTempDataProvider.cs" />
+    <Compile Include="Mvc\TempDataProvider\TempDataProviderFactory.cs" />
     <Compile Include="Mvc\TempDataProvider\TokenCacheTempDataProvider.cs" />
     <Compile Include="Mvc\TempDataProvider\CacheTempDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

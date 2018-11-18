@@ -1,11 +1,18 @@
 ﻿using FlexibleMVC.Base.AcResult;
+using FlexibleMVC.Base.Mvc.TempDataProvider;
 using System;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
+using static FlexibleMVC.Base.JsonConfig.Config;
 
 namespace FlexibleMVC.Base.Ctrller
 {
+    /// <summary>
+    /// 这个类做了两件事情：
+    /// 1、如果请求路由中的Controller不存在，则会跳过Controller和action，直接访问视图cshtml,cshtml也不存在，则会报错
+    /// 2、修改TempData的提供程序
+    /// </summary>
     public class FolderControllerFactory : DefaultControllerFactory
     {
         public override IController CreateController(RequestContext requestContext, string controllerName)
@@ -23,8 +30,14 @@ namespace FlexibleMVC.Base.Ctrller
                 requestContext.RouteData.Values["action"] = "Index";
                 requestContext.RouteData.Values["dynamicRoute"] = dynamicRoute;
             }
-            IController controller = GetControllerInstance(requestContext, controllerType);
-            return controller;
+            IController iController = GetControllerInstance(requestContext, controllerType);
+
+            //修改TempData的提供程序
+            var controller = iController as Controller;
+
+            controller.TempDataProvider = TempDataProviderFactory.GetProvider(Global.LessBase.TempDataProvider.ProviderType);
+
+            return iController;
         }
 
         //protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, System.Type controllerType)
