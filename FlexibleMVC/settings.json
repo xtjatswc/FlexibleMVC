@@ -13,6 +13,12 @@
 	  "DateFormatString": "yyyy-MM-dd HH:mm:ss",
   	  #是否驼峰小写
 	  "CamelLowercase": false
-    }
+    },
+	"TempDataProvider":{
+  	  #TempData的提供程序：0、SessionStateTempDataProvider，1、CacheTempDataProvider，2、TokenCacheTempDataProvider，3、MemcachedTempDataProvider
+	  "ProviderType": 2,
+  	  #MemcachedTempDataProvider中的缓存过期时间，单位：分钟
+	  "MemcachedExpiryTime": 5
+	}
   }
 }

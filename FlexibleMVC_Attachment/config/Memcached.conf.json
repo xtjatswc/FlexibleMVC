@@ -1,0 +1,10 @@
+﻿{
+  "Memcached": {
+	#数组存储多个server
+	"serverlist": "['127.0.0.1:11711']",
+	#这个名字随便起
+	"poolName": "FlexibleMVC",
+	//各服务器之间负载均衡的设置比例,int数组
+	"weights": "[1]"
+  }
+}
