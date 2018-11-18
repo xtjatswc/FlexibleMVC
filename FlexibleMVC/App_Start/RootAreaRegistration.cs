@@ -1,9 +1,6 @@
-﻿using System.Web.Mvc;
-using System;
-using System.Web.Routing;
-using System.Web;
-using FlexibleMVC.Base;
-using FlexibleMVC.Base.Const;
+﻿using FlexibleMVC.Base.Mvc;
+using FlexibleMVC.Base.Mvc.Const;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Web
 {

@@ -3,15 +3,12 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
-using FlexibleMVC.Base.Ctrller;
-using System.Web.Mvc;
-using FlexibleMVC.Base.Context;
+using FlexibleMVC.Base.Mvc.Context;
+using FlexibleMVC.Base.Mvc.Ctrller;
 using FlexibleMVC.BLL.Admin.Permissions;
-using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Model.Admin.Permissions;
-using FlexibleMVC.DAL.Admin.Permissions;
-using FlexibleMVC.LessBase.Const;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {

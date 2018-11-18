@@ -1,10 +1,6 @@
-﻿using FlexibleMVC.Base.Filter;
+﻿using FlexibleMVC.Base.Mvc.Filter;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.Web.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.Web

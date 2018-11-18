@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace FlexibleMVC.Base.AcResult
+namespace FlexibleMVC.Base.Mvc.AcResult
 {
     public class BaseXmlResult : ActionResult
     {

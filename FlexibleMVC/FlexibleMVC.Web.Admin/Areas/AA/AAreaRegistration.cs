@@ -1,10 +1,9 @@
-﻿using System.Web.Mvc;
-using System;
-using FlexibleMVC.Base;
+﻿using FlexibleMVC.Base.Mvc;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Admin.Areas.AA
 {
-	public class AAreaRegistration : BaseAreaRegistration
+    public class AAreaRegistration : BaseAreaRegistration
     {
         public override string Namespace
         {

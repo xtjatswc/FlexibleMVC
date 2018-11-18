@@ -1,4 +1,4 @@
-﻿using FlexibleMVC.Base.Const;
+﻿using FlexibleMVC.Base.Mvc.Const;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,22 +6,32 @@ using System.Text;
 using System.Web;
 using System.Web.Routing;
 
-namespace FlexibleMVC.Base
+namespace FlexibleMVC.Base.Mvc.Constraint
 {
-    public class BaseAreaRouteConstraint : IRouteConstraint
+    public class BaseModuleAreaRouteConstraint : IRouteConstraint
     {
         public string ModuleName { get; set; }
         public string AreaName { get; set; }
 
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
-            //如果包含module且不为空，则不匹配路由
-            if (values.ContainsKey(MvcConst.MODULE_KEY) && !string.IsNullOrEmpty(values[MvcConst.MODULE_KEY].ToString()))
-                return false;
-
             //controller不能含下划线
             if (values["controller"].ToString().IndexOf("_") >= 0)
                 return false;
+
+            #region 校验module是否匹配
+            //module 从url请求时，url中是否包含module信息
+            bool fromUrlHasModule = httpContext.Request.Path.StartsWith("/" + ModuleName + "_", StringComparison.OrdinalIgnoreCase);
+
+            //module 从分部视图请求时，是否包含module信息           
+            object moduleName = "";
+            bool fromPartialHasModule = values.TryGetValue(MvcConst.MODULE_KEY, out moduleName);
+            fromPartialHasModule = fromPartialHasModule && moduleName != null 
+                && moduleName.ToString().Equals(ModuleName, StringComparison.OrdinalIgnoreCase);
+
+            if (!fromUrlHasModule && !fromPartialHasModule)
+                return false;
+            #endregion
 
             //校验area是否匹配
             if (route.DataTokens.Count > 0)

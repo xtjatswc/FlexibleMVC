@@ -1,7 +1,7 @@
-﻿using FlexibleMVC.Base.AcResult;
+﻿using FlexibleMVC.Base.Mvc.AcResult;
 using System.Web.Mvc;
 
-namespace FlexibleMVC.Base
+namespace FlexibleMVC.Base.Mvc
 {
     public class MvcViewEngine : RazorViewEngine
     {

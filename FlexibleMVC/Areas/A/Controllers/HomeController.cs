@@ -3,7 +3,7 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
-using FlexibleMVC.Base.Filter;
+using FlexibleMVC.Base.Mvc.Filter;
 using FlexibleMVC.Base.Jwt;
 using FlexibleMVC.Base.Tools;
 using FlexibleMVC.BLL;

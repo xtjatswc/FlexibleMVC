@@ -1,13 +1,5 @@
-﻿using FlexibleMVC.Base.AcResult;
-using FlexibleMVC.Base.Context;
-using FlexibleMVC.Base.Ctrller;
-using FlexibleMVC.Base.JsonConfig;
-using FlexibleMVC.Base.Jwt;
-using FlexibleMVC.LessBase.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using FlexibleMVC.Base.Jwt;
+using FlexibleMVC.Base.Mvc.AcResult;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.LessBase.Filters.Permission

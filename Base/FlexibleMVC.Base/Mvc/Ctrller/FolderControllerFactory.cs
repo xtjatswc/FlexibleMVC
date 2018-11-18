@@ -1,4 +1,4 @@
-﻿using FlexibleMVC.Base.AcResult;
+﻿using FlexibleMVC.Base.Mvc.AcResult;
 using FlexibleMVC.Base.Mvc.TempDataProvider;
 using System;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using static FlexibleMVC.Base.JsonConfig.Config;
 
-namespace FlexibleMVC.Base.Ctrller
+namespace FlexibleMVC.Base.Mvc.Ctrller
 {
     /// <summary>
     /// 这个类做了两件事情：

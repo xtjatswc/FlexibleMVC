@@ -9,7 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FlexibleMVC.Base.AcResult
+namespace FlexibleMVC.Base.Mvc.AcResult
 {
     public class BasePdfResult : ActionResult
     {

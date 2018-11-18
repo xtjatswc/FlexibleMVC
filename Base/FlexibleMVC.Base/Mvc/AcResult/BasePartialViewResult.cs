@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace FlexibleMVC.Base.AcResult
+namespace FlexibleMVC.Base.Mvc.AcResult
 {
-    public class BaseViewResult : ViewResult
+    public class BasePartialViewResult : PartialViewResult
     {
-
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)

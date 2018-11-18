@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Configuration;
 
-namespace FlexibleMVC.Base.Filter
+namespace FlexibleMVC.Base.Mvc.Filter
 {
     public class AllowCrossSiteAttribute : ActionFilterAttribute
     {

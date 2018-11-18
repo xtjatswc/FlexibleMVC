@@ -3,9 +3,9 @@
  * 日期: 2018/5/18
  * 时间: 10:13
  */
-using FlexibleMVC.Base;
-using FlexibleMVC.Base.AcResult;
-using FlexibleMVC.Base.Ctrller;
+using FlexibleMVC.Base.Mvc;
+using FlexibleMVC.Base.Mvc.AcResult;
+using FlexibleMVC.Base.Mvc.Ctrller;
 using FlexibleMVC.LessBase.Config;
 using System.Web;
 using System.Web.Mvc;

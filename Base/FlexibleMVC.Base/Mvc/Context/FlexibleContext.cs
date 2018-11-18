@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace FlexibleMVC.Base.Context
+namespace FlexibleMVC.Base.Mvc.Context
 {
     public class FlexibleContext
     {

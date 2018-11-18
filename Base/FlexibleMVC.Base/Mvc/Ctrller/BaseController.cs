@@ -1,16 +1,11 @@
-﻿using FlexibleMVC.Base.AcResult;
-using FlexibleMVC.Base.Context;
-using FlexibleMVC.Base.Jwt;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using FlexibleMVC.Base.Jwt;
+using FlexibleMVC.Base.Mvc.AcResult;
 using System.Data;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
-using FlexibleMVC.Base.JsonConfig;
 
-namespace FlexibleMVC.Base.Ctrller
+namespace FlexibleMVC.Base.Mvc.Ctrller
 {
     public class BaseController<T> : Controller
     {

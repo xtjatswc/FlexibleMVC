@@ -6,7 +6,7 @@ using FlexibleMVC.Base.Tools;
 using System.Web;
 using System.Text;
 
-namespace FlexibleMVC.Base.AcResult
+namespace FlexibleMVC.Base.Mvc.AcResult
 {
     public class BaseExcelResult : FileResult
     {

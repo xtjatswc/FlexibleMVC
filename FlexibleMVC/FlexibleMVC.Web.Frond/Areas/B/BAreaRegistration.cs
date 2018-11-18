@@ -3,6 +3,7 @@ using System;
 using System.Web.Routing;
 using System.Web;
 using FlexibleMVC.Base;
+using FlexibleMVC.Base.Mvc;
 
 namespace FlexibleMVC.Web.Frond.Areas.B
 {

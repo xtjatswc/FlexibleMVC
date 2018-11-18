@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using FlexibleMVC.Base.Ctrller;
-using FlexibleMVC.Base.JsonConfig;
+﻿using FlexibleMVC.Base.Mvc.Ctrller;
 using FlexibleMVC.LessBase.Context;
 
 namespace FlexibleMVC.LessBase.Ctrller

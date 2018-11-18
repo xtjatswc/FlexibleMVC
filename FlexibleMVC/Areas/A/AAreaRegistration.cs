@@ -1,8 +1,5 @@
-﻿using System.Web.Mvc;
-using System;
-using System.Web.Routing;
-using System.Web;
-using FlexibleMVC.Base;
+﻿using FlexibleMVC.Base.Mvc;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Areas.A
 {

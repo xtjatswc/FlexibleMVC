@@ -1,11 +1,12 @@
-﻿using FlexibleMVC.Base.Const;
+﻿using FlexibleMVC.Base.Mvc.Const;
+using FlexibleMVC.Base.Mvc.Constraint;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace FlexibleMVC.Base
+namespace FlexibleMVC.Base.Mvc
 {
     public abstract class BaseAreaRegistration : AreaRegistration
     {

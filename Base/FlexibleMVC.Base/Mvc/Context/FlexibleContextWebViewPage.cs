@@ -1,4 +1,4 @@
-﻿using FlexibleMVC.Base.Ctrller;
+﻿using FlexibleMVC.Base.Mvc.Ctrller;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using FlexibleMVC.Base.JsonConfig;
 
-namespace FlexibleMVC.Base.Context
+namespace FlexibleMVC.Base.Mvc.Context
 {
     public class FlexibleContextWebViewPage<TModel, TContext> : System.Web.Mvc.WebViewPage<TModel>
     {
