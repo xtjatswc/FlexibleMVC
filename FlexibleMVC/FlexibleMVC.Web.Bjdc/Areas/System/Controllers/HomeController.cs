@@ -3,6 +3,8 @@
  * 日期: 2018/5/17
  * 时间: 10:45
  */
+
+using System.Collections;
 using FlexibleMVC.DAL;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.Model;
@@ -15,6 +17,7 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.LessBase.Infrastructure;
 using System.Collections.Generic;
+using FlexibleMVC.Base.JsonConfig;
 using FlexibleMVC.BLL.Admin.Permissions;
 using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Extension;
@@ -41,9 +44,18 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
         public JsonResult GetListTree()
         {
+            string siteID = Request.GetString("SiteID");
+
+            var sysUserBll = flexibleContext.GetService<SysUserBll>();
             var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
-            var models = sysMenuDal.GetModels(Request.GetString("SiteID"));
-            return Json(models);
+
+            //获取登录用户
+            SysUser sysUser = sysUserBll.getCurrentUser();
+
+            //获取有权限的菜单
+            var limitMenu = sysMenuDal.GetLimitModels(siteID, sysUser.ID);
+
+            return Json(limitMenu);
         }
 
         public ActionResult GotoB()
@@ -75,7 +87,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
         public ActionResult TestToJson()
         {
-            var dal = new BaseDAL<ChinaFoodComposition>(flexibleContext) { Db = flexibleContext.db};
+            var dal = new BaseDAL<ChinaFoodComposition>(flexibleContext) { Db = flexibleContext.db };
             return Content(dal.GetModel(10002).ToJson());
         }
     }

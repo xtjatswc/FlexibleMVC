@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Permissions\SysFuncDal.cs" />
     <Compile Include="Admin\Permissions\SysMenuDal.cs" />
+    <Compile Include="Admin\Permissions\SysPermissionsMenuDal.cs" />
     <Compile Include="Admin\Permissions\SysRoleDal.cs" />
     <Compile Include="Admin\Permissions\SysRoleRelationDal.cs" />
     <Compile Include="Admin\Permissions\SysUserDal.cs" />

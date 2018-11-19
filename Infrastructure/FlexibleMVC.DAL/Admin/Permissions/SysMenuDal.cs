@@ -20,5 +20,25 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             var models = GetModels(where: "WebSiteID='" + siteID + "'");
             return models;
         }
+
+        /// <summary>
+        /// 获取站点下某个用户有权限的所有菜单
+        /// </summary>
+        /// <param name="siteID"></param>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public List<dynamic> GetLimitModels(string siteID, string userID)
+        {
+            var limitMenu = Db.Sql(@"select DISTINCT e.*,d.ID PermissionsMenuID from SysUser a 
+            INNER JOIN SysRoleRelation b on a.ID = b.SysUserID
+            INNER join SysRole c on c.ID = b.SysRoleID and c.WebSiteID = @WebSiteID
+            INNER JOIN SysPermissionsMenu d on d.SysRoleID = c.ID and d.WebSiteID = @WebSiteID
+            INNER join SysMenu e on e.ID = d.SysMenuID
+            where a.ID = @SysUserID")
+                .Parameter("WebSiteID", siteID)
+                .Parameter("SysUserID", userID)
+                .QueryMany<dynamic>();
+            return limitMenu;
+        }
     }
 }

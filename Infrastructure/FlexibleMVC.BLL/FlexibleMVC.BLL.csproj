@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Permissions\SysFuncBll.cs" />
     <Compile Include="Admin\Permissions\SysUserBll.cs" />
     <Compile Include="PatientBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

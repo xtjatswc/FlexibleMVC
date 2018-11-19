@@ -1,6 +1,15 @@
-﻿@{
+﻿@using System.Dynamic
+@using FlexibleMVC.Base.JsonConfig
+@using FlexibleMVC.BLL.Admin.Permissions
+@using FlexibleMVC.DAL.Admin.Permissions
+@{
     Layout = null;
     string miniui = LessConfig.MiniUI_Path;
+
+    var sysFuncBll = flexibleContext.GetService<SysFuncBll>();
+    var json = sysFuncBll.GetLimitModels(Request.GetString("PermissionsMenuID"));
+
+    var a = json;
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
