@@ -20,6 +20,11 @@ namespace FlexibleMVC.Web.Controllers
 
         public ActionResult Index(string id = null, string c = null)
 		{
+            return View();
+		}
+
+        public ActionResult Contact()
+        {
             var opt = DependencyResolver.Current.GetServices<FlexibleMVC.IServer.IOperation>().ToList();
             opt[0].Operate(2, 3);
             opt[1].Operate(2, 3);
@@ -28,12 +33,6 @@ namespace FlexibleMVC.Web.Controllers
             string ret = test[0].GetData();
             ret = test[1].GetData();
 
-
-            return View();
-		}
-
-        public ActionResult Contact()
-        {
             flexibleContext.log.Debug("访问了根目录的 Home Contact");
             return View();
         }

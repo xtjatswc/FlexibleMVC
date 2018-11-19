@@ -3,7 +3,7 @@
 
     var T = DependencyResolver.Current.GetServices<FlexibleMVC.BLL.PatientBll>().ToList();
 
-    var patientDal = flexibleContext.Get<PatientDal>();
+    var patientDal = flexibleContext.GetService<PatientDal>();
     var list = patientDal.GetModels();
 }
 
