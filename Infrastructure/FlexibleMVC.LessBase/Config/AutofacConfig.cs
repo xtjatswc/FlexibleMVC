@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Infrastructure;
 
 namespace FlexibleMVC.LessBase.Config
 {
@@ -29,9 +30,23 @@ namespace FlexibleMVC.LessBase.Config
                 Assembly controllerAss = Assembly.Load(ctrl);
                 builder.RegisterControllers(controllerAss);
 
-                //dal
-                builder.RegisterTypes(controllerAss.GetTypes()).AsImplementedInterfaces();
-                builder.RegisterTypes(controllerAss.GetTypes()).InstancePerRequest();
+                /*
+                 * dal、bll等同一个请求周期中只需要实例化一次的类，做如下处理
+                 * 但周一Controller在一次请求中有可能实例化多次，要剔除在外
+                 * 比如HomeController的cshtml有这样一行代码：@Html.Action("Part2", "Home")
+                 * 那么在一次请求中HomeController需要被容器实例化两次
+                 */
+                var needTypes = controllerAss.GetTypes().Where(o => o.BaseType != null &&
+                    (
+                        typeof(IBaseDAL).IsAssignableFrom(o.BaseType) ||
+                        typeof(BaseBLL).IsAssignableFrom(o.BaseType)
+                    )
+                ).ToArray();
+                if (needTypes.Length > 0)
+                {
+                    builder.RegisterTypes(needTypes).AsImplementedInterfaces();
+                    builder.RegisterTypes(needTypes).InstancePerRequest();
+                }
             }
 
             //InstancePerRequest() 针对MVC的,或者说是ASP.NET的..每个请求单例
