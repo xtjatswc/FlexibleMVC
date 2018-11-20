@@ -59,7 +59,7 @@
                 <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"     
                      url="/admin_SysPermissions/GetMenuFuncTreeList" showTreeIcon="true" 
                      treeColumn="TreeColumnName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
-                     showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false"
+                     showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false" autoCheckParent="true"
                 >
                     <div property="columns">
                         <div type="indexcolumn"></div>
@@ -100,20 +100,13 @@
 
         function saveData() {
             var node = tree.getSelectedNode();
-            var allChkNodes = treegrid1.getCheckedNodes();
-            var chkNodes = [];
-            //过滤掉父节点
-            for (var i = 0; i < allChkNodes.length; i++) {
-                if (allChkNodes[i].ParentItemID != -1) {
-                    chkNodes.push(allChkNodes[i]);
-                }
-            }
+            var chkNodes = treegrid1.getCheckedNodes();
 
             var json = mini.encode(chkNodes);
             treegrid1.loading("保存中，请稍后......");
             $.ajax({
-                url: "/bjdc_system_MealSchedule/SaveSchedule",
-                data: { data: json, week: node.week, MealTimesCode: node.code, MealTimesName: node.text},
+                url: "/admin_SysPermissions/SavePermissions",
+                data: { data: json, SiteID:"@sysWebSite.ID", RoleID:node.id},
                 type: "post",
                 success: function(text) {
                     treegrid1.reload();

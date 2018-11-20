@@ -7,6 +7,7 @@ using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
+using FlexibleMVC.Model.Admin.Permissions;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -68,6 +69,36 @@ namespace FlexibleMVC.Web.Admin.Controllers
             }
 
             return Json(lstResult);
+        }
+
+        public JsonResult SavePermissions()
+        {
+            var data = Request.GetArrayList("data");
+            string siteID = Request.GetSqlParamer("SiteID");
+            string roleID = Request.GetSqlParamer("RoleID");
+
+            using (var context = flexibleContext.db.UseTransaction(true))
+            {
+                var spmDal = flexibleContext.GetService<SysPermissionsMenuDal>();
+                var spfDal = flexibleContext.GetService<SysPermissionsFuncDal>();
+
+                //菜单权限
+                spmDal.Db.Sql("delete from SysPermissionsMenu where WebSiteID = @0 and SysRoleID = @1", siteID, roleID).Execute();
+                foreach (var o in data)
+                {
+                    SysPermissionsMenu model = new SysPermissionsMenu();
+                    model.ID = "{" + Guid.NewGuid() + "}";
+                    model.WebSiteID = siteID;
+                    model.SysRoleID = roleID;
+                    model.SysMenuID = o.GetString("");
+                    spmDal.Insert(model);
+                }
+
+                context.Commit();
+            }
+
+            var result = new { };
+            return Json(result);
         }
     }
 }
