@@ -90,6 +90,8 @@
     <Compile Include="Areas\AA\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SysFuncController.cs" />
+    <Compile Include="Controllers\SysMenuController.cs" />
     <Compile Include="Controllers\SysRoleController.cs" />
     <Compile Include="Controllers\SysUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +114,7 @@
     <Content Include="Views\SysRole\Index.cshtml" />
     <Content Include="Views\SysUser\Index.cshtml" />
     <Content Include="Views\SysRole\SetRole.cshtml" />
+    <Content Include="Views\SysFunc\Index.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>

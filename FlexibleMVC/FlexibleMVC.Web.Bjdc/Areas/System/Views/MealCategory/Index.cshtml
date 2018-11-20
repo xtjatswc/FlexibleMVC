@@ -1,15 +1,9 @@
-﻿@using System.Dynamic
-@using FlexibleMVC.Base.JsonConfig
-@using FlexibleMVC.BLL.Admin.Permissions
-@using FlexibleMVC.DAL.Admin.Permissions
+﻿@using FlexibleMVC.BLL.Admin.Permissions
 @{
     Layout = null;
     string miniui = LessConfig.MiniUI_Path;
 
-    var sysFuncBll = flexibleContext.GetService<SysFuncBll>();
-    var json = sysFuncBll.GetLimitModels(Request.GetString("PermissionsMenuID"));
-
-    var a = json;
+    var limit = flexibleContext.GetService<SysFuncBll>().GetLimitModels(Request);
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -33,9 +27,15 @@
         <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
             <table style="width:100%;">
                 <tr>
-                    <td style="width:100%;">
-                        <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
-                        <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
+                    <td style="width: 100%;">
+                        @if (limit["增加!~"])
+                        {
+                            <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
+                        }
+                        @if (limit["删除"])
+                        {
+                            <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
+                        }
                         <span class="separator"></span>
                         <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
                     </td>
@@ -106,12 +106,12 @@
                 url: "/bjdc_system_mealcategory/SaveCategory"
             });
 
-//            saveGrid(grid, {
-//                url: "../data/AjaxService.aspx?method=SaveEmployees",
-//                callback: function (success, result) {
-//
-//                }
-//            });
+            //            saveGrid(grid, {
+            //                url: "../data/AjaxService.aspx?method=SaveEmployees",
+            //                callback: function (success, result) {
+            //
+            //                }
+            //            });
         }
 
 
