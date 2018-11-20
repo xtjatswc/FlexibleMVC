@@ -15,5 +15,15 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             Db = lessContext.db1;
         }
 
+        public SortedSet<string> GetModels(string siteID, string roleID)
+        {
+            var models = Db.Sql("select SysMenuID from SysPermissionsMenu where WebSiteID=@WebSiteID and SysRoleID=@SysRoleID")
+                             .Parameter("WebSiteID", siteID)
+                             .Parameter("SysRoleID", roleID)
+                             .QuerySingle<SortedSet<string>>() ?? new SortedSet<string>();
+
+            return models;
+        }
+
     }
 }

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Admin\Permissions\SysFunc.cs" />
     <Compile Include="Admin\Permissions\SysMenu.cs" />
+    <Compile Include="Admin\Permissions\SysPermissionsFunc.cs" />
     <Compile Include="Admin\Permissions\SysPermissionsMenu.cs" />
     <Compile Include="Admin\Permissions\SysRole.cs" />
     <Compile Include="Admin\Permissions\SysRoleRelation.cs" />

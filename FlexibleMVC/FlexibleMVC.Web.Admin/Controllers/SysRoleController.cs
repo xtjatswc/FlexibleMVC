@@ -122,5 +122,24 @@ namespace FlexibleMVC.Web.Admin.Controllers
             var result = new { };
             return Json(result);
         }
+
+        public JsonResult GetRoleTree()
+        {
+            string siteID = Request.GetSqlParamer("SiteID");
+            var sysRoleDal = flexibleContext.GetService<SysRoleDal>();
+            var roleList = sysRoleDal.GetModels("WebSiteID='"+ siteID +"'");
+            var tree = new List<object>
+            {
+                new { id = "0", text = "系统角色", pid = "" }
+            };
+
+            foreach (var model in roleList)
+            {
+                tree.Add(new { id = model.ID, text = model.RoleName, pid = "0"});
+            }
+
+            return Json(tree);
+        }
+
     }
 }

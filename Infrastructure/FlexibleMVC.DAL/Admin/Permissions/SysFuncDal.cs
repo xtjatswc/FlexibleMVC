@@ -27,5 +27,12 @@ where a.ID = @permissionsMenuID")
             return limitFunc;
         }
 
+        //获取站点下的所有功能
+        public List<SysFunc> GetModels(string SiteID)
+        {
+            var lstFunc = GetModels(where: "WebSiteID = '"+ SiteID + "'", orderBy:"SortNo asc");
+            return lstFunc;
+        }
+
     }
 }

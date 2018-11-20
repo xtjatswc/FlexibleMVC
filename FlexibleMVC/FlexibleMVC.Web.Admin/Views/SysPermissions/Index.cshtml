@@ -1,6 +1,10 @@
 ﻿@{
     Layout = null;
     string miniui = LessConfig.MiniUI_Path;
+
+    var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
+    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
+
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,7 +12,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>一周食谱计划</title>
+    <title>角色授权</title>
 
     <link href="@Url.Content(@miniui + "demo/demo.css")" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -40,7 +44,7 @@
                 *@
             </div>
             <div class="mini-fit">
-                <ul id="tree1" class="mini-tree" url="/bjdc_system_MealSchedule/GetWeekTree" style="width:100%;"
+                <ul id="tree1" class="mini-tree" url="/admin_SysRole/GetRoleTree?siteID=@sysWebSite.ID" style="width:100%;"
                     showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
@@ -53,14 +57,14 @@
             </div>
             <div class="mini-fit">
                 <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"     
-                     url="/bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
-                     treeColumn="CategoryName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
+                     url="/admin_SysPermissions/GetMenuFuncTreeList" showTreeIcon="true" 
+                     treeColumn="TreeColumnName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
                      showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false"
                 >
                     <div property="columns">
                         <div type="indexcolumn"></div>
-                        <div name="CategoryName" field="ItemName" width="200">菜品名称</div>
-                        <div field="SalePrice" width="100">价格（元）</div>
+                        <div name="TreeColumnName" field="ItemName">功能名称</div>
+                        <div field="FuncDescribe">功能描述</div>
                     </div>
                 </div>
             </div>
@@ -82,9 +86,9 @@
 
         tree.on("nodeclick",
             function(e) {
-
+                debugger;
                 if (e.isLeaf) {
-                    treegrid1.load({ week: e.node.week, MealTimesCode:e.node.code });
+                    treegrid1.load({ SiteID:"@sysWebSite.ID", RoleID:e.node.id });
                     btnSave.setEnabled(true);
                     btnRefresh.setEnabled(true);
                 } else {
