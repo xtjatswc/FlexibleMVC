@@ -82,7 +82,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                     ItemName = menu.SaleName,
                     ParentItemID = menu.CategoryID,
                     SalePrice = menu.SalePrice,
-                    Checked = dictSchedule.ContainsKey(menu.MealMenuID)
+                    Checked = dictSchedule.Contains(menu.MealMenuID)
                 };
 
                 lstResult.Add(menuObj);

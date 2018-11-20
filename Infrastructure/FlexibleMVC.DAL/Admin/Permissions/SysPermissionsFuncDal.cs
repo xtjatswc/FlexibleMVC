@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.Model.Admin.Permissions;
 
@@ -23,7 +24,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             where a.WebSiteID = @WebSiteID and a.SysRoleID = @SysRoleID")
                 .Parameter("WebSiteID", siteID)
                 .Parameter("SysRoleID", roleID)
-                .QuerySingle<SortedSet<string>>() ?? new SortedSet<string>();
+                .QueryMany<string>().ToSortedSet();
 
             return models;
         }

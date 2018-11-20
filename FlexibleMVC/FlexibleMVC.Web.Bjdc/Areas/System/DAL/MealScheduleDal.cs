@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Extension;
 
 namespace FlexibleMVC.Web.Bjdc.Areas.System.DAL
 {
@@ -15,16 +16,13 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.DAL
             Db = lessContext.db;
         }
 
-        public SortedDictionary<long, MealSchedule> GetSchedule(string week, string mealTimesCode)
+        public SortedSet<long> GetSchedule(string week, string mealTimesCode)
         {
-            var lstSchedule = GetModels(where: "DayOfWeek = '" + week + "' and MealTimesCode = '" + mealTimesCode + "'");
-            var dict = new SortedDictionary<long, MealSchedule>();
-            foreach (var model in lstSchedule)
-            {
-                dict.Add(model.MealMenuID, model);
-            }
+            var models = Db
+                .Sql("select MealMenuID from dc_MealSchedule where DayOfWeek = @DayOfWeek and MealTimesCode = @mealTimesCode")
+                .Parameter("DayOfWeek", week).Parameter("MealTimesCode", mealTimesCode).QueryMany<long>().ToSortedSet();
 
-            return dict;
+            return models;
         }
 
     }

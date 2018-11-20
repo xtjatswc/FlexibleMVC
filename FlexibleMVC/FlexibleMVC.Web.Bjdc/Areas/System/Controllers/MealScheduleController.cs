@@ -37,10 +37,10 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
 
             foreach (var menu in lstMenu)
             {
-                tree.Add(new { id = menu.ItemID, text = menu.ItemName, pid = "0", code=menu.ItemValue });
+                tree.Add(new { id = menu.ItemID, text = menu.ItemName, pid = "0", code = menu.ItemValue });
                 foreach (var time in lstTimes)
                 {
-                    tree.Add(new { id = time.ItemID, text = time.ItemName, pid = menu.ItemID, code=time.ItemValue,week = menu.ItemValue });
+                    tree.Add(new { id = time.ItemID, text = time.ItemName, pid = menu.ItemID, code = time.ItemValue, week = menu.ItemValue });
                 }
             }
 
@@ -54,18 +54,23 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             long MealTimesCode = Request.GetInt("MealTimesCode");
             string MealTimesName = Request.GetString("MealTimesName");
 
-            var mealScheduleDal = flexibleContext.GetService<MealScheduleDal>();
-            mealScheduleDal.Db.Sql("delete from dc_mealschedule where DayOfWeek = @0 and MealTimesCode = @1", week,
-                MealTimesCode).Execute();
-            foreach (var o in data)
+            using (var context = flexibleContext.db.UseTransaction(true))
             {
-                MealSchedule model = new MealSchedule();
-                model.MealTimesCode = MealTimesCode;
-                model.MealTimesName = MealTimesName;
-                model.DayOfWeek = week;
-                model.MealMenuID = Convert.ToInt32(o["ItemID"].ToString().Split('_')[1]);
-                mealScheduleDal.Insert(model);
-            }            
+                var mealScheduleDal = flexibleContext.GetService<MealScheduleDal>();
+                mealScheduleDal.Db.Sql("delete from dc_mealschedule where DayOfWeek = @0 and MealTimesCode = @1", week,
+                    MealTimesCode).Execute();
+                foreach (var o in data)
+                {
+                    MealSchedule model = new MealSchedule();
+                    model.MealTimesCode = MealTimesCode;
+                    model.MealTimesName = MealTimesName;
+                    model.DayOfWeek = week;
+                    model.MealMenuID = Convert.ToInt32(o["ItemID"].ToString().Split('_')[1]);
+                    mealScheduleDal.Insert(model);
+                }
+
+                context.Commit();
+            }
 
             var result = new { };
             return Json(result);

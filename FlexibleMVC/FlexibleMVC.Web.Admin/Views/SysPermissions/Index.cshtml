@@ -86,7 +86,6 @@
 
         tree.on("nodeclick",
             function(e) {
-                debugger;
                 if (e.isLeaf) {
                     treegrid1.load({ SiteID:"@sysWebSite.ID", RoleID:e.node.id });
                     btnSave.setEnabled(true);
@@ -129,7 +128,8 @@
             var tree = e.sender,
                 node = e.node;
 
-            if (node.ParentItemID != -1 && node.Checked) {
+            //只选中最底层功能项，父级菜单会自动选中
+            if (node.IsFunc && node.Checked) {
                 tree.checkNode(node);
             }
         }

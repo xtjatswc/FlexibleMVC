@@ -37,28 +37,34 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
             var spfDal = flexibleContext.GetService<SysPermissionsFuncDal>();
             var limitFunc = spfDal.GetModels(siteID, roleID);
-            
+
             //导航菜单
             var lstResult = new List<Object>();
             foreach (var menu in lstMenu)
             {
                 lstResult.Add(new
-                    { ItemID = menu.ID, ItemName = menu.MenuName, ParentItemID = menu.ParentID, FuncDescribe = "", Checked = limitMenu.Contains(menu.ID) });
+                {
+                    ItemID = menu.ID,
+                    ItemName = menu.MenuName,
+                    ParentItemID = menu.ParentID,
+                    FuncDescribe = "",
+                    Checked = limitMenu.Contains(menu.ID),
+                    IsFunc = false
+                });
             }
 
             //功能
             foreach (var func in lstFunc)
             {
-                var funcObj = new
+                lstResult.Add(new
                 {
                     ItemID = func.ID,
                     ItemName = func.FuncName,
                     ParentItemID = func.SysMenuID,
                     FuncDescribe = func.FuncDescribe,
-                    Checked = limitFunc.Contains(func.ID)
-                };
-
-                lstResult.Add(funcObj);
+                    Checked = limitFunc.Contains(func.ID),
+                    IsFunc = true
+                });
             }
 
             return Json(lstResult);

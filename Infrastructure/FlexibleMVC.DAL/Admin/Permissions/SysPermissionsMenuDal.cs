@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.Model.Admin.Permissions;
+using FluentData;
 
 namespace FlexibleMVC.DAL.Admin.Permissions
 {
@@ -20,10 +22,9 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             var models = Db.Sql("select SysMenuID from SysPermissionsMenu where WebSiteID=@WebSiteID and SysRoleID=@SysRoleID")
                              .Parameter("WebSiteID", siteID)
                              .Parameter("SysRoleID", roleID)
-                             .QuerySingle<SortedSet<string>>() ?? new SortedSet<string>();
+                             .QueryMany<string>().ToSortedSet();
 
             return models;
         }
-
     }
 }

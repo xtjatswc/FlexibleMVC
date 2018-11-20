@@ -62,6 +62,7 @@
     <Compile Include="Ctrller\FolderController.cs" />
     <Compile Include="Extension\HashTableExtension.cs" />
     <Compile Include="Extension\HttpRequestExtension.cs" />
+    <Compile Include="Extension\ListExtension.cs" />
     <Compile Include="Filters\Permission\CheckUserRoleAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\PrimaryKeyAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\TableNameAttribute.cs" />
