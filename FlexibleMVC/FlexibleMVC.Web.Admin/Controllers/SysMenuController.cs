@@ -51,11 +51,12 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
         public JsonResult GetChildListNav()
         {
+            string siteID = Request.GetString("SiteID");
             string parentID = Request.GetString("ParentID");
             string key = Request.GetString("key");
 
             var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
-            var model = sysMenuDal.GetChildMenu(parentID, key);
+            var model = sysMenuDal.GetChildMenu(siteID, parentID, key);
 
             return Json(model);
         }
@@ -77,6 +78,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 String state = o.GetString("_state");
                 String menuName = o.GetString("MenuName");
                 String navUrl = o.GetString("NavUrl");
+                String img = o.GetString("Img");
                 decimal sortNo = o.GetDecimal("SortNo");
 
                 if (state == "added" || id == "")           //新增：id为空，或_state为added
@@ -86,6 +88,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     model.MenuName = menuName;
                     model.ParentID = parentID;
                     model.NavUrl = navUrl;
+                    model.Img = img;
                     model.WebSiteID = siteID;
                     model.SortNo = sortNo;
                     sysMenuDal.Insert(model);
@@ -100,6 +103,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     model.MenuName = menuName;
                     model.ParentID = parentID;
                     model.NavUrl = navUrl;
+                    model.Img = img;
                     model.WebSiteID = siteID;
                     model.SortNo = sortNo;
                     sysMenuDal.Update(model, x => x.ID);
@@ -150,7 +154,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
             string siteID = Request.GetString("SiteID");
 
             var sysMenuBll = flexibleContext.GetService<SysMenuBll>();
-            sysMenuBll.RecursionWbs(1, "", "");
+            sysMenuBll.RecursionWbs(siteID, 1, "", "");
 
             return Json(new { });
 

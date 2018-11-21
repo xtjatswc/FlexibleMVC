@@ -16,6 +16,7 @@ namespace FlexibleMVC.Model.Admin.Permissions
         public String Wbs { get; set; }
         public int Level { get; set; }
         public String NavUrl { get; set; }
+        public String Img { get; set; }
         public decimal SortNo { get; set; }
     }
 }

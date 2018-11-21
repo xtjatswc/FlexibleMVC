@@ -11,9 +11,9 @@ namespace FlexibleMVC.BLL.Admin.Permissions
     {
         public SysMenuDal sysMenuDal { get; set; }
 
-        public void RecursionWbs(int level, string parentID, string parentWbs)
+        public void RecursionWbs(string siteID, int level, string parentID, string parentWbs)
         {
-            var rootNodes = sysMenuDal.GetChildMenu(parentID);
+            var rootNodes = sysMenuDal.GetChildMenu(siteID, parentID);
             for (int i = 0; i < rootNodes.Count(); i++)
             {
                 var node = rootNodes[i];
@@ -21,7 +21,7 @@ namespace FlexibleMVC.BLL.Admin.Permissions
                 node.Level = level;
                 node.SortNo = i;
                 sysMenuDal.Update(node, x => x.ID);
-                RecursionWbs(level + 1, node.ID, node.Wbs);
+                RecursionWbs(siteID, level + 1, node.ID, node.Wbs);
             }
         }
 

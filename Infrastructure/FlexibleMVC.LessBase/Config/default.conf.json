@@ -15,10 +15,10 @@
       "CamelLowercase": false
     },
     "adminLTE": {
-      "Path": "~/Content/AdminLTE/"
+      "Path": "~/Content/AdminLTE"
     },
     "miniui": {
-      "Path": "~/Scripts/miniui/"
+      "Path": "~/Scripts/miniui"
     }
 
   }

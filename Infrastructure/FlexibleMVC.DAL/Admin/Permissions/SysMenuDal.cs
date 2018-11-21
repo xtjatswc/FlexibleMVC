@@ -17,7 +17,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
 
         public List<SysMenu> GetModels(string siteID)
         {
-            var models = GetModels(where: "WebSiteID='" + siteID + "'", orderBy:"SortNo asc");
+            var models = GetModels(where: "WebSiteID='" + siteID + "'", orderBy: "SortNo asc");
             return models;
         }
 
@@ -41,9 +41,9 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             return limitMenu;
         }
 
-        public List<SysMenu> GetChildMenu(string parentID, string keyword = "")
+        public List<SysMenu> GetChildMenu(string siteID, string parentID, string keyword = "")
         {
-            var model = GetModels(where: "ParentID='" + parentID + "' and MenuName like '%" + keyword + "%'", orderBy: "SortNo asc");
+            var model = GetModels(where: "WebSiteID='" + siteID + "' and ParentID='" + parentID + "' and MenuName like '%" + keyword + "%'", orderBy: "SortNo asc");
             return model;
         }
     }

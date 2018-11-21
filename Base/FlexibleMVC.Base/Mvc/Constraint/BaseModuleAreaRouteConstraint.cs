@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace FlexibleMVC.Base.Mvc.Constraint
@@ -21,7 +22,11 @@ namespace FlexibleMVC.Base.Mvc.Constraint
 
             #region 校验module是否匹配
             //module 从url请求时，url中是否包含module信息
-            bool fromUrlHasModule = httpContext.Request.Path.StartsWith("/" + ModuleName + "_", StringComparison.OrdinalIgnoreCase);
+            string appDir = httpContext.Request.ApplicationPath;
+            if (appDir != "/")
+                appDir += "/";
+
+            bool fromUrlHasModule = httpContext.Request.Path.StartsWith(appDir + ModuleName + "_", StringComparison.OrdinalIgnoreCase);
 
             //module 从分部视图请求时，是否包含module信息           
             object moduleName = "";
