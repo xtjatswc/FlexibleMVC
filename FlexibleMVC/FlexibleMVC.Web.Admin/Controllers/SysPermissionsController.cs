@@ -82,16 +82,32 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 var spmDal = flexibleContext.GetService<SysPermissionsMenuDal>();
                 var spfDal = flexibleContext.GetService<SysPermissionsFuncDal>();
 
-                //菜单权限
+                //删除菜单权限
                 spmDal.Db.Sql("delete from SysPermissionsMenu where WebSiteID = @0 and SysRoleID = @1", siteID, roleID).Execute();
-                foreach (var o in data)
+
+                //删除功能权限
+                spfDal.Db.Sql("delete from SysPermissionsFunc where PermissionsMenuID not in (select ID from SysPermissionsMenu)");
+
+                foreach (var o in data.Where(o => o.GetBoolean("IsFunc") == false))
                 {
-                    SysPermissionsMenu model = new SysPermissionsMenu();
-                    model.ID = "{" + Guid.NewGuid() + "}";
-                    model.WebSiteID = siteID;
-                    model.SysRoleID = roleID;
-                    model.SysMenuID = o.GetString("");
-                    spmDal.Insert(model);
+                    //保存菜单权限
+                    SysPermissionsMenu spm = new SysPermissionsMenu();
+                    spm.ID = "{" + Guid.NewGuid() + "}";
+                    spm.WebSiteID = siteID;
+                    spm.SysRoleID = roleID;
+                    spm.SysMenuID = o.GetString("ItemID");
+                    spmDal.Insert(spm);
+
+                    //保存功能权限
+                    var funcs = data.Where(f =>
+                        f.GetBoolean("IsFunc") && f.GetString("ParentItemID") == spm.SysMenuID);
+                    foreach (var func in funcs)
+                    {
+                        SysPermissionsFunc spf = new SysPermissionsFunc();
+                        spf.PermissionsMenuID = spm.ID;
+                        spf.SysFuncID = func.GetString("ItemID");
+                        spfDal.Insert(spf);
+                    }
                 }
 
                 context.Commit();
