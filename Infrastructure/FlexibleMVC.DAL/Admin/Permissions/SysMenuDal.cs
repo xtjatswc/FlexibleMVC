@@ -17,7 +17,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
 
         public List<SysMenu> GetModels(string siteID)
         {
-            var models = GetModels(where: "WebSiteID='" + siteID + "'");
+            var models = GetModels(where: "WebSiteID='" + siteID + "'", orderBy:"SortNo asc");
             return models;
         }
 

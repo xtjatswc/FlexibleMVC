@@ -117,6 +117,7 @@
     <Content Include="Views\SysRole\SetRole.cshtml" />
     <Content Include="Views\SysFunc\Index.cshtml" />
     <Content Include="Views\SysPermissions\Index.cshtml" />
+    <Content Include="Views\SysMenu\Index.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
