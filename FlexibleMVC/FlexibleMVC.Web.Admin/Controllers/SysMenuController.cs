@@ -8,6 +8,7 @@ using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
+using FlexibleMVC.Model.Admin.Permissions;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -24,15 +25,15 @@ namespace FlexibleMVC.Web.Admin.Controllers
             var sysUserBll = flexibleContext.GetService<SysUserBll>();
             var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
 
-            ////获取登录用户
-            //SysUser sysUser = sysUserBll.getCurrentUser();
+            //获取登录用户
+            SysUser sysUser = sysUserBll.getCurrentUser();
 
-            ////获取有权限的菜单
-            //var limitMenu = sysMenuDal.GetLimitModels(siteID, sysUser.ID);
+            //获取有权限的菜单
+            var limitMenu = sysMenuDal.GetLimitModels(siteID, sysUser.ID);
 
-            //return Json(limitMenu);
+            return Json(limitMenu);
 
-            return Json(sysMenuDal.GetModels(siteID));
+            //return Json(sysMenuDal.GetModels(siteID));
         }
 
         public JsonResult GetListNav()

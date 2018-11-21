@@ -14,5 +14,6 @@ namespace FlexibleMVC.Model.Admin.Permissions
         public String MenuName { get; set; }
         public String ParentID { get; set; }
         public String NavUrl { get; set; }
+        public decimal SortNo { get; set; }
     }
 }

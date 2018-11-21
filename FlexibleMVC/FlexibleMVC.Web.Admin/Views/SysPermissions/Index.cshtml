@@ -39,9 +39,9 @@
         <div size="240" showCollapseButton="true">
             <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
                 @*<span style="padding-left:5px;">名称：</span>
-        <input class="mini-textbox" width="120" />
+        <input class="mini-textbox" width="120" />*@
         <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
-                *@
+                
             </div>
             <div class="mini-fit">
                 <ul id="tree1" class="mini-tree" url="/admin_SysRole/GetRoleTree?siteID=@sysWebSite.ID" style="width:100%;"
@@ -126,6 +126,9 @@
             }
         }
 
+        function refreshTree() {
+            tree.reload();
+        }
     </script>
 
 </body>

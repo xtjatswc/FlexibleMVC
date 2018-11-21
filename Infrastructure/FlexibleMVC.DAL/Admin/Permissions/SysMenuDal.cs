@@ -34,7 +34,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             INNER join SysRole c on c.ID = b.SysRoleID and c.WebSiteID = @WebSiteID
             INNER JOIN SysPermissionsMenu d on d.SysRoleID = c.ID and d.WebSiteID = @WebSiteID
             INNER join SysMenu e on e.ID = d.SysMenuID
-            where a.ID = @SysUserID")
+            where a.ID = @SysUserID order by e.SortNo")
                 .Parameter("WebSiteID", siteID)
                 .Parameter("SysUserID", userID)
                 .QueryMany<dynamic>();
