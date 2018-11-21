@@ -12,6 +12,7 @@
     {
         Response.Redirect("/bjdc_system_login");
     }
+
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -66,7 +67,7 @@
             <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
                 <div size="180" maxSize="250" minSize="100" showCollapseButton="true" style="border-width:1px;">
                     <!--Tree-->
-                    <ul id="leftTree" class="mini-tree" url="/admin_SysMenu/GetLimitNav?SiteID=@sysWebSite.ID" style="width:100%;height:100%;"
+                    <ul id="leftTree" class="mini-tree" url="@flexibleContext.AppPath/admin_SysMenu/GetLimitNav?SiteID=@sysWebSite.ID" style="width:100%;height:100%;"
                         showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false"
                         expandOnLoad="true" onnodeclick="onNodeSelect"></ul>
                 </div>

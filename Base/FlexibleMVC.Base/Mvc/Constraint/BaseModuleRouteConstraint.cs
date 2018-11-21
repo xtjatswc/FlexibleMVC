@@ -21,7 +21,10 @@ namespace FlexibleMVC.Base.Mvc.Constraint
 
             #region 校验module是否匹配
             //module 从url请求时，url中是否包含module信息
-            bool fromUrlHasModule = httpContext.Request.Path.StartsWith("/" + ModuleName + "_", StringComparison.OrdinalIgnoreCase);
+            string appPath = httpContext.Request.ApplicationPath;
+            if (appPath != "/")
+                appPath += "/";
+            bool fromUrlHasModule = httpContext.Request.Path.StartsWith(appPath + ModuleName + "_", StringComparison.OrdinalIgnoreCase);
 
             //module 从分部视图请求时，是否包含module信息           
             object moduleName = "";
