@@ -12,6 +12,7 @@ namespace FlexibleMVC.LessBase.Ctrller
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
+            flexibleContext.AppPath = requestContext.HttpContext.Request.ApplicationPath;
             base.Initialize(requestContext);
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace FlexibleMVC.Base.Mvc.Context
@@ -26,6 +27,7 @@ namespace FlexibleMVC.Base.Mvc.Context
             return DependencyResolver.Current.GetServices<TService>();
         }
 
+        public string AppPath { get; set; }
         public dynamic Model { get; set; } = new ExpandoObject();
         public Hashtable Items { get; set; } = new Hashtable();
     }

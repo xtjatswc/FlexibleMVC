@@ -108,7 +108,7 @@
                 tab.showCloseButton = true;
 
                 //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
-                tab.url = node.NavUrl + "?SiteID=@sysWebSite.ID&PermissionsMenuID=" + node.PermissionsMenuID;
+                tab.url = "@flexibleContext.AppPath" + node.NavUrl + "?SiteID=@sysWebSite.ID&PermissionsMenuID=" + node.PermissionsMenuID;
 
                 tabs.addTab(tab);
             }
