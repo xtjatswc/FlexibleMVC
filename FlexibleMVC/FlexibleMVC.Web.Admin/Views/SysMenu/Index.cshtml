@@ -38,6 +38,7 @@
                 @*<span style="padding-left:5px;">名称：</span>
                     <input class="mini-textbox" width="120" />*@
                 <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
+                <a class="mini-button" iconCls="icon-expand" plain="true" onclick="createWbs()">生成wbs</a>
             </div>
             <div class="mini-fit">
                 <ul id="tree1" class="mini-tree" url="/admin_SysMenu/GetListNav?SiteID=@siteID" style="width:100%;"
@@ -60,16 +61,18 @@
                     <div property="columns">
                         <div type="indexcolumn"></div>
                         <div type="checkcolumn"></div>
-                        <div field="MenuName" width="120" headerAlign="center" allowSort="false">
+                        <div field="MenuName"  headerAlign="center" allowSort="false">
                             子菜单名称
                             <input property="editor" class="mini-textbox" style="width: 100%;" />
                             <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入名称敲回车键检索" />
                         </div>
-                        <div field="NavUrl" width="120" headerAlign="center" allowSort="false">
+                        <div field="NavUrl" headerAlign="center" allowSort="false">
                             导航地址
                             <input property="editor" class="mini-textbox" style="width: 100%;" />
                         </div>
-                        <div field="SortNo" width="100" allowSort="false" align="center" headerAlign="center">
+                        <div field="Wbs" allowSort="false">wbs</div>
+                        <div field="Level" allowSort="false">级别</div>
+                        <div field="SortNo" allowSort="false" align="center" headerAlign="center">
                             排序
                             <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width: 100%;" />
                         </div>
@@ -155,6 +158,20 @@
                 }
             });
 
+        }
+
+        function createWbs() {
+            $.ajax({
+                url: "/admin_SysMenu/CreateWbs",
+                data: {SiteID:'@siteID'},
+                type: "post",
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
         }
     </script>
 

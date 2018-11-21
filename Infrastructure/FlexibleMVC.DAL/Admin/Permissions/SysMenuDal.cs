@@ -41,7 +41,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
             return limitMenu;
         }
 
-        public List<SysMenu> GetChildMenu(string parentID, string keyword)
+        public List<SysMenu> GetChildMenu(string parentID, string keyword = "")
         {
             var model = GetModels(where: "ParentID='" + parentID + "' and MenuName like '%" + keyword + "%'", orderBy: "SortNo asc");
             return model;

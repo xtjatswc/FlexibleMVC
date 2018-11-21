@@ -144,5 +144,17 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
             return Json(new { });
         }
+
+        public JsonResult CreateWbs()
+        {
+            string siteID = Request.GetString("SiteID");
+
+            var sysMenuBll = flexibleContext.GetService<SysMenuBll>();
+            sysMenuBll.RecursionWbs(1, "", "");
+
+            return Json(new { });
+
+        }
+
     }
 }

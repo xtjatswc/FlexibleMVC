@@ -13,6 +13,8 @@ namespace FlexibleMVC.Model.Admin.Permissions
         public String WebSiteID { get; set; }
         public String MenuName { get; set; }
         public String ParentID { get; set; }
+        public String Wbs { get; set; }
+        public int Level { get; set; }
         public String NavUrl { get; set; }
         public decimal SortNo { get; set; }
     }
