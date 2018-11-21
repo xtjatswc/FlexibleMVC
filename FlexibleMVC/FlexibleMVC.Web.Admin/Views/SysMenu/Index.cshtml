@@ -41,7 +41,7 @@
             </div>
             <div class="mini-fit">
                 <ul id="tree1" class="mini-tree" url="/admin_SysMenu/GetListNav?SiteID=@siteID" style="width:100%;"
-                    showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false" expandOnLoad="true"></ul>
+                    showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false" expandOnLoad="true" allowDrag="true" allowDrop="true" allowLeafDropIn="true" ondrop="ondrop"></ul>
             </div>
         </div>
         <div showCollapseButton="true">
@@ -61,7 +61,7 @@
                         <div type="indexcolumn"></div>
                         <div type="checkcolumn"></div>
                         <div field="MenuName" width="120" headerAlign="center" allowSort="false">
-                            菜单名称
+                            子菜单名称
                             <input property="editor" class="mini-textbox" style="width: 100%;" />
                             <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入名称敲回车键检索" />
                         </div>
@@ -138,6 +138,23 @@
                     alert(jqXHR.responseText);
                 }
             });
+        }
+
+        function ondrop(e) {
+
+            $.ajax({
+                url: "/admin_SysMenu/DropMenu",
+                data: { dragAction: e.dragAction, dragNode: mini.encode(e.dragNode), targetNode: mini.encode(e.targetNode) },
+                type: "post",
+                success: function (text) {
+                    grid.reload();
+                    tree.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
         }
     </script>
 

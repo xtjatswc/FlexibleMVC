@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using FlexibleMVC.BLL.Admin.Permissions;
 using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
@@ -54,7 +55,7 @@ namespace FlexibleMVC.Web.Admin.Controllers
             string key = Request.GetString("key");
 
             var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
-            var model = sysMenuDal.GetModels(where: "ParentID='" + parentID + "' and MenuName like '%" + key + "%'", orderBy:"SortNo asc");
+            var model = sysMenuDal.GetChildMenu(parentID, key);
 
             return Json(model);
         }
@@ -74,9 +75,9 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 String id = o.GetString("ID");
                 //根据记录状态，进行不同的增加、删除、修改操作
                 String state = o.GetString("_state");
-                String menuName = o["MenuName"].ToString();
-                String navUrl = o["NavUrl"].ToString();
-                decimal sortNo = Convert.ToDecimal(o["SortNo"]);
+                String menuName = o.GetString("MenuName");
+                String navUrl = o.GetString("NavUrl");
+                decimal sortNo = o.GetDecimal("SortNo");
 
                 if (state == "added" || id == "")           //新增：id为空，或_state为added
                 {
@@ -107,6 +108,41 @@ namespace FlexibleMVC.Web.Admin.Controllers
 
             var result = new { };
             return Json(result);
+        }
+
+        public JsonResult DropMenu()
+        {
+            var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
+
+            string dragAction = Request.GetString("dragAction");
+            SysMenu dragNode = Request.Get<SysMenu>("dragNode");
+            SysMenu sourceNode = sysMenuDal.GetModel(dragNode.ID);
+            SysMenu targetNode = Request.Get<SysMenu>("targetNode");
+
+
+            switch (dragAction)
+            {
+                case "before":
+
+                    sourceNode.SortNo = targetNode.SortNo - 0.1m;
+                    sourceNode.ParentID = targetNode.ParentID;
+                    sysMenuDal.Update(sourceNode, x => x.ID);
+                    break;
+                case "after":
+
+                    sourceNode.SortNo = targetNode.SortNo + 0.1m;
+                    sourceNode.ParentID = targetNode.ParentID;
+                    sysMenuDal.Update(sourceNode, x => x.ID);
+                    break;
+                case "add":
+
+                    sourceNode.ParentID = targetNode.ID;
+                    sysMenuDal.Update(sourceNode, x => x.ID);
+                    break;
+
+            }
+
+            return Json(new { });
         }
     }
 }
