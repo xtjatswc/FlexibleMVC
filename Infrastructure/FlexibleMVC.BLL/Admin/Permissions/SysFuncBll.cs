@@ -6,18 +6,24 @@ using System.Text;
 using System.Web;
 using FlexibleMVC.Base.JsonConfig;
 using FlexibleMVC.DAL.Admin.Permissions;
+using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Infrastructure;
 
 namespace FlexibleMVC.BLL.Admin.Permissions
 {
-    public class SysFuncBll : BaseBLL
+    public class SysFuncBll : BaseBLL, IPermissions
     {
         public SysFuncDal sysFuncDal { get; set; }
 
-        public Dictionary<string, bool> GetLimitModels(HttpRequestBase Request)
+        public Dictionary<string, bool> GetPermissions(LessFlexibleContext flexibleContext, HttpRequestBase Request)
         {
             string permissionsMenuID = Request.GetString("PermissionsMenuID");
+            if(permissionsMenuID == null)
+                return  new Dictionary<string, bool>();
+
+            sysFuncDal = flexibleContext.GetService<SysFuncDal>();
             var limitFunc = sysFuncDal.GetLimitModels(permissionsMenuID);
 
             var dict = new Dictionary<string, bool>();
@@ -31,6 +37,5 @@ namespace FlexibleMVC.BLL.Admin.Permissions
 
             return dict;
         }
-
     }
 }

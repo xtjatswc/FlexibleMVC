@@ -70,7 +70,7 @@ namespace FlexibleMVC.LessBase.Config
             //告诉autofac框架注册业务逻辑层所在程序集中的所有类的对象实例
             Assembly serviceAss = Assembly.Load("FlexibleMVC.BLL");
             //创建serAss中的所有类的instance以此类的实现接口存储
-            //builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces();
+            builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces();
             builder.RegisterTypes(serviceAss.GetTypes()).PropertiesAutowired().InstancePerRequest();
 
             //加载插件目录

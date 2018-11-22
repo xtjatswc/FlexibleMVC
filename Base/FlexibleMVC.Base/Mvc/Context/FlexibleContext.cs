@@ -27,8 +27,11 @@ namespace FlexibleMVC.Base.Mvc.Context
             return DependencyResolver.Current.GetServices<TService>();
         }
 
+        //应用程序根目录
         public string AppPath { get; set; }
         public dynamic Model { get; set; } = new ExpandoObject();
         public Hashtable Items { get; set; } = new Hashtable();
+        //权限
+        public Dictionary<string, bool> Limit { get; set; }
     }
 }
