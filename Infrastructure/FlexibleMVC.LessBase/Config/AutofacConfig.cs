@@ -44,7 +44,7 @@ namespace FlexibleMVC.LessBase.Config
                 ).ToArray();
                 if (needTypes.Length > 0)
                 {
-                    builder.RegisterTypes(needTypes).AsImplementedInterfaces();
+                    builder.RegisterTypes(needTypes).AsImplementedInterfaces().InstancePerRequest();
                     builder.RegisterTypes(needTypes).InstancePerRequest();
                 }
             }
@@ -64,13 +64,13 @@ namespace FlexibleMVC.LessBase.Config
             //告诉autofac框架注册数据仓储层所在程序集中的所有类的对象实例
             Assembly dalAss = Assembly.Load("FlexibleMVC.DAL");
             //创建respAss中的所有类的instance以此类的实现接口存储
-            builder.RegisterTypes(dalAss.GetTypes()).AsImplementedInterfaces();
+            builder.RegisterTypes(dalAss.GetTypes()).AsImplementedInterfaces().InstancePerRequest(); ;
             builder.RegisterTypes(dalAss.GetTypes()).InstancePerRequest();
 
             //告诉autofac框架注册业务逻辑层所在程序集中的所有类的对象实例
             Assembly serviceAss = Assembly.Load("FlexibleMVC.BLL");
             //创建serAss中的所有类的instance以此类的实现接口存储
-            builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces();
+            builder.RegisterTypes(serviceAss.GetTypes()).AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterTypes(serviceAss.GetTypes()).PropertiesAutowired().InstancePerRequest();
 
             //加载插件目录
