@@ -20,8 +20,7 @@ namespace FlexibleMVC.DAL.Admin.Permissions
         {
             var limitFunc = Db.Sql(@"select DISTINCT b.FuncName, c.SysFuncID from SysPermissionsMenu a
 INNER JOIN SysFunc b on b.SysMenuID = a.SysMenuID
-left join SysPermissionsFunc c on c.SysFuncID = b.ID
-where a.ID = @permissionsMenuID")
+left join SysPermissionsFunc c on c.SysFuncID = b.ID and c.PermissionsMenuID = @permissionsMenuID where a.ID = @permissionsMenuID")
                 .Parameter("permissionsMenuID", permissionsMenuID)
                 .QueryMany<dynamic>();
             return limitFunc;

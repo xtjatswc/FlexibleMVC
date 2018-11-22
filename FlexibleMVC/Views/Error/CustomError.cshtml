@@ -1,0 +1,16 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = null;
+    ViewBag.Title = "General Site Error";
+    Exception e = TempData["Exception"] as Exception;
+}
+ 
+<h2>A General Error Has Occurred</h2>
+ 
+@if (e != null)
+{
+    <p>@e.GetType().Name<br/>
+        thrown in </p>
+    <p>Error Details:</p>
+    <p>@e.Message</p>
+}

@@ -33,12 +33,18 @@
                         {
                             <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
                         }
-                        <span class="separator"></span>
-                        <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
+                        @if (Limit["保存"])
+                        {
+                            <span class="separator"></span>
+                            <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
+                        }
                     </td>
-                    <td style="white-space:nowrap;">
-                        <input id="key" class="mini-textbox" emptyText="请输入名称" style="width:150px;" onenter="onKeyEnter" />
-                        <a class="mini-button" onclick="search()">查询</a>
+                    <td style="white-space: nowrap;">
+                        @if (Limit["检索"])
+                        {
+                            <input id="key" class="mini-textbox" emptyText="请输入名称" style="width: 150px;" onenter="onKeyEnter" />
+                            <a class="mini-button" onclick="search()">查询</a>
+                        }
                     </td>
                 </tr>
             </table>
@@ -47,7 +53,11 @@
     <div id="datagrid1" class="mini-datagrid" style="width:800px;height:480px;"
          url="@AppPath/bjdc_system_mealcategory/GetCategoryList" idField="ItemID"
          allowResize="true" pageSize="20"
-         allowCellEdit="true" allowCellSelect="true" multiSelect="false"
+         @if (Limit["修改"])
+         {
+             @:allowCellEdit='true'
+         }
+         allowCellSelect="true" multiSelect="false" oncellbeginedit="cellbeginedit"
          editNextOnEnterKey="true" editNextRowCell="true">
         <div property="columns">
             <div type="indexcolumn"></div>
@@ -145,6 +155,10 @@
 //            }
 //        });
 
+        function cellbeginedit(e) {
+            if (e.row._state != "added")
+                e.cancel = true;
+        }
     </script>
 
     <div class="description">

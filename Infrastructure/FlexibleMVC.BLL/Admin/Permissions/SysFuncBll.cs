@@ -29,7 +29,7 @@ namespace FlexibleMVC.BLL.Admin.Permissions
             var dict = new Dictionary<string, bool>();
             foreach (var limit in limitFunc)
             {
-                dict.Add(limit.FuncName, limit.SysFuncID == null);
+                dict.Add(limit.FuncName, limit.SysFuncID != null);
             }
 
             //string json = JsonUtil.ToJson(dict);
