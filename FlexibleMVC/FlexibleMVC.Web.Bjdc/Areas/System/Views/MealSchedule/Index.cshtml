@@ -1,6 +1,5 @@
 ﻿@{
     Layout = null;
-    string miniui = Url.Content(LessConfig.MiniUI_Path);
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -10,7 +9,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>一周食谱计划</title>
 
-    <link href="@miniui/demo/demo.css" rel="stylesheet" type="text/css" />
+    <link href="@MiniUI/demo/demo.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body {
             margin: 0;
@@ -22,7 +21,7 @@
         }
     </style>
 
-    <script src="@miniui/scripts/boot.js" type="text/javascript"></script>
+    <script src="@MiniUI/scripts/boot.js" type="text/javascript"></script>
 
     <!--引入皮肤样式-->
     <!--<link href="../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css" />-->
@@ -40,7 +39,7 @@
                 *@
             </div>
             <div class="mini-fit">
-                <ul id="tree1" class="mini-tree" url="/bjdc_system_MealSchedule/GetWeekTree" style="width:100%;"
+                <ul id="tree1" class="mini-tree" url="@AppPath/bjdc_system_MealSchedule/GetWeekTree" style="width:100%;"
                     showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
@@ -53,7 +52,7 @@
             </div>
             <div class="mini-fit">
                 <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"     
-                     url="/bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
+                     url="@AppPath/bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
                      treeColumn="CategoryName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
                      showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false"
                 >
@@ -109,7 +108,7 @@
             var json = mini.encode(chkNodes);
             treegrid1.loading("保存中，请稍后......");
             $.ajax({
-                url: "/bjdc_system_MealSchedule/SaveSchedule",
+                url: "@AppPath/bjdc_system_MealSchedule/SaveSchedule",
                 data: { data: json, week: node.week, MealTimesCode: node.code, MealTimesName: node.text},
                 type: "post",
                 success: function(text) {

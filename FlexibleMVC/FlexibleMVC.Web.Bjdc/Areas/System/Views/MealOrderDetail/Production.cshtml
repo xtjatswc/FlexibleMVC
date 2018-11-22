@@ -1,6 +1,5 @@
 ﻿@{
     Layout = null;
-    string miniui = Url.Content(LessConfig.MiniUI_Path);
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -10,9 +9,9 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>生产计划</title>
 
-    <link href="@miniui/demo/demo.css" rel="stylesheet" type="text/css" />
+    <link href="@MiniUI/demo/demo.css" rel="stylesheet" type="text/css" />
 
-    <script src="@miniui/scripts/boot.js" type="text/javascript"></script>
+    <script src="@MiniUI/scripts/boot.js" type="text/javascript"></script>
 
     <!--引入皮肤样式-->
     <!--<link href="../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css" />-->
@@ -34,7 +33,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <label style="font-family: Verdana;">餐别: </label>
                     <input id="cboMealTimes" class="mini-combobox" style="width:150px;" textField="ItemName" valueField="ItemName"
-                           url="/bjdc_system_MealDict/GetMealIimes"
+                           url="@AppPath/bjdc_system_MealDict/GetMealIimes"
                            showNullItem="true" />
                     <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
                     <a class="mini-button" iconCls="icon-print" plain="true" onclick="onPrint()">打印</a>
@@ -43,7 +42,7 @@
         </table>
     </div>
     <div id="order_grid" class="mini-datagrid" style="width:100%;height:auto;" allowResize="true" autoLoad="false" showPager="false" allowCellWrap="true"
-         url="/bjdc_system_MealOrderDetail/GetProductionPlan" idField="id" pageSize="30">
+         url="@AppPath/bjdc_system_MealOrderDetail/GetProductionPlan" idField="id" pageSize="30">
         <div property="columns">
             <div type="indexcolumn"></div>
             <div field="MealDate" headerAlign="center" dateFormat="yyyy-MM-dd">配送日期</div>
