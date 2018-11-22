@@ -1,11 +1,6 @@
 ﻿using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Infrastructure;
-using FlexibleMVC.Model.Admin.Permissions;
-using FluentData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using FlexibleMVC.LessBase.Permissions.Model;
 
 namespace FlexibleMVC.DAL.Admin.Permissions
 {

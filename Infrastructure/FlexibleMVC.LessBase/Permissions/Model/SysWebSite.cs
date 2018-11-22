@@ -5,7 +5,7 @@ using System.Text;
 using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.LessBase.Infrastructure.Attribute;
 
-namespace FlexibleMVC.Model.Admin.Permissions
+namespace FlexibleMVC.LessBase.Permissions.Model
 {
     [TableName("SysWebSite")]
     public class SysWebSite : BaseModel

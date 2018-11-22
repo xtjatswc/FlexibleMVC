@@ -7,14 +7,17 @@ using FlexibleMVC.Base.Mvc.Context;
 using FlexibleMVC.Base.Mvc.Ctrller;
 using FlexibleMVC.BLL.Admin.Permissions;
 using FlexibleMVC.LessBase.Filters.Permission;
+using FlexibleMVC.LessBase.Permissions.Model;
 using FlexibleMVC.Model.Admin.Permissions;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Ctrller;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
-    public class HomeController : BaseController<FlexibleContext>
+    public class HomeController : LessBaseController
     {
-        public HomeController(FlexibleContext flexibleContext) : base(flexibleContext)
+        public HomeController(LessFlexibleContext flexibleContext) : base(flexibleContext)
         {
         }
 
@@ -22,11 +25,10 @@ namespace FlexibleMVC.Web.Admin.Controllers
         public ActionResult Index()
         {
             SysUserBll sysUserBll = flexibleContext.GetService<SysUserBll>();
-            SysUser sysUser = sysUserBll.getCurrentUser();
-            if (sysUser == null)                
+            if (flexibleContext.CurrentUser == null)                
                 return RedirectPermanent("/Admin_Login/Index");
 
-            return View(sysUser);
+            return View();
         }
 
         public ActionResult Welcome()

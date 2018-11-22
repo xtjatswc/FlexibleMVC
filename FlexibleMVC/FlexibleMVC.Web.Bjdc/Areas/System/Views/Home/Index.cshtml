@@ -1,9 +1,7 @@
-﻿@using FlexibleMVC.DAL.Admin.Permissions
-@using FlexibleMVC.Model.Admin.Permissions
+﻿@using FlexibleMVC.LessBase.Permissions.Model
 @{
     Layout = null;
 
-    SysUser sysUser = Model;
     var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
     SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
     if (sysWebSite == null)
@@ -49,7 +47,7 @@
             <h1 style="margin:0;padding:15px;cursor:default;font-family:'Trebuchet MS',Arial,sans-serif;">@sysWebSite.SiteName</h1>
 
             <div style="position: absolute; top: 12px; right: 10px;">
-                <font style="font-size: 12pt;">用户：@sysUser.UserName&nbsp;&nbsp;角色：@sysUser.RoleNames</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                <font style="font-size: 12pt;">用户：@SysUser.UserName&nbsp;&nbsp;角色：@SysUser.RoleNames</font>&nbsp;&nbsp;&nbsp;&nbsp;
                 @*<a class="mini-button mini-button-iconTop" iconCls="icon-add" onclick="onQuickClick" plain="true">快捷</a>
                     <a class="mini-button mini-button-iconTop" iconCls="icon-edit" onclick="onClick" plain="true">首页</a>
                     <a class="mini-button mini-button-iconTop" iconCls="icon-date" onclick="onClick" plain="true">消息</a>

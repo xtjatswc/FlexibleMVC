@@ -4,9 +4,9 @@ using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
-using FlexibleMVC.Model.Admin.Permissions;
 using FlexibleMVC.Model.Component;
 using System.Web.Mvc;
+using FlexibleMVC.LessBase.Permissions.Model;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {

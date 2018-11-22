@@ -1,8 +1,7 @@
 ﻿@{
     Layout = null;
 
-    var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
-    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
+    string siteID = Request.GetString("SiteID");
 
 }
 
@@ -43,7 +42,7 @@
                 
             </div>
             <div class="mini-fit">
-                <ul id="tree1" class="mini-tree" url="@AppPath/admin_SysRole/GetRoleTree?siteID=@sysWebSite.ID" style="width:100%;"
+                <ul id="tree1" class="mini-tree" url="@AppPath/admin_SysRole/GetRoleTree?siteID=@siteID" style="width:100%;"
                     showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
@@ -85,7 +84,7 @@
         tree.on("nodeclick",
             function(e) {
                 if (e.isLeaf) {
-                    treegrid1.load({ SiteID:"@sysWebSite.ID", RoleID:e.node.id });
+                    treegrid1.load({ SiteID:"@siteID", RoleID:e.node.id });
                     btnSave.setEnabled(true);
                     btnRefresh.setEnabled(true);
                 } else {
@@ -104,7 +103,7 @@
             treegrid1.loading("保存中，请稍后......");
             $.ajax({
                 url: "@AppPath/admin_SysPermissions/SavePermissions",
-                data: { data: json, SiteID:"@sysWebSite.ID", RoleID:node.id},
+                data: { data: json, SiteID:"@siteID", RoleID:node.id},
                 type: "post",
                 success: function(text) {
                     treegrid1.reload();

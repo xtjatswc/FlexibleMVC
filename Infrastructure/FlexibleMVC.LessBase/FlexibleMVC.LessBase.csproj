@@ -73,6 +73,8 @@
     <Compile Include="Context\LessContextWebViewPage.cs" />
     <Compile Include="Context\LessFlexibleContext.cs" />
     <Compile Include="Infrastructure\IBaseDAL.cs" />
+    <Compile Include="Permissions\Model\SysUser.cs" />
+    <Compile Include="Permissions\Model\SysWebSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

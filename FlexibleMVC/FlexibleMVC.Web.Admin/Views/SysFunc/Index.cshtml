@@ -1,8 +1,7 @@
 ﻿@{
     Layout = null;
-    var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
-    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
 
+    string siteID = Request.GetString("SiteID");
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,7 +40,7 @@
                 <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
             </div>
             <div class="mini-fit">
-                <ul id="tree1" class="mini-tree" url="@AppPath/admin_SysMenu/GetListNav?SiteID=@sysWebSite.ID" style="width:100%;"
+                <ul id="tree1" class="mini-tree" url="@AppPath/admin_SysMenu/GetListNav?SiteID=@siteID" style="width:100%;"
                     showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false" expandOnLoad="true"></ul>
             </div>
         </div>
@@ -138,7 +137,7 @@
             grid.loading("保存中，请稍后......");
             $.ajax({
                 url: "@AppPath/admin_SysFunc/SaveFunc",
-                data: { data: json, SiteID: "@sysWebSite.ID", SysMenuID:node.ID },
+                data: { data: json, SiteID: "@siteID", SysMenuID:node.ID },
                 type: "post",
                 success: function (text) {
                     grid.reload();

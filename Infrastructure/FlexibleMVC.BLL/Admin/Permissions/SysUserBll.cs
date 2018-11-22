@@ -1,16 +1,16 @@
 ﻿using FlexibleMVC.Base.Jwt;
 using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Const;
+using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Infrastructure;
-using FlexibleMVC.Model.Admin.Permissions;
+using FlexibleMVC.LessBase.Permissions.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FlexibleMVC.BLL.Admin.Permissions
 {
-    public class SysUserBll : BaseBLL
+    public class SysUserBll : BaseBLL, IUser
     {
         public SysUserDal sysUserDal { get; set; }
 
@@ -90,12 +90,18 @@ namespace FlexibleMVC.BLL.Admin.Permissions
         /// 得到当前登录用户信息
         /// </summary>
         /// <returns></returns>
-        public SysUser getCurrentUser()
+        public SysUser GetCurrentUser()
         {
             SysUserDal sysUserDal = lessContext.GetService<SysUserDal>();
             string loginName = lessContext.Jwt.Result[BasicConst.JWT_USER].loginName.ToString();
             SysUser sysUser = sysUserDal.GetUser(loginName);
             return sysUser;
+        }
+
+        public dynamic GetCurrentUser(LessFlexibleContext flexibleContext)
+        {
+            lessContext = flexibleContext;
+            return GetCurrentUser();
         }
     }
 }

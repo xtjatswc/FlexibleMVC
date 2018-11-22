@@ -13,9 +13,13 @@ namespace FlexibleMVC.Base.Mvc.Context
 {
     public class FlexibleContext
     {
-        public JwtResult Jwt { get => DependencyResolver.Current.GetService<JwtResult>(); }
+        public JwtResult Jwt
+        {
+            get => DependencyResolver.Current.GetService<JwtResult>();
+        }
 
-        public log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public log4net.ILog log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public virtual TService GetService<TService>()
         {
@@ -29,9 +33,9 @@ namespace FlexibleMVC.Base.Mvc.Context
 
         //应用程序根目录
         public string AppPath { get; set; }
+
+        //上下文中传递变量
         public dynamic Model { get; set; } = new ExpandoObject();
         public Hashtable Items { get; set; } = new Hashtable();
-        //权限
-        public Dictionary<string, bool> Limit { get; set; }
     }
 }

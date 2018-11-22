@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using FlexibleMVC.BLL.Admin.Permissions;
+﻿using FlexibleMVC.BLL.Admin.Permissions;
 using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
+using FlexibleMVC.LessBase.Permissions.Model;
 using FlexibleMVC.Model.Admin.Permissions;
+using System;
+using System.Collections;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {
@@ -29,11 +30,8 @@ namespace FlexibleMVC.Web.Admin.Controllers
             var sysUserBll = flexibleContext.GetService<SysUserBll>();
             var sysMenuDal = flexibleContext.GetService<SysMenuDal>();
 
-            //获取登录用户
-            SysUser sysUser = sysUserBll.getCurrentUser();
-
             //获取有权限的菜单
-            var limitMenu = sysMenuDal.GetLimitModels(siteID, sysUser.ID);
+            var limitMenu = sysMenuDal.GetLimitModels(siteID, flexibleContext.CurrentUser.ID);
 
             return Json(limitMenu);
 

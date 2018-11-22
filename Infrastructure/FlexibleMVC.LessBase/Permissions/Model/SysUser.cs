@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FlexibleMVC.Model.Admin.Permissions
+namespace FlexibleMVC.LessBase.Permissions.Model
 {
     public class LoginResult : JsonResultInfo
     {

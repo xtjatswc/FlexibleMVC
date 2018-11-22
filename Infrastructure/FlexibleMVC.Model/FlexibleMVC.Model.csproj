@@ -45,8 +45,6 @@
     <Compile Include="Admin\Permissions\SysPermissionsMenu.cs" />
     <Compile Include="Admin\Permissions\SysRole.cs" />
     <Compile Include="Admin\Permissions\SysRoleRelation.cs" />
-    <Compile Include="Admin\Permissions\SysUser.cs" />
-    <Compile Include="Admin\Permissions\SysWebSite.cs" />
     <Compile Include="ChinaFoodComposition.cs" />
     <Compile Include="Component\DataTables.cs" />
     <Compile Include="PatientBasicInfo.cs" />

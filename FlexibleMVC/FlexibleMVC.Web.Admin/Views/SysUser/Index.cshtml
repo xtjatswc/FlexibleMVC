@@ -1,10 +1,8 @@
-﻿@using FlexibleMVC.DAL.Admin.Permissions
-@using FlexibleMVC.LessBase.Extension
+﻿@using FlexibleMVC.LessBase.Extension
 @{
     Layout = null;
 
-    var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
-    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
+    string siteID = Request.GetString("SiteID");
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -52,7 +50,7 @@
 
     <div class="mini-fit">
         <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"
-             url="@AppPath/admin_SysUser/GetUserList?SiteID=@sysWebSite.ID" idField="ID"
+             url="@AppPath/admin_SysUser/GetUserList?SiteID=@siteID" idField="ID"
              allowResize="true" pageSize="20"
              allowCellEdit="true" allowCellSelect="true" multiSelect="true"
              editNextOnEnterKey="true" editNextRowCell="true">
@@ -131,7 +129,7 @@
         function saveData() {
 
             saveGrid(grid, {
-                url: "@AppPath/admin_SysUser/SaveUser?SiteID=@sysWebSite.ID"
+                url: "@AppPath/admin_SysUser/SaveUser?SiteID=@siteID"
             });
 
             //            saveGrid(grid, {
@@ -194,11 +192,11 @@
             mini.open({
                 targetWindow: window,
 
-                url: "@AppPath/admin_SysRole/SetRole?SiteID=@sysWebSite.ID",
+                url: "@AppPath/admin_SysRole/SetRole?SiteID=@siteID",
                 title: "设置角色", width: 600, height: 400,
                 onload: function () {
                     var iframe = this.getIFrameEl();
-                    var data = {SiteID:'@sysWebSite.ID', users: users };
+                    var data = {SiteID:'@siteID', users: users };
                     iframe.contentWindow.SetData(data);
                 },
                 ondestroy: function (action) {

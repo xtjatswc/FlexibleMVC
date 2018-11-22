@@ -13,6 +13,7 @@ using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Filters.Permission;
 using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Permissions.Model;
 using FlexibleMVC.Model;
 using FlexibleMVC.Model.Admin.Permissions;
 using FluentData;
@@ -35,12 +36,11 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
         public ActionResult Index()
         {
             SysUserBll sysUserBll = flexibleContext.GetService<SysUserBll>();
-            SysUser sysUser = sysUserBll.getCurrentUser();
 
-            if (sysUser == null)
+            if (flexibleContext.CurrentUser == null)
                 return RedirectPermanent(flexibleContext.AppPath + "/bjdc_system_login");
 
-            return View(sysUser);
+            return View();
         }
     }
 }

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using FlexibleMVC.DAL.Admin.Permissions;
+﻿using FlexibleMVC.DAL.Admin.Permissions;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
+using FlexibleMVC.LessBase.Permissions.Model;
 using FlexibleMVC.Model.Admin.Permissions;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.Mvc;
 
 namespace FlexibleMVC.Web.Admin.Controllers
 {

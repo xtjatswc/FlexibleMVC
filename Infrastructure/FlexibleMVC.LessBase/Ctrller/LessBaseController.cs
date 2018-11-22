@@ -14,12 +14,8 @@ namespace FlexibleMVC.LessBase.Ctrller
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
-            var request = requestContext.HttpContext.Request;
-            flexibleContext.AppPath = request.ApplicationPath.TrimEnd('/');
+            flexibleContext.AppPath = requestContext.HttpContext.Request.ApplicationPath.TrimEnd('/');
 
-            //获取权限
-            IPermissions iPermissions = flexibleContext.GetService<IPermissions>();
-            flexibleContext.Limit = iPermissions.GetPermissions(flexibleContext, request);
             base.Initialize(requestContext);
         }
     }
@@ -27,5 +23,10 @@ namespace FlexibleMVC.LessBase.Ctrller
     public interface IPermissions
     {
         Dictionary<string, bool> GetPermissions(LessFlexibleContext flexibleContext, HttpRequestBase Request);
+    }
+
+    public interface IUser
+    {
+        dynamic GetCurrentUser(LessFlexibleContext flexibleContext);
     }
 }
