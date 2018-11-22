@@ -50,7 +50,8 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     ParentItemID = menu.ParentID,
                     FuncDescribe = "",
                     Checked = limitMenu.Contains(menu.ID),
-                    IsFunc = false
+                    IsFunc = false,
+                    Img = menu.Img
                 });
             }
 
@@ -64,7 +65,8 @@ namespace FlexibleMVC.Web.Admin.Controllers
                     ParentItemID = func.SysMenuID,
                     FuncDescribe = func.FuncDescribe,
                     Checked = limitFunc.Contains(func.ID),
-                    IsFunc = true
+                    IsFunc = true,
+                    Img = ""
                 });
             }
 
