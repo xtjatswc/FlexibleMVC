@@ -123,7 +123,7 @@
         tree.on("nodeclick", function (e) {
 
             grid.load({SiteID:'@siteID', ParentID: e.node.ID });
-            btnNew.setEnabled(true);
+            btnNew && btnNew.setEnabled(true);
         });
         //////////////////////////////////////////////
         function onNameFilterChanged(e) {

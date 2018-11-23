@@ -111,11 +111,11 @@
 
             if (e.isLeaf) {
                 grid.load({ CategoryID: e.node.id });
-                btnNew.setEnabled(true);
+                btnNew && btnNew.setEnabled(true);
             } else {
                 grid.setData([]);
                 grid.setTotalCount(0);
-                btnNew.setEnabled(false);
+                btnNew && btnNew.setEnabled(false);
             }
         });
         //////////////////////////////////////////////

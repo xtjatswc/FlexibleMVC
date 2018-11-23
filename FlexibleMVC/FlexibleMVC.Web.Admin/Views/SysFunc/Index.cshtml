@@ -107,13 +107,13 @@
 
             if (e.isLeaf) {
                 grid.load({ SysMenuID: e.node.ID });
-                btnNew.setEnabled(true);
-                btnSave.setEnabled(true);
+                btnNew && btnNew.setEnabled(true);
+                btnSave && btnSave.setEnabled(true);
             } else {
                 grid.setData([]);
                 grid.setTotalCount(0);
-                btnNew.setEnabled(false);
-                btnSave.setEnabled(false);
+                btnNew && btnNew.setEnabled(false);
+                btnSave && btnSave.setEnabled(false);
             }
         });
         //////////////////////////////////////////////

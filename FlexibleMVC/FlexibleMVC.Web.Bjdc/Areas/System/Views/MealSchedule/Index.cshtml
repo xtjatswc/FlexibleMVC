@@ -86,13 +86,13 @@
 
                 if (e.isLeaf) {
                     treegrid1.load({ week: e.node.week, MealTimesCode:e.node.code });
-                    btnSave.setEnabled(true);
-                    btnRefresh.setEnabled(true);
+                    btnSave && btnSave.setEnabled(true);
+                    btnRefresh && btnRefresh.setEnabled(true);
                 } else {
                     treegrid1.setData([]);
                     treegrid1.setTotalCount(0);
-                    btnSave.setEnabled(false);
-                    btnRefresh.setEnabled(false);
+                    btnSave && btnSave.setEnabled(false);
+                    btnRefresh && btnRefresh.setEnabled(false);
                 }
             });
 

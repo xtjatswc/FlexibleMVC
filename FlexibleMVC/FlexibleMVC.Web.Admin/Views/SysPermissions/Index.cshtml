@@ -84,13 +84,13 @@
             function(e) {
                 if (e.isLeaf) {
                     treegrid1.load({ SiteID:"@siteID", RoleID:e.node.id });
-                    btnSave.setEnabled(true);
-                    btnRefresh.setEnabled(true);
+                    btnSave && btnSave.setEnabled(true);
+                    btnRefresh && btnRefresh.setEnabled(true);
                 } else {
                     treegrid1.setData([]);
                     treegrid1.setTotalCount(0);
-                    btnSave.setEnabled(false);
-                    btnRefresh.setEnabled(false);
+                    btnSave && btnSave.setEnabled(false);
+                    btnRefresh && btnRefresh.setEnabled(false);
                 }
             });
 
