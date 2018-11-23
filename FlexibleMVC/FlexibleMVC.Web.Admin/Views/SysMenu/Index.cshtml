@@ -37,33 +37,56 @@
                 @*<span style="padding-left:5px;">名称：</span>
                     <input class="mini-textbox" width="120" />*@
                 <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
-                <a class="mini-button" iconCls="icon-expand" plain="true" onclick="createWbs()">生成wbs</a>
+                @if (Limit["生成wbs"])
+                { 
+                    <a class="mini-button" iconCls="icon-expand" plain="true" onclick="createWbs()">生成wbs</a>
+                }
             </div>
             <div class="mini-fit">
                 <ul id="tree1" class="mini-tree" url="@AppPath/admin_SysMenu/GetListNav?SiteID=@siteID" style="width:100%;"
-                    showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false" expandOnLoad="true" allowDrag="true" allowDrop="true" allowLeafDropIn="true" ondrop="ondrop" imgField="Img" imgPath="@MiniUI/res/images/"></ul>
+                    showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false" expandOnLoad="true" 
+                    @if (Limit["菜单拖拽"])
+                    { 
+                        @:allowDrag="true" allowDrop="true" allowLeafDropIn="true" ondrop="ondrop"
+                    }
+                    imgField="Img" imgPath="@MiniUI/res/images/"></ul>
+                </div>
             </div>
-        </div>
-        <div showCollapseButton="true">
-            <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
 
-                <a id="btnNew" class="mini-button" iconCls="icon-add" plain="true" onclick="addRow()" enabled="false">新增</a>
-                <a class="mini-button" iconCls="icon-remove" plain="true" onclick="removeRow()">删除</a>
-                <span class="separator"></span>
-                <a class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()">保存</a>
+
+            <div showCollapseButton="true">
+
+
+                <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
+                    @if (Limit["增加"])
+                    { 
+                        <a id="btnNew" class="mini-button" iconCls="icon-add" plain="true" onclick="addRow()" enabled="false">增加</a>
+                    }
+                    @if (Limit["删除"])
+                    { 
+                        <a class="mini-button" iconCls="icon-remove" plain="true" onclick="removeRow()">删除</a>
+                    }
+                    @if (Limit["保存"])
+                    { 
+                        <span class="separator"></span>
+                        <a class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()">保存</a>
+                    }
             </div>
             <div class="mini-fit">
                 <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
                      borderStyle="border:0;"
                      url="@AppPath/admin_SysMenu/GetChildListNav"
-                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true" pageSize="30" multiSelect="true">
+                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true" pageSize="30" multiSelect="true" oncellbeginedit="cellbeginedit">
                     <div property="columns">
                         <div type="indexcolumn"></div>
                         <div type="checkcolumn"></div>
                         <div field="MenuName" headerAlign="center" allowSort="false">
                             子菜单名称
                             <input property="editor" class="mini-textbox" style="width: 100%;" />
-                            <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入名称敲回车键检索" />
+                            @if (Limit["检索"])
+                            { 
+                                <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入名称敲回车键检索" />
+                            }
                         </div>
                         <div field="NavUrl" headerAlign="center" allowSort="false">
                             导航地址
@@ -100,7 +123,7 @@
         tree.on("nodeclick", function (e) {
 
             grid.load({SiteID:'@siteID', ParentID: e.node.ID });
-            btnNew.setEnabled(true);
+            btnNew && btnNew.setEnabled(true);
         });
         //////////////////////////////////////////////
         function onNameFilterChanged(e) {
@@ -176,6 +199,16 @@
                 }
             });
         }
+
+        function cellbeginedit(e) {
+            //如果没有修改权限
+            @if (Limit["修改"] == false)
+            {
+                @:if (e.row._state != "added")
+                @:    e.cancel = true;
+            }
+        }
+
     </script>
 
 </body>

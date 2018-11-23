@@ -48,7 +48,7 @@
         </div>
         <div showCollapseButton="true">
             <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
-                <a id="btnRefresh" class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()" enabled="false">刷新</a>
+                <a id="btnRefresh" class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTreegrid1()" enabled="false">刷新</a>
 
                 <span class="separator"></span>
                 <a id="btnSave" class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()" enabled="false">保存</a>
@@ -84,13 +84,13 @@
             function(e) {
                 if (e.isLeaf) {
                     treegrid1.load({ SiteID:"@siteID", RoleID:e.node.id });
-                    btnSave.setEnabled(true);
-                    btnRefresh.setEnabled(true);
+                    btnSave && btnSave.setEnabled(true);
+                    btnRefresh && btnRefresh.setEnabled(true);
                 } else {
                     treegrid1.setData([]);
                     treegrid1.setTotalCount(0);
-                    btnSave.setEnabled(false);
-                    btnRefresh.setEnabled(false);
+                    btnSave && btnSave.setEnabled(false);
+                    btnRefresh && btnRefresh.setEnabled(false);
                 }
             });
 
@@ -125,6 +125,10 @@
 
         function refreshTree() {
             tree.reload();
+        }
+
+        function refreshTreegrid1() {
+            treegrid1.reload();
         }
     </script>
 

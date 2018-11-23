@@ -34,7 +34,7 @@
         <div size="240" showCollapseButton="true">
             <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
                 @*<span style="padding-left:5px;">名称：</span>
-                <input class="mini-textbox" width="120" />*@
+                    <input class="mini-textbox" width="120" />*@
                 <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
             </div>
             <div class="mini-fit">
@@ -44,32 +44,48 @@
         </div>
         <div showCollapseButton="true">
             <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
-
-                <a id="btnNew" class="mini-button" iconCls="icon-add" plain="true" onclick="addRow()" enabled="false">新增</a>
-                <a class="mini-button" iconCls="icon-remove" plain="true" onclick="removeRow()">删除</a>
-                <span class="separator"></span>
-                <a class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()">保存</a>
+                @if (Limit["增加"])
+                {
+                    <a id="btnNew" class="mini-button" iconCls="icon-add" plain="true" onclick="addRow()" enabled="false">增加</a>
+                }
+                @if (Limit["删除"])
+                {
+                    <a class="mini-button" iconCls="icon-remove" plain="true" onclick="removeRow()">删除</a>
+                }
+                @if (Limit["保存"])
+                {
+                    <span class="separator"></span>
+                    <a class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()">保存</a>
+                }
             </div>
             <div class="mini-fit">
                 <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
                      borderStyle="border:0;"
                      url="@AppPath/bjdc_system_mealmenu/GetMenuList"
-                     showFilterRow="true" allowCellSelect="true" allowCellEdit="true" pageSize="30" multiSelect="true">
+                     showFilterRow="true" allowCellSelect="true" 
+                     @if (Limit["修改"])
+                     {
+                         @:allowCellEdit='true'
+                     }
+                     pageSize="30" multiSelect="true" oncellbeginedit="cellbeginedit">
                     <div property="columns">
                         <div type="indexcolumn"></div>
                         <div type="checkcolumn"></div>
                         <div field="SaleName" width="120" headerAlign="center" allowSort="false">
                             菜品名称
-                            <input property="editor" class="mini-textbox" style="width: 100%;"/>
-                            <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入菜品名称敲回车键检索" />
+                                <input property="editor" class="mini-textbox" style="width: 100%;" />
+                            @if (Limit["检索"])
+                            {
+                                <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入菜品名称敲回车键检索" />
+                            }
                         </div>
                         <div field="SalePrice" width="120" headerAlign="center" allowSort="false">
                             价格（元）
-                            <input property="editor" class="mini-spinner" style="width: 100%;"  minValue="0" maxValue="10000" />
+                                <input property="editor" class="mini-spinner" style="width: 100%;" minValue="0" maxValue="10000" />
                         </div>
                         <div field="SortNo" width="100" allowSort="false" align="center" headerAlign="center">
                             排序
-                            <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width: 100%;"/>
+                                <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width: 100%;" />
                         </div>
                         <div field="CreateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">创建时间</div>
                         <div field="UpdateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">修改时间</div>
@@ -95,11 +111,11 @@
 
             if (e.isLeaf) {
                 grid.load({ CategoryID: e.node.id });
-                btnNew.setEnabled(true);
+                btnNew && btnNew.setEnabled(true);
             } else {
                 grid.setData([]);
                 grid.setTotalCount(0);
-                btnNew.setEnabled(false);
+                btnNew && btnNew.setEnabled(false);
             }
         });
         //////////////////////////////////////////////
@@ -142,6 +158,24 @@
                 }
             });
         }
+
+        function cellbeginedit(e) {
+            //如果没有修改权限
+            @if (Limit["修改"] == false)
+            {
+                @:if (e.row._state != "added")
+                @:    e.cancel = true;
+            }
+
+            //如果没有修改价格权限
+            @if (Limit["修改价格"] == false)
+            {
+                @:if (e.row._state != "added" && e.field == "SalePrice")
+                @:    e.cancel = true;
+            }
+
+        }
+
     </script>
 
 </body>

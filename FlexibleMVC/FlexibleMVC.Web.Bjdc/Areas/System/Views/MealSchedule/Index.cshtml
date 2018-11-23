@@ -34,8 +34,8 @@
         <div size="240" showCollapseButton="true">
             <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
                 @*<span style="padding-left:5px;">名称：</span>
-        <input class="mini-textbox" width="120" />
-        <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
+                    <input class="mini-textbox" width="120" />
+                    <a class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()">刷新</a>
                 *@
             </div>
             <div class="mini-fit">
@@ -47,15 +47,17 @@
             <div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
                 <a id="btnRefresh" class="mini-button" iconCls="icon-refresh" plain="true" onclick="refreshTree()" enabled="false">刷新</a>
 
-                <span class="separator"></span>
-                <a id="btnSave" class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()" enabled="false">保存</a>
+                @if (Limit["保存"])
+                {
+                    <span class="separator"></span>
+                    <a id="btnSave" class="mini-button" iconCls="icon-save" plain="true" onclick="saveData()" enabled="false">保存</a>
+                }
             </div>
             <div class="mini-fit">
-                <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"     
-                     url="@AppPath/bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true" 
-                     treeColumn="CategoryName" idField="ItemID" parentField="ParentItemID" resultAsTree="false"
-                     showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false"
-                >
+                <div id="treegrid1" class="mini-treegrid" style="width: 100%; height: 100%;"
+                     url="@AppPath/bjdc_system_MealMenu/GetMenuTreeList" showTreeIcon="true"
+                     treeColumn="CategoryName" idField="ItemID" parentField="ParentItemID" resultAsTree="false" onbeforenodecheck="beforenodecheck"
+                     showCheckBox="true" checkRecursive="true" expandOnLoad="true" checkOnTextClick="true" ondrawnode="ondrawnode" autoLoad="false">
                     <div property="columns">
                         <div type="indexcolumn"></div>
                         <div name="CategoryName" field="ItemName" width="200">菜品名称</div>
@@ -84,13 +86,13 @@
 
                 if (e.isLeaf) {
                     treegrid1.load({ week: e.node.week, MealTimesCode:e.node.code });
-                    btnSave.setEnabled(true);
-                    btnRefresh.setEnabled(true);
+                    btnSave && btnSave.setEnabled(true);
+                    btnRefresh && btnRefresh.setEnabled(true);
                 } else {
                     treegrid1.setData([]);
                     treegrid1.setTotalCount(0);
-                    btnSave.setEnabled(false);
-                    btnRefresh.setEnabled(false);
+                    btnSave && btnSave.setEnabled(false);
+                    btnRefresh && btnRefresh.setEnabled(false);
                 }
             });
 
@@ -129,6 +131,14 @@
             }
         }
 
+        function beforenodecheck(e) {
+            //如果没有点选权限
+            @if (Limit["菜品点选"] == false)
+            {
+                @:e.cancel = true;
+            }
+
+        }
     </script>
 
 </body>
