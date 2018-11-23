@@ -64,6 +64,7 @@
     <Compile Include="Extension\HttpRequestExtension.cs" />
     <Compile Include="Extension\ListExtension.cs" />
     <Compile Include="Filters\Permission\CheckUserRoleAttribute.cs" />
+    <Compile Include="Filters\Permission\SysLimit.cs" />
     <Compile Include="Infrastructure\Attribute\PrimaryKeyAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\TableNameAttribute.cs" />
     <Compile Include="Infrastructure\BaseBLL.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Context\LessContextWebViewPage.cs" />
     <Compile Include="Context\LessFlexibleContext.cs" />
     <Compile Include="Infrastructure\IBaseDAL.cs" />
+    <Compile Include="Permissions\DAL\SysWebSiteDal.cs" />
     <Compile Include="Permissions\Model\SysUser.cs" />
     <Compile Include="Permissions\Model\SysWebSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

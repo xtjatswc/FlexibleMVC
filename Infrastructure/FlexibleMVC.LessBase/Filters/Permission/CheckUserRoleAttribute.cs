@@ -3,6 +3,8 @@ using FlexibleMVC.Base.Mvc.AcResult;
 using System.Web.Mvc;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.LessBase.Permissions.DAL;
+using FlexibleMVC.LessBase.Permissions.Model;
 
 namespace FlexibleMVC.LessBase.Filters.Permission
 {
@@ -29,6 +31,10 @@ namespace FlexibleMVC.LessBase.Filters.Permission
                 //获取当前登录用户
                 IUser iUser = lessContext.GetService<IUser>();
                 lessContext.CurrentUser = iUser.GetCurrentUser(lessContext);
+
+                //获取当前站点
+                var sysWebSiteDal = lessContext.GetService<SysWebSiteDal>();
+                lessContext.WebSite = sysWebSiteDal.GetModel(filterContext.HttpContext.Request["SiteID"]);
 
                 //获取权限
                 IPermissions iPermissions = lessContext.GetService<IPermissions>();

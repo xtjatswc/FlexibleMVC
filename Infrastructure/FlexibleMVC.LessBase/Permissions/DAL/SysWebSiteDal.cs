@@ -2,7 +2,7 @@
 using FlexibleMVC.LessBase.Infrastructure;
 using FlexibleMVC.LessBase.Permissions.Model;
 
-namespace FlexibleMVC.DAL.Admin.Permissions
+namespace FlexibleMVC.LessBase.Permissions.DAL
 {
     public class SysWebSiteDal : BaseDAL<SysWebSite>
     {

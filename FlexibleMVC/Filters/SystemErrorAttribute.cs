@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
+using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.Web.Filters
 {
@@ -27,6 +28,11 @@ namespace FlexibleMVC.Web.Filters
             {
                 var less = filterContext.Controller as LessBaseController;
                 less.TempData["Exception"] = filterContext.Exception;
+
+                if(filterContext.Exception is PermissionDeniedException)
+                {
+                    filterContext.Result = new RedirectResult(less.flexibleContext.AppPath + "/Error/PermissionDenied");
+                }
 
                 //filterContext.Result = new ContentResult() { Content = "系统错误，请联系管理员" };
                 //filterContext.Result = new RedirectResult(less.flexibleContext.AppPath + "/Error/CustomError");

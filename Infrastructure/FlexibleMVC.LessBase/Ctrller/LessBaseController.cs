@@ -2,6 +2,7 @@
 using System.Web;
 using FlexibleMVC.Base.Mvc.Ctrller;
 using FlexibleMVC.LessBase.Context;
+using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.LessBase.Ctrller
 {
@@ -22,7 +23,7 @@ namespace FlexibleMVC.LessBase.Ctrller
 
     public interface IPermissions
     {
-        Dictionary<string, bool> GetPermissions(LessFlexibleContext flexibleContext, HttpRequestBase Request);
+        SysLimit GetPermissions(LessFlexibleContext flexibleContext, HttpRequestBase Request);
     }
 
     public interface IUser

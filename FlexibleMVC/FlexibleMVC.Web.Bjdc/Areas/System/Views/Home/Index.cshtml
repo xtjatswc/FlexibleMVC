@@ -2,8 +2,7 @@
 @{
     Layout = null;
 
-    var sysWebSiteDal = flexibleContext.GetService<SysWebSiteDal>();
-    SysWebSite sysWebSite = sysWebSiteDal.GetModel(Request.GetString("SiteID"));
+    var sysWebSite = flexibleContext.WebSite;
     if (sysWebSite == null)
     {
         Response.Redirect(AppPath + "/bjdc_system_login");

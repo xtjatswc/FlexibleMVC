@@ -4,6 +4,7 @@ using FlexibleMVC.LessBase.Const;
 using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Permissions.DAL;
 using FlexibleMVC.LessBase.Permissions.Model;
 using System;
 using System.Collections.Generic;

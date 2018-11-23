@@ -10,6 +10,7 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Extension;
 using FlexibleMVC.LessBase.Infrastructure;
+using FlexibleMVC.LessBase.Filters.Permission;
 
 namespace FlexibleMVC.BLL.Admin.Permissions
 {
@@ -17,19 +18,19 @@ namespace FlexibleMVC.BLL.Admin.Permissions
     {
         public SysFuncDal sysFuncDal { get; set; }
 
-        public Dictionary<string, bool> GetPermissions(LessFlexibleContext flexibleContext, HttpRequestBase Request)
+        public SysLimit GetPermissions(LessFlexibleContext flexibleContext, HttpRequestBase Request)
         {
             string permissionsMenuID = Request.GetString("PermissionsMenuID");
-            if(permissionsMenuID == null)
-                return  new Dictionary<string, bool>();
+            if (permissionsMenuID == null)
+                return new SysLimit();
 
             sysFuncDal = flexibleContext.GetService<SysFuncDal>();
             var limitFunc = sysFuncDal.GetLimitModels(permissionsMenuID);
 
-            var dict = new Dictionary<string, bool>();
+            var dict = new SysLimit { flexibleContext = flexibleContext };
             foreach (var limit in limitFunc)
             {
-                dict.Add(limit.FuncName, limit.SysFuncID != null);
+                dict[limit.FuncName] = (limit.SysFuncID != null);
             }
 
             //string json = JsonUtil.ToJson(dict);

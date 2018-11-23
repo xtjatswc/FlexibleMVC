@@ -2,7 +2,7 @@
 @{
     Layout = null;
     var dir = Url.Content("~/Content/HttpError/500");
-    var e = TempData["Exception"] as Exception;
+    var e = TempData["Exception"] as PermissionDeniedException;
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,15 +27,17 @@
             <td>@e.Message</td>
         </tr>
         <tr>
-            <td>错误跟踪</td>
+            <td>可能原因</td>
             <td>
-                @Html.Raw(e.StackTrace.Replace("在", "<br/>在"))
+                1、管理员正在调整角色授权<br />
+                2、系统正在维护升级
             </td>
         </tr>
         <tr>
             <td>解决方法</td>
             <td>
                 <a href="javascript:refresh()">『刷新页面』</a><br />
+                <a href="@e.RedictUrl" target="_top">『重新登录』</a><br />
                 『联系管理员』<br />
             </td>
         </tr>
