@@ -32,17 +32,32 @@
     <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
         <table style="width:100%;">
             <tr>
-                <td style="width:100%;">
-                    <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
-                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
-                    <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
-                    <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-user" onclick="setRole()" plain="true">设置角色</a>
+                <td style="width: 100%;">
+                    @if (Limit["增加"])
+                    {
+                        <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
+                    }
+                    @if (Limit["删除"])
+                    {
+                        <a class="mini-button" iconCls="icon-remove" onclick="removeRow()" plain="true">删除</a>
+                    }
+                    @if (Limit["保存"])
+                    {
+                        <span class="separator"></span>
+                        <a class="mini-button" iconCls="icon-save" onclick="saveData()" plain="true">保存</a>
+                    }
+                    @if (Limit["设置角色"])
+                    {
+                        <span class="separator"></span>
+                        <a class="mini-button" iconCls="icon-user" onclick="setRole()" plain="true">设置角色</a>
+                    }
                 </td>
-                <td style="white-space:nowrap;">
-                    <input id="key" class="mini-textbox" emptyText="请输入用户名或登录名" style="width:150px;" onenter="onKeyEnter" />
-                    <a class="mini-button" onclick="search()">查询</a>
+                <td style="white-space: nowrap;">
+                    @if (Limit["检索"])
+                    {
+                        <input id="key" class="mini-textbox" emptyText="请输入用户名或登录名" style="width: 150px;" onenter="onKeyEnter" />
+                        <a class="mini-button" onclick="search()">查询</a>
+                    }
                 </td>
             </tr>
         </table>
@@ -51,8 +66,8 @@
     <div class="mini-fit">
         <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"
              url="@AppPath/admin_SysUser/GetUserList?SiteID=@siteID" idField="ID"
-             allowResize="true" pageSize="20"
-             allowCellEdit="true" allowCellSelect="true" multiSelect="true"
+             allowResize="true" pageSize="20" allowCellEdit='true'
+             allowCellSelect="true" multiSelect="true" oncellbeginedit="cellbeginedit"
              editNextOnEnterKey="true" editNextRowCell="true">
             <div property="columns">
                 <div type="indexcolumn"></div>
@@ -182,7 +197,7 @@
         }
 
         function setRole() {
-            
+
             var users = grid.getSelecteds();
             if (users.length == 0) {
                 alert("请先点选用户！");
@@ -204,6 +219,15 @@
                     search();
                 }
             });
+        }
+
+        function cellbeginedit(e) {
+            //如果没有修改权限
+            @if (Limit["修改"] == false)
+            {
+                @:if (e.row._state != "added")
+                @:    e.cancel = true;
+            }
         }
 
     </script>
