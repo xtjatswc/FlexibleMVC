@@ -28,15 +28,21 @@
                         <a class="mini-button" iconCls="icon-reload" plain="true">刷新</a>*@
                 </td>
                 <td style="white-space: nowrap;">
-                    <label style="font-family:Verdana;">配送日期: </label>
-                    <input id="txtMealDate" class="mini-datepicker" value="@DateTime.Now" />
-                    &nbsp;&nbsp;&nbsp;
-                    <label style="font-family: Verdana;">餐别: </label>
-                    <input id="cboMealTimes" class="mini-combobox" style="width:150px;" textField="ItemName" valueField="ItemName"
-                           url="@AppPath/bjdc_system_MealDict/GetMealIimes"
-                           showNullItem="true" />
-                    <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
-                    <a class="mini-button" iconCls="icon-print" plain="true" onclick="onPrint()">打印</a>
+                    @if (Limit["检索"])
+                    {
+                        <label style="font-family: Verdana;">配送日期: </label>
+                        <input id="txtMealDate" class="mini-datepicker" value="@DateTime.Now" />
+                        @:&nbsp;&nbsp;&nbsp;
+                        <label style="font-family: Verdana;">餐别: </label>
+                        <input id="cboMealTimes" class="mini-combobox" style="width: 150px;" textField="ItemName" valueField="ItemName"
+                               url="@AppPath/bjdc_system_MealDict/GetMealIimes"
+                               showNullItem="true" />
+                        <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
+                    }
+                    @if (Limit["打印"])
+                    {
+                        <a class="mini-button" iconCls="icon-print" plain="true" onclick="onPrint()">打印</a>
+                    }
                 </td>
             </tr>
         </table>

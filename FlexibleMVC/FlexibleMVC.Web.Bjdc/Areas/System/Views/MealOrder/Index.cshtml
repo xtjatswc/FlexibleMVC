@@ -33,17 +33,20 @@
             <tr>
                 <td style="width:100%;">
                     @*<a class="mini-button" iconCls="icon-save" plain="true">保存</a>
-                    <a class="mini-button" iconCls="icon-close" plain="true">关闭</a>
-                    <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-reload" plain="true">刷新</a>*@
+                        <a class="mini-button" iconCls="icon-close" plain="true">关闭</a>
+                        <span class="separator"></span>
+                        <a class="mini-button" iconCls="icon-reload" plain="true">刷新</a>*@
                 </td>
                 <td style="white-space: nowrap;">
-                    <label style="font-family:Verdana;">联系人: </label>
-                    <input id="txtName" class="mini-textbox" />
-                    &nbsp;&nbsp;&nbsp;
-                    <label style="font-family: Verdana;">手机号: </label>
-                    <input id="txtMobile" class="mini-textbox" />
-                    <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
+                    @if (Limit["检索"])
+                    {
+                        <label style="font-family: Verdana;">联系人: </label>
+                        <input id="txtName" class="mini-textbox" />
+                        @:&nbsp; &nbsp; &nbsp;
+                        <label style="font-family: Verdana;">手机号: </label>
+                        <input id="txtMobile" class="mini-textbox" />
+                        <a class="mini-button" iconCls="icon-search" plain="true" onclick="onSearch()">查询</a>
+                    }
                 </td>
             </tr>
         </table>
@@ -127,7 +130,7 @@
         function onSearch() {
             var mobile = mini.get("txtMobile").getValue();
             var name = mini.get("txtName").getValue();
-            order_grid.load({ ContactMobile: mobile, ContactName:name });
+            order_grid.load({ ContactMobile: mobile, ContactName: name });
         }
     </script>
 

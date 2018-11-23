@@ -156,8 +156,12 @@
 //        });
 
         function cellbeginedit(e) {
-            if (e.row._state != "added")
-                e.cancel = true;
+            //如果没有修改权限
+            @if (Limit["修改"] == false)
+            {
+                @:if (e.row._state != "added")
+                @:    e.cancel = true;
+            }
         }
     </script>
 
