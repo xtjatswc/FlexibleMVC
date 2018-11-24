@@ -10,6 +10,7 @@ namespace FlexibleMVC.LessBase.Context
     {
         public string AppPath => flexibleContext.AppPath;
         public SysUser SysUser => flexibleContext.CurrentUser;
+        public SysWebSite WebSite => flexibleContext.WebSite;
         public string MiniUI { get; set; }
         public string AdminLTE { get; set; }
         //权限

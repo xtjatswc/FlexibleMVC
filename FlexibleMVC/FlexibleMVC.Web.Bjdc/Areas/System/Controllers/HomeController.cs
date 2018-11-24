@@ -38,7 +38,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
             SysUserBll sysUserBll = flexibleContext.GetService<SysUserBll>();
 
             if (flexibleContext.CurrentUser == null)
-                return RedirectPermanent(flexibleContext.AppPath + "/bjdc_system_login");
+                return RedirectPermanent(flexibleContext.AppPath + flexibleContext.WebSite.LoginUrl);
 
             return View();
         }

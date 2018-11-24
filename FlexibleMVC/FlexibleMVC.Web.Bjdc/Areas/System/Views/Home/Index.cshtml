@@ -2,10 +2,9 @@
 @{
     Layout = null;
 
-    var sysWebSite = flexibleContext.WebSite;
-    if (sysWebSite == null)
+    if (WebSite == null)
     {
-        Response.Redirect(AppPath + "/bjdc_system_login");
+        Response.Redirect(AppPath + WebSite.LoginUrl);
     }
 
 
@@ -15,7 +14,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>@sysWebSite.SiteName</title>
+    <title>@WebSite.SiteName</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link href="@MiniUI/demo/demo.css" rel="stylesheet" type="text/css" />
 
@@ -43,7 +42,7 @@
     <!--Layout-->
     <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
         <div class="app-header" region="north" height="70" showSplit="false" showHeader="false">
-            <h1 style="margin:0;padding:15px;cursor:default;font-family:'Trebuchet MS',Arial,sans-serif;">@sysWebSite.SiteName</h1>
+            <h1 style="margin:0;padding:15px;cursor:default;font-family:'Trebuchet MS',Arial,sans-serif;">@WebSite.SiteName</h1>
 
             <div style="position: absolute; top: 12px; right: 10px;">
                 <font style="font-size: 12pt;">用户：@SysUser.UserName&nbsp;&nbsp;角色：@SysUser.RoleNames</font>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -56,14 +55,14 @@
             </div>
         </div>
         <div title="south" region="south" showSplit="false" showHeader="false" height="30">
-            <div style="line-height:28px;text-align:center;cursor:default">Copyright © @sysWebSite.Copyright </div>
+            <div style="line-height:28px;text-align:center;cursor:default">Copyright © @WebSite.Copyright </div>
         </div>
         <div title="center" region="center" bodyStyle="overflow:hidden;" style="border:0;">
             <!--Splitter-->
             <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
                 <div size="180" maxSize="250" minSize="100" showCollapseButton="true" style="border-width:1px;">
                     <!--Tree-->
-                    <ul id="leftTree" class="mini-tree" url="@AppPath/admin_SysMenu/GetLimitNav?SiteID=@sysWebSite.ID" style="width:100%;height:100%;"
+                    <ul id="leftTree" class="mini-tree" url="@AppPath/admin_SysMenu/GetLimitNav?SiteID=@WebSite.ID" style="width:100%;height:100%;"
                         showTreeIcon="true" textField="MenuName" idField="ID" parentField="ParentID" resultAsTree="false"
                         expandOnLoad="true" onnodeclick="onNodeSelect" imgField="Img" imgPath="@MiniUI/res/images/"></ul>
                 </div>
@@ -105,7 +104,7 @@
                 tab.showCloseButton = true;
 
                 //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
-                tab.url = "@AppPath" + node.NavUrl + "?SiteID=@sysWebSite.ID&PermissionsMenuID=" + node.PermissionsMenuID;
+                tab.url = "@AppPath" + node.NavUrl + "?SiteID=@WebSite.ID&PermissionsMenuID=" + node.PermissionsMenuID;
 
                 tabs.addTab(tab);
             }
@@ -145,7 +144,7 @@
 
         function exit() {
             $.removeCookie('token')
-            location.href = "@AppPath@sysWebSite.LoginUrl";
+            location.href = "@AppPath@WebSite.LoginUrl";
         }
     </script>
 
