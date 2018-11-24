@@ -71,7 +71,7 @@
                     <div property="columns">
                         <div type="indexcolumn"></div>
                         <div type="checkcolumn"></div>
-                        <div field="SaleName" width="120" headerAlign="center" allowSort="false">
+                        <div field="SaleName" headerAlign="center" allowSort="false">
                             菜品名称
                                 <input property="editor" class="mini-textbox" style="width: 100%;" />
                             @if (Limit["检索"])
@@ -79,16 +79,18 @@
                                 <input id="nameFilter" property="filter" class="mini-textbox" onvaluechanged="onNameFilterChanged" style="width: 100%;" emptyText="输入菜品名称敲回车键检索" />
                             }
                         </div>
-                        <div field="SalePrice" width="120" headerAlign="center" allowSort="false">
+                        <div field="SalePrice" headerAlign="center" allowSort="false">
                             价格（元）
                                 <input property="editor" class="mini-spinner" style="width: 100%;" minValue="0" maxValue="10000" />
                         </div>
-                        <div field="SortNo" width="100" allowSort="false" align="center" headerAlign="center">
+                        <div field="SortNo" allowSort="false" align="center" headerAlign="center">
                             排序
                                 <input property="editor" class="mini-spinner" minValue="0" maxValue="10000" value="25" style="width: 100%;" />
                         </div>
-                        <div field="CreateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">创建时间</div>
-                        <div field="UpdateTime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">修改时间</div>
+                        <div field="CreateBy" headerAlign="center" allowSort="false">创建人</div>
+                        <div field="CreateTime" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false">创建时间</div>
+                        <div field="UpdateBy" headerAlign="center" allowSort="false">修改人</div>
+                        <div field="UpdateTime" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false"  renderer="onTimeRenderer">修改时间</div>
                     </div>
                 </div>
             </div>
@@ -174,6 +176,13 @@
                 @:    e.cancel = true;
             }
 
+        }
+
+        function onTimeRenderer(e) {
+            if (e.cellHtml == "1901-01-01 00:00:00")
+                return "";
+
+            return e.cellHtml;
         }
 
     </script>

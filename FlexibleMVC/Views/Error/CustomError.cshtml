@@ -3,6 +3,11 @@
     Layout = null;
     var dir = Url.Content("~/Content/HttpError/500");
     var e = TempData["Exception"] as Exception;
+    if(e == null)
+    {
+        Response.Write("系统错误，请联系管理员！");
+        Response.End();
+    }
 }
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

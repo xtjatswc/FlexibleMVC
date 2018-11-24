@@ -113,7 +113,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                 {
                     MealMenu model = new MealMenu();
                     model.CategoryID = categoryID;
-                    model.CreateBy = "系统管理员";
+                    model.CreateBy = flexibleContext.CurrentUser.UserName;
                     model.CreateTime = DateTime.Now;
                     model.SaleName = saleName;
                     model.SalePrice = salePrice;
@@ -130,7 +130,7 @@ namespace FlexibleMVC.Web.Bjdc.Areas.System.Controllers
                     model.SaleName = saleName;
                     model.SalePrice = salePrice;
                     model.SortNo = sortNo;
-                    model.UpdateBy = "";
+                    model.UpdateBy = flexibleContext.CurrentUser.UserName;
                     model.UpdateTime = DateTime.Now;
                     mealMenuDal.Update(model, x => x.MealMenuID);
                 }
