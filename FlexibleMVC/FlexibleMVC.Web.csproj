@@ -98,6 +98,7 @@
     <Compile Include="Areas\B\Controllers\HomeController.cs" />
     <Compile Include="Areas\A\AAreaRegistration.cs" />
     <Compile Include="Areas\A\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\SystemErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -127,7 +128,7 @@
     <None Include="Scripts\jquery-1.7.2.js" />
     <None Include="Scripts\jquery-1.7.2.min.js" />
     <None Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Views\Error\404.cshtml" />
+    <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\Error\PermissionDenied.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />

@@ -5,6 +5,8 @@ using FlexibleMVC.LessBase.Context;
 using FlexibleMVC.LessBase.Ctrller;
 using FlexibleMVC.LessBase.Permissions.DAL;
 using FlexibleMVC.LessBase.Permissions.Model;
+using FlexibleMVC.LessBase.Const;
+using FlexibleMVC.LessBase.Extension;
 
 namespace FlexibleMVC.LessBase.Filters.Permission
 {
@@ -31,6 +33,14 @@ namespace FlexibleMVC.LessBase.Filters.Permission
                 //获取当前登录用户
                 IUser iUser = lessContext.GetService<IUser>();
                 lessContext.CurrentUser = iUser.GetCurrentUser(lessContext);
+                if(lessContext.CurrentUser == null)
+                {
+                    jwt.Success = false;
+                    jwt.Msg = $"获取登录帐号 {lessContext.Jwt.Result[BasicConst.JWT_USER].loginName} 信息失败，请重新登录！";
+                    filterContext.HttpContext.Response.AddHeaderTimeOut();
+                    filterContext.Result = new BaseJsonResult() { Data = jwt };
+                    return;
+                }
 
                 //获取当前站点
                 var sysWebSiteDal = lessContext.GetService<SysWebSiteDal>();
@@ -45,6 +55,7 @@ namespace FlexibleMVC.LessBase.Filters.Permission
             }
             else
             {
+                filterContext.HttpContext.Response.AddHeaderTimeOut();
                 if (string.IsNullOrEmpty(WhenNotPassedRedirectUrl))
                 {
                     filterContext.Result = new BaseJsonResult() { Data = jwt };

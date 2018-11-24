@@ -65,3 +65,39 @@ function __CreateJSPath(js) {
     return path;
 }
 
+
+//html多级iframe嵌套时获取顶级窗口
+var topWin = (function () { var p = window.parent; while (p != p.window.parent) { p = p.window.parent; } return p; })();
+
+//全局ajax拦截
+document.write('<script src="' + bootPATH + 'ajaxhook.min.js" type="text/javascript"></sc' + 'ript>');
+
+var timer = setInterval(HasJqueryLoadComplete, 1000);
+
+function HasJqueryLoadComplete() {
+    if (hookAjax && mini) {
+        hookAjax({
+            //拦截回调
+            onreadystatechange: function (xhr) {
+                //console.log("onreadystatechange called: %O", xhr)
+                var sessionstatus = xhr.getResponseHeader("SessionStatus");
+                if (sessionstatus == "TimeOut" && xhr.readyState == 4 && xhr.responseText != "") {                    
+                    var json = mini.decode(xhr.responseText);
+                    alert(json.Msg);
+                    topWin.exit();
+                }
+            },
+            onload: function (xhr) {
+                //console.log("onload called: %O", xhr)
+            },
+            //拦截方法
+            open: function (arg, xhr) {
+                //console.log("open called: method:%s,url:%s,async:%s", arg[0], arg[1], arg[2])
+            }
+        })
+
+        clearInterval(timer);
+    }
+}
+
+
