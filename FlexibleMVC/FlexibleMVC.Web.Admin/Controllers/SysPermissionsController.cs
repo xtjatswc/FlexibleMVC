@@ -85,10 +85,10 @@ namespace FlexibleMVC.Web.Admin.Controllers
                 var spfDal = flexibleContext.GetService<SysPermissionsFuncDal>();
 
                 //删除菜单权限
-                spmDal.Db.Sql("delete from SysPermissionsMenu where WebSiteID = @0 and SysRoleID = @1", siteID, roleID).Execute();
+                spmDal.DeletePermissionsMenu(siteID, roleID);
 
                 //删除功能权限
-                spfDal.Db.Sql("delete from SysPermissionsFunc where PermissionsMenuID not in (select ID from SysPermissionsMenu)");
+                spfDal.DeletePermissionsFunc();
 
                 foreach (var o in data.Where(o => o.GetBoolean("IsFunc") == false))
                 {

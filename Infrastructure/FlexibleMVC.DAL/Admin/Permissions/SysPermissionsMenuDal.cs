@@ -26,5 +26,11 @@ namespace FlexibleMVC.DAL.Admin.Permissions
 
             return models;
         }
+
+        public void DeletePermissionsMenu(string siteID, string roleID)
+        {
+            Db.Sql("delete from SysPermissionsMenu where WebSiteID = @0 and SysRoleID = @1", siteID, roleID).Execute();
+            Db.Sql("delete from SysPermissionsMenu where SysMenuID not in (select ID from SysMenu)").Execute();
+        }
     }
 }
