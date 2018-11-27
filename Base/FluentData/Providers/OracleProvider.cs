@@ -11,9 +11,10 @@ namespace FluentData
 		{ 
 			get
 			{
-				return "Oracle.DataAccess.Client";
-			} 
-		}
+			    //return "Oracle.DataAccess.Client";
+			    return "Oracle.ManagedDataAccess.Client";
+			}
+        }
 
 		public bool SupportsOutputParameters
 		{
